@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Is God Real? | The Origin Chapter</title>
+  <meta name="description" content="When belief was no longer enough. Exploring the architecture of reality." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ===== LUXURY DESIGN TOKENS ===== */
+    :root {
+      --void: #02040A;
+      --deep-space: #050810;
+      --cyan-glow: #00F0FF;
+      --cyan-dim: rgba(0, 240, 255, 0.2);
+      --gold-star: #FFD700;
+      --gold-dim: #99831B;
+      --glass-bg: rgba(255, 255, 255, 0.02);
+      --glass-border: rgba(255, 255, 255, 0.05);
+      --glass-hover: rgba(255, 255, 255, 0.06);
+      --text-main: #F0F4F8;
+      --text-muted: #8B949E;
+      --rad-soft: 30px;
+      --rad-pill: 100px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--void);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold-dim);
+      border-radius: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--void);
+      color: var(--text-main);
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+    }
+
+    /* ===== TEXTURE & ATMOSPHERE ===== */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.15;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    /* ===== POP-IN ANIMATIONS (BIDIRECTIONAL) ===== */
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .word.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 150px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      box-shadow: 0 0 100px rgba(0, 240, 255, 0.15);
+      margin-bottom: 40px;
+      animation: float 6s ease-in-out infinite;
+      z-index: 2;
+      border: 1px solid var(--glass-border);
+      overflow: hidden;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 800;
+      color: #FFF;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      color: var(--gold-star);
+      text-transform: uppercase;
+      margin-bottom: 10vh;
+    }
+
+    /* ===== 7 LAYERS STRUCTURE HEADERS ===== */
+    .layer-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 80px 0 30px;
+    }
+
+    .layer-number {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--cyan-glow);
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--cyan-dim);
+      padding: 6px 14px;
+      border-radius: var(--rad-pill);
+      white-space: nowrap;
+    }
+
+    .layer-label {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-weight: 600;
+      color: var(--gold-star);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== CARD & ACCORDION (MINIMALIST DENSITY) ===== */
+    .card-glass {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--rad-soft);
+      padding: 50px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .accordion-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .accordion-card:hover {
+      border-color: rgba(255, 215, 0, 0.2);
+      background: var(--glass-hover);
+    }
+
+    .accordion-header {
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ac-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: #FFF;
+      letter-spacing: 0.1em;
+    }
+
+    .ac-icon {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      color: var(--cyan-glow);
+      font-weight: 200;
+      transition: transform 0.5s;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.6s ease;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .accordion-card.open .accordion-content {
+      max-height: 1500px;
+      opacity: 1;
+      padding: 0 40px 40px;
+      border-top: 1px solid var(--glass-border);
+      margin-top: 10px;
+      padding-top: 30px;
+    }
+
+    .accordion-card.open .ac-icon {
+      transform: rotate(135deg);
+      color: var(--gold-star);
+    }
+
+    .large-statement {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: #FFF;
+      text-align: center;
+    }
+
+    .dense-text {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    .highlight-pipe {
+      color: var(--cyan-glow);
+      font-style: italic;
+      font-size: 1.4rem;
+      padding-left: 20px;
+      border-left: 2px solid var(--gold-star);
+      margin: 30px 0;
+    }
+
+    .gold-word {
+      color: var(--gold-star);
+      font-style: italic;
+    }
+
+    .img-wrap {
+      width: 100%;
+      border-radius: var(--rad-soft);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    img.fluid {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .grid-50 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-50 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .reverse {
+      direction: rtl;
+    }
+
+    .reverse>* {
+      direction: ltr;
+    }
+
+    /* ===== SIMULATORS (THE RESTORED LABS) ===== */
+    .lab-box {
+      border: 1px solid var(--cyan-dim);
+      border-radius: 20px;
+      background: var(--deep-space);
+      overflow: hidden;
+      margin: 40px 0;
+      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+      cursor: default;
+    }
+
+    .lab-stage {
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 350px;
+      position: relative;
+    }
+
+    .lab-console {
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.8);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    /* SIM 1: SIGHT */
+    .optic-ring {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .optic-lens {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.15), transparent);
+      border: 1px solid var(--cyan-glow);
+      box-shadow: 0 0 30px var(--cyan-dim);
+      transition: filter 0.1s;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 250px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      margin-top: 40px;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--cyan-glow);
+      cursor: pointer;
+    }
+
+    /* SIM 2: NEURAL */
+    .neural-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 30px;
+    }
+
+    .n-node {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: #FFF;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .n-node.active {
+      background: var(--cyan-dim);
+      border-color: var(--cyan-glow);
+      box-shadow: 0 0 20px var(--cyan-dim);
+    }
+
+    .fusion {
+      grid-column: 1 / -1;
+      padding: 20px;
+      text-align: center;
+      border: 1px dashed var(--gold-dim);
+      border-radius: var(--rad-pill);
+      font-family: 'Cinzel', serif;
+      color: var(--gold-star);
+      letter-spacing: 0.1em;
+      transition: all 0.4s;
+    }
+
+    .fusion.error {
+      border-color: #FF3366;
+      color: #FF3366;
+      background: rgba(255, 51, 102, 0.1);
+      animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      75% {
+        transform: translateX(5px);
+      }
+    }
+
+    /* SIM 3: DNA */
+    .dna-code {
+      font-family: monospace;
+      font-size: 1.6rem;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    .btn-sys {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: #FFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      padding: 12px 24px;
+      border-radius: var(--rad-pill);
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 0 10px;
+    }
+
+    .btn-sys:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-sys.gold:hover,
+    .btn-sys.gold.active {
+      background: rgba(255, 215, 0, 0.1);
+      border-color: var(--gold-star);
+      color: var(--gold-star);
+    }
+
+    /* ===== SPECIFIC LAYERS (SCRIPTURE/REFLECTION) ===== */
+    .scripture-card {
+      background: var(--glass-bg);
+      border-left: 3px solid var(--cyan-glow);
+      padding: 40px;
+      border-radius: 0 var(--rad-soft) var(--rad-soft) 0;
+    }
+
+    .reflection-q {
+      display: none;
+      animation: popIn 0.8s ease forwards;
+    }
+
+    .reflection-q.active {
+      display: block;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .q-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--cyan-glow);
+    }
+
+    .dot.active {
+      background: var(--cyan-glow);
+    }
+
+    .declaration-wrap {
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 80%);
+      border: 1px dashed var(--glass-border);
+      border-radius: var(--rad-soft);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise-overlay"></div>
+  <canvas id="particle-canvas"></canvas>
+
+  <main>
+    <!-- HERO (ONE EYE) -->
+    <section class="hero scroll-reveal">
+      <div class="hero-image-wrapper">
+        <img src="cinematic_eye.png" alt="Single Cinematic Eye" class="hero-image"
+          onerror="this.src=''; this.style.opacity='0'">
+      </div>
+      <h1 class="hero-title staggered-text">IS GOD REAL?</h1>
+      <p class="hero-subtitle">THE ORIGIN CHAPTER</p>
+    </section>
+
+    <!-- LAYER 1: THESIS -->
+    <section class="scroll-reveal" id="layer-1">
+      <div class="layer-header">
+        <span class="layer-number">LAYER 1 OF 7</span>
+        <h2 class="layer-label">🔑 The One-Line Thesis</h2>
+      </div>
+      <div class="card-glass">
+        <p class="large-statement staggered-text">
+          You are not simply a biological machine programmed to ask questions about its programming. You are the
+          universe looking at itself—and you are already sitting inside the evidence.
+        </p>
+      </div>
+    </section>
+
+    <!-- LAYER 2: SCRIPTURE -->
+    <section class="scroll-reveal" id="layer-2">
+      <div class="layer-header">
+        <span class="layer-number">LAYER 2 OF 7</span>
+        <h2 class="layer-label">📜 The Core Tension</h2>
+      </div>
+      <div class="scripture-card">
+        <p class="dense-text staggered-text" style="font-size:1.6rem; font-style:italic;">
+          "For since the creation of the world God’s invisible qualities—his eternal power and divine nature—have been
+          clearly seen, being understood from what has been made, so that people are without excuse."
+        </p>
+        <p style="font-family:'Cinzel', serif; color:var(--cyan-glow); letter-spacing:0.1em;">— ROMANS 1:20</p>
+      </div>
+    </section>
+
+    <!-- LAYER 3: FRAMEWORK MAP -->
+    <section class="scroll-reveal" id="layer-3">
+      <div class="layer-header">
+        <span class="layer-number">LAYER 3 OF 7</span>
+        <h2 class="layer-label">🗺 The Architecture of Reality</h2>
+      </div>
+      <div class="grid-50">
+        <div>
+          <p class="dense-text staggered-text">
+            There comes a point where you stop defending what you were taught and start trying to understand <span
+              class="gold-word">what is actually true</span>. A house does not appear by accident. It is designed, built
+            step by step through intelligence applied to intention.
+          </p>
+          <div class="accordion-card" onclick="this.classList.toggle('open')">
+            <div class="accordion-header">
+              <h3 class="ac-title">TAP TO EXAMINE THE ARCHITECTURE</h3>
+              <span class="ac-icon">+</span>
+            </div>
+            <div class="accordion-content" onclick="event.stopPropagation()">
+              <p class="dense-text">
+                If everything I recognise as structured has a source of intelligence behind it—then what about me? You
+                live inside a stability you did not create. Cause follows effect. Time is reliable. If reality were
+                truly random, consistency would be impossible. Consistency is the foundation of all human experience.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="img-wrap"><img src="cosmic_blueprint.png" class="fluid" alt="Architecture Blueprint"></div>
+      </div>
+    </section>
+
+    <!-- LAYER 4: DEEP DIVES (THE RESTORED LABS) -->
+    <section class="scroll-reveal" id="layer-4">
+      <div class="layer-header" style="margin-top:120px;">
+        <span class="layer-number">LAYER 4 OF 7</span>
+        <h2 class="layer-label">🧩 Experiential Deep-Dives</h2>
+      </div>
+
+      <!-- DEEP DIVE 1: SIGHT -->
+      <div class="accordion-card" onclick="this.classList.toggle('open')">
+        <div class="accordion-header">
+          <h3 class="ac-title">I. THE ENGINEERED MARVEL OF SIGHT</h3><span class="ac-icon">+</span>
+        </div>
+        <div class="accordion-content" onclick="event.stopPropagation()">
+          <p class="dense-text staggered-text">
+            Consider what happens when you open your eyes. Light enters the cornea, refracted to precisely the right
+            angle. The lens adjusts instantly to focus deeply onto the retina, smaller than a postage stamp, containing
+            <span class="gold-word">120 million rod cells</span>.
+          </p>
+          <div class="lab-box">
+            <div class="lab-stage" style="flex-direction:column;">
+              <div class="optic-ring">
+                <div class="optic-lens" id="optic"></div>
+              </div>
+              <input type="range" class="slider" id="sight-slide" min="0" max="100" value="0">
+              <p style="font-family:'Inter'; font-size:10px; color:#888; margin-top:15px; letter-spacing:0.1em;">
+                CALIBRATE RETINAL ALIGNMENT</p>
+            </div>
+            <div class="lab-console" id="sight-con">SYSTEM DEFAULT: Misaligned. Vision blurred.</div>
+          </div>
+          <p class="highlight-pipe staggered-text">Evolution calls this an accident. Observation calls it Architecture.
+          </p>
+        </div>
+      </div>
+
+      <!-- DEEP DIVE 2: CONSCIOUSNESS -->
+      <div class="accordion-card" onclick="this.classList.toggle('open')">
+        <div class="accordion-header">
+          <h3 class="ac-title">II. THE SEAT OF CONSCIOUSNESS</h3><span class="ac-icon">+</span>
+        </div>
+        <div class="accordion-content" onclick="event.stopPropagation()">
+          <div class="grid-50 reverse" style="margin-bottom:30px;">
+            <div>
+              <p class="dense-text staggered-text">
+                Eighty-six billion neurons. Synaptic junctions numbering in the trillions. We can map the electricity,
+                but neuroscience has no answer to the <span class="gold-word">hard problem of consciousness</span>. How
+                does matter feel grief, awe, or love?
+              </p>
+            </div>
+            <div class="img-wrap"><img src="neural_brain.png" class="fluid" alt="Neurons"></div>
+          </div>
+          <div class="lab-box">
+            <div class="lab-stage" style="flex-direction:column;">
+              <div class="neural-grid">
+                <div class="n-node" id="np-1" onclick="tNode(1)">MATTER</div>
+                <div class="n-node" id="np-2" onclick="tNode(2)">ELECTRICITY</div>
+                <div class="n-node" id="np-3" onclick="tNode(3)">CHEMISTRY</div>
+                <div class="fusion" id="fuse-res">AWAITING INPUT...</div>
+              </div>
+              <button class="btn-sys" onclick="fuseBrain()">ATTEMPT TO GENERATE 'AWARENESS'</button>
+            </div>
+            <div class="lab-console" id="brain-con">STATUS: Combine physical components to create a soul.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DEEP DIVE 3: DNA -->
+      <div class="accordion-card" onclick="this.classList.toggle('open')">
+        <div class="accordion-header">
+          <h3 class="ac-title">III. THE DNA DECODER</h3><span class="ac-icon">+</span>
+        </div>
+        <div class="accordion-content" onclick="event.stopPropagation()">
+          <div class="grid-50" style="margin-bottom:30px;">
+            <div>
+              <p class="dense-text staggered-text">
+                Information is not just present—it is embedded deeply. DNA is a three-billion-letter sequence that acts
+                as a blueprint. A text written by someone who knew exactly what they were writing.
+              </p>
+            </div>
+            <div class="img-wrap"><img src="dna_helix.png" class="fluid" alt="DNA Helix"></div>
+          </div>
+          <div class="lab-box">
+            <div class="lab-stage" style="flex-direction:column;">
+              <div class="dna-code" id="dna-txt">G C T A C G T<br>A C G T A C G</div>
+              <div style="margin-top:40px;">
+                <button class="btn-sys" onclick="runChance()">APPLY CHANCE</button>
+                <button class="btn-sys gold" id="btn-intell" onclick="runIntell()">APPLY INTELLIGENCE</button>
+              </div>
+            </div>
+            <div class="lab-console" id="dna-con">STATUS: Awaiting sequence interpretation.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAYER 5: WARNING -->
+    <section class="scroll-reveal" id="layer-5" style="margin-top:100px;">
+      <div class="layer-header">
+        <span class="layer-number">LAYER 5 OF 7</span>
+        <h2 class="layer-label">⚠️ The Illusion of Neutrality</h2>
+      </div>
+      <div class="card-glass" style="border-color: rgba(255,51,102,0.3); background: rgba(255,51,102,0.02);">
+        <p class="dense-text staggered-text" style="color: #FF8F9C;">
+          The greatest failure in discernment is believing that ignoring the evidence is a neutral position. An
+          Architect is not necessarily a Father. But the hunger of your heart—the desire for meaning and love—points
+          directly to a Person. God did not build you and walk away. He built you to know Him.
+        </p>
+      </div>
+    </section>
+
+    <!-- LAYER 6: REFLECTION -->
+    <section class="scroll-reveal" id="layer-6" style="margin-top:100px;">
+      <div class="layer-header">
+        <span class="layer-number">LAYER 6 OF 7</span>
+        <h2 class="layer-label">🪞 Reflection Prompts</h2>
+      </div>
+      <div class="card-glass" style="text-align:center;">
+        <div id="q1" class="reflection-q active">
+          <p class="dense-text" style="font-size:1.6rem; font-style:italic;">Are you living in the safety of external
+            tradition (doing the right things in church), while internally observing from behind glass?</p>
+        </div>
+        <div id="q2" class="reflection-q">
+          <p class="dense-text" style="font-size:1.6rem; font-style:italic;">When you look at the complexity of your own
+            body, do you assume it was an accident of millions of years, or do you see the signature of an Architect?
+          </p>
+        </div>
+        <div id="q3" class="reflection-q">
+          <p class="dense-text" style="font-size:1.6rem; font-style:italic;">If reality is speaking, what is stopping
+            you from answering?</p>
+        </div>
+
+        <button class="btn-sys" style="margin-top:30px; border-color:var(--cyan-glow); color:var(--cyan-glow);"
+          onclick="nextQ()">✦ REVEAL NEXT QUESTION</button>
+        <div class="q-dots">
+          <div class="dot active" id="qd1"></div>
+          <div class="dot" id="qd2"></div>
+          <div class="dot" id="qd3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAYER 7: DECLARATION -->
+    <section class="scroll-reveal" id="layer-7" style="margin-top:100px;">
+      <div class="layer-header">
+        <span class="layer-number">LAYER 7 OF 7</span>
+        <h2 class="layer-label">🔥 The Closing Declaration</h2>
+      </div>
+      <div class="declaration-wrap">
+        <p
+          style="font-family:'Cinzel', serif; font-size:1.1rem; letter-spacing:0.3em; color:var(--cyan-glow); margin-bottom: 20px;">
+          THE MANDATE ACCEPTED</p>
+        <p class="large-statement staggered-text">
+          "I will no longer observe from behind glass. I recognise the signature of the Architect in the structure of
+          reality. I am not an accident. I respond to the truth that is speaking."
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* PARTICLES */
+    const canvas = document.getElementById('particle-canvas'); const ctx = canvas.getContext('2d'); let parts = [];
+    function rs() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', rs); rs();
+    for (let i = 0; i < 80; i++) parts.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, size: Math.random() * 1.5, a: Math.random() });
+    function anim() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      parts.forEach(p => {
+        p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > canvas.width) p.vx *= -1; if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.fillStyle = `rgba(0, 240, 255, ${p.a * 0.3})`; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+      });
+      requestAnimationFrame(anim);
+    } anim();
+
+    /* INFINITE BIDIRECTIONAL SCROLL REVEAL */
+    const oBox = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); else e.target.classList.remove('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.scroll-reveal').forEach(el => oBox.observe(el));
+
+    const oText = new IntersectionObserver((es) => {
+      es.forEach(e => {
+        const spans = e.target.querySelectorAll('.word');
+        if (e.isIntersecting) spans.forEach((s, i) => setTimeout(() => s.classList.add('visible'), i * 35));
+        else spans.forEach(s => s.classList.remove('visible'));
+      });
+    }, { threshold: 0.3 }); // 0.3 so it resets properly when scrolled away
+
+    document.querySelectorAll('.staggered-text').forEach(p => {
+      p.innerHTML = p.innerHTML.split(' ').map(t => { return (t.includes('<') || t.includes('>')) ? t : `<span class="word">${t}</span>`; }).join(' ');
+      oText.observe(p);
+    });
+
+    /* LAB 1: SIGHT */
+    const sld = document.getElementById('sight-slide'); const lns = document.getElementById('optic'); const sCon = document.getElementById('sight-con');
+    sld.addEventListener('input', (e) => {
+      const v = e.target.value; const b = Math.abs(50 - v) / 3;
+      lns.style.filter = `blur(${b}px)`; lns.style.transform = `scale(${1 + Math.abs(50 - v) / 100})`;
+      if (b === 0) { sCon.style.color = "var(--gold-star)"; sCon.innerHTML = "PERFECT ALIGNMENT. 120M rods connected. Vision achieved. Architecture recognized."; lns.style.borderColor = "var(--gold-star)"; }
+      else { sCon.style.color = "var(--text-muted)"; sCon.innerHTML = `DISPLACEMENT DETECTED (${Math.round(b * 2)}mm). Vision blurred.`; lns.style.borderColor = "var(--cyan-glow)"; }
+    });
+
+    /* LAB 2: CONSCIOUSNESS */
+    let nds = { 1: false, 2: false, 3: false };
+    function tNode(id) { nds[id] = !nds[id]; document.getElementById('np-' + id).classList.toggle('active'); }
+    function fuseBrain() {
+      if (nds[1] && nds[2] && nds[3]) {
+        document.getElementById('fuse-res').className = 'fusion error'; document.getElementById('fuse-res').innerHTML = 'BIOLOGICAL FAILURE';
+        document.getElementById('brain-con').style.color = '#FF3366'; document.getElementById('brain-con').innerHTML = 'ERROR: No combination of chemistry and electricity produces a Soul. The hard problem of consciousness rejects materialism.';
+      } else {
+        document.getElementById('fuse-res').className = 'fusion'; document.getElementById('fuse-res').innerHTML = 'SYSTEM INCOMPLETE';
+        document.getElementById('brain-con').style.color = 'var(--text-muted)'; document.getElementById('brain-con').innerHTML = 'Activate Matter, Electricity, and Chemistry first.';
+      }
+    }
+
+    /* LAB 3: DNA */
+    let dInt; const dTx = document.getElementById('dna-txt'); const dCo = document.getElementById('dna-con'); const bs = ['A', 'C', 'G', 'T'];
+    function runChance() {
+      clearInterval(dInt); dTx.style.color = 'rgba(255,255,255,0.2)'; document.getElementById('btn-intell').classList.remove('active');
+      let x = 0; dInt = setInterval(() => {
+        let s = ""; for (let i = 0; i < 10; i++) s += bs[Math.floor(Math.random() * 4)] + " "; s += "<br>"; for (let i = 0; i < 10; i++) s += bs[Math.floor(Math.random() * 4)] + " "; dTx.innerHTML = s;
+        if (++x > 10) { clearInterval(dInt); dCo.innerHTML = "RESULT: Random mutations do not yield instructional code. Only gibberish."; }
+      }, 50); dCo.style.color = "var(--text-muted)"; dCo.innerHTML = "Applying random chance...";
+    }
+    function runIntell() {
+      clearInterval(dInt); dTx.style.color = 'var(--gold-star)'; document.getElementById('btn-intell').classList.add('active');
+      let x = 0; dInt = setInterval(() => {
+        let s = ""; for (let i = 0; i < 10; i++) s += bs[Math.floor(Math.random() * 4)] + " "; s += "<br>"; for (let i = 0; i < 10; i++) s += bs[Math.floor(Math.random() * 4)] + " "; dTx.innerHTML = s;
+        if (++x > 15) { clearInterval(dInt); dTx.innerHTML = "L A N G U A G E<br>D E M A N D S<br>A &nbsp; S P E A K E R"; dCo.style.color = "var(--gold-star)"; dCo.innerHTML = "RESULT: Sequence locked. The code is authored."; }
+      }, 40); dCo.innerHTML = "Applying intelligent design parameters...";
+    }
+
+    /* REFLECTION LOGIC */
+    let curQ = 1;
+    function nextQ() {
+      if (curQ >= 3) return;
+      document.getElementById('q' + curQ).classList.remove('active');
+      curQ++;
+      document.getElementById('q' + curQ).classList.add('active');
+      document.getElementById('qd' + curQ).classList.add('active');
+      if (curQ === 3) event.target.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>

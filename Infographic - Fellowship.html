@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fellowship — The Fire That Changes Everything | Masterclass Infographic</title>
+  <meta name="description" content="Fellowship is not a spiritual luxury. It is the maintenance system of everything else in a believer's life. An interactive 7-layer framework map."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --void:#04030A;--deep:#080610;
+      --gold:#C9A84C;--gold-d:rgba(201,168,76,.15);--gold-pale:#F5EAC8;
+      --cyan:#00E5FF;--cyan-d:rgba(0,229,255,.12);
+      --crimson:#9B1C1C;--crimson-d:rgba(155,28,28,.15);
+      --glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);
+      --hover:rgba(255,255,255,.06);--text:#F0EBE0;--muted:#8B867A;--dim:#5A5550;
+      --success:#00D97E;--danger:#FF3366;
+      --r:20px;--rp:100px
+    }
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:rgba(201,168,76,.3);border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden;font-size:18px;line-height:1.8}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.3}
+    #progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-pale));z-index:10000;transition:width .1s linear;box-shadow:0 0 10px rgba(201,168,76,.4)}
+    #layer-tracker{position:fixed;top:20px;right:20px;background:rgba(4,3,10,.85);border:1px solid var(--gold-d);border-radius:var(--rp);padding:8px 18px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.1em;color:var(--gold);z-index:999;backdrop-filter:blur(12px)}
+
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 40px rgba(201,168,76,.1)}50%{box-shadow:0 0 100px rgba(201,168,76,.3)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+    @keyframes flamePulse{0%,100%{transform:scaleY(1) scaleX(1)}25%{transform:scaleY(1.08) scaleX(.95)}75%{transform:scaleY(.95) scaleX(1.04)}}
+    @keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
+
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    .fc{opacity:0;transform:translateY(24px);animation:fadeUp .9s ease forwards}
+    .fc:nth-child(1){animation-delay:.1s}.fc:nth-child(2){animation-delay:.3s}.fc:nth-child(3){animation-delay:.5s}
+
+    main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 28px 160px}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 0 60px;position:relative}
+    .hero-img{width:360px;height:260px;border-radius:24px;overflow:hidden;border:1px solid var(--gold-d);box-shadow:0 0 80px rgba(201,168,76,.15),0 0 160px rgba(201,168,76,.05);animation:float 8s ease-in-out infinite,pulse 5s ease-in-out infinite;margin-bottom:44px}
+    .hero-img img{width:100%;height:100%;object-fit:cover}
+    .hero-eyebrow{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:22px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.6rem,6vw,5.5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px;text-shadow:0 0 60px rgba(201,168,76,.25)}
+    .hero-divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 24px}
+    .hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-style:italic;color:var(--muted);max-width:600px;margin:0 auto 44px}
+    .hero-tagline{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.15em;color:var(--gold-pale);opacity:.7}
+    .scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.15em;animation:float 2s ease-in-out infinite}
+    .scroll-hint::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
+
+    /* SECTION HEADERS */
+    .layer{margin-bottom:90px;position:relative}
+    .layer-header{display:flex;align-items:center;gap:16px;margin-bottom:36px}
+    .layer-badge{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);background:rgba(201,168,76,.07);border:1px solid var(--gold-d);padding:6px 16px;border-radius:var(--rp);white-space:nowrap}
+    .layer-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:600;color:var(--gold);letter-spacing:.05em}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:20px 0 70px}
+
+    /* CARDS */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:44px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.crimson-b{border-color:var(--crimson-d);background:rgba(155,28,28,.02)}
+    .thesis-mark{font-family:'Cinzel',serif;font-size:5rem;color:var(--gold);line-height:.5;opacity:.3;margin-bottom:16px}
+    .thesis-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:300;font-style:italic;color:var(--text);line-height:1.6}
+    .scripture-verse{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-style:italic;color:var(--text);line-height:1.8;margin-bottom:12px}
+    .scripture-ref{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.15em;color:var(--gold)}
+    .scripture-insight{margin-top:20px;padding-top:20px;border-top:1px solid var(--border);font-size:1rem;color:var(--muted);line-height:1.7}
+    .tooltip-wrap{position:relative;cursor:help;color:var(--gold);border-bottom:1px dashed var(--gold);display:inline-block}
+    .tooltip-wrap .tip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0C0A14;border:1px solid var(--gold-d);border-radius:12px;padding:12px 16px;font-style:italic;font-size:.85rem;color:var(--text);max-width:280px;white-space:normal;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+    .tooltip-wrap:hover .tip{display:block}
+
+    /* ACCORDIONS */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:.95rem;color:#fff;letter-spacing:.05em}
+    .ac-icon{font-size:1.4rem;color:var(--gold);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s ease}
+    .ac.open .ac-body{max-height:3000px;opacity:1;transition:max-height 1s cubic-bezier(0,1,0,1),opacity .6s ease}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold-pale)}
+    .ac-content{padding:0 36px 36px;border-top:1px solid var(--border);padding-top:28px}
+
+    /* TYPOGRAPHY */
+    .body-text{font-size:1.1rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}
+    .body-text.lg{font-size:1.35rem}
+    .em{color:var(--gold);font-style:italic}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.2rem;line-height:1.7;margin:24px 0;color:var(--text)}
+    .statement{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+
+    /* FRAMEWORK MAP */
+    .map-wrap{overflow-x:auto;padding:10px 0}
+    .map-canvas{min-width:680px;position:relative;padding:20px}
+    .fw-row{display:flex;justify-content:center;gap:16px;position:relative;z-index:1;margin-bottom:6px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;height:30px;align-items:center;color:var(--gold);font-size:1.1rem;opacity:.4;margin:2px 0}
+    .map-label{font-family:'Inter',sans-serif;font-size:.58rem;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px}
+    .node{border-radius:16px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center;padding:20px 16px}
+    .node:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(201,168,76,.1)}
+    .node .n-title{font-family:'Cinzel',serif;font-size:.82rem;color:#fff;margin-bottom:4px;letter-spacing:.04em}
+    .node .n-sub{font-family:'Inter',sans-serif;font-size:.58rem;color:var(--muted);line-height:1.5}
+    .node.root{padding:28px 20px;border-color:var(--gold-d);background:rgba(201,168,76,.04)}.node.root .n-title{font-size:1rem;color:var(--gold)}
+    .node.gold{border-color:var(--gold-d);background:rgba(201,168,76,.04)}.node.gold .n-title{color:var(--gold)}
+    .node.cyan{border-color:var(--cyan-d);background:rgba(0,229,255,.03)}.node.cyan .n-title{color:var(--cyan)}
+    .node.red{border-color:var(--crimson-d);background:rgba(155,28,28,.04)}.node.red .n-title{color:#E07070}
+    .node.green{border-color:rgba(0,217,126,.2);background:rgba(0,217,126,.03)}.node.green .n-title{color:var(--success)}
+    .node.w140{width:140px}.node.w180{width:180px}.node.w220{width:220px}.node.w280{width:280px}
+
+    /* PANEL (modal) */
+    .panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(560px,90vw);background:#080610;border:1px solid var(--gold-d);border-radius:28px;padding:40px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.95)}
+    .panel.show{display:block}
+    .p-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.1rem;cursor:pointer;transition:all .3s}.p-close:hover{background:var(--hover);color:#fff}
+    .p-tag{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+    .p-title{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold-pale);margin-bottom:16px}
+    .p-body{font-size:1.05rem;line-height:1.85;color:var(--text);font-weight:300}
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:9999;backdrop-filter:blur(4px)}#overlay.show{display:block}
+
+    /* GRID */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}
+    .rev{direction:rtl}.rev>*{direction:ltr}
+    .img-box{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+    .img-box img{width:100%;display:block;object-fit:cover;transition:transform .6s}.img-box:hover img{transform:scale(1.03)}
+
+    /* SIM BOXES */
+    .lab{border:1px solid var(--gold-d);border-radius:var(--r);background:var(--deep);overflow:hidden;margin:24px 0}
+    .lab-stage{padding:40px;display:flex;flex-direction:column;align-items:center;min-height:300px;justify-content:center}
+    .lab-footer{padding:14px 28px;background:rgba(0,0,0,.6);font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em;padding:12px 24px;border-radius:var(--rp);cursor:pointer;transition:all .3s;margin:5px}
+    .btn:hover{background:var(--hover)}
+    .btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(201,168,76,.1)}
+    .btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover,.btn.c.on{background:rgba(0,229,255,.07)}
+    .btn.r{border-color:#E07070;color:#E07070}.btn.r:hover,.btn.r.on{background:rgba(155,28,28,.12)}
+    .btn.s{border-color:var(--success);color:var(--success)}.btn.s:hover,.btn.s.on{background:rgba(0,217,126,.07)}
+
+    /* TRANSACTIONAL vs TRANSFORMATIONAL DIAL */
+    .dial-wrap{position:relative;width:280px;height:160px}
+    .dial-arc{width:280px;height:140px;border-radius:140px 140px 0 0;border:3px solid var(--border);border-bottom:none;position:relative;overflow:hidden}
+    .dial-fill{position:absolute;bottom:0;left:0;width:100%;height:100%;background:conic-gradient(from 180deg, var(--crimson) 0deg, var(--crimson) calc(var(--pct)*1.8deg), transparent calc(var(--pct)*1.8deg));border-radius:140px 140px 0 0;transition:all 1.2s cubic-bezier(.4,0,.2,1)}
+    .dial-fill2{position:absolute;bottom:0;right:0;width:100%;height:100%;background:conic-gradient(from 0deg, var(--success) 0deg, var(--success) calc((100 - var(--pct))*1.8deg), transparent calc((100 - var(--pct))*1.8deg));border-radius:140px 140px 0 0;transform:scaleX(-1);transition:all 1.2s cubic-bezier(.4,0,.2,1)}
+    .dial-needle{position:absolute;bottom:0;left:50%;width:3px;height:110px;background:var(--gold);transform-origin:bottom center;transform:rotate(calc(var(--pct)*1.8deg - 90deg));transition:transform 1.2s cubic-bezier(.4,0,.2,1);border-radius:3px}
+    .dial-labels{display:flex;justify-content:space-between;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;color:var(--muted);margin-top:8px;width:280px}
+    .dial-pct{font-family:'Cinzel',serif;font-size:2rem;color:var(--gold);text-align:center;margin-top:8px}
+    .dial-desc{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.06em;color:var(--muted);text-align:center;margin-top:4px;height:18px}
+
+    /* PRAYER LEVELS */
+    .prayer-track{width:100%;max-width:580px}
+    .p-level{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:14px;border:1px solid var(--border);background:var(--glass);margin-bottom:10px;cursor:pointer;transition:all .4s;position:relative;overflow:hidden}
+    .p-level::before{content:'';position:absolute;left:0;top:0;width:0%;height:100%;background:rgba(201,168,76,.04);transition:width .6s ease}
+    .p-level.active::before{width:100%}
+    .p-level.active{border-color:var(--gold-d)}
+    .p-lv-num{font-family:'Cinzel',serif;font-size:.7rem;color:var(--gold);width:28px;flex-shrink:0;letter-spacing:.1em}
+    .p-lv-icon{font-size:1.4rem;width:32px;flex-shrink:0}
+    .p-lv-info{flex:1}
+    .p-lv-title{font-family:'Cinzel',serif;font-size:.88rem;color:#fff;margin-bottom:2px}
+    .p-lv-sub{font-family:'Inter',sans-serif;font-size:.6rem;color:var(--muted)}
+    .p-lv-bar{height:3px;background:rgba(255,255,255,.05);border-radius:3px;margin-top:8px;overflow:hidden;width:0%;transition:width 0s}
+    .p-level.active .p-lv-bar{width:100%;transition:width .8s ease}
+    .p-lv-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-pale));width:100%}
+    .p-detail{width:100%;max-width:580px;border:1px solid var(--gold-d);border-radius:14px;padding:22px;background:rgba(201,168,76,.02);display:none;animation:popIn .4s ease;margin-bottom:10px}
+    .p-detail.show{display:block}
+    .p-d-title{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);margin-bottom:10px}
+    .p-d-body{font-size:.95rem;line-height:1.75;color:var(--text);font-weight:300}
+
+    /* 3 DIMENSIONS */
+    .dim-row{display:flex;gap:14px;margin-bottom:14px;flex-wrap:wrap;justify-content:center}
+    .dim-card{border-radius:var(--r);border:1px solid var(--border);background:var(--glass);padding:28px 20px;text-align:center;cursor:pointer;transition:all .4s;flex:1;min-width:170px}
+    .dim-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(201,168,76,.1)}
+    .dim-card.on{border-color:var(--gold-d);background:rgba(201,168,76,.05)}
+    .dim-icon{font-size:2rem;margin-bottom:12px}
+    .dim-name{font-family:'Cinzel',serif;font-size:.82rem;color:var(--gold);margin-bottom:4px;letter-spacing:.06em}
+    .dim-sub{font-family:'Inter',sans-serif;font-size:.6rem;color:var(--muted);line-height:1.5}
+    .dim-detail{width:100%;border:1px solid var(--gold-d);border-radius:14px;padding:24px;background:rgba(201,168,76,.02);display:none;animation:popIn .4s ease}
+    .dim-detail.show{display:block}
+    .dim-d-title{font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);margin-bottom:12px}
+    .dim-d-body{font-size:1rem;line-height:1.8;color:var(--text);font-weight:300}
+
+    /* FLAME SIM */
+    .flame-container{position:relative;width:80px;height:120px;margin:0 auto}
+    .flame{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:40px;height:0;background:radial-gradient(ellipse at center bottom,#FFF5C0 0%,var(--gold) 30%,#E05010 70%,transparent 100%);border-radius:50% 50% 0 0;transition:height 1.5s cubic-bezier(.4,0,.2,1),opacity 1s;opacity:0;animation:flamePulse 1.5s ease-in-out infinite}
+    .flame.on{height:100px;opacity:1}
+    .flame-base{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60px;height:8px;background:radial-gradient(ellipse,rgba(201,168,76,.6),transparent);border-radius:50%;transition:opacity 1s;opacity:0}
+    .flame-base.on{opacity:1}
+    .altar-block{width:80px;height:24px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:4px;margin:0 auto}
+    .fellowship-meter{width:280px;height:10px;background:var(--border);border-radius:var(--rp);overflow:hidden;margin:20px auto 8px}
+    .meter-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-pale));border-radius:var(--rp);transition:width 1.5s cubic-bezier(.4,0,.2,1)}
+    .meter-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.15em;color:var(--muted);text-align:center}
+    .flame-status{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.15em;color:var(--muted);text-align:center;margin-top:12px;height:20px}
+
+    /* REFLECTION & DECLARATION */
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:22px}
+    .q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);cursor:pointer;transition:background .3s}.q-dot.on{background:var(--gold)}
+    .decl{border:1px dashed var(--gold-d);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%)}
+
+    /* WARNING */
+    .warning-card{background:linear-gradient(135deg,rgba(155,28,28,.06),rgba(201,168,76,.03));border:1px solid rgba(155,28,28,.3);border-radius:var(--r);padding:40px;position:relative;overflow:hidden}
+    .warning-card::before{content:'⚠';position:absolute;right:-10px;top:-10px;font-size:8rem;opacity:.04;line-height:1}
+    .w-title{font-family:'Cinzel',serif;font-size:.95rem;letter-spacing:.15em;color:#C87070;margin-bottom:20px}
+    .w-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+    .w-dot{width:6px;height:6px;background:#C87070;border-radius:50%;margin-top:10px;flex-shrink:0}
+    .w-text{font-size:1rem;color:var(--muted);line-height:1.75}
+    .w-text strong{color:var(--text)}
+  </style>
+</head>
+<body>
+<div class="noise"></div>
+<canvas id="cvs"></canvas>
+<div id="progress-bar"></div>
+<div id="layer-tracker">LAYER 1 OF 7</div>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="panel" id="pnl">
+  <button class="p-close" onclick="closePanel()">✕</button>
+  <p class="p-tag" id="p-tag">NODE DETAIL</p>
+  <h2 class="p-title" id="p-title"></h2>
+  <p class="p-body" id="p-body"></p>
+</div>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-img fc"><img src="fellowship_altar.jpg" alt="Altar fire" onerror="this.parentElement.style.display='none'"></div>
+    <div class="fc">
+      <p class="hero-eyebrow">Masterclass · Chapter Framework · The Inner Life</p>
+      <h1 class="hero-title">FELLOWSHIP</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-subtitle">The fire that changes everything. Not a spiritual luxury — the maintenance system of everything else in the believer's life.</p>
+    </div>
+    <div class="fc">
+      <p class="hero-tagline">🔑 &nbsp; VISITING · DWELLING · TRANSFORMATION</p>
+    </div>
+    <div class="scroll-hint">SCROLL TO BEGIN</div>
+  </section>
+
+  <!-- ===== LAYER 1: THESIS ===== -->
+  <div class="layer sr" id="layer-1" data-layer="1">
+    <div class="layer-header">
+      <span class="layer-badge">LAYER 1 OF 7</span>
+      <h2 class="layer-label">🔑 The One-Line Thesis</h2>
+    </div>
+    <div class="card gold-b">
+      <div class="thesis-mark">"</div>
+      <p class="thesis-text">Most believers have a <span class="em">transaction</span> with God. They come when they need something. They leave when the crisis passes. What feels missing — the hollow prayer, the absent power, the plateau — is this: <span class="em">fellowship.</span> The continuous, transformational, living communion with the Son of God Himself that does not just add to your life but changes the composition of who you are.</p>
+    </div>
+  </div>
+
+  <div class="section-divider sr"></div>
+
+  <!-- ===== LAYER 2: SCRIPTURE ===== -->
+  <div class="layer sr" id="layer-2" data-layer="2">
+    <div class="layer-header">
+      <span class="layer-badge">LAYER 2 OF 7</span>
+      <h2 class="layer-label">📜 The Anchor Scripture</h2>
+    </div>
+    <div class="card gold-b">
+      <p class="scripture-verse">"God is faithful, by whom you were called into the fellowship of His Son, Jesus Christ our Lord."</p>
+      <p class="scripture-ref">— 1 CORINTHIANS 1:9</p>
+      <p class="scripture-insight">Called into. Not called to information about Him. Not called to rituals that reference Him. Called into a living, ongoing, transformational communion. The word fellowship here is koinonia — deep, mutual sharing between parties genuinely invested in each other's reality. Not polite attendance. Not religious performance. Actual relationship.</p>
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)">
+        <p style="font-size:.85rem;color:var(--dim);font-family:'Inter',sans-serif;letter-spacing:.05em;margin-bottom:12px">SUPPORTING SCRIPTURES — hover to reveal</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <span class="tooltip-wrap">Psalm 91:1<span class="tip">"He who dwells in the secret place of the Most High shall abide under the shadow of the Almighty." Dwells — not visits.</span></span>
+          <span class="tooltip-wrap" style="margin-left:4px">Psalm 25:14<span class="tip">"The secret of the Lord is with those who fear Him, and He will show them His covenant." Revelations that are only available in the intimacy of sustained relationship.</span></span>
+          <span class="tooltip-wrap" style="margin-left:4px">Acts 4:13<span class="tip">"They realized that they had been with Jesus." No credentials — but the mark of sustained proximity was unmistakable and irreproducible by any other means.</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider sr"></div>
+
+  <!-- ===== LAYER 3: FRAMEWORK MAP ===== -->
+  <div class="layer sr" id="layer-3" data-layer="3">
+    <div class="layer-header">
+      <span class="layer-badge">LAYER 3 OF 7</span>
+      <h2 class="layer-label">🗺 The Master Framework Map</h2>
+    </div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Tap any node to explore the full depth of that concept.</p>
+    <div class="map-wrap"><div class="map-canvas">
+      <!-- ROOT -->
+      <div class="fw-row">
+        <div class="node root w280" onclick="sp('What Fellowship Actually Is','Fellowship is not a series of visits. It is a continuous state of abiding — the settled, cultivated reality of living in consistent communion with the Divine as the default setting of daily existence. Most believers are spiritual tourists in the presence of God. They enjoy the experiences they have when they visit. The tourist experiences the presence. The resident is shaped by it — changed by it — made different by the accumulated effect of consistent, sustained, unhurried time in it.')">
+          <div class="n-title">🔥 FELLOWSHIP — THE CORE</div>
+          <div class="n-sub">Living communion · Not visits · The fire that changes everything</div>
+        </div>
+      </div>
+      <div class="map-arrow">↓</div>
+      <p class="map-label">THE PRIMARY DISTINCTION</p>
+      <div class="fw-row">
+        <div class="node red w200" onclick="sp('VISITING God — Transactional','The pattern of most believers. They visit when the situation demands it. They show up at scheduled times of religious activity. They interact through the layer of need rather than through the door of relationship. The transactional Christian never fully enters fellowship because they only come when they need something — and return to independence when the immediate need is met.')">
+          <div class="n-title">❌ VISITING GOD</div>
+          <div class="n-sub">Crisis-driven · Conditional · Transactional</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--gold);font-size:1.4rem;opacity:.3;padding:0 8px">↔</div>
+        <div class="node green w200" onclick="sp('DWELLING With God — Transformational','Dwelling is the settled, cultivated reality of consistent communion. Psalm 91:1 — He who dwells, not who visits. The consequence of dwelling — the shadow of the Almighty — is the most comprehensive protection available to a human being. Not available to the visitor. Available to the one who has made the place their permanent residence. The transformational Christian builds something. Over time, through sustained, consistent, unhurried engagement, something develops in them that is not dependent on circumstances and does not disappear when spiritual intensity fades.')">
+          <div class="n-title">✅ DWELLING WITH GOD</div>
+          <div class="n-sub">Daily culture · Transformational · Resident</div>
+        </div>
+      </div>
+      <div class="map-arrow">↓</div>
+      <p class="map-label">THE LOCATION WHERE IT HAPPENS</p>
+      <div class="fw-row">
+        <div class="node gold w280" onclick="sp('The Secret Place — What It Actually Is','The secret place is not a physical room. It is a perpetual state — a continuous, cultivated condition of deep intimacy and absolute trust in the sovereignty of God. Entering it requires shutting a door. Not just physically — spiritually. The door of anxiety. The door of distraction. The door of the compulsive need to be in control of every outcome. The secret place is entered by choice. It is maintained by discipline. And it is where the most significant spiritual transactions in a believer\'s life occur — not in the public moment of ministry, but in the hidden place where the presence of God is met one-on-one, without an audience, without a performance.')">
+          <div class="n-title">🚪 THE SECRET PLACE</div>
+          <div class="n-sub">Not a room — a perpetual state of deep intimacy</div>
+        </div>
+      </div>
+      <div class="map-arrow">↓</div>
+      <p class="map-label">THREE DIMENSIONS OF INTIMACY (The depth determines the fruit)</p>
+      <div class="fw-row">
+        <div class="node cyan w180" onclick="sp('Dimension 1: Intimacy with the Word','The Word has two distinct registers: Logos (the written, fixed, inspired text) and Rhema (the living, spoken, personalized word the Spirit delivers from within the text for the specific person in their specific moment). Logos is information. Rhema is encounter. The transition from Logos to Rhema is only possible through genuine intimacy. When the Word has been genuinely internalized at the level of the heart — not stored in the memory but embedded in the inner person — fleshly tendencies are paralyzed, not suppressed. Hidden motives are judged before they become actions.')">
+          <div class="n-title">📖 THE WORD</div>
+          <div class="n-sub">Logos → Rhema · Embedded not stored</div>
+        </div>
+        <div class="node gold w180" onclick="sp('Dimension 2: Intimacy with the Holy Spirit','The Holy Spirit is a person — not an influence, not an energy. A person with preferences, with emotions that can be grieved, with strategies He is waiting to share. Like any person of depth and intelligence, He does not share His most significant content with someone He has just met. He shares it with someone He knows. Developing intimacy requires discovering the atmospheres where the connection is clearest — for some it is extended worship, for some early morning silence, for some praying in the Spirit until a specific inner clarity arrives.')">
+          <div class="n-title">🕊 HOLY SPIRIT</div>
+          <div class="n-sub">A person · Koinonia · Atmosphere-specific</div>
+        </div>
+        <div class="node w180" style="border-color:rgba(180,130,255,.2);background:rgba(180,130,255,.03)" onclick="sp('Dimension 3: Intimacy with the Mysteries of the Kingdom','The mysteries of the Kingdom are not hidden from the believer — they are available to the believer who has developed the relational depth to access them. Mysteries are the hidden spiritual keys — the specific codes, the precise divine logic that produces desired, replicable results when facing seemingly insurmountable circumstances. A believer who consistently says \"I don\'t know what to do\" is suffering from insufficient intimacy with the Kingdom mysteries that govern that specific category of challenge. The secret place is not just a location of safety. It is a laboratory.')">
+          <div class="n-title" style="color:#C0A0FF">🔮 MYSTERIES</div>
+          <div class="n-sub">Kingdom keys · The secret place as laboratory</div>
+        </div>
+      </div>
+      <div class="map-arrow">↓</div>
+      <p class="map-label">PRAYER — THE SCHOOL YOU NEVER GRADUATE FROM (4 levels)</p>
+      <div class="fw-row">
+        <div class="node w140" onclick="sp('Prayer Level 1: Transformation','The primary assignment of prayer — and the level almost universally skipped by result-focused believers, because it produces no immediate visible output. Through sustained, intense prayer, the individual themselves is changed. 2 Corinthians 3:18 — being transformed from glory to glory. The capacity to sustain divine answers must be built before the answers arrive. A person who cannot handle prosperity psychologically should not receive it yet — it will destroy them more efficiently than poverty did. Transformation prayer builds the person who will be able to sustain what they are requesting.')">
+          <div class="n-title">🔥 TRANSFORM</div><div class="n-sub">Level 1 · You are changed first</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--gold);font-size:.9rem;opacity:.3">→</div>
+        <div class="node w140" onclick="sp('Prayer Level 2: Requests & Promises','From a transformed foundation — the believer vocalizes specific desires and obtains specific scriptural promises based on genuine, developed faith. Matthew 7:7 — Ask and it will be given. This is where most believers begin. And it is legitimate. But when it is the first and only level of engagement, requests come from an untransformed person. The answer, when it comes, becomes a burden rather than a blessing because the vessel has not been prepared to carry it.')">
+          <div class="n-title">🙏 REQUEST</div><div class="n-sub">Level 2 · From transformed ground</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--gold);font-size:.9rem;opacity:.3">→</div>
+        <div class="node w140" onclick="sp('Prayer Level 3: Decrees & Establishment','The believer does not only ask — they declare. They speak the Word of God with the authority of someone who has learned where they are seated, who understands the governance structure of the spiritual realm. Job 22:28 — \"You will declare a thing, and it will be established for you.\" There is a legislative dimension to the believer\'s prayer life that most never access — not because access has been denied, but because the believer has not developed the identity-security required to speak with that kind of authority.')">
+          <div class="n-title">⚡ DECREE</div><div class="n-sub">Level 3 · Legislative authority</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--gold);font-size:.9rem;opacity:.3">→</div>
+        <div class="node w140 gold" onclick="sp('Prayer Level 4: Warfare & Intercession','The apex — the highest function of prayer. The enforcement of what has already been established in the heavens into the territory of the earth. Romans 8:26 — the Spirit intercedes, and the believer joins that intercession. Warfare prayer is not fighting to achieve victory. It is enforcing a victory already legally accomplished. The difference between those two postures is enormous — one operates from weakness and desperation, the other from authority and the intelligence of knowing precisely what the blood of Christ has already secured.')">
+          <div class="n-title">🛡 ENFORCE</div><div class="n-sub">Level 4 · Apex · Intercession</div>
+        </div>
+      </div>
+      <div class="map-arrow" style="color:var(--success)">↓</div>
+      <div class="fw-row">
+        <div class="node green w280" onclick="sp('The Result of Fellowship — Acts 4:13','Now when they saw the boldness of Peter and John, and perceived that they were uneducated and untrained men, they marveled. And they realized that they had been with Jesus. No formal qualifications. No academic credentials. But the boldness, the authority, the specific intelligence of their words under pressure — recognizable as the marks of a person who had spent sustained, genuine time in the presence of someone extraordinary. This is what fellowship produces.')">
+          <div class="n-title">✅ MARKED BY HIS PRESENCE</div>
+          <div class="n-sub">Acts 4:13 · Bold · Recognised as someone who has been with Jesus</div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="section-divider sr"></div>
+
+  <!-- ===== LAYER 4: DEEP DIVES ===== -->
+  <div class="layer sr" id="layer-4" data-layer="4">
+    <div class="layer-header">
+      <span class="layer-badge">LAYER 4 OF 7</span>
+      <h2 class="layer-label">🧩 Experiential Deep-Dives & Labs</h2>
+    </div>
+
+    <!-- G2: VISITING vs DWELLING -->
+    <div class="g2" style="margin-bottom:50px">
+      <div>
+        <h3 style="font-family:'Cinzel',serif;color:var(--gold);margin-bottom:16px;font-size:1.2rem">THE TOURIST & THE RESIDENT</h3>
+        <p class="body-text">Psalm 91 is not a passage the dwelling believer reads. It is a description of the reality they live in. Three categories of threat fall specifically under the covering of the secret place.</p>
+        <div class="ac" onclick="this.classList.toggle('open')">
+          <div class="ac-hdr"><h3 class="ac-title">TAP: THE 3 THREATS PSALM 91 ADDRESSES</h3><span class="ac-icon">+</span></div>
+          <div class="ac-body"><div class="ac-content">
+            <p class="body-text"><span class="em">The fowler's snare</span> — hidden dangers and pre-arranged traps. The carefully constructed scheme that looks like opportunity until the mechanism closes. The fowler does not hunt by confrontation. He hunts by concealment. A believer navigating without the secret place relies on surface appearances in situations where the most dangerous thing has been designed specifically to not appear dangerous.</p>
+            <p class="body-text"><span class="em">Deadly pestilence</span> — unseen threats, biological, spiritual, systemic. Things that operate below the threshold of natural detection. The covering of the secret place provides protection against what cannot be seen, diagnosed, or defended against through natural intelligence alone.</p>
+            <p class="body-text"><span class="em">The terror by night and the arrow by day</span> — sudden, overt attacks. The instant reversal. The one who dwells in the secret place does not need favorable circumstances as the prerequisite for peace. The peace is established in a place that circumstances cannot reach.</p>
+            <div class="pipe">Fear is the thief of faith. Fear and faith cannot occupy the same space simultaneously. When fear enters the believer's inner life, it does not simply add an emotion — it operates as a spiritual contaminant that can actively nullify divine promises already in process. Job 3:25 — "For the thing I greatly feared has come upon me."</div>
+          </div></div>
+        </div>
+      </div>
+      <div class="img-box"><img src="fellowship_secret.jpg" alt="Entering the secret place"></div>
+    </div>
+
+    <!-- LAB 1: TRANSACTIONAL DIAL -->
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">⚡ LAB 1: THE TRANSACTION METER — WHERE ARE YOU?</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body"><div class="ac-content" onclick="event.stopPropagation()">
+        <p class="body-text">Honest self-assessment. When you come to God — what is the primary motivation? Move the dial to see the spiritual consequence.</p>
+        <div class="lab">
+          <div class="lab-stage">
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <div class="dial-wrap" style="--pct:80">
+                <div class="dial-arc">
+                  <div class="dial-fill" id="dial-f1" style="--pct:80"></div>
+                  <div class="dial-fill2" id="dial-f2" style="--pct:80"></div>
+                </div>
+                <div class="dial-needle" id="dial-needle" style="--pct:80"></div>
+                <div class="dial-labels"><span style="color:#E07070">TRANSACTIONAL</span><span style="color:var(--success)">TRANSFORMATIONAL</span></div>
+              </div>
+              <div class="dial-pct" id="dial-pct">80%</div>
+              <div class="dial-desc" id="dial-desc">Transactional</div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;justify-content:center">
+              <button class="btn r" onclick="setDial(90)">I COME FOR THINGS</button>
+              <button class="btn" onclick="setDial(60)">MIXTURE OF BOTH</button>
+              <button class="btn s" onclick="setDial(20)">I COME FOR HIM</button>
+            </div>
+          </div>
+          <div class="lab-footer" id="dial-footer">STATUS: Select the statement that best reflects your honest motivation.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- G2: 3 DIMENSIONS -->
+    <div class="g2 rev" style="margin:50px 0">
+      <div>
+        <h3 style="font-family:'Cinzel',serif;color:var(--cyan);margin-bottom:16px;font-size:1.2rem">THREE DIMENSIONS OF INTIMACY</h3>
+        <p class="body-text">Every recurring deficiency in a believer's life has a corresponding intimacy dimension that has not been adequately developed. Select each dimension to discover what it produces — and what its absence costs.</p>
+      </div>
+      <div class="img-box"><img src="fellowship_hands.jpg" alt="Covenant communion"></div>
+    </div>
+
+    <!-- LAB 2: 3 DIMENSIONS EXPLORER -->
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">🔍 LAB 2: THE THREE DIMENSIONS EXPLORER</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body"><div class="ac-content" onclick="event.stopPropagation()">
+        <p class="body-text">Tap a dimension. Discover what is produced when it's cultivated — and what specifically breaks down when it's neglected.</p>
+        <div class="lab">
+          <div class="lab-stage">
+            <div class="dim-row">
+              <div class="dim-card" id="dc1" onclick="setDim(1)"><div class="dim-icon">📖</div><div class="dim-name">THE WORD</div><div class="dim-sub">Logos → Rhema</div></div>
+              <div class="dim-card" id="dc2" onclick="setDim(2)"><div class="dim-icon">🕊</div><div class="dim-name">HOLY SPIRIT</div><div class="dim-sub">Koinonia · Atmospheres</div></div>
+              <div class="dim-card" id="dc3" onclick="setDim(3)"><div class="dim-icon">🔮</div><div class="dim-name">MYSTERIES</div><div class="dim-sub">Kingdom keys · Laboratory</div></div>
+            </div>
+            <div class="dim-detail" id="dd1">
+              <div class="dim-d-title">📖 Intimacy with the Word — Logos vs Rhema</div>
+              <p class="dim-d-body">When cultivated: Fleshly tendencies are <strong style="color:var(--gold)">paralyzed</strong> — not suppressed through willpower, but displaced by the internal authority of truth so deeply received it displaces contrary impulses. Hidden motives are judged before they become actions. The Word operates as an internal judicial presence. <br><br>When neglected: <strong style="color:#E07070">Chronic behavioral inconsistency.</strong> You can quote the scripture and still fall — because Logos is stored in memory while the impulse operates from the heart, where Rhema alone has jurisdiction.</p>
+            </div>
+            <div class="dim-detail" id="dd2">
+              <div class="dim-d-title">🕊 Intimacy with the Holy Spirit — Koinonia</div>
+              <p class="dim-d-body">When cultivated: Specific intelligence arrives that no natural resource can supply. Direction in business decisions, relational difficulties, creative challenges. The Spirit guides into <em>all</em> truth — not some things. <br><br>When neglected: <strong style="color:#E07070">Difficulty receiving clear direction.</strong> Consistent decisions made from natural intelligence alone. Years passing without genuine prophetic clarity about purpose and assignment. The person may be sincere — and still be sincerely in the dark about the specific things God wants to communicate.</p>
+            </div>
+            <div class="dim-detail" id="dd3">
+              <div class="dim-d-title">🔮 Intimacy with the Mysteries of the Kingdom</div>
+              <p class="dim-d-body">When cultivated: The specific keys for specific locks are downloaded from the Spirit. Recurring crises that previously had no solution suddenly have a divine resolution — because the key was always in the Kingdom, waiting for the intimacy to access it. Jeremiah 33:3 — great and mighty things you do not know. <br><br>When neglected: <strong style="color:#E07070">Crisis after crisis with no solution.</strong> The same category of problem repeating. Not because God withholds — because the relational depth to access the answer has not yet been developed.</p>
+            </div>
+          </div>
+          <div class="lab-footer" id="dim-footer">STATUS: Select a dimension to explore its full depth.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- LAB 3: PRAYER SCHOOL -->
+    <div class="ac" style="margin-top:16px" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">🏛 LAB 3: THE FOUR LEVELS OF THE PRAYER SCHOOL</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body"><div class="ac-content" onclick="event.stopPropagation()">
+        <p class="body-text">Most believers attend the prayer school as though it is a vending machine — inserting religious words and waiting for a product. Walk through all four levels in sequence.</p>
+        <div class="lab">
+          <div class="lab-stage">
+            <div class="prayer-track">
+              <div class="p-level" id="pl1" onclick="setPrayer(1)"><div class="p-lv-num">01</div><div class="p-lv-icon">🔥</div><div class="p-lv-info"><div class="p-lv-title">TRANSFORMATION</div><div class="p-lv-sub">The most skipped level — produces no immediate visible output</div><div class="p-lv-bar"><div class="p-lv-bar-fill"></div></div></div></div>
+              <div class="p-detail" id="pd1"><div class="p-d-title">Level 1: You Are Changed First</div><p class="p-d-body">The capacity to sustain divine answers must be built before the answers arrive. A person who cannot manage prosperity psychologically should not receive it yet — it will destroy them more efficiently than poverty did. This level is not the delay of the answers. It is the preparation of the vessel that will receive them without being wrecked by them. At this level, prayer is principally about you. Not your circumstances. About what you need to become.</p></div>
+              <div class="p-level" id="pl2" onclick="setPrayer(2)"><div class="p-lv-num">02</div><div class="p-lv-icon">🙏</div><div class="p-lv-info"><div class="p-lv-title">REQUESTS & PROMISES</div><div class="p-lv-sub">Most believers begin here — and never move deeper</div><div class="p-lv-bar"><div class="p-lv-bar-fill"></div></div></div></div>
+              <div class="p-detail" id="pd2"><div class="p-d-title">Level 2: Specific Desires From a Transformed Foundation</div><p class="p-d-body">This is legitimate — a real level with real results. But when it is the first and only level of engagement, requests come from an untransformed person. The answer, when it arrives, becomes a burden rather than a blessing because the vessel has not been prepared to carry it. Matthew 7:7 — Ask and it will be given. Begin at Level One. Arrive at Level Two with the substance of a transformed inner life.</p></div>
+              <div class="p-level" id="pl3" onclick="setPrayer(3)"><div class="p-lv-num">03</div><div class="p-lv-icon">⚡</div><div class="p-lv-info"><div class="p-lv-title">DECREES & ESTABLISHMENT</div><div class="p-lv-sub">Legislative prayer — speaking with the authority of your position</div><div class="p-lv-bar"><div class="p-lv-bar-fill"></div></div></div></div>
+              <div class="p-detail" id="pd3"><div class="p-d-title">Level 3: You Speak — The Atmosphere Responds</div><p class="p-d-body">Job 22:28 — "You will declare a thing, and it will be established for you." There is a legislative dimension most never access — not because access has been denied, but because the believer has not developed the identity-security required to speak with that kind of authority without being overcome by the visible evidence that contradicts what is being declared. Decrees are authoritative vocalizations of Kingdom realities spoken with the legal force of a person who knows their position in Christ.</p></div>
+              <div class="p-level" id="pl4" onclick="setPrayer(4)"><div class="p-lv-num">04</div><div class="p-lv-icon">🛡</div><div class="p-lv-info"><div class="p-lv-title">WARFARE & INTERCESSION</div><div class="p-lv-sub">The apex — enforcing heaven's verdict on earth</div><div class="p-lv-bar"><div class="p-lv-bar-fill"></div></div></div></div>
+              <div class="p-detail" id="pd4"><div class="p-d-title">Level 4: Not Fighting for Victory — Enforcing It</div><p class="p-d-body">Romans 8:26 — the Spirit intercedes, and the believer joins with the Spirit in that intercession. Warfare prayer is not fighting to achieve victory. It is enforcing a victory already legally accomplished. The difference is enormous — one operates from weakness and desperation, the other from authority and the intelligence of knowing precisely what the blood of Christ has already secured.</p></div>
+            </div>
+          </div>
+          <div class="lab-footer" id="prayer-footer">STATUS: Select each level in sequence — transformation to enforcement.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- LAB 4: FLAME SIM -->
+    <div class="ac" style="margin-top:16px" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">🔥 LAB 4: THE ALTAR FIRE — IS YOURS BURNING?</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body"><div class="ac-content" onclick="event.stopPropagation()">
+        <p class="body-text">An altar without fire is just a structure. Without fire, nothing is consumed. Nothing is transformed. Nothing rises. Watch what happens when fellowship is maintained — and when it is neglected.</p>
+        <div class="lab">
+          <div class="lab-stage">
+            <div class="flame-container">
+              <div class="flame" id="flame"></div>
+              <div class="flame-base" id="flame-base"></div>
+            </div>
+            <div class="altar-block" style="margin-top:4px"></div>
+            <div class="fellowship-meter"><div class="meter-fill" id="meter-fill"></div></div>
+            <div class="meter-label" id="meter-label">FELLOWSHIP INTENSITY — 0%</div>
+            <div class="flame-status" id="flame-status"></div>
+            <div style="display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;justify-content:center">
+              <button class="btn g" onclick="setFlame(100)">DAILY DWELLING</button>
+              <button class="btn" onclick="setFlame(55)">OCCASIONAL VISITS</button>
+              <button class="btn r" onclick="setFlame(0)">NEGLECTED</button>
+            </div>
+          </div>
+          <div class="lab-footer" id="flame-footer">STATUS: Select your communion pattern to see the spiritual consequence.</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="section-divider sr"></div>
+
+  <!-- ===== LAYER 5: WARNING ===== -->
+  <div class="layer sr" id="layer-5" data-layer="5">
+    <div class="layer-header">
+      <span class="layer-badge">LAYER 5 OF 7</span>
+      <h2 class="layer-label">⚠️ The Critical Warning</h2>
+    </div>
+    <div class="warning-card">
+      <p class="w-title">⚠ &nbsp; THE TRANSACTIONAL TRAP</p>
+      <div class="w-item"><div class="w-dot"></div><p class="w-text"><strong>Religious Activity Is Not Fellowship.</strong> A believer can attend church consistently, read the Bible regularly, and engage in public spiritual disciplines — and still never have entered genuine fellowship. All of that activity orbits around an encounter rather than residing in one. The form can be maintained without the fire.</p></div>
+      <div class="w-item"><div class="w-dot"></div><p class="w-text"><strong>Familiarity Is Not Intimacy.</strong> Most believers have a relationship with the text of the Bible. Familiarity with its content — even memorization — is categorically different from intimacy with the Word. You can know the scripture and never have allowed it to enter the deep enough level that it begins to think for you.</p></div>
+      <div class="w-item"><div class="w-dot"></div><p class="w-text"><strong>Emotional Experiences Are Not Residency.</strong> Extraordinary moments of corporate worship are real. But an experience is not the same as a lifestyle. The tourist experiences the presence. The resident is shaped by it — and the shaping is only possible through the sustained, accumulated, daily effect of consistent communion.</p></div>
+    </div>
+  </div>
+
+  <div class="section-divider sr"></div>
+
+  <!-- ===== LAYER 6: REFLECTION ===== -->
+  <div class="layer sr" id="layer-6" data-layer="6">
+    <div class="layer-header">
+      <span class="layer-badge">LAYER 6 OF 7</span>
+      <h2 class="layer-label">🪞 Reflection Prompts</h2>
+    </div>
+    <div class="card" style="text-align:center">
+      <p style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px">BEFORE YOU CONTINUE — PAUSE HERE.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;margin-bottom:36px">Honesty is where transformation begins.</p>
+      <div id="rq1" class="rq show"><p class="body-text lg" style="font-style:italic">Is your relationship with God primarily transactional — you come when you need something and return to independence when the immediate need is met? Or are you genuinely building the sustained, daily, relational dwelling in the secret place that produces transformation?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg" style="font-style:italic">When a sudden crisis arrives — health, financial, relational — what is your first involuntary response? Is it the steady, almost automatic trust of someone who lives in the secret place? Or is it immediate fear — which tells you that the inner covering of fellowship has not yet been fully established?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg" style="font-style:italic">Which of the three dimensions of intimacy — the Word, the Holy Spirit, the Mysteries of the Kingdom — is the one whose absence is directly producing the specific struggle you are most frequently facing right now?</p></div>
+      <div id="rq4" class="rq"><p class="body-text lg" style="font-style:italic">Are you pursuing the secret place every day with the same non-negotiable commitment you give to eating — or only when spiritual hunger feels strong enough to demand it? Because the inner man's need does not wait for the emotional hunger to be felt before it becomes real.</p></div>
+      <button class="btn g" style="margin-top:28px" id="rq-btn" onclick="nextRQ()">✦ REVEAL NEXT QUESTION</button>
+      <div class="q-nav">
+        <div class="q-dot on" id="qd1" onclick="goRQ(1)"></div><div class="q-dot" id="qd2" onclick="goRQ(2)"></div>
+        <div class="q-dot" id="qd3" onclick="goRQ(3)"></div><div class="q-dot" id="qd4" onclick="goRQ(4)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider sr"></div>
+
+  <!-- ===== LAYER 7: DECLARATION ===== -->
+  <div class="layer sr" id="layer-7" data-layer="7">
+    <div class="layer-header">
+      <span class="layer-badge">LAYER 7 OF 7</span>
+      <h2 class="layer-label">🔥 The Closing Declaration</h2>
+    </div>
+    <div class="decl">
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">THE FIRE RETURNS</p>
+      <p class="statement">"I refuse to remain a tourist in the presence of God. I am building the secret place as the non-negotiable foundation of every other thing in my life. Not because I need something. Because <span class="em">I need Him.</span> The altar will not be without fire. Fellowship is not a schedule — it is a lifestyle I am choosing today."</p>
+      <div style="width:60px;height:1px;background:var(--gold);margin:32px auto"></div>
+      <button class="btn g" style="font-size:.8rem;padding:16px 36px" id="d-btn" onclick="declareIt()">✦ DECLARE THIS OVER YOUR LIFE</button>
+      <p id="d-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:24px;letter-spacing:.15em;font-size:.85rem">THE ALTAR IS LIT. THE DWELLING BEGINS NOW.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+  /* STARFIELD */
+  const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
+  let pts=[];
+  function rs(){cvs.width=innerWidth;cvs.height=innerHeight}
+  addEventListener('resize',rs);rs();
+  for(let i=0;i<80;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.2,a:Math.random()*.4});
+  function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(201,168,76,${p.a*.18})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill()});requestAnimationFrame(anim)}anim();
+
+  /* PROGRESS BAR */
+  window.addEventListener('scroll',()=>{const d=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('progress-bar').style.width=(d>0?(scrollY/d)*100:0)+'%'});
+
+  /* LAYER TRACKER */
+  const lObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const l=e.target.dataset.layer;if(l)document.getElementById('layer-tracker').textContent='LAYER '+l+' OF 7'}})},{threshold:.5});
+  document.querySelectorAll('[data-layer]').forEach(el=>lObs.observe(el));
+
+  /* SCROLL REVEAL */
+  const sObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');else e.target.classList.remove('v')})},{threshold:.08});
+  document.querySelectorAll('.sr').forEach(el=>sObs.observe(el));
+
+  /* PANEL */
+  function sp(title,body){document.getElementById('p-title').textContent=title;document.getElementById('p-body').textContent=body;document.getElementById('pnl').classList.add('show');document.getElementById('overlay').classList.add('show')}
+  function closePanel(){document.getElementById('pnl').classList.remove('show');document.getElementById('overlay').classList.remove('show')}
+
+  /* LAB 1: DIAL */
+  const dialData={
+    90:{desc:'Transactional — Crisis-driven access',footer:'WARNING: Transactional prayer builds a fragile faith that only holds while circumstances cooperate. The inner covering of fellowship has never been properly established.'},
+    60:{desc:'Mixed — Transitional phase',footer:'PROGRESS: A mixture — you are beginning to shift. The secret place is becoming more than an emergency response. Press deeper into the dwelling.'},
+    20:{desc:'Transformational — Face-seeking',footer:'DWELLING DETECTED: You are seeking His face, not just His hand. Psalm 27:8. This is the ground from which consistent results, bold authority, and genuine transformation grow.'}
+  };
+  function setDial(pct){
+    ['dial-f1','dial-f2','dial-needle'].forEach(id=>document.getElementById(id).style.setProperty('--pct',pct));
+    const d=dialData[pct];
+    document.getElementById('dial-pct').textContent=pct+'%';
+    document.getElementById('dial-desc').textContent=d.desc;
+    document.getElementById('dial-footer').textContent=d.footer;
+  }
+
+  /* LAB 2: THREE DIMENSIONS */
+  function setDim(n){
+    [1,2,3].forEach(i=>{document.getElementById('dc'+i).classList.remove('on');document.getElementById('dd'+i).classList.remove('show')});
+    document.getElementById('dc'+n).classList.add('on');
+    document.getElementById('dd'+n).classList.add('show');
+    const names=['The Word (Logos → Rhema)','The Holy Spirit (Koinonia)','The Mysteries of the Kingdom'];
+    document.getElementById('dim-footer').textContent='DIMENSION: '+names[n-1]+' — Explore what this depth produces.';
+  }
+
+  /* LAB 3: PRAYER LEVELS */
+  function setPrayer(n){
+    for(let i=1;i<=4;i++){document.getElementById('pl'+i).classList.remove('active');document.getElementById('pd'+i).classList.remove('show')}
+    document.getElementById('pl'+n).classList.add('active');
+    document.getElementById('pd'+n).classList.add('show');
+    const labs=['Transformation — The Foundation','Requests — From Transformed Ground','Decrees — Legislative Authority','Warfare & Intercession — The Apex'];
+    document.getElementById('prayer-footer').textContent='LEVEL ACTIVE: '+labs[n-1];
+  }
+
+  /* LAB 4: FLAME */
+  function setFlame(pct){
+    document.getElementById('meter-fill').style.width=pct+'%';
+    document.getElementById('meter-label').textContent='FELLOWSHIP INTENSITY — '+pct+'%';
+    const fl=document.getElementById('flame');
+    const fb=document.getElementById('flame-base');
+    const st=document.getElementById('flame-status');
+    const foot=document.getElementById('flame-footer');
+    if(pct===100){
+      fl.classList.add('on');fb.classList.add('on');
+      fl.style.height='110px';fl.style.opacity='1';
+      st.textContent='✦ THE ALTAR FIRE IS BURNING';st.style.color='var(--gold)';
+      foot.textContent='DWELLING ACTIVE: Nothing is consumed. Nothing rises. Nothing is transformed — without the fire. The fire is present.';
+    } else if(pct===55){
+      fl.classList.add('on');fb.classList.add('on');
+      fl.style.height='50px';fl.style.opacity='.6';
+      st.textContent='△ FIRE FLICKERING — INCONSISTENT';st.style.color='var(--muted)';
+      foot.textContent='VISITING PATTERN: Occasional intensity followed by long dry periods. The transformation is partial. The protection is incomplete.';
+    } else {
+      fl.classList.remove('on');fb.classList.remove('on');
+      fl.style.height='0';fl.style.opacity='0';
+      st.textContent='✖ ALTAR WITHOUT FIRE';st.style.color='#E07070';
+      foot.textContent='WARNING: An altar without fire is just a structure. Without the fire, nothing is consumed. Nothing is transformed. Nothing rises.';
+    }
+  }
+
+  /* REFLECTION QUESTIONS */
+  let curRQ=1;
+  function goRQ(n){for(let i=1;i<=4;i++){document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('on')}document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('on');curRQ=n;document.getElementById('rq-btn').style.display=curRQ>=4?'none':'inline-block'}
+  function nextRQ(){if(curRQ<4)goRQ(curRQ+1)}
+
+  /* DECLARATION */
+  function declareIt(){document.getElementById('d-btn').style.display='none';document.getElementById('d-confirm').style.display='block'}
+</script>
+</body>
+</html>
