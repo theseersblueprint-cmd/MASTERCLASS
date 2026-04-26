@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Mystery of Prayer | Masterclass</title>
+  <meta name="description" content="An interactive framework on the 5 dimensions of prayer, moving from the script life hands you to the one God authored."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(255,215,0,.15)}50%{box-shadow:0 0 70px rgba(255,215,0,.35)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+    
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:360px;height:360px;border-radius:50%;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 80px rgba(255,215,0,.1),0 0 160px rgba(255,215,0,.05);animation:float 7s ease-in-out infinite,pulse 4s ease-in-out infinite;margin-bottom:40px}
+    .hero-img img{width:100%;height:100%;object-fit:cover}
+    .ch-tag{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase}
+    .hero-def{font-size:1.3rem;font-style:italic;color:var(--muted);max-width:680px;margin:24px auto 0;line-height:1.6}
+    
+    .sec-head{display:flex;align-items:center;gap:14px;margin:100px 0 32px}
+    .layer-badge{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--cyan);background:rgba(0,240,255,.07);border:1px solid var(--cyan-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
+    
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.cyan-b{border-color:var(--cyan-d);border-left:3px solid var(--cyan)}.card.gold-b{border-color:var(--gold-d)}.card.danger-b{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    
+    /* AC DEEP DIVES */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-icon{font-size:1.4rem;color:var(--cyan);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s cubic-bezier(.4,0,.2,1),padding .55s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);padding-top:32px;transition:max-height .9s cubic-bezier(0,1,0,1),opacity .6s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
+    
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}.body-text.lg{font-size:1.45rem}
+    .em{color:var(--cyan);font-style:italic}.gold{color:var(--gold);font-style:italic}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.3rem;margin:24px 0; color:var(--muted)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    
+    .img-box{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+    .img-box img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s}.img-box:hover img{transform:scale(1.02)}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}.rev{direction:rtl}.rev>*{direction:ltr}
+    
+    /* === MINDMAP SYSTEM === */
+    .map-wrap{overflow-x:auto;padding:10px 0;margin:32px 0 0}.map-canvas{min-width:750px;position:relative;padding:20px}
+    .fw-row{display:flex;justify-content:center;gap:15px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;height:30px;align-items:center;color:var(--cyan);font-size:1.2rem;opacity:.5}
+    .node{border-radius:18px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center;padding:18px 16px;box-shadow:inset 0 0 20px rgba(0,0,0,.5)}
+    .node:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,215,0,.15);border-color:var(--gold)}
+    .node .n-title{font-family:'Cinzel',serif;font-size:.9rem;color:#fff;margin-bottom:6px;letter-spacing:.05em}
+    .node .n-sub{font-family:'Inter',sans-serif;font-size:.6rem;color:var(--muted);line-height:1.5}
+    .node.root{width:320px;padding:24px;border-color:var(--gold-d);background:rgba(255,215,0,.04)}.node.root .n-title{font-size:1.1rem;color:var(--gold)}
+    .node.cyan{border-color:var(--cyan-d);background:rgba(0,240,255,.04)}.node.cyan .n-title{color:var(--cyan)}
+    .node.w220{width:220px}
+    
+    /* JS PANELS */
+    .panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(600px,90vw);background:#080C14;border:1px solid var(--border);border-radius:28px;padding:48px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.9);max-height:90vh;overflow-y:auto}
+    .panel.show{display:block}.p-close{position:absolute;top:20px;right:24px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:36px;height:36px;font-size:1.1rem;cursor:pointer;transition:all .3s}.p-close:hover{background:var(--hover);color:#fff}
+    .p-tag{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:12px}
+    .p-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--cyan);margin-bottom:20px}
+    .p-body{font-size:1.15rem;line-height:1.8;color:var(--text);font-weight:300}
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:9999;backdrop-filter:blur(6px)}#overlay.show{display:block}
+    
+    /* === SIMULATOR 1: TIMELINE ALIGNMENT === */
+    .sim-box{background:#04060A;border:1px solid var(--border);border-radius:var(--r);padding:24px;position:relative;overflow:hidden;box-shadow:inset 0 0 50px rgba(0,0,0,.8);margin:32px 0}
+    .timeline-stage{height:260px;position:relative;display:flex;flex-direction:column;justify-content:center;gap:12px}
+    .t-track{height:40px;background:var(--bg-mid);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;padding:0 20px;position:relative;overflow:hidden}
+    .t-track.chaos{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}.t-track.script{border-color:var(--gold-d);background:rgba(255,215,0,.03)}
+    .t-label{font-family:'Cinzel',serif;font-size:1rem;color:var(--muted);z-index:2}.t-track.chaos .t-label{color:var(--danger)}.t-track.script .t-label{color:var(--gold)}
+    .needle{width:20px;height:24px;background:var(--cyan);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 20px var(--cyan);border-radius:4px;z-index:10;transition:top 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.5s}
+    
+    .sim-controls{display:flex;gap:12px;margin-top:20px}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.1em;padding:14px 28px;border-radius:var(--rp);cursor:pointer;transition:all .3s}.btn:hover{background:var(--hover)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover{background:rgba(0,240,255,.1)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover{background:rgba(255,215,0,.1)}.btn.s{border-color:var(--success);color:var(--success)}.btn.s:hover{background:rgba(0,217,126,.1)}
+    .sim-console{margin-top:20px;padding:16px 20px;background:#000;border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.9rem;color:var(--muted);border-radius:8px;min-height:54px}
+    
+    /* === SIMULATOR 2: FLESH SUBJUGATION === */
+    .flesh-stage{height:200px;display:flex;align-items:center;justify-content:center;gap:30px;position:relative}
+    .lock-ring{width:110px;height:110px;border:3px dashed var(--danger);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.5s;animation:shake 0.5s infinite}
+    .lock-ring.locked{border-color:var(--cyan);border-style:solid;animation:none;box-shadow:0 0 30px var(--cyan-d)}
+    .lock-lbl{font-family:'Cinzel',serif;font-size:0.8rem;color:#fff;text-align:center}
+    .lock-ring.locked .lock-lbl{color:var(--cyan);font-weight:bold}
+    @keyframes shake {0%{transform:translate(1px, 1px)} 50%{transform:translate(-1px, -1px)} 100%{transform:translate(1px, 1px)}}
+    .secret-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;background:var(--bg-mid);border-radius:50%;transition:all 1.5s ease-in-out;opacity:0}
+    .secret-core.open{opacity:1;transform:translate(-50%,-50%) scale(10);background:radial-gradient(circle, var(--gold-d), transparent);box-shadow:0 0 100px var(--gold)}
+    
+    .decl{border:1px dashed var(--border);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle,rgba(255,215,0,.04) 0%,transparent 70%)}
+    a.d-btn{display:inline-block;margin-top:30px;background:rgba(255,215,0,.1);border:1px solid var(--gold);color:var(--gold);font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.15em;padding:16px 32px;border-radius:var(--rp);text-decoration:none;transition:all .3s}
+    a.d-btn:hover{background:var(--gold);color:#000;box-shadow:0 0 40px var(--gold-d)}
+
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:22px}.q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);cursor:pointer;transition:background .3s}.q-dot.on{background:var(--gold)}
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+  </style>
+</head>
+<body>
+
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="panel" id="pnl"><button class="p-close" onclick="closePanel()">✕</button><p class="p-tag" id="p-tag"></p><h2 class="p-title" id="p-title"></h2><p class="p-body" id="p-body"></p></div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero sr">
+    <div class="hero-img"><img src="images/pray_hero_master.png" alt="The Authored Script" onerror="this.style.opacity=0"></div>
+    <p class="ch-tag">Masterclass Module</p>
+    <h1 class="hero-title stag">THE MYSTERY OF<br>PRAYER</h1>
+    <p class="hero-sub">The Control Room of Dominion</p>
+    <p class="hero-def stag">Prayer is not a distress signal to force God to abandon the script He wrote. It is an intelligent dominion system designed to shift you completely out of the script the enemy arranged, and perfectly back into the exact reality God authored.</p>
+  </section>
+
+  <!-- LAYER 1 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 The One-Line Thesis</h2></div>
+    <div class="card gold-b"><p class="statement stag">"God is completely unlimited and sees all realities at once. When you pray, you are simply telling Him: <span class="gold">I refuse to stay in this version. Move me into Yours.</span>"</p></div>
+  </section>
+
+  <!-- LAYER 2 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🎬 The Movie Analogy (SIMULATION)</h2></div>
+    <div class="card cyan-b">
+      <p class="body-text stag">Imagine a movie where you are the main character. God wrote the original script. By default, without prayer, the reality you are living is often the one circumstances produced or the enemy arranged. Prayer <span class="em">does not write a new movie</span>—it overrides the hijack and shifts you into the Authored Script.</p>
+      
+      <div class="sim-box" id="sim-movie">
+        <h3 style="font-family:'Cinzel',serif;color:#fff;margin-bottom:16px;font-size:1.1rem;text-align:center">TIMELINE ALIGNMENT PROTOCOL</h3>
+        <div class="timeline-stage" id="t-stage">
+          <div class="needle" id="t-needle" style="top:20%"></div>
+          
+          <div class="t-track chaos" style="margin-top:0">
+            <span class="t-label">1. THE ENEMY'S SCRIPT (Chaos & Resistance)</span>
+          </div>
+          <div class="t-track" style="border-color:var(--border);">
+            <span class="t-label" style="color:var(--text)">2. THE DEFAULT SCRIPT (Drifting / Circumstance)</span>
+          </div>
+          <div class="t-track script">
+            <span class="t-label">3. THE AUTHORED SCRIPT (Divine Order)</span>
+          </div>
+        </div>
+        
+        <div class="sim-controls" style="justify-content:center">
+          <button class="btn" onclick="simIdle()">Drift (Do Nothing)</button>
+          <button class="btn c" onclick="simPray()">Initiate Authoritative Prayer</button>
+        </div>
+        <div class="sim-console" id="t-console">STATUS: Needle locked in default drift. Navigating reality without prior arrangement.</div>
+      </div>
+      
+      <p class="body-text stag" style="margin-top:24px"><span class="em">The Insight:</span> Prayer is a navigation system, not a rescue operation. You use it constantly so you never end up in a timeline God did not write.</p>
+    </div>
+  </section>
+
+  <!-- LAYER 3 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Five Dimensions [Architecture]</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted)">Most believers treat prayer as one single activity. But Ephesians 6:18 speaks of "all prayer"—meaning a highly specific, multi-dimensional system. Tap each dimension below to uncover its specific mechanism.</p>
+    
+    <div class="img-box" style="height:350px;margin-bottom:32px"><img src="images/pray_dimensions_master.png" alt="The 5 Dimensional Gateways"></div>
+    
+    <div class="map-wrap"><div class="map-canvas" style="min-width:900px">
+      
+      <div class="fw-row">
+        <div class="node cyan w220" onclick="sp('1. Praying in the Spirit','Foundational Infrastructure. Bypasses the limitation of your natural mind and allows the Holy Spirit to articulate what your intellect cannot yet comprehend. It builds the spirit muscle.')"><div class="n-title">THE SPIRIT</div><div class="n-sub">Unbridled Infrastructure</div></div>
+        
+        <div class="node cyan w220" onclick="sp('2. The Prayer of Inquiry','The posture of complete surrender where you come to God BEFORE the decision, not after the consequence. One correctly discerned instruction collapses decades of striving.')"><div class="n-title">INQUIRY</div><div class="n-sub">Receiving Coordinates</div></div>
+        
+        <div class="node cyan w220" onclick="sp('3. Prophetic Declaration','Transitioning from defence to offence. Framing reality through words grounded in scriptural reality. The enforcement of what the covenant has already secured.')"><div class="n-title">DECLARATION</div><div class="n-sub">Framing Reality</div></div>
+      </div>
+      
+      <div class="map-arrow">↓</div>
+      
+      <div class="fw-row">
+        <div class="node gold w220" onclick="sp('4. Warfare Prayer','You are not fighting FOR victory. You are fighting FROM it. The judicial enforcement of Colossians 2:15. The enemy is legally defeated; you are enforcing the eviction.')"><div class="n-title">WARFARE</div><div class="n-sub">Judicial Enforcement</div></div>
+        
+        <div class="node gold w220" onclick="sp('5. Thanksgiving','The spiritual mechanism that perfectly seals and preserves what has been received. There is a difference between being cleansed and being made whole. Gratitude closes the gap.')"><div class="n-title">THANKSGIVING</div><div class="n-sub">Sealing the Wholeness</div></div>
+      </div>
+      
+    </div></div>
+  </section>
+
+  <!-- LAYER 4 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">⛔ Deep Dives: The 4 Blockades</h2></div>
+    <div class="g2" style="margin-bottom:32px">
+      <div><p class="body-text stag">Why does the miraculous seemingly elude sincere believers? It is not because God is unwilling—it is because something on the human side is blocking the flow of the very things we ask for.</p></div>
+      <div class="img-box" style="height: 250px"><img src="images/pray_blockades_master.png" alt="The Blockades"></div>
+    </div>
+    
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">1. VAGUE EXPECTATION (THE BLIND MAN)</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Jesus asked Blind Bartimaeus: "What do you want Me to do for you?" The need was obvious. Yet Jesus required him to articulate it. Without a specific defined target, the energy generated in prayer dissipates without taking form.</p>
+      </div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">2. SPIRITUAL INSENSITIVITY (BETHESDA)</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Healing was available at the Pool of Bethesda, but only to the one who recognised the exact moment the water was stirred. A believer whose spiritual senses are dulled by distraction will consistently miss the time of visitation.</p>
+      </div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">3. CONDITIONAL FAITH (NAAMAN)</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Naaman almost turned away an entire miraculous healing because washing in the Jordan River offended his expectation of how the answer should look. True faith is absolutely expectant of the outcome, but completely flexible about the method.</p>
+      </div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">4. FAILURE TO TESTIFY (THE 9 LEPERS)</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">When ten lepers were healed, all received cleansing. But only the one who returned to give thanks was made whole. Dismissing the small movements of God while waiting for huge ones blocks the completion of the miracle.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 5 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🔒 The Secret Place (SIMULATION)</h2></div>
+    <div class="card danger-b">
+      <p class="body-text stag">Your flesh <span class="em">does not want to pray</span>. This is not a spiritual failure; it is biological. You overcome the flesh not by pretending it doesn’t resist, but by systematically subjugating it using specific spiritual locks.</p>
+      
+      <div class="sim-box" style="background:#08050C; border-color:var(--danger)">
+        <h3 style="font-family:'Cinzel',serif;color:#fff;margin-bottom:24px;font-size:1.1rem;text-align:center">FLESH SUBJUGATION PROTOCOL</h3>
+        
+        <div class="flesh-stage" id="f-stage">
+          <div class="secret-core" id="f-core"></div>
+          
+          <div class="lock-ring" id="lk-1"><span class="lock-lbl">ATMOSPHERE<br><span style="font-size:9px;color:rgba(255,255,255,.5)">(Worship)</span></span></div>
+          <div class="lock-ring" id="lk-2"><span class="lock-lbl">INTELLIGENCE<br><span style="font-size:9px;color:rgba(255,255,255,.5)">(Projects)</span></span></div>
+          <div class="lock-ring" id="lk-3"><span class="lock-lbl">FASTING<br><span style="font-size:9px;color:rgba(255,255,255,.5)">(Denial)</span></span></div>
+        </div>
+        
+        <div class="sim-controls" style="justify-content:center; flex-wrap:wrap; margin-top:36px">
+          <button class="btn" onclick="toggleLock(1)">Subjugate Atmosphere</button>
+          <button class="btn" onclick="toggleLock(2)">Engage Prayer Projects</button>
+          <button class="btn" onclick="toggleLock(3)">Execute Fasting</button>
+          <button class="btn" style="border-style:dashed;color:var(--muted)" onclick="fleshReset()">Reset</button>
+        </div>
+        
+        <div class="sim-console" id="f-console">STATUS: Severe biological resistance. Flesh is dominant. Distraction is high.</div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- LAYER 6 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Control Room Audit</h2></div>
+    <div class="g2 rev" style="margin-bottom:24px">
+      <div>
+        <p class="body-text stag">The secret place is a Control Room. The person who uses it consistently does not navigate life reactively. They arrange reality before they ever step into it. The resources and opportunities are already established by their coordinates.</p>
+      </div>
+      <div class="img-box" style="height:250px"><img src="images/pray_controlroom_master.png" alt="The Control Room"></div>
+    </div>
+    
+    <div class="card" style="text-align:center; padding:32px">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">Are you reacting to the chaos of your day, or are you utilizing the Control Room to arrange reality before you step into it?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">Which of the 5 Dimensions of Prayer (Spirit, Inquiry, Declaration, Warfare, Thanksgiving) is entirely missing from your arsenal?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">What massive prayer projects are you carrying that are large enough to require spiritual intelligence, rather than just asking for survival?</p></div>
+      <button class="btn g" style="margin-top:28px" id="rq-btn" onclick="nextRQ()">✦ NEXT QUESTION</button>
+      <div class="q-nav">
+        <div class="q-dot on" id="qd1" onclick="goRQ(1)"></div><div class="q-dot" id="qd2" onclick="goRQ(2)"></div><div class="q-dot" id="qd3" onclick="goRQ(3)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 7 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration </h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">THE DOOR IS SHUT</p>
+      <p class="statement stag">"I refuse to live in the movie the enemy arranged. I am shifting into the exact reality my God authored. I will subjugate my flesh, I will utilize the 5 dimensions, and I will arrange my day from the Control Room."</p>
+      <div style="margin-top:40px; display:flex; flex-direction:column; align-items:center; gap: 10px;">
+        <button class="btn c" id="d-btn" onclick="declareIt()">✦ ACTIVATE CONTROL ROOM</button>
+        <p id="d-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:10px;letter-spacing:.15em;font-size:.85rem">AUTHORIZED. DOMINION ENGAGED.</p>
+        
+        <a href="data:text/plain;charset=utf-8,CHAPTER%20-%20THE%20MYSTERY%20OF%20PRAYER%0A%0A1.%20The%20Analogy%3A%20Prayer%20moves%20you%20from%20chaotic%20realities%20back%20to%20the%20Divine%20Script.%0A2.%20The%205%20Dimensions%3A%20Spirit%2C%20Inquiry%2C%20Declaration%2C%20Warfare%2C%20Thanksgiving.%0A3.%20The%204%20Blockades%3A%20Vague%20Expectation%2C%20Insensitivity%2C%20Conditional%20Faith%2C%20Failure%20to%20Testify.%0A4.%20The%20Secret%20Place%3A%20Overcoming%20the%20flesh%20requires%20Intelligence%20(Projects)%20and%20Fasting.%0A5.%20The%20Control%20Room%3A%20Arrange%20reality%20before%20you%20live%20it.%0A%0AShut%20the%20door.%20Enforce%20the%20covenant." download="Prayer_Framework.txt" class="d-btn">DOWNLOAD ARCHITECTURE MANUSCRIPT ⭳</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Canvas Noise BG
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight}addEventListener('resize',rs);rs();
+for(let i=0;i<70;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,215,0,${p.a*.2})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// Scroll & Text Listeners
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');else e.target.classList.remove('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*25));else ws.forEach(w=>w.classList.remove('v'));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// Panels
+function sp(title,body){document.getElementById('p-tag').textContent='NODE DETAIL';document.getElementById('p-title').textContent=title;document.getElementById('p-body').textContent=body;document.getElementById('pnl').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('pnl').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// Reflection Qs
+let curRQ=1;
+function goRQ(n){for(let i=1;i<=3;i++){document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('on');}document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('on');curRQ=n;document.getElementById('rq-btn').style.display=curRQ>=3?'none':'inline-block';}
+function nextRQ(){if(curRQ<3)goRQ(curRQ+1);}
+
+function declareIt(){document.getElementById('d-btn').style.display='none';document.getElementById('d-confirm').style.display='block';}
+
+// SIMULATION 1: TIMELINE
+let tPos = 20; // 20% (Chaos), 50% (Drift), 80% (Authored)
+function simIdle() {
+  tPos = 50; 
+  document.getElementById('t-needle').style.top = tPos+'%';
+  document.getElementById('t-needle').style.background = 'var(--text)';
+  document.getElementById('t-needle').style.boxShadow = 'none';
+  document.getElementById('t-console').innerHTML = "STATUS: You are drifting in the default script. Reality is shaped purely by external circumstances.";
+}
+function simPray() {
+  tPos = 80;
+  document.getElementById('t-needle').style.top = tPos+'%';
+  document.getElementById('t-needle').style.background = 'var(--gold)';
+  document.getElementById('t-needle').style.boxShadow = '0 0 30px var(--gold)';
+  document.getElementById('t-console').innerHTML = "STATUS: <span style='color:var(--gold)'>AUTHORITATIVE PRAYER INITIATED.</span> You have been completely shifted into the divine script. The exact arrangements of God are in play.";
+}
+
+// SIMULATION 2: FLESH
+let locks = [false, false, false];
+function toggleLock(id) {
+  locks[id-1] = !locks[id-1];
+  let el = document.getElementById('lk-'+id);
+  if(locks[id-1]) {
+    el.classList.add('locked');
+  } else {
+    el.classList.remove('locked');
+  }
+  checkFlesh();
+}
+function fleshReset() {
+  locks = [false, false, false];
+  document.getElementById('lk-1').classList.remove('locked');
+  document.getElementById('lk-2').classList.remove('locked');
+  document.getElementById('lk-3').classList.remove('locked');
+  checkFlesh();
+}
+function checkFlesh() {
+  let count = locks.filter(Boolean).length;
+  let cons = document.getElementById('f-console');
+  let core = document.getElementById('f-core');
+  
+  if (count === 0) {
+    cons.innerHTML = "STATUS: Severe biological resistance. Flesh is dominant. Distraction is high.";
+    core.classList.remove('open');
+  } else if (count === 1) {
+    cons.innerHTML = "STATUS: Comfort is disrupted, but intelligence is wavering. Flesh actively resisting.";
+    core.classList.remove('open');
+  } else if (count === 2) {
+    cons.innerHTML = "STATUS: Flesh is being suppressed. The atmosphere is quiet. Almost aligned.";
+    core.classList.remove('open');
+  } else if (count === 3) {
+    cons.innerHTML = "STATUS: <span style='color:var(--cyan)'>THE SECRET PLACE UNLOCKED.</span> Flesh is entirely subjugated. Spiritual frequency maximized.";
+    core.classList.add('open');
+  }
+}
+</script>
+</body>
+</html>
