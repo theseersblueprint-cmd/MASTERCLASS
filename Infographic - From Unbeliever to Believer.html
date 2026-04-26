@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>From Unbeliever to Believer | Masterclass</title>
+  <meta name="description" content="The Day I Got Baptized. Transiting from behavioral adjustment to actual mind renewal."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(0,240,255,.1)}50%{box-shadow:0 0 70px rgba(0,240,255,.25)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+    
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:340px;height:340px;border-radius:50%;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 80px rgba(255,215,0,.1),0 0 160px rgba(0,240,255,.05);animation:float 7s ease-in-out infinite,pulse 4s ease-in-out infinite;margin-bottom:40px}
+    .hero-img img{width:100%;height:100%;object-fit:cover}
+    .ch-tag{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.35em;color:var(--cyan);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase}
+    .hero-def{font-size:1.3rem;font-style:italic;color:var(--muted);max-width:640px;margin:24px auto 0;line-height:1.6}
+    
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--cyan);background:rgba(0,240,255,.07);border:1px solid var(--cyan-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.cyan-b{border-color:var(--cyan-d);border-left:3px solid var(--cyan)}.card.gold-b{border-color:var(--gold-d)}.card.danger-b{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-icon{font-size:1.4rem;color:var(--cyan);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s cubic-bezier(.4,0,.2,1),padding .55s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);padding-top:32px;transition:max-height .9s cubic-bezier(0,1,0,1),opacity .6s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
+    
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}.body-text.lg{font-size:1.45rem}
+    .em{color:var(--cyan);font-style:italic}.gold{color:var(--gold);font-style:italic}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.3rem;margin:24px 0}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .scripture{font-style:italic;font-size:1.4rem;line-height:1.7;color:var(--text)}
+    .ref{font-family:'Cinzel',serif;color:var(--cyan);letter-spacing:.12em;font-size:.8rem;margin-top:12px}
+    
+    .img-box{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+    .img-box img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s}.img-box:hover img{transform:scale(1.02)}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}.rev{direction:rtl}.rev>*{direction:ltr}
+    
+    .map-wrap{overflow-x:auto;padding:10px 0}.map-canvas{min-width:680px;position:relative;padding:20px}
+    .fw-row{display:flex;justify-content:center;gap:18px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;height:32px;align-items:center;color:var(--cyan);font-size:1.2rem;opacity:.45}
+    .map-label{font-family:'Inter',sans-serif;font-size:.58rem;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px}
+    .node{border-radius:18px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center;padding:20px 16px}
+    .node:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,240,255,.08)}
+    .node .n-title{font-family:'Cinzel',serif;font-size:.85rem;color:#fff;margin-bottom:4px;letter-spacing:.04em}
+    .node .n-sub{font-family:'Inter',sans-serif;font-size:.58rem;color:var(--muted);line-height:1.5}
+    .node.root{width:280px;padding:30px 20px;border-color:var(--gold-d);background:rgba(255,215,0,.04)}.node.root .n-title{font-size:1.05rem;color:var(--gold)}
+    .node.cyan{border-color:var(--cyan-d);background:rgba(0,240,255,.04)}.node.cyan .n-title{color:var(--cyan)}
+    .node.gold{border-color:var(--gold-d);background:rgba(255,215,0,.04)}.node.gold .n-title{color:var(--gold)}
+    .node.danger{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.04)}.node.danger .n-title{color:var(--danger)}
+    .node.w220{width:220px}.node.w280{width:280px}.node.w350{width:350px}
+    
+    .panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(560px,90vw);background:#080C14;border:1px solid var(--border);border-radius:28px;padding:40px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.9)}
+    .panel.show{display:block}.p-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.1rem;cursor:pointer;transition:all .3s}.p-close:hover{background:var(--hover);color:#fff}
+    .p-tag{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:10px}
+    .p-title{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold);margin-bottom:16px}
+    .p-body{font-size:1.1rem;line-height:1.8;color:var(--text);font-weight:300}
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:9999;backdrop-filter:blur(4px)}#overlay.show{display:block}
+    
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.1em;padding:11px 22px;border-radius:var(--rp);cursor:pointer;transition:all .3s;margin:5px}.btn:hover{background:var(--hover)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover{background:rgba(0,240,255,.1)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover{background:rgba(255,215,0,.1)}.btn.s{border-color:var(--success);color:var(--success)}.btn.s:hover{background:rgba(0,217,126,.1)}
+    
+    .decl{border:1px dashed var(--border);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle,rgba(0,240,255,.04) 0%,transparent 70%)}
+    a.download-btn { display:inline-block; margin-top:20px; background:rgba(0,240,255,.1); border:1px solid var(--cyan); color:var(--cyan); font-family:'Inter', sans-serif; font-size:0.75rem; letter-spacing:0.15em; padding:15px 30px; border-radius:100px; text-decoration:none; transition:all 0.3s; }
+    a.download-btn:hover { background:var(--cyan); color:#000; box-shadow:0 0 40px var(--cyan-d); }
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:22px}.q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--cyan);cursor:pointer;transition:background .3s}.q-dot.on{background:var(--cyan)}
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="panel" id="pnl"><button class="p-close" onclick="closePanel()">✕</button><p class="p-tag" id="p-tag"></p><h2 class="p-title" id="p-title"></h2><p class="p-body" id="p-body"></p></div>
+
+<main>
+  <section class="hero sr">
+    <div class="hero-img"><img src="images/bap_hero_master.png" alt="The Water" onerror="this.style.opacity=0"></div>
+    <p class="ch-tag">Masterclass Module</p>
+    <h1 class="hero-title stag">UNBELIEVER TO<br>BELIEVER</h1>
+    <p class="hero-sub">The Day I Got Baptized for the Wrong Reasons</p>
+    <p class="hero-def stag">The fundamental problem with a human being is not behavioral correctness. It is spiritual death. Yet millions go into the baptismal water hoping to avoid wrath without realizing the water is not the finish line.</p>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 The One-Line Thesis</h2></div>
+    <div class="card gold-b"><p class="statement stag">Grace is not dependent on the purity of your motivation at the starting line, but <span class="gold">the starting line is not the destination.</span> If you are spiritually alive but psychologically unchanged, you will cycle.</p></div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">📜 The Diagnosis: Cornelius vs Nicodemus</h2></div>
+    <div class="card cyan-b">
+      <p class="body-text stag">The fundamental problem is not bad behavior, and therefore it cannot be fixed by willpower or religious effort. Cornelius was devout and generous (Acts 10) but still dead. Nicodemus was a religious ruler (John 3) and Jesus told him "You must be born again."</p>
+      <p class="scripture stag" style="margin-top: 24px;">"Do not be conformed to this world, but be transformed by the renewing of your mind."</p>
+      <p class="ref">— ROMANS 12:2</p>
+    </div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Five Legal Transactions of the Cross</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:32px">Tap any seal to view the exact mechanism of the atonement.</p>
+    <div class="map-wrap"><div class="map-canvas">
+      <div class="fw-row">
+        <div class="node danger w220" onclick="sp('1. The Death','Jesus died as a substitute. He absorbed the legal consequence of all sin into Himself. The demand of divine justice was satisfied completely. Paid in full.')">
+          <div class="n-title">DEATH</div><div class="n-sub">The Demand Satisfied</div>
+        </div>
+        <div class="node danger w220" onclick="sp('2. The Burial','The old fallen human nature was removed. You were buried with Him (Romans 6:4). This is not improvement, this is legal replacement.')">
+          <div class="n-title">BURIAL</div><div class="n-sub">The Old Nature Interred</div>
+        </div>
+      </div>
+      <div class="map-arrow">↓</div>
+      <p class="map-label">THE SUPERNATURAL SHIFT</p>
+      <div class="fw-row">
+        <div class="node gold w220" onclick="sp('3. The Resurrection','Every person connected by faith rose with Him into a new life. Not old life repaired. Zoe: the uncreated, indestructible life of God placed into the human spirit.')"><div class="n-title">RESURRECTION</div><div class="n-sub">Zoe Imparted</div></div>
+        <div class="node cyan w220" onclick="sp('4. The Ascension','God raised us up together, and made us sit together in heavenly places (Ephesians 2:6). Your current position in the spirit is above every principality.')"><div class="n-title">ASCENSION</div><div class="n-sub">Seated Together</div></div>
+        <div class="node root w220" onclick="sp('5. The Exaltation','In Him you are complete (Col 2:10). The power structure above you is not the enemy. It is Christ. And you are inherently in Christ.')"><div class="n-title">EXALTATION</div><div class="n-sub">Total Authority</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">🧩 Experiential Deep-Dives & Labs</h2></div>
+
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">I. THE FRUSTRATION GAP (STAGE TWO)</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <div class="g2" style="margin-bottom:32px">
+          <div><p class="body-text stag">When you are born again, your spirit regenerates instantly. But your soul (mind, emotions, limiting beliefs) stays exactly as it was. Because the gap between the starting line and the transformed life was never navigated, many sit in church totally saved but practically unchanged.</p>
+          <p class="pipe stag">You can consciously believe one thing, but subconsciously believe the opposite. In that collision, <span class="gold">the subconscious wins almost every time.</span></p></div>
+          <div class="img-box" style="height: 350px"><img src="images/bap_cross_five_master.png" alt="The 5 Seals"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">II. THE 4 STEPS TO METAMORPHOSIS</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <div class="g2 rev" style="margin-bottom:32px">
+          <div><p class="body-text stag">Transformation (metamorphoo) is surgical. A caterpillar does not become a better caterpillar. It becomes entirely different.</p>
+          <ul style="padding-left:22px;color:var(--text);font-size:1.1rem;line-height:1.8;font-weight:300;margin-bottom:15px">
+            <li><span class="gold">1. Brutal Honesty:</span> Name your limitations. Where did they actually originate?</li>
+            <li><span class="gold">2. Superior Information:</span> Scripture replaces the vacuum.</li>
+            <li><span class="gold">3. Repetition:</span> You must repattern the subconscious.</li>
+            <li><span class="gold">4. Sight by Faith:</span> See yourself in the new reality before it arrives physically (Romans 4:17).</li>
+          </ul></div>
+          <div class="img-box" style="height: 350px"><img src="images/bap_mind_renewal_master.png" alt="Chrysalis Metamorphosis"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">III. THE THREE MINISTRIES FOR GROWTH</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <div class="g2" style="margin-bottom:32px">
+          <div><p class="body-text stag">You cannot mature spiritually in isolation. You need three distinct ministries working simultaneously to prevent stalling.</p>
+          <ul style="padding-left:22px;color:var(--text);font-size:1.1rem;line-height:1.8;font-weight:300;margin-bottom:15px">
+            <li><span class="cyan">The Holy Spirit:</span> The Person who guides, not forces. He waits for genuine hunger.</li>
+            <li><span class="cyan">The Word of God:</span> The surgical instrument (Heb 4:12) treated with absolute authority over your feelings.</li>
+            <li><span class="cyan">A Teaching Priest:</span> A human vessel provided by God (Jer 3:15) to correct you and impart what isolation cannot.</li>
+          </ul></div>
+          <div class="img-box" style="height: 350px"><img src="images/bap_secret_place_master.png" alt="The Secret Place Flame"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">⚠️ The Critical Warning</h2></div>
+    <div class="card danger-b"><p class="body-text stag" style="color:#FF8F9C">Do not settle in Stage Two. Stage Two is the "New Believer" phase where the spirit is alive but the mind is on old software. Millions stay here forever, caught in a cycle of sinning, repenting, maintaining attendance, and yet feeling that nothing has genuinely shifted. <span style="font-weight:600;font-style:italic;color:#fff">The water was just the beginning. The mind must be aggressively renewed.</span></p></div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 Reflection — The Baseline Audit</h2></div>
+    <div class="card" style="text-align:center">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">What was your REAL reason for coming to God? Not the testimony version... but the actual logic. Fear? A way out? Social pressure?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">Are you currently spiritually alive, but psychologically unchanged? Have you been substituting Sunday attendance for actual mind renewal?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">What specific negative beliefs shape your daily subconscious? Can you name their source?</p></div>
+      <button class="btn c" style="margin-top:28px" id="rq-btn" onclick="nextRQ()">✦ NEXT QUESTION</button>
+      <div class="q-nav">
+        <div class="q-dot on" id="qd1" onclick="goRQ(1)"></div><div class="q-dot" id="qd2" onclick="goRQ(2)"></div><div class="q-dot" id="qd3" onclick="goRQ(3)"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration (The Secret Place)</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--cyan);margin-bottom:18px">THE MANDATE ACCEPTED</p>
+      <p class="statement stag">"I refuse to remain spiritually alive but practically unchanged. I commit to the Secret Place. I submit to the Holy Spirit, the authority of the Word, and the impartation of the Teaching Priest. I will renew my mind until my subconscious aligns with Heaven."</p>
+      <div style="margin-top:40px; display:flex; flex-direction:column; align-items:center; gap: 10px;">
+        <button class="btn g" id="d-btn" onclick="declareIt()">✦ METAMORPHOSIS INITIATED</button>
+        <p id="d-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:10px;letter-spacing:.15em;font-size:.85rem">SEALED. THE RENEWAL HAS BEGUN.</p>
+        
+        <a href="data:text/plain;charset=utf-8,CHAPTER%20-%20FROM%20UNBELIEVER%20TO%20BELIEVER%0A%0A1.%20The%20Problem%3A%20Spiritual%20Death,%20not%20bad%20behavior.%0A2.%20The%20Cross%3A%20Death,%20Burial,%20Resurrection,%20Ascension,%20Exaltation.%0A3.%20The%20Gap%3A%20Spiritually%20alive%20but%20psychologically%20unchanged.%0A4.%20Mind%20Renewal%3A%20Honesty,%20Superior%20Info,%20Repetition,%20Sight%20by%20Faith.%0A5.%20The%203%20Needs%3A%20Holy%20Spirit,%20The%20Word,%20Teaching%20Priest.%0A%0ABaptism%20was%20the%20starting%20line." download="Baptism_Framework.txt" class="download-btn">DOWNLOAD FRAMEWORK MANUSCRIPT ⭳</a>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight}addEventListener('resize',rs);rs();
+for(let i=0;i<70;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(0,240,255,${p.a*.2})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');else e.target.classList.remove('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*30));else ws.forEach(w=>w.classList.remove('v'));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+function sp(title,body){document.getElementById('p-tag').textContent='NODE DETAIL';document.getElementById('p-title').textContent=title;document.getElementById('p-body').textContent=body;document.getElementById('pnl').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('pnl').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+let curRQ=1;
+function goRQ(n){for(let i=1;i<=3;i++){document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('on');}document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('on');curRQ=n;document.getElementById('rq-btn').style.display=curRQ>=3?'none':'inline-block';}
+function nextRQ(){if(curRQ<3)goRQ(curRQ+1);}
+
+function declareIt(){document.getElementById('d-btn').style.display='none';document.getElementById('d-confirm').style.display='block';}
+</script>
+</body>
+</html>
