@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Four Pillars | Masterclass</title>
+  <meta name="description" content="Death to self, consecration, fellowship, and partnership."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#030304;--deep:#0a0a0d;--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.07);--hover:rgba(255,255,255,.08);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.2;}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(255,215,0,.15)}50%{box-shadow:0 0 80px rgba(255,215,0,.35)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+    
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:360px;height:360px;border-radius:50%;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 80px rgba(255,215,0,.15),0 0 160px rgba(255,215,0,.08);animation:float 7s ease-in-out infinite,pulse 4s ease-in-out infinite;margin-bottom:40px}
+    .hero-img img{width:100%;height:100%;object-fit:cover}
+    .ch-tag{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px;text-shadow: 0 0 40px rgba(255,215,0,0.2);}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase}
+    .hero-def{font-size:1.3rem;font-style:italic;color:var(--muted);max-width:680px;margin:24px auto 0;line-height:1.6}
+    
+    .sec-head{display:flex;align-items:center;gap:14px;margin:100px 0 32px}
+    .layer-badge{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);background:rgba(255,215,0,.07);border:1px solid var(--gold-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--text);font-weight:600}
+    
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}.card.cyan-b{border-color:var(--cyan-d)}.card.danger-b{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    
+    /* AC DEEP DIVES */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-icon{font-size:1.4rem;color:var(--gold);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s cubic-bezier(.4,0,.2,1),padding .55s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);padding-top:32px;transition:max-height .9s cubic-bezier(0,1,0,1),opacity .6s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--cyan)}
+    
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}.body-text.lg{font-size:1.45rem}
+    .em{color:var(--gold);font-style:italic}.cyan{color:var(--cyan);font-style:italic}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.3rem;margin:24px 0; color:var(--muted)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    
+    .img-box{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+    .img-box img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s}.img-box:hover img{transform:scale(1.02)}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}.rev{direction:rtl}.rev>*{direction:ltr}
+    
+    /* === MINDMAP SYSTEM === */
+    .map-wrap{overflow-x:auto;padding:10px 0;margin:32px 0 0}.map-canvas{min-width:750px;position:relative;padding:20px}
+    .fw-row{display:flex;justify-content:center;gap:15px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;height:30px;align-items:center;color:var(--gold);font-size:1.2rem;opacity:.5}
+    .node{border-radius:18px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center;padding:24px 20px;box-shadow:inset 0 0 20px rgba(0,0,0,.5)}
+    .node:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,215,0,.15);border-color:var(--gold)}
+    .node .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:#fff;margin-bottom:8px;letter-spacing:.05em}
+    .node .n-sub{font-family:'Inter',sans-serif;font-size:.75rem;color:var(--muted);line-height:1.5}
+    .node.root{width:320px;padding:30px;border-color:var(--cyan-d);background:rgba(0,240,255,.04)}.node.root .n-title{font-size:1.2rem;color:var(--cyan)}
+    .node.gold{border-color:var(--gold-d);background:rgba(255,215,0,.04)}.node.gold .n-title{color:var(--gold)}
+    .node.w280{width:280px}
+    
+    /* JS PANELS */
+    .panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(600px,90vw);background:#09090b;border:1px solid var(--border);border-radius:28px;padding:48px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.9);max-height:90vh;overflow-y:auto}
+    .panel.show{display:block}.p-close{position:absolute;top:20px;right:24px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:36px;height:36px;font-size:1.1rem;cursor:pointer;transition:all .3s}.p-close:hover{background:var(--hover);color:#fff}
+    .p-tag{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:12px}
+    .p-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:20px}
+    .p-body{font-size:1.15rem;line-height:1.8;color:var(--text);font-weight:300}
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:9999;backdrop-filter:blur(10px)}#overlay.show{display:block}
+    
+    /* === SIMULATOR 1: STRUCTURAL SEQUENCE === */
+    .sim-box{background:#040405;border:1px solid var(--border);border-radius:var(--r);padding:24px;position:relative;overflow:hidden;box-shadow:inset 0 0 50px rgba(0,0,0,.8);margin:32px 0}
+    .b-stage{height:300px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:20px;position:relative}
+    .p-slot{width:300px;height:60px;border:1px dashed var(--border);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;position:relative}
+    .p-slot.filled{border:1px solid var(--gold);background:var(--gold-d);box-shadow:0 0 20px var(--gold-d)}
+    .p-lbl{font-family:'Cinzel',serif;font-size:1rem;color:var(--muted)}
+    .p-slot.filled .p-lbl{color:var(--gold);font-weight:bold}
+    
+    @keyframes collapseShake{0%,100%{transform:translate(0,0)}10%,30%,50%,70%,90%{transform:translate(-5px,2px)}20%,40%,60%,80%{transform:translate(5px,-2px)}}
+    .collapsing{animation:collapseShake 0.6s cubic-bezier(.36,.07,.19,.97) both; border-color:var(--danger) !important; background:rgba(255,51,102,.1) !important}
+    
+    .sim-controls{display:flex;gap:10px;margin-top:20px;justify-content:center;flex-wrap:wrap;}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.1em;padding:14px 28px;border-radius:var(--rp);cursor:pointer;transition:all .3s}.btn:hover{background:var(--hover)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover{background:rgba(0,240,255,.1);color:#fff}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover{background:rgba(255,215,0,.1)}.btn.d{border-color:var(--danger);color:var(--danger)}.btn.d:hover{background:rgba(255,51,102,.1)}
+    .sim-console{margin-top:20px;padding:16px 20px;background:#000;border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.9rem;color:var(--muted);border-radius:8px;min-height:54px;display:flex;align-items:center;}
+    
+    /* === SIMULATOR 2: VALLEY / AUTHORIZATION === */
+    .v-stage{height:250px;background:#020202;border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .v-power{position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom, var(--gold-d), transparent);transition:top 1.5s cubic-bezier(.4,0,.2,1);opacity:0}
+    .v-power.active{top:0;opacity:1}
+    .v-figure{width:40px;height:90px;border:2px solid var(--border);border-radius:20px;position:relative;z-index:10;transition:all 0.5s}
+    .v-figure.authorized{border-color:var(--cyan);box-shadow:0 0 30px var(--cyan);background:var(--cyan-d)}
+    
+    .decl{border:1px dashed var(--border);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle,rgba(255,215,0,.04) 0%,transparent 70%)}
+    a.d-btn{display:inline-block;margin-top:30px;background:rgba(255,215,0,.1);border:1px solid var(--gold);color:#fff;font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.15em;padding:16px 32px;border-radius:var(--rp);text-decoration:none;transition:all .3s}
+    a.d-btn:hover{background:var(--gold);color:#000;box-shadow:0 0 40px var(--gold-d)}
+
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:22px}.q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);cursor:pointer;transition:background .3s}.q-dot.on{background:var(--gold)}
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+  </style>
+</head>
+<body>
+
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="panel" id="pnl"><button class="p-close" onclick="closePanel()">✕</button><p class="p-tag" id="p-tag"></p><h2 class="p-title" id="p-title"></h2><p class="p-body" id="p-body"></p></div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero sr">
+    <div class="hero-img"><img src="images/pillars_hero_master.png" alt="The Four Monumental Pillars" onerror="this.style.opacity=0"></div>
+    <p class="ch-tag">Masterclass Module</p>
+    <h1 class="hero-title stag">THE FOUR PILLARS</h1>
+    <p class="hero-sub">The Architecture of a Victorious Life</p>
+    <p class="hero-def stag">The gap between the promises of God and the reality you are living is not mysterious—it is structural. Sincere believers remain frustrated because they are missing foundational pillars, or attempting to build them out of order.</p>
+  </section>
+
+  <!-- LAYER 1 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 The One-Line Thesis</h2></div>
+    <div class="card cyan-b"><p class="statement stag">"Every frustration in the spiritual life can ultimately be traced to a structural deficit. Attempting to build <span class="cyan">Partnership</span> before submitting to <span class="cyan">Death to Self</span> ensures immediate public collapse."</p></div>
+  </section>
+
+  <!-- LAYER 2 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🏗️ The Structural Blueprint (SIMULATION)</h2></div>
+    <div class="card gold-b">
+      <p class="body-text stag">These four stages are sequential. They cannot be swapped. If you attempt to operate as a partner of God while the "Self" is still very much alive, you do not produce genuine power; you produce a religious person fighting for their own agenda.</p>
+      
+      <div class="sim-box" id="sim-arch">
+        <h3 style="font-family:'Cinzel',serif;color:#fff;margin-bottom:16px;font-size:1.1rem;text-align:center">SEQUENCE COMPLIANCE PROTOCOL</h3>
+        
+        <div class="b-stage" id="b-stage">
+          <div class="p-slot" id="sl-4"><span class="p-lbl">4. PARTNERSHIP</span></div>
+          <div class="p-slot" id="sl-3"><span class="p-lbl">3. FELLOWSHIP</span></div>
+          <div class="p-slot" id="sl-2"><span class="p-lbl">2. CONSECRATION</span></div>
+          <div class="p-slot" id="sl-1"><span class="p-lbl">1. DEATH TO SELF</span></div>
+        </div>
+        
+        <div class="sim-controls">
+          <button class="btn" onclick="buildPillar(1)">Install: Death to Self</button>
+          <button class="btn" onclick="buildPillar(2)">Install: Consecration</button>
+          <button class="btn" onclick="buildPillar(3)">Install: Fellowship</button>
+          <button class="btn" onclick="buildPillar(4)">Install: Partnership</button>
+          <button class="btn d" onclick="resetPillars()" style="border-style:dashed">Reset</button>
+        </div>
+        <div class="sim-console" id="b-console">STATUS: No foundation laid. The exact sequence must be honored.</div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- LAYER 3 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Initial Layers (Mindmap)</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted)">Tap the first three foundational architectures below to unpack their specific mechanics.</p>
+    
+    <div class="g2" style="margin:32px 0;">
+      <div class="img-box" style="height:220px"><img src="images/pillars_death_master.png"></div>
+      <div class="img-box" style="height:220px"><img src="images/pillars_consecration_master.png"></div>
+    </div>
+    
+    <div class="map-wrap"><div class="map-canvas" style="min-width:900px">
+      
+      <div class="fw-row">
+        <div class="node gold w280" onclick="sp('Pillar 1: Death to Self','To be used at scale, the ego must be crucified. The 3 Keys are: 1. Daily Audit of Motives. 2. The Discipline of Obscurity (serving where no one sees). 3. Extreme Moderation in Celebration. Elevation without this is a spiritual death sentence.')"><div class="n-title">DEATH TO SELF</div><div class="n-sub">Emptying the Vessel</div></div>
+        
+        <div class="node gold w280" onclick="sp('Pillar 2: Consecration','Setting the empty vessel apart. The 4 Components: Revelation, Sustained Consciousness, Faith, and Virtue. It involves dismantling evil altars (unauthorized claims) and erecting righteous ones.')"><div class="n-title">CONSECRATION</div><div class="n-sub">Setting the Vessel Apart</div></div>
+        
+        <div class="node gold w280" onclick="sp('Pillar 3: Fellowship','The divine fire that falls on the altar. Not visiting the Secret Place, but dwelling. Characterized by 3 intimacies: The Word, The Spirit, and the Mysteries governing earthly success.')"><div class="n-title">FELLOWSHIP</div><div class="n-sub">The Burning Altar</div></div>
+      </div>
+      
+    </div></div>
+  </section>
+
+  <!-- LAYER 4 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">⛔ Deep Dives: The 6 Destructive Mistakes</h2></div>
+    <p class="body-text stag" style="margin-bottom:24px">These are not hypothetical errors. They are systemic patterns that routinely prevent sincere believers from moving from promise to fulfillment.</p>
+    
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">1. PASSIVE CHRISTIANITY</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">Waiting for God to move the mountain while God is waiting for human authorization, spoken decrees, and physical labor to legally intervene. Irresponsible "Amens" do not replace diligence.</p></div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">2. UNMERITED ENTITLEMENT</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">Treating grace at salvation as a template for everything else. Sustainable authority and favor are rewards for extreme diligence, not available to those who substitute theology for actual mastery.</p></div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">3. VISIBILITY WITHOUT DEATH</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">Acquiring a platform without submitting to the crucifixion of the ego. The gift becomes weaponized for personal projection, turning visibility into a spiritual death sentence with a ticking clock.</p></div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">4. MISIDENTIFYING ENEMIES</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">The actual hierarchy of saboteurs: 1. The Self (laziness). 2. Ignorance (lack of principles). 3. Satan/Demons. The enemy is ranked last, yet receives most of the blame.</p></div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">5. OVER-SPIRITUALIZATION</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">Attempting to solve physical/economic problems entirely through prayer while ignoring financial literacy and practical skill. God will not subsidize laziness with a miracle.</p></div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">6. MISUSE OF PROPHECY</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">Treating prophecy as a fatalistic guarantee. A prophecy is an admission letter to a university; it authorizes you to begin the rigorous study required to graduate, it does not mean you have graduated.</p></div>
+    </div>
+  </section>
+
+  <!-- LAYER 5 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">⚡ The Authorization Mechanism (SIMULATION)</h2></div>
+    <div class="card danger-b">
+      <div class="g2" style="margin-bottom:24px">
+        <div>
+          <p class="body-text stag"><span class="em">Pillar Four: Partnership.</span> The heaven belongs to the Lord, but the earth He has permanently given to men. Every activity on earth is inherently <span class="em">man-dependent</span>.</p>
+          <p class="body-text stag">In Ezekiel 37, the divine power was fully present in the valley. But the bones remained dormant until the man opened his mouth to authorize it in the physical domain.</p>
+        </div>
+        <div class="img-box" style="height:250px"><img src="images/pillars_partnership_master.png"></div>
+      </div>
+      
+      <div class="sim-box" style="background:#050202; border-color:var(--danger)">
+        <h3 style="font-family:'Cinzel',serif;color:#fff;margin-bottom:16px;font-size:1.1rem;text-align:center">THE VALLEY PROTOCOL</h3>
+        
+        <div class="v-stage">
+          <div class="v-power" id="v-pow"></div>
+          <div class="v-figure" id="v-fig"></div>
+        </div>
+        
+        <div class="sim-controls">
+          <button class="btn c" onclick="simWait()">Passively Wait for God</button>
+          <button class="btn g" onclick="simProphesy()">Step in the Gap & Authorize</button>
+        </div>
+        <div class="sim-console" id="v-console">STATUS: Power is available. God is waiting for a human partner to provide legal authorization.</div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- LAYER 6 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Pillar Audit</h2></div>
+    <div class="card" style="text-align:center; padding:32px">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">Is there something you are calling humility that is actually a survival mechanism—a way of managing the fear of responsibility, or a suppressed need for revenge?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">What specific area of your life is God waiting for your practical authorization (your skill, your decision, your decree) to legally intervene in?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">In the sequence of the Four Pillars, which exact one has been missing or bypassed? (Death to Self, Consecration, Fellowship, Partnership)</p></div>
+      <button class="btn g" style="margin-top:28px" id="rq-btn" onclick="nextRQ()">✦ NEXT QUESTION</button>
+      <div class="q-nav">
+        <div class="q-dot on" id="qd1" onclick="goRQ(1)"></div><div class="q-dot" id="qd2" onclick="goRQ(2)"></div><div class="q-dot" id="qd3" onclick="goRQ(3)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 7 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🌐 The Rebuilt Architecture</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">THE GAP IS CLOSED</p>
+      <p class="statement stag">"I will not build the roof before the foundation. I submit my ego to crucifixion. I consecrate my vessel. I will dwell in the secret place to host the fire. And I will partner with heaven to legally authorize miraculous change on the earth."</p>
+      <div style="margin-top:40px; display:flex; flex-direction:column; align-items:center; gap: 10px;">
+        <button class="btn c" id="d-btn" onclick="declareIt()">✦ ARCHITECTURE SECURED</button>
+        <p id="d-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:10px;letter-spacing:.15em;font-size:.85rem">SEQUENCE INITIATED. DOMINION AUTHORIZED.</p>
+        
+        <a href="data:text/plain;charset=utf-8,CHAPTER%20-%20THE%20FOUR%20PILLARS%0A%0A1.%20Death%20to%20Self%3A%20The%20vessel%20is%20emptied.%20Visibility%20without%20this%20is%20destruction.%0A2.%20Consecration%3A%20The%20vessel%20is%20set%20apart.%20Evil%20altars%20dismantled.%0A3.%20Fellowship%3A%20The%20fire%20falls%20on%20the%20altar.%0A4.%20Partnership%3A%20The%20earth%20is%20man-dependent.%20Power%20deployed.%0A%0AEvery%20frustration%20is%20a%20structural%20deficit.%20Rebuild%20the%20sequence." download="Pillars_Framework.txt" class="d-btn">DOWNLOAD FOUR PILLARS MANUSCRIPT ⭳</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Canvas Noise BG
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight}addEventListener('resize',rs);rs();
+for(let i=0;i<60;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.5,a:Math.random()*.4});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,215,0,${p.a*.2})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// Scroll & Text Listeners
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');else e.target.classList.remove('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*25));else ws.forEach(w=>w.classList.remove('v'));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// Panels
+function sp(title,body){document.getElementById('p-tag').textContent='NODE DETAIL';document.getElementById('p-title').textContent=title;document.getElementById('p-body').textContent=body;document.getElementById('pnl').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('pnl').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// Reflection Qs
+let curRQ=1;
+function goRQ(n){for(let i=1;i<=3;i++){document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('on');}document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('on');curRQ=n;document.getElementById('rq-btn').style.display=curRQ>=3?'none':'inline-block';}
+function nextRQ(){if(curRQ<3)goRQ(curRQ+1);}
+
+function declareIt(){document.getElementById('d-btn').style.display='none';document.getElementById('d-confirm').style.display='block';}
+
+// SIMULATION 1: STRUCTURAL SEQUENCE
+let currentBuilt = 0;
+function buildPillar(level) {
+  if (level !== currentBuilt + 1) {
+    // VIOLATION - COLLAPSE
+    let s = document.getElementById('b-stage');
+    s.classList.add('collapsing');
+    document.getElementById('b-console').innerHTML = `<span style="color:var(--danger)">CRITICAL FAILURE. You cannot build Pillar ${level} without completing Pillar ${currentBuilt+1}. The unearned elevation has caused a structural collapse.</span>`;
+    
+    // Reset after shake
+    setTimeout(()=>{
+      s.classList.remove('collapsing');
+      resetPillars(true);
+    }, 600);
+    return;
+  }
+  
+  // SUCCESS
+  currentBuilt = level;
+  document.getElementById('sl-'+level).classList.add('filled');
+  let msgs = [
+    "",
+    "STATUS: Death to Self secured. The vessel is safely emptied and immune to ego attacks.",
+    "STATUS: Consecration secured. The vessel is set apart.",
+    "STATUS: Fellowship secured. The altar is burning.",
+    "STATUS: <span style='color:var(--gold)'>PARTNERSHIP SECURED. Full Kingdom integration achieved.</span>"
+  ];
+  document.getElementById('b-console').innerHTML = msgs[level];
+}
+
+function resetPillars(fromFail=false) {
+  currentBuilt = 0;
+  for(let i=1; i<=4; i++) {
+    document.getElementById('sl-'+i).classList.remove('filled');
+  }
+  if(!fromFail) document.getElementById('b-console').innerHTML = "STATUS: Architecture reset. The foundation must be built first.";
+}
+
+// SIMULATION 2: AUTHORIZATION
+function simWait() {
+  document.getElementById('v-pow').classList.remove('active');
+  document.getElementById('v-fig').classList.remove('authorized');
+  document.getElementById('v-console').innerHTML = "STATUS: Waiting... God is fully present but restricted by lack of earthly authorization. Nothing happens.";
+}
+function simProphesy() {
+  document.getElementById('v-fig').classList.add('authorized');
+  setTimeout(()=>{
+    document.getElementById('v-pow').classList.add('active');
+    document.getElementById('v-console').innerHTML = "STATUS: <span style='color:var(--cyan)'>AUTHORIZATION GRANTED.</span> The human agent spoke. Divine power is now legally unleashed into the situation.";
+  }, 300);
+}
+
+</script>
+</body>
+</html>
