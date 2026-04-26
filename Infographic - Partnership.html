@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Partnership | Masterclass</title>
+  <meta name="description" content="God Is Waiting On You"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02050a;--deep:#050a12;--gold:#D4AF37;--gold-d:rgba(212,175,55,.15);--cyan:#00E5FF;--cyan-d:rgba(0,229,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.07);--hover:rgba(255,255,255,.08);--text:#E2E8F0;--muted:#94A3B8;--danger:#FF3366;--success:#00D97E;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.2;}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(0,229,255,.15)}50%{box-shadow:0 0 80px rgba(0,229,255,.35)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+    
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:360px;height:360px;border-radius:50%;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 80px rgba(0,229,255,.15),0 0 160px rgba(212,175,55,.08);animation:float 7s ease-in-out infinite,pulse 4s ease-in-out infinite;margin-bottom:40px}
+    .hero-img img{width:100%;height:100%;object-fit:cover}
+    .ch-tag{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.35em;color:var(--cyan);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px;text-shadow: 0 0 40px rgba(212,175,55,0.2);}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase}
+    .hero-def{font-size:1.3rem;font-style:italic;color:var(--muted);max-width:680px;margin:24px auto 0;line-height:1.6}
+    
+    .sec-head{display:flex;align-items:center;gap:14px;margin:100px 0 32px}
+    .layer-badge{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);background:rgba(212,175,55,.07);border:1px solid var(--gold-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--text);font-weight:600}
+    
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}.card.cyan-b{border-color:var(--cyan-d);border-left:3px solid var(--cyan)}.card.danger-b{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    
+    /* AC DEEP DIVES */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--cyan-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-icon{font-size:1.4rem;color:var(--cyan);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s cubic-bezier(.4,0,.2,1),padding .55s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);padding-top:32px;transition:max-height .9s cubic-bezier(0,1,0,1),opacity .6s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
+    
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}.body-text.lg{font-size:1.45rem}
+    .em{color:var(--gold);font-style:italic}.cyan{color:var(--cyan);font-style:italic}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.3rem;margin:24px 0; color:var(--muted)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    
+    .img-box{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+    .img-box img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s}.img-box:hover img{transform:scale(1.02)}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}.rev{direction:rtl}.rev>*{direction:ltr}
+    
+    /* === MINDMAP SYSTEM === */
+    .map-wrap{overflow-x:auto;padding:10px 0;margin:32px 0 0}.map-canvas{min-width:750px;position:relative;padding:20px}
+    .fw-row{display:flex;justify-content:center;gap:15px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .node{border-radius:18px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center;padding:24px 20px;box-shadow:inset 0 0 20px rgba(0,0,0,.5)}
+    .node:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(212,175,55,.15);border-color:var(--gold)}
+    .node .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:#fff;margin-bottom:8px;letter-spacing:.05em}
+    .node .n-sub{font-family:'Inter',sans-serif;font-size:.75rem;color:var(--muted);line-height:1.5}
+    .node.gold{border-color:var(--gold-d);background:rgba(212,175,55,.04)}.node.gold .n-title{color:var(--gold)}
+    .node.w280{width:280px}
+    
+    /* JS PANELS */
+    .panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(600px,90vw);background:#09090b;border:1px solid var(--border);border-radius:28px;padding:48px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.9);max-height:90vh;overflow-y:auto}
+    .panel.show{display:block}.p-close{position:absolute;top:20px;right:24px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:36px;height:36px;font-size:1.1rem;cursor:pointer;transition:all .3s}.p-close:hover{background:var(--hover);color:#fff}
+    .p-tag{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:12px}
+    .p-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:20px}
+    .p-body{font-size:1.15rem;line-height:1.8;color:var(--text);font-weight:300}
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:9999;backdrop-filter:blur(10px)}#overlay.show{display:block}
+    
+    /* === SIMULATOR 1: RECIPROCAL ENGINE (Drag/Click) === */
+    .sim-box{background:#02050a;border:1px solid var(--border);border-radius:var(--r);padding:24px;position:relative;overflow:hidden;box-shadow:inset 0 0 50px rgba(0,0,0,.8);margin:32px 0}
+    .e-stage{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;min-height:280px;margin-bottom:20px;position:relative}
+    .e-block{border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;background:var(--glass)}
+    .e-block h4{font-family:'Cinzel',serif;margin-bottom:10px;color:var(--cyan)}
+    .e-item{background:rgba(212,175,55,.1);border:1px solid var(--gold);color:var(--gold);padding:8px 16px;border-radius:30px;font-size:.8rem;margin-bottom:8px;display:inline-block;letter-spacing:.05em}
+    .e-core{width:80px;height:80px;border-radius:50%;border:2px dashed var(--muted);display:flex;align-items:center;justify-content:center;transition:all .5s;position:relative;z-index:10;background:#000}
+    .e-core.active{border-style:solid;border-color:var(--cyan);box-shadow:0 0 40px var(--cyan);background:var(--cyan-d)}
+    .e-core.active::after{content:'ACTIVE';font-family:'Inter',sans-serif;font-size:.6rem;font-weight:bold;color:#fff;letter-spacing:.2em}
+    
+    /* Man's Side Drag Items */
+    .drag-zone{min-height:120px;border:1px dashed var(--danger);border-radius:8px;margin-top:10px;padding:10px;display:flex;flex-direction:column;gap:6px;align-items:center}
+    .d-item{background:rgba(255,51,102,.1);border:1px solid var(--danger);color:#fff;padding:8px 16px;border-radius:30px;font-size:.8rem;cursor:pointer;transition:all .3s}
+    .d-item:hover{background:var(--danger)}
+    .d-item.plugged{background:var(--success);border-color:var(--success);pointer-events:none}
+    
+    .sim-console{padding:16px 20px;background:#000;border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.9rem;color:var(--muted);border-radius:8px;min-height:54px;display:flex;align-items:center;}
+    
+    /* === SIMULATOR 2: UNIVERSITY ADMISSION === */
+    .u-stage{height:250px;background:#050505;border:1px solid var(--border);border-radius:16px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+    .u-letter{width:120px;height:80px;background:linear-gradient(135deg, var(--gold), #8B6914);border-radius:4px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:all .5s;opacity:0;transform:scale(0.8)}
+    .u-letter.show{opacity:1;transform:scale(1)}
+    .u-letter span{font-family:'Cinzel',serif;font-size:.65rem;color:#fff;letter-spacing:.1em;text-align:center;font-weight:bold}
+    
+    .u-btns{display:none;gap:10px;margin-top:20px;opacity:0;transition:opacity .5s}
+    .u-btns.show{display:flex;opacity:1}
+    
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.1em;padding:14px 28px;border-radius:var(--rp);cursor:pointer;transition:all .3s}.btn:hover{background:var(--hover)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover{background:rgba(0,229,255,.1);color:#fff}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover{background:rgba(212,175,55,.1)}.btn.d{border-color:var(--danger);color:var(--danger)}.btn.d:hover{background:rgba(255,51,102,.1)}
+    
+    .decl{border:1px dashed var(--border);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle,rgba(212,175,55,.04) 0%,transparent 70%)}
+    a.d-btn{display:inline-block;margin-top:30px;background:rgba(212,175,55,.1);border:1px solid var(--gold);color:#fff;font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.15em;padding:16px 32px;border-radius:var(--rp);text-decoration:none;transition:all .3s}
+    a.d-btn:hover{background:var(--gold);color:#000;box-shadow:0 0 40px var(--gold-d)}
+
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:22px}.q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);cursor:pointer;transition:background .3s}.q-dot.on{background:var(--gold)}
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+  </style>
+</head>
+<body>
+
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="panel" id="pnl"><button class="p-close" onclick="closePanel()">✕</button><p class="p-tag" id="p-tag"></p><h2 class="p-title" id="p-title"></h2><p class="p-body" id="p-body"></p></div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero sr">
+    <div class="hero-img"><img src="images/partner_hero_master.png" alt="God-Man Partnership Handshake" onerror="this.style.opacity=0"></div>
+    <p class="ch-tag">Masterclass Module</p>
+    <h1 class="hero-title stag">PARTNERSHIP</h1>
+    <p class="hero-sub">God Is Waiting On You</p>
+    <p class="hero-def stag">The assumption that God’s sovereignty means He will eventually move without human participation is costing believers their destinies. The earth was legally given to man, which makes it man-dependent.</p>
+  </section>
+
+  <!-- LAYER 1 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 The Inciting Thesis</h2></div>
+    <div class="card cyan-b">
+      <p class="statement stag">"God's celestial armies — for all their extraordinary power — cannot enforce the will of God on earth without the partnership of an authorized human. <span class="cyan">They wait for your decree. They move when you speak.</span>"</p>
+      <div class="pipe stag">This is not a limitation of God's power. It is the governmental design He chose. His sovereignty includes the sovereign choice to work through human cooperation.</div>
+    </div>
+  </section>
+
+  <!-- LAYER 2 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">⚙️ The Reciprocal Engine (SIMULATION)</h2></div>
+    <div class="card gold-b">
+      <div class="g2" style="margin-bottom:24px">
+        <div>
+          <p class="body-text stag">It is critical to be precise about what each party contributes. Confusing the contributions is what produces the frustration of passive Christianity.</p>
+          <p class="body-text stag">The anointing was never designed to compensate for intellectual laziness. But neither is the pursuit of excellence designed to be carried by willpower alone.</p>
+        </div>
+        <div class="img-box" style="height:220px"><img src="images/partner_engine_master.png"></div>
+      </div>
+      
+      <div class="sim-box" id="sim-arch">
+        <h3 style="font-family:'Cinzel',serif;color:#fff;margin-bottom:16px;font-size:1.1rem;text-align:center">THE CO-LABORING PROTOCOL</h3>
+        <p style="text-align:center;font-size:0.8rem;color:var(--muted);margin-bottom:20px;font-family:'Inter'">Tap the human elements to insert them into the engine circuit.</p>
+        
+        <div class="e-stage">
+          <div class="e-block" style="border-color:var(--cyan)">
+            <h4 style="color:var(--cyan)">GOD PROVIDES:</h4>
+            <span class="e-item">Power</span><br/>
+            <span class="e-item">Favor</span><br/>
+            <span class="e-item">Wisdom</span>
+          </div>
+          
+          <div class="e-core" id="e-core"></div>
+          
+          <div class="e-block" style="border-color:var(--danger)">
+            <h4 style="color:var(--danger)">MAN PROVIDES:</h4>
+            <div class="drag-zone" id="d-zone">
+              <div class="d-item" id="di-1" onclick="insertHuman(1, this)">Obedience</div>
+              <div class="d-item" id="di-2" onclick="insertHuman(2, this)">Diligence</div>
+              <div class="d-item" id="di-3" onclick="insertHuman(3, this)">Excellence</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sim-console" id="e-console">STATUS: Engine dormant. God's provision is waiting for human contribution.</div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- LAYER 3 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Three Keys (Mindmap)</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted)">Tap the specific keys required for effective partnership.</p>
+    
+    <div class="img-box" style="margin:30px auto;max-width:400px;height:250px"><img src="images/partner_intercession_master.png"></div>
+    
+    <div class="map-wrap"><div class="map-canvas" style="min-width:900px">
+      <div class="fw-row">
+        <div class="node gold w280" onclick="sp('Targeted Intercession','Stop praying for things to fall from the sky. Every resource you need is tied to a human being. The king\'s heart is in the hand of the Lord. Pray for the heart of the person connected to the resource.')"><div class="n-title">TARGETED INTERCESSION</div><div class="n-sub">Praying for Hearts, Not Things</div></div>
+        
+        <div class="node gold w280" onclick="sp('Mind Renewal','A prophetic declaration that exceeds your belief system will not be sustained. The system will pull every outcome back to what it considers normal. You must replace the operating system.')"><div class="n-title">MIND RENEWAL</div><div class="n-sub">Replacing the Operating System</div></div>
+        
+        <div class="node gold w280" onclick="sp('Consistent Excellence','God expects His partners to be equipped. A person praying for a global business while ignorant of basic economics is not in full partnership. Spiritual declarations and earthly preparation are simultaneous requirements.')"><div class="n-title">CONSISTENT EXCELLENCE</div><div class="n-sub">Eradicating Intellectual Laziness</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- LAYER 4 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">⛔ Deep Dives: What Partnership Is Not</h2></div>
+    <p class="body-text stag" style="margin-bottom:24px">These behavioral misunderstandings keep believers trapped in the cycle of waiting.</p>
+    
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">NOT PASSIVE RECEPTION</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">The believer who expects God to produce the result while they function as a spectator has misunderstood the arrangement. "Faith by itself, if it does not have works, is dead" — meaning functionally inoperative.</p></div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">NOT THE "IRRESPONSIBLE AMEN"</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">Enthusiastically receiving a prophetic word in a church service while returning to the same patterns of inaction, negligence, and undeveloped capacity is not faith. It is receiving an admission letter and never showing up to class.</p></div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">NOT A SUBSTITUTE FOR PREPARATION</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()"><p class="body-text stag">Prayer is essential. But prayer that replaces preparation creates an imbalance. Pray for the business, AND build the business plan. Pray for restoration, AND take the practical step to reconcile. Prayer opens the door; partnership walks through it.</p></div>
+    </div>
+  </section>
+
+  <!-- LAYER 5 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🎓 The Admission Protocol (SIMULATION)</h2></div>
+    <div class="card danger-b">
+      <div class="g2" style="margin-bottom:24px">
+        <div>
+          <p class="body-text stag">A prophetic word is not a guarantee of an automatic outcome. It is an invitation to partnership.</p>
+          <p class="body-text stag">It is an <span class="em">admission letter to a university</span>. Receiving the letter means you are authorized to attend. It does not make you a graduate. You still have to do the work.</p>
+        </div>
+        <div class="img-box" style="height:250px"><img src="images/partner_university_master.png"></div>
+      </div>
+      
+      <div class="sim-box" style="background:#050202; border-color:var(--danger)">
+        <h3 style="font-family:'Cinzel',serif;color:#fff;margin-bottom:16px;font-size:1.1rem;text-align:center">PROPHECY ACTUALIZATION SIMULATOR</h3>
+        
+        <div style="text-align:center; margin-bottom:20px">
+          <button class="btn c" id="sim-btn-1" onclick="receiveProphecy()">Receive Prophetic Word</button>
+        </div>
+        
+        <div class="u-stage" id="u-stage">
+          <div class="u-letter" id="u-letter"><span>PROPHETIC<br>MANDATE</span></div>
+        </div>
+        
+        <div class="u-btns" id="sim-btn-group">
+          <button class="btn d" onclick="failProphecy()">Passively Expect Fulfillment</button>
+          <button class="btn g" onclick="succeedProphecy()">Execute 4 Years of Rigorous Discipline</button>
+        </div>
+        
+        <div class="sim-console" id="u-console" style="margin-top:20px">STATUS: Awaiting prophetic alignment.</div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- LAYER 6 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Partnership Audit</h2></div>
+    <div class="card" style="text-align:center; padding:32px">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">What specific prophetic word over your life is lying dormant right now, not because God hasn't moved, but because you refused the rigorous training required to carry it?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">In what area (financial literacy, emotional intelligence, professional skill) do you urgently need to increase your competence to become a viable partner for the Holy Spirit?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">What is the specific, physical, earthly action you have been repeatedly postponing while calling the postponement "waiting on God"?</p></div>
+      <button class="btn g" style="margin-top:28px" id="rq-btn" onclick="nextRQ()">✦ NEXT QUESTION</button>
+      <div class="q-nav">
+        <div class="q-dot on" id="qd1" onclick="goRQ(1)"></div><div class="q-dot" id="qd2" onclick="goRQ(2)"></div><div class="q-dot" id="qd3" onclick="goRQ(3)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 7 -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🌐 The Rebuilt Architecture</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">THE GAP IS CLOSED</p>
+      <p class="statement stag">"I am a fellow worker. The earth is man-dependent, and I will not abdicate my responsibility to heaven. I will prepare the plan, build the skill, and take the step. I authorize the Kingdom on earth."</p>
+      <div style="margin-top:40px; display:flex; flex-direction:column; align-items:center; gap: 10px;">
+        <button class="btn c" id="d-btn" onclick="declareIt()">✦ CO-LABORING INITIATED</button>
+        <p id="d-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:10px;letter-spacing:.15em;font-size:.85rem">PARTNERSHIP ACCEPTED. PROCEED TO EXECUTION.</p>
+        
+        <a href="data:text/plain;charset=utf-8,CHAPTER%20-%20PARTNERSHIP%0A%0AGod%20is%20waiting%20on%20you.%0A%0A1.%20The%20earth%20belongs%20to%20man.%20It%20is%20man-dependent.%0A2.%20Targeted%20Intercession%3A%20Pray%20for%20hearts%2C%20not%20things.%0A3.%20Mind%20Renewal%3A%20A%20prophecy%20that%20exceeds%20your%20belief%20system%20will%20fail.%0A4.%20Consistent%20Excellence%3A%20The%20anointing%20does%20not%20cover%20laziness.%0A5.%20A%20prophecy%20is%20an%20admission%20letter%20to%20a%20university.%20Go%20do%20the%20work." download="Partnership_Manuscript.txt" class="d-btn">DOWNLOAD PARTNERSHIP MANUSCRIPT ⭳</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Canvas Noise BG
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight}addEventListener('resize',rs);rs();
+for(let i=0;i<60;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.5,a:Math.random()*.4});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(0,229,255,${p.a*.2})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// Scroll & Text Listeners
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');else e.target.classList.remove('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*25));else ws.forEach(w=>w.classList.remove('v'));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// Panels
+function sp(title,body){document.getElementById('p-tag').textContent='NODE DETAIL';document.getElementById('p-title').textContent=title;document.getElementById('p-body').textContent=body;document.getElementById('pnl').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('pnl').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// Reflection Qs
+let curRQ=1;
+function goRQ(n){for(let i=1;i<=3;i++){document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('on');}document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('on');curRQ=n;document.getElementById('rq-btn').style.display=curRQ>=3?'none':'inline-block';}
+function nextRQ(){if(curRQ<3)goRQ(curRQ+1);}
+
+function declareIt(){document.getElementById('d-btn').style.display='none';document.getElementById('d-confirm').style.display='block';}
+
+// SIMULATION 1: RECIPROCAL ENGINE
+let piecesInserted = 0;
+function insertHuman(id, el) {
+  if(el.classList.contains('plugged')) return;
+  el.classList.add('plugged');
+  piecesInserted++;
+  
+  if(piecesInserted === 1) document.getElementById('e-console').innerHTML = "STATUS: Obedience inserted. Circuit still incomplete. Need Diligence and Excellence.";
+  if(piecesInserted === 2) document.getElementById('e-console').innerHTML = "STATUS: Diligence inserted. Circuit still incomplete. Need Excellence.";
+  
+  if(piecesInserted === 3) {
+    document.getElementById('e-core').classList.add('active');
+    document.getElementById('e-console').innerHTML = "STATUS: <span style='color:var(--cyan)'>ENGINE IGNITED.</span> Both divine provision and human execution are fully aligned. Destiny actualizing.";
+  }
+}
+
+// SIMULATION 2: UNIVERSITY
+function receiveProphecy() {
+  document.getElementById('sim-btn-1').style.display = 'none';
+  document.getElementById('u-letter').classList.add('show');
+  setTimeout(()=>{
+    document.getElementById('u-console').innerHTML = "STATUS: Prophesy received. The door to the university is unlocked. What will you do?";
+    document.getElementById('sim-btn-group').classList.add('show');
+  }, 1000);
+}
+
+function failProphecy() {
+  document.getElementById('u-stage').style.borderColor = "var(--danger)";
+  document.getElementById('u-letter').style.background = "var(--danger)";
+  document.getElementById('u-letter').innerHTML = "<span>REVOKED</span>";
+  document.getElementById('u-console').innerHTML = "STATUS: <span style='color:var(--danger)'>DESTINY FAILURE.</span> You sat in the waiting room for years. The prophecy expired due to lack of human partnership.";
+}
+
+function succeedProphecy() {
+  document.getElementById('u-stage').style.borderColor = "var(--cyan)";
+  document.getElementById('u-stage').style.boxShadow = "0 0 40px rgba(0,229,255,0.2)";
+  document.getElementById('u-letter').style.background = "var(--cyan)";
+  document.getElementById('u-letter').style.transform = "scale(1.2)";
+  document.getElementById('u-letter').innerHTML = "<span>GRADUATE</span>";
+  document.getElementById('u-console').innerHTML = "STATUS: <span style='color:var(--cyan)'>DESTINY ACTUALIZED.</span> You waged the good warfare and built the required capacity.";
+}
+
+</script>
+</body>
+</html>
