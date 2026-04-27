@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith: The Operational Technology | Masterclass Module 19</title>
+    <meta name="description" content="A 7-layer immersive infographic exploring Faith as a spiritual technology for legislating the unseen into the physical.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --void: #02050A;
+            --deep: #050A12;
+            --cyan: #00E5FF;
+            --cyan-glow: rgba(0, 229, 255, 0.4);
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --text: #E2E8F0;
+            --muted: #94A3B8;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.03);
+            --danger: #FF3366;
+            --success: #00FF9D;
+            --radius: 20px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--void); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
+        body {
+            background-color: var(--void);
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.12; pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
+        }
+
+        canvas#particle-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; opacity: 0.3; pointer-events: none;
+        }
+
+        main { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 0 24px 100px; }
+
+        /* Helpers */
+        .sr { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .sr.visible { opacity: 1; transform: translateY(0); }
+        .word { display: inline-block; opacity: 0; transform: translateY(10px); transition: 0.5s; }
+        .word.visible { opacity: 1; transform: translateY(0); }
+        .sec-head { margin: 80px 0 30px; display: flex; align-items: center; gap: 12px; }
+        .layer-tag { font-family: 'Inter', sans-serif; font-size: 0.65rem; color: var(--cyan); letter-spacing: 0.2rem; text-transform: uppercase; border: 1px solid var(--cyan-glow); padding: 4px 10px; border-radius: 100px; background: rgba(0, 229, 255, 0.05); }
+        .sec-title { font-family: 'Cinzel', serif; font-size: 1.4rem; color: #fff; letter-spacing: 0.1rem; }
+
+        /* Layer 1: Hero */
+        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .hero-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 8vw, 5rem); line-height: 0.9; color: #fff; font-weight: 900; margin-bottom: 20px; perspective: 1000px; }
+        .hero-sub { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.5rem; text-transform: uppercase; margin-bottom: 40px; }
+        .hero-orb { width: 280px; height: 280px; position: relative; margin-bottom: 40px; }
+        .hero-orb svg { width: 100%; height: 100%; animation: pulse 8s infinite ease-in-out; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px var(--cyan-glow)); } 50% { transform: scale(1.05); filter: drop-shadow(0 0 50px var(--cyan-glow)); } }
+
+        /* Layer 2: Mountain Simulator */
+        .sim-container { background: #000; border: 1px solid var(--border); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; margin-bottom: 40px; }
+        .mountain-viewport { height: 350px; background: #030303; border-radius: 12px; position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
+        .mountain { width: 90%; height: 80%; background: #111; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); transition: all 1s ease; position: relative; z-index: 2; border: 1px solid #222; }
+        .mountain-label { position: absolute; top: 50%; width: 100%; text-align: center; font-family: 'Cinzel'; font-size: 2.5rem; color: #333; z-index: 3; transition: opacity 0.5s; letter-spacing: 0.5rem; }
+        .light-beam { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 2px; height: 0; background: var(--cyan); box-shadow: 0 0 40px var(--cyan); z-index: 4; transition: height 0.8s ease; }
+        .slider-wrap { margin-top: 30px; text-align: center; }
+        input[type=range] { width: 100%; max-width: 500px; accent-color: var(--cyan); cursor: pointer; }
+        .control-label { font-family: 'Inter'; font-size: 0.7rem; color: var(--muted); margin-bottom: 10px; display: block; letter-spacing: 0.2rem; }
+
+        /* Layer 3: Anti-Faith dismantling */
+        .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .construct-card { background: var(--glass); border: 1px solid var(--border); border-radius: 15px; padding: 30px; transition: 0.3s; position: relative; overflow: hidden; }
+        .construct-card:hover { border-color: var(--danger); background: rgba(255, 51, 102, 0.05); }
+        .construct-card h3 { font-family: 'Cinzel'; color: var(--danger); margin-bottom: 15px; font-size: 0.9rem; letter-spacing: 0.1rem; }
+        .construct-card p { font-size: 1.05rem; color: var(--muted); line-height: 1.6; }
+        .card-icon { font-size: 1.5rem; margin-bottom: 15px; display: block; filter: grayscale(1) opacity(0.5); transition: 0.3s; }
+        .construct-card:hover .card-icon { filter: grayscale(0) opacity(1); }
+
+        /* Layer 4: Four Faces Balance */
+        .face-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 20px; }
+        .balance-pad { width: 100%; aspect-ratio: 1; border: 1px dashed #333; position: relative; border-radius: 50%; background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(20,20,20,0.5) 100%); }
+        .face-node { position: absolute; width: 60px; height: 60px; background: #080808; border: 1px solid #222; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.6rem; font-family: 'Inter'; color: #555; transition: 0.3s; }
+        .face-node.active { border-color: var(--gold); color: #fff; box-shadow: 0 0 15px var(--gold-glow); }
+        .face-node i { font-size: 1.2rem; margin-bottom: 4px; }
+        /* Positioning nodes */
+        .n-lion { top: 10%; left: 50%; transform: translateX(-50%); }
+        .n-eagle { bottom: 10%; left: 50%; transform: translateX(-50%); }
+        .n-calf { top: 50%; left: 10%; transform: translateY(-50%); }
+        .n-man { top: 50%; right: 10%; transform: translateY(-50%); }
+        
+        .face-info { padding: 0 20px; }
+        .face-info h2 { font-family: 'Cinzel'; color: var(--gold); margin-bottom: 15px; }
+        .face-description { font-size: 1.2rem; line-height: 1.7; min-height: 120px; color: var(--text); }
+        .witness-badge { margin-top: 20px; font-family: 'Inter'; font-size: 0.65rem; letter-spacing: 0.2rem; color: var(--success); opacity: 0; transition: 1s; }
+        .witness-badge.show { opacity: 1; }
+
+        /* Layer 5: Prayer Models */
+        .toolbox { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .tool-btn { background: #080808; border: 1px solid var(--border); padding: 12px 24px; border-radius: 50px; font-family: 'Inter'; font-size: 0.7rem; color: var(--muted); cursor: pointer; transition: 0.3s; letter-spacing: 0.1rem; text-transform: uppercase; }
+        .tool-btn:hover, .tool-btn.active { border-color: var(--cyan); color: #fff; background: rgba(0, 229, 255, 0.1); }
+        .tool-display { margin-top: 30px; background: rgba(255,255,255,0.02); padding: 30px; border-radius: 15px; border-left: 3px solid var(--cyan); min-height: 180px; }
+        .tool-display h4 { font-family: 'Cinzel'; font-size: 1.1rem; margin-bottom: 10px; color: var(--cyan); }
+        .outcome-box { display: flex; gap: 30px; }
+        .outcome-item { flex: 1; }
+        .outcome-item label { display: block; font-family: 'Inter'; font-size: 0.6rem; color: var(--muted); text-transform: uppercase; margin-bottom: 5px; }
+        .outcome-item p { font-size: 1.1rem; font-style: italic; color: #fff; }
+
+        /* Layer 6: Vertical Ascent */
+        .ascent-wrap { position: relative; margin: 40px 0; padding-left: 40px; }
+        .ascent-line { position: absolute; left: 0; top: 0; width: 1px; height: 100%; background: linear-gradient(to bottom, var(--gold), transparent); }
+        .ascent-step { margin-bottom: 40px; position: relative; }
+        .ascent-step::before { content: ''; position: absolute; left: -44px; top: 0; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 10px var(--gold); }
+        .ascent-step h4 { font-family: 'Cinzel'; color: var(--gold); font-size: 1rem; margin-bottom: 8px; }
+        .ascent-step p { color: var(--muted); font-size: 1.1rem; }
+
+        /* Layer 7: Declaration */
+        .footer-card { background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.1) 0%, transparent 80%); border-radius: 30px; border: 1px solid var(--border); padding: 60px 40px; text-align: center; }
+        .dec-title { font-family: 'Cinzel'; font-size: 2.2rem; color: #fff; margin-bottom: 30px; }
+        .dec-body { font-size: 1.4rem; font-style: italic; line-height: 1.8; margin-bottom: 40px; color: var(--text); }
+        .btn-download { display: inline-block; background: transparent; border: 1px solid var(--gold); padding: 18px 40px; color: var(--gold); text-decoration: none; font-family: 'Inter'; font-size: 0.8rem; letter-spacing: 0.3rem; text-transform: uppercase; border-radius: 100px; transition: 0.4s; }
+        .btn-download:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold-glow); }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .face-selector { grid-template-columns: 1fr; }
+            .balance-pad { max-width: 300px; margin: 0 auto; }
+            .山-label { font-size: 1.5rem; }
+            .toolbox { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noise"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <main>
+        <!-- LAYER 1: HERO -->
+        <section class="hero sr">
+            <div class="hero-orb">
+                <svg viewBox="0 0 200 200" fill="none">
+                    <circle cx="100" cy="100" r="98" stroke="url(#g1)" stroke-width="0.5" />
+                    <circle cx="100" cy="100" r="70" stroke="url(#g1)" stroke-width="0.2" stroke-dasharray="2,4" />
+                    <circle cx="100" cy="100" r="40" stroke="var(--cyan)" stroke-width="1" opacity="0.6">
+                        <animate attributeName="r" values="38;42;38" dur="4s" repeatCount="indefinite" />
+                    </circle>
+                    <path d="M70 100 L130 100 M100 70 L100 130" stroke="var(--cyan)" stroke-width="0.5" />
+                    <defs>
+                        <linearGradient id="g1" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="var(--cyan)" />
+                            <stop offset="1" stop-color="var(--void)" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <p class="hero-sub">The Operational Technology</p>
+            <h1 class="hero-title">FAITH</h1>
+            <p style="font-family: 'Inter'; font-size: 0.7rem; letter-spacing: 0.2rem; color: var(--muted); max-width: 600px; margin: 0 auto;">"Now faith is the SUBSTANCE of things hoped for, the EVIDENCE of things not seen." — Heb 11:1</p>
+        </section>
+
+        <!-- LAYER 2: THE MOUNTAIN OF IGNORANCE -->
+        <section class="sr">
+            <div class="sec-head">
+                <span class="layer-tag">Layer 2 of 7</span>
+                <h2 class="sec-title">The Mountain of Ignorance</h2>
+            </div>
+            <div class="sim-container">
+                <div class="mountain-viewport">
+                    <div class="light-beam" id="beam"></div>
+                    <div class="mountain" id="mountain"></div>
+                    <div class="mountain-label" id="mt-label">IGNORANCE</div>
+                </div>
+                <div class="slider-wrap">
+                    <span class="control-label">REVELATIONAL LIGHT INTENSITY</span>
+                    <input type="range" id="lightSlider" min="0" max="100" value="0">
+                    <p style="margin-top: 15px; color: var(--muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 20px auto 0;">Every challenge that appears insurmountable is a representation of ignorance. The mountain moves not by power, but by the introduction of <strong>Specific Light</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYER 3: ANTI-FAITH CONSTRUCTS -->
+        <section class="sr">
+            <div class="sec-head">
+                <span class="layer-tag">Layer 3 of 7</span>
+                <h2 class="sec-title">Dismantling Anti-Faith Constructs</h2>
+            </div>
+            <div class="grid-5">
+                <div class="construct-card">
+                    <span class="card-icon">⚡</span>
+                    <h3>Religious Noise</h3>
+                    <p>The assumption that volume = authority. True faith often operates in the precision of the "Still Small Voice".</p>
+                </div>
+                <div class="construct-card">
+                    <span class="card-icon">🎭</span>
+                    <h3>Sophisticated Denial</h3>
+                    <p>Modern theologians often educate themselves out of the "childish" necessity of vocalized declarations.</p>
+                </div>
+                <div class="construct-card">
+                    <span class="card-icon">⏳</span>
+                    <h3>Addiction to Prophetic</h3>
+                    <p>God is not a talkative deity. Most believers crash because they have built no capacity for the silence of seasons.</p>
+                </div>
+                <div class="construct-card">
+                    <span class="card-icon">🌑</span>
+                    <h3>Rational Dismissal</h3>
+                    <p>Attributing everything to biology or economics. It leaves the believer defenseless against spiritual causation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYER 4: THE FOUR FACES -->
+        <section class="sr" style="margin-top: 80px;">
+            <div class="sec-head">
+                <span class="layer-tag">Layer 4 of 7</span>
+                <h2 class="sec-title">The Four Faces of Maturity</h2>
+            </div>
+            <div class="sim-container">
+                <div class="face-selector">
+                    <div class="balance-pad">
+                        <div class="face-node n-lion" onclick="selectFace('lion', this)">🦁<br>LION</div>
+                        <div class="face-node n-calf" onclick="selectFace('calf', this)">🐂<br>CALF</div>
+                        <div class="face-node n-man" onclick="selectFace('man', this)">👤<br>MAN</div>
+                        <div class="face-node n-eagle" onclick="selectFace('eagle', this)">🦅<br>EAGLE</div>
+                        
+                        <!-- Center Indicator -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 10px var(--gold);"></div>
+                    </div>
+                    <div class="face-info">
+                        <small style="color: var(--gold); letter-spacing: 0.1rem; display: block; margin-bottom: 5px; font-family: 'Inter';">ACTIVE DIMENSION</small>
+                        <h2 id="face-title">SELECT A FACE</h2>
+                        <p class="face-description" id="face-desc">The mature believer must cultivate all four distinct internal dimensions simultaneously. Sequential development creates imbalance.</p>
+                        <p class="witness-badge" id="witness-badge">✓ KINGDOM WITNESS ACTIVATED</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYER 5: THE SCHOOL OF PRAYER -->
+        <section class="sr">
+            <div class="sec-head">
+                <span class="layer-tag">Layer 5 of 7</span>
+                <h2 class="sec-title">The School of Prayer: Operative Models</h2>
+            </div>
+            <p class="body-text" style="font-size: 1.2rem; color: var(--muted); margin-bottom: 20px;">Prayer is not one activity. It is a curriculum of distinct technologies designed for specific outcomes.</p>
+            <div class="toolbox" id="prayer-toolbox">
+                <button class="tool-btn" onclick="selectTool('tongues', this)">Praying in Spirit</button>
+                <button class="tool-btn" onclick="selectTool('declaration', this)">Declaration</button>
+                <button class="tool-btn" onclick="selectTool('enquiry', this)">Enquiry</button>
+                <button class="tool-btn" onclick="selectTool('warfare', this)">Warfare</button>
+                <button class="tool-btn" onclick="selectTool('thanksgiving', this)">Thanksgiving</button>
+            </div>
+            <div class="tool-display">
+                <h4 id="tool-name">Select a Model</h4>
+                <div class="outcome-box" id="tool-outcome" style="opacity: 0;">
+                    <div class="outcome-item">
+                        <label>Mechanism</label>
+                        <p id="tool-mech">-</p>
+                    </div>
+                    <div class="outcome-item">
+                        <label>Measurable Result</label>
+                        <p id="tool-res">-</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYER 6: LAYERS OF DISCIPLESHIP -->
+        <section class="sr">
+            <div class="sec-head">
+                <span class="layer-tag">Layer 6 of 7</span>
+                <h2 class="sec-title">The Layers of Discipleship</h2>
+            </div>
+            <div class="ascent-wrap">
+                <div class="ascent-line"></div>
+                <div class="ascent-step">
+                    <h4>01. Character Foundation</h4>
+                    <p>Character is the soil. Ethical compromise severs the operative connection required for faith to function.</p>
+                </div>
+                <div class="ascent-step">
+                    <h4>02. Skill Acquisition</h4>
+                    <p>Anointing empowers what preparation has made possible. Fervor without competence produces irrelevance.</p>
+                </div>
+                <div class="ascent-step">
+                    <h4>03. Leadership Intelligence</h4>
+                    <p>The ability to exercise influence without causing casualties. Strategic wisdom vs. brute control.</p>
+                </div>
+                <div class="ascent-step">
+                    <h4>04. Empowerment Retention</h4>
+                    <p>Learning the mechanics of enforcing power against the systematic resistance that follows impartation.</p>
+                </div>
+                <div class="ascent-step">
+                    <h4>05. Connection to Divine Purpose</h4>
+                    <p>The directional anchor. Without purpose, spiritual energy is dissipated on vain, competitive pursuits.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYER 7: DECLARATION -->
+        <section class="sr">
+            <div class="footer-card">
+                <h2 class="dec-title">Apostolic Declaration</h2>
+                <p class="dec-body">"I refuse the denial of natural reality. I hold it inside the larger reality of Christ's finished work. I am not a wisher; I am an operator. I build the architecture of my faith until mountains become wireframes."</p>
+                <a href="#" class="btn-download">Download Full Faith Manuscript</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- 1. PARTICLE CANVAS ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function initParticles() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    speedY: (Math.random() - 0.5) * 0.3,
+                    alpha: Math.random() * 0.5
+                });
+            }
+        }
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                ctx.fillStyle = `rgba(0, 229, 255, ${p.alpha})`;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+                p.x += p.speedX; p.y += p.speedY;
+                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+            });
+            requestAnimationFrame(drawParticles);
+        }
+        window.addEventListener('resize', initParticles);
+        initParticles(); drawParticles();
+
+        // --- 2. SCROLL REVEAL ---
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Word stagger logic
+                    const words = entry.target.querySelectorAll('.word');
+                    words.forEach((w, i) => setTimeout(() => w.classList.add('visible'), i * 30));
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.sr').forEach(el => observer.observe(el));
+
+        // --- 3. MOUNTAIN SIMULATOR ---
+        const lightSlider = document.getElementById('lightSlider');
+        const mountain = document.getElementById('mountain');
+        const beam = document.getElementById('beam');
+        const mtLabel = document.getElementById('mt-label');
+
+        lightSlider.addEventListener('input', (e) => {
+            const v = e.target.value;
+            beam.style.height = (v * 3.5) + 'px';
+            mountain.style.background = `rgba(0, 229, 255, ${v/200})`;
+            mountain.style.borderColor = `rgba(0, 229, 255, ${v/100})`;
+            mountain.style.transform = `scale(${1 - (v/200)})`;
+            mtLabel.style.opacity = 1 - (v/100);
+            if(v > 90) { 
+                mtLabel.innerText = "REVEALED"; mtLabel.style.opacity = 0.3; mtLabel.style.color = "var(--cyan)";
+            } else { mtLabel.innerText = "IGNORANCE"; mtLabel.style.color = "#333"; }
+        });
+
+        // --- 4. FOUR FACES LOGIC ---
+        const faces = {
+            lion: { title: "THE LION", desc: "Dominion and Authority. The understanding of the royal priesthood. Capacity to confront demonic resistance without hesitation. Speaks to mountains." },
+            calf: { title: "THE CALF", desc: "Humility and Service. Built for labor and sacrifice without recognition. Prevents authority from mutating into pride or spiritual tyranny." },
+            man: { title: "THE MAN", desc: "Humanity and Empathy. Acknowledgment of human limitation. Rest is not unspiritual. Empathy prevents authority from becoming cold or clinical." },
+            eagle: { title: "THE EAGLE", desc: "Prophetic Vision. Soars above the natural. Sees from heights unavailable on earth. Navigates by discernment and the life of the Holy Spirit." }
+        };
+        const selectedFacesArr = new Set();
+        function selectFace(type, el) {
+            el.classList.toggle('active');
+            if(el.classList.contains('active')) selectedFacesArr.add(type);
+            else selectedFacesArr.delete(type);
+
+            document.getElementById('face-title').innerText = faces[type].title;
+            document.getElementById('face-desc').innerText = faces[type].desc;
+
+            const badge = document.getElementById('witness-badge');
+            if(selectedFacesArr.size === 4) badge.classList.add('show');
+            else badge.classList.remove('show');
+        }
+
+        // --- 5. TOOLBOX LOGIC ---
+        const tools = {
+            tongues: { n: "Praying in the Spirit", m: "Bypasses intellectual/linguistic limitations.", r: "Sharpens prophetic discernment & inner strength." },
+            declaration: { n: "Scriptural Declaration", m: "Enforcing legal reality of Christ's work.", r: "Builds a protective prophetic garrison." },
+            enquiry: { n: "Prayer of Enquiry", m: "Deliberate suspension of personal ambition to wait.", r: "Prevents catastrophic, destiny-defining errors." },
+            warfare: { n: "Warfare Prayer", m: "Targeted, authority-based engagement with demonic legal jurisdictions.", r: "Breaks persistent generational blockages." },
+            thanksgiving: { n: "Strategic Thanksgiving", m: "Orientation shift from lack to divine presence.", r: "Sustains miracles in process; access code." }
+        };
+        function selectTool(key, el) {
+            document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+            const t = tools[key];
+            const display = document.getElementById('tool-outcome');
+            display.style.opacity = 0;
+            setTimeout(() => {
+                document.getElementById('tool-name').innerText = t.n;
+                document.getElementById('tool-mech').innerText = t.m;
+                document.getElementById('tool-res').innerText = t.r;
+                display.style.opacity = 1;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
