@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>From New Believer to Transformed Believer | Masterclass</title>
+  <meta name="description" content="The gap between being saved and being transformed — the critical transition the church rarely explains."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --void:#02050a;--deep:#050a12;
+      --gold:#D4AF37;--gold-d:rgba(212,175,55,.15);--gold-g:rgba(212,175,55,.08);
+      --cyan:#00E5FF;--cyan-d:rgba(0,229,255,.15);
+      --purple:#A855F7;--purple-d:rgba(168,85,247,.15);
+      --green:#00D97E;--green-d:rgba(0,217,126,.15);
+      --danger:#FF3366;--danger-d:rgba(255,51,102,.12);
+      --text:#E2E8F0;--muted:#94A3B8;
+      --border:rgba(255,255,255,.07);--glass:rgba(255,255,255,.03);
+      --r:22px;--rp:100px
+    }
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.2}
+
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.93)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
+    @keyframes growBar{from{width:0}to{width:var(--target)}}
+    @keyframes slidUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+    .sr{opacity:0;transform:translateY(45px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    .word{display:inline-block;opacity:0;transform:translateY(12px);transition:.45s}.word.v{opacity:1;transform:none}
+
+    main{position:relative;z-index:1;max-width:1050px;margin:0 auto;padding:0 28px 140px}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-orb{width:300px;height:300px;margin-bottom:44px;animation:float 8s ease-in-out infinite;flex-shrink:0}
+    .hero-orb svg{width:100%;height:100%}
+    .ch-tag{font-family:'Inter';font-size:.68rem;letter-spacing:.35em;color:var(--purple);text-transform:uppercase;margin-bottom:16px;opacity:.85}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,5vw,4rem);font-weight:900;color:#fff;line-height:1;margin-bottom:14px;text-shadow:0 0 60px rgba(168,85,247,.2)}
+    .hero-sub{font-family:'Inter';font-size:.75rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+    .hero-def{font-size:1.25rem;font-style:italic;color:var(--muted);max-width:660px;line-height:1.75}
+    .badge-row{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+    .badge{font-family:'Inter';font-size:.62rem;letter-spacing:.15em;padding:6px 16px;border-radius:var(--rp);border:1px solid}
+    .badge.new{border-color:var(--cyan-d);color:var(--cyan);background:rgba(0,229,255,.04)}
+    .badge.arrow{color:#555;border-color:transparent;font-size:1rem}
+    .badge.tr{border-color:var(--gold-d);color:var(--gold);background:var(--gold-g)}
+
+    /* ── SECTIONS ── */
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter';font-size:.63rem;letter-spacing:.2em;color:var(--purple);background:var(--purple-d);border:1px solid rgba(168,85,247,.2);padding:4px 13px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel';font-size:clamp(1rem,2.5vw,1.55rem);color:#fff;font-weight:600}
+
+    /* ── TYPOGRAPHY ── */
+    .body-text{font-size:1.18rem;line-height:1.9;font-weight:300;color:var(--text);margin-bottom:16px}
+    .body-text.lg{font-size:1.4rem}
+    .scripture{padding:14px 20px;border-left:2px solid rgba(212,175,55,.3);font-style:italic;color:var(--muted);font-size:1.1rem;line-height:1.7;margin:20px 0}
+    .scripture cite{display:block;font-style:normal;font-family:'Inter';font-size:.7rem;color:var(--gold);margin-top:6px;letter-spacing:.1em}
+    .pipe{padding-left:20px;border-left:2px solid var(--purple);font-style:italic;font-size:1.25rem;margin:22px 0;color:var(--muted)}
+    .statement{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .em{color:var(--cyan);font-style:italic}.gold{color:var(--gold);font-style:italic}
+
+    /* ── CARDS ── */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:44px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.purple-b{border-color:var(--purple-d);border-left:3px solid var(--purple)}
+    .card.green-b{border-color:var(--green-d);border-left:3px solid var(--green)}
+    .card.danger-b{border-color:var(--danger-d);background:rgba(255,51,102,.02)}
+
+    /* ── GRIDS ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:800px){.g2,.g3{grid-template-columns:1fr}}
+    .mini-card{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.3s}
+    .mini-card:hover{border-color:var(--purple-d);transform:translateY(-2px)}
+    .mc-icon{font-size:1.6rem;margin-bottom:10px}
+    .mc-title{font-family:'Cinzel';font-size:.8rem;color:var(--purple);margin-bottom:8px}
+    .mc-body{font-size:1rem;line-height:1.65;color:var(--muted)}
+
+    /* ── COMPARISON SWITCH ── */
+    .compare-wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    .compare-col{padding:36px 28px}
+    .compare-col.left{background:rgba(255,51,102,.03);border-right:1px solid var(--border)}
+    .compare-col.right{background:rgba(0,217,126,.03)}
+    .compare-divider{width:1px;background:var(--border);display:flex;align-items:center;justify-content:center;padding:20px 0;writing-mode:vertical-rl;font-family:'Cinzel';font-size:.6rem;letter-spacing:.2em;color:#555}
+    .compare-col h4{font-family:'Cinzel';font-size:.9rem;margin-bottom:18px}
+    .compare-col.left h4{color:var(--danger)}
+    .compare-col.right h4{color:var(--green)}
+    .compare-item{font-size:1.05rem;color:var(--muted);margin-bottom:12px;padding-left:14px;border-left:2px solid;line-height:1.55}
+    .compare-col.left .compare-item{border-color:rgba(255,51,102,.3)}
+    .compare-col.right .compare-item{border-color:rgba(0,217,126,.3)}
+
+    /* ── MIND RENEWAL SIMULATOR ── */
+    .sim-box{background:#000;border:1px solid var(--border);border-radius:var(--r);padding:36px;overflow:hidden;box-shadow:inset 0 0 60px rgba(0,0,0,.8)}
+    .sim-title{font-family:'Cinzel';color:#fff;font-size:1.05rem;text-align:center;margin-bottom:6px}
+    .sim-sub{font-size:.78rem;color:var(--muted);font-family:'Inter';text-align:center;margin-bottom:24px}
+    .mind-stage{height:280px;border:1px solid #111;background:#020202;border-radius:12px;position:relative;overflow:hidden;display:flex;align-items:flex-end}
+    /* mind layers */
+    .mind-layer{position:absolute;width:100%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel';font-size:.65rem;letter-spacing:.15em;transition:all 1s cubic-bezier(.4,0,.2,1)}
+    .ml-old{height:50%;background:rgba(255,51,102,.07);border-top:1px solid rgba(255,51,102,.15);color:rgba(255,51,102,.4);bottom:0}
+    .ml-new{height:0%;background:rgba(168,85,247,.07);border-top:1px solid rgba(168,85,247,.15);color:rgba(168,85,247,.4);bottom:0;overflow:hidden}
+    .ml-mastery{height:0%;background:rgba(212,175,55,.07);border-top:1px solid rgba(212,175,55,.15);color:rgba(212,175,55,.4);bottom:0;overflow:hidden}
+    .step-btns{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;justify-content:center}
+    .step-btn{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Inter';font-size:.65rem;letter-spacing:.1em;padding:12px 20px;border-radius:8px;cursor:pointer;transition:.3s}
+    .step-btn:hover{background:rgba(168,85,247,.1);border-color:var(--purple-d);color:#fff}
+    .step-btn.active{border-color:var(--purple);color:var(--purple);background:rgba(168,85,247,.08)}
+    .sim-console{padding:14px 18px;background:#050505;border:1px solid var(--border);font-family:'Inter';font-size:.82rem;color:var(--muted);border-radius:8px;min-height:52px;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:16px;transition:border-color .4s}
+
+    /* ── THREE ENGINES ── */
+    .engine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    @media(max-width:700px){.engine-grid{grid-template-columns:1fr}}
+    .engine-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center;transition:.35s;cursor:default}
+    .engine-card:hover{transform:translateY(-4px);border-color:var(--purple-d);box-shadow:0 14px 40px rgba(168,85,247,.1)}
+    .engine-icon{font-size:2.4rem;margin-bottom:16px}
+    .engine-title{font-family:'Cinzel';font-size:1rem;color:var(--purple);margin-bottom:10px}
+    .engine-body{font-size:1.05rem;line-height:1.65;color:var(--muted)}
+
+    /* ── SEVEN ROOTS ── */
+    .roots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    .root-item{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;gap:16px;align-items:flex-start;transition:.3s}
+    .root-item:hover{border-color:var(--gold-d);background:var(--gold-g)}
+    .root-num{font-family:'Cinzel';font-size:1.5rem;color:var(--gold);opacity:.35;flex-shrink:0;line-height:1}
+    .root-content h4{font-family:'Cinzel';font-size:.85rem;color:var(--gold);margin-bottom:6px}
+    .root-content p{font-size:1rem;line-height:1.6;color:var(--muted)}
+
+    /* ── SECRET PLACE ── */
+    .secret-box{background:radial-gradient(circle at 50% 20%, rgba(168,85,247,.06) 0%, transparent 70%);border:1px solid var(--purple-d);border-radius:var(--r);padding:60px 44px;text-align:center}
+
+    /* ── STEP TRACKER (4 Steps) ── */
+    .steps-wrap{position:relative}
+    .steps-line{position:absolute;left:28px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--purple),transparent)}
+    .step-item{display:flex;gap:24px;margin-bottom:44px;align-items:flex-start;position:relative}
+    .step-dot{width:56px;height:56px;border-radius:50%;border:1px solid var(--purple-d);background:rgba(168,85,247,.06);display:flex;align-items:center;justify-content:center;font-family:'Cinzel';font-size:1.1rem;color:var(--purple);flex-shrink:0;z-index:1}
+    .step-dot.complete{border-color:var(--gold);color:var(--gold);background:var(--gold-g)}
+    .step-body h4{font-family:'Cinzel';font-size:1rem;color:#fff;margin-bottom:10px}
+    .step-body p{font-size:1.1rem;line-height:1.75;color:var(--muted)}
+    .step-check{display:inline-block;margin-top:14px;background:var(--gold-g);border:1px solid var(--gold-d);color:var(--gold);font-family:'Inter';font-size:.62rem;letter-spacing:.15em;padding:6px 16px;border-radius:var(--rp);cursor:pointer;transition:.3s}
+    .step-check:hover{background:rgba(212,175,55,.15)}
+    .step-check.done{background:rgba(0,217,126,.08);border-color:var(--green-d);color:var(--green)}
+
+    /* ── DECLARATION ── */
+    .decl{border:1px dashed rgba(168,85,247,.2);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle at 50% 30%,rgba(168,85,247,.05) 0%,transparent 70%)}
+    a.d-btn{display:inline-block;margin-top:32px;background:rgba(168,85,247,.08);border:1px solid var(--purple);color:#fff;font-family:'Inter';font-size:.72rem;letter-spacing:.18em;padding:16px 36px;border-radius:var(--rp);text-decoration:none;transition:.3s}
+    a.d-btn:hover{background:var(--purple);box-shadow:0 0 40px rgba(168,85,247,.3)}
+  </style>
+</head>
+<body>
+
+<div class="noise"></div>
+<canvas id="cvs"></canvas>
+
+<main>
+
+  <!-- ── HERO ── -->
+  <section class="hero sr">
+    <div class="hero-orb">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hg1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#A855F7" stop-opacity=".15"/>
+            <stop offset="100%" stop-color="#02050a" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="hg2" cx="50%" cy="45%" r="40%">
+            <stop offset="0%" stop-color="#D4AF37" stop-opacity=".85"/>
+            <stop offset="100%" stop-color="#7A5C00" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="hglow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- background glow -->
+        <circle cx="150" cy="150" r="148" fill="url(#hg1)"/>
+        <!-- outer rings -->
+        <circle cx="150" cy="150" r="147" stroke="rgba(168,85,247,.08)" stroke-width="1"/>
+        <circle cx="150" cy="150" r="120" stroke="rgba(168,85,247,.06)" stroke-width=".5" stroke-dasharray="3,6"/>
+        <circle cx="150" cy="150" r="90"  stroke="rgba(212,175,55,.06)" stroke-width=".5"/>
+        <!-- The two-state symbol: half old, half new -->
+        <!-- left half = old self (dark) -->
+        <path d="M150 60 A90 90 0 0 0 150 240 Z" fill="rgba(255,51,102,.04)" stroke="rgba(255,51,102,.15)" stroke-width=".5"/>
+        <!-- right half = new self (light) -->
+        <path d="M150 60 A90 90 0 0 1 150 240 Z" fill="rgba(168,85,247,.04)" stroke="rgba(168,85,247,.15)" stroke-width=".5"/>
+        <!-- center: mind renewal -->
+        <circle cx="150" cy="150" r="26" fill="none" stroke="var(--gold)" stroke-width="1.5" filter="url(#hglow)" opacity=".7"/>
+        <circle cx="150" cy="150" r="10" fill="#D4AF37" fill-opacity=".8" filter="url(#hglow)"/>
+        <!-- vertical divider -->
+        <line x1="150" y1="65" x2="150" y2="235" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <!-- Labels -->
+        <text x="110" y="108" fill="rgba(255,51,102,.35)" font-family="serif" font-size="9" text-anchor="middle">OLD</text>
+        <text x="190" y="108" fill="rgba(168,85,247,.35)" font-family="serif" font-size="9" text-anchor="middle">NEW</text>
+        <!-- small dots -->
+        <circle cx="80"  cy="150" r="3" fill="rgba(255,51,102,.3)"/>
+        <circle cx="220" cy="150" r="3" fill="rgba(168,85,247,.5)"/>
+        <circle cx="150" cy="62"  r="2.5" fill="var(--gold)" opacity=".4"/>
+        <circle cx="150" cy="238" r="2.5" fill="var(--gold)" opacity=".4"/>
+      </svg>
+    </div>
+    <p class="ch-tag">Masterclass · The Believer Trilogy — Part 2</p>
+    <h1 class="hero-title stag">FROM NEW BELIEVER<br>TO TRANSFORMED<br>BELIEVER</h1>
+    <p class="hero-sub">The Critical Transition Nobody Explained</p>
+    <p class="hero-def stag">Your spirit was changed the moment you were saved. Your <em>mind</em> woke up the next morning exactly the same as it was the night before. The gap between those two realities is what this module is entirely about.</p>
+    <div class="badge-row">
+      <span class="badge new">NEW BELIEVER<br><small>Spirit Born · Mind Unchanged</small></span>
+      <span class="badge arrow">→</span>
+      <span class="badge tr">TRANSFORMED BELIEVER<br><small>Spirit Born · Mind Renewed</small></span>
+    </div>
+  </section>
+
+  <!-- ── LAYER 1: THESIS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 The Inciting Reality</h2></div>
+    <div class="card purple-b">
+      <p class="statement stag">"You can be genuinely saved and still live like <span style="color:var(--purple)">nothing changed.</span><br>Not because God failed. Because the part of you that runs your daily life — your <em>thinking</em> — was never transformed."</p>
+      <div class="scripture stag">Do not be conformed to this world, but be transformed by the renewing of your mind, so that you may prove what the will of God is — that which is good and acceptable and perfect.<cite>— Romans 12:2</cite></div>
+      <p class="body-text stag">Most believers stay at the new-believer stage for years. They are saved. They attend services. They know the songs and scriptures. But internally — in the quiet, honest architecture of how they actually think — nothing has fundamentally shifted. Their relationship with fear is the same. Their self-image is the same. Their instinctive reactions under pressure are the same.</p>
+    </div>
+  </section>
+
+  <!-- ── LAYER 2: THE CONTRAST ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">⚖️ New Believer vs. Transformed Believer</h2></div>
+    <p class="body-text stag" style="margin-bottom:24px">These differences do not show up on Sunday morning. They show up on Monday — under real pressure, in real failure, in actual daily life.</p>
+    <div class="compare-wrap">
+      <div class="compare-col left">
+        <h4>⚠️ NEW BELIEVER (Unchanged Mind)</h4>
+        <p class="compare-item">Sees God as the man in the sky watching for mistakes</p>
+        <p class="compare-item">Runs <em>away</em> from God when they fail</p>
+        <p class="compare-item">Same fears, same self-image as before salvation</p>
+        <p class="compare-item">Carries a rule-list without understanding the <em>why</em></p>
+        <p class="compare-item">Knows they are saved but lives like a suspect, not a son</p>
+        <p class="compare-item">The patterns they had before baptism are still intact</p>
+      </div>
+      <div class="compare-divider">VS</div>
+      <div class="compare-col right">
+        <h4>✓ TRANSFORMED BELIEVER (Renewed Mind)</h4>
+        <p class="compare-item">Has developed a living relationship with a Father, not a judge</p>
+        <p class="compare-item">Runs <em>toward</em> God when they fail</p>
+        <p class="compare-item">Self-image rebuilt on what God says, not what the past says</p>
+        <p class="compare-item">Understands <em>why</em> behind every spiritual discipline</p>
+        <p class="compare-item">Functions as a son with full access, not an employee on probation</p>
+        <p class="compare-item">Old patterns are being progressively replaced by new ones</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 3: THE THREE ENGINES ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">⚙️ The Three Engines of Transformation</h2></div>
+    <p class="body-text stag" style="margin-bottom:24px">Transformation does not happen automatically after salvation. It requires three specific engines operating in your life simultaneously. Remove any one and the process stalls.</p>
+    <div class="engine-grid">
+      <div class="engine-card">
+        <div class="engine-icon">🕊️</div>
+        <div class="engine-title">The Holy Spirit</div>
+        <p class="engine-body">Not as a Sunday experience — as a Person who lives in you, appointed to guide you from the inside. He shows you yourself. Not to condemn — to make you aware of what needs to change. The most precise and patient Teacher there is.</p>
+      </div>
+      <div class="engine-card">
+        <div class="engine-icon">📖</div>
+        <div class="engine-title">The Word of God</div>
+        <p class="engine-body">Not as a devotional habit — as a surgical tool designed to restructure your thinking. It divides between soul and spirit, penetrating to the deepest levels of who you are. But precision only happens with one posture: whatever I believe that contradicts this must change.</p>
+      </div>
+      <div class="engine-card">
+        <div class="engine-icon">👁️</div>
+        <div class="engine-title">A Teacher Ahead of You</div>
+        <p class="engine-body">The engine our culture resists most. There are dimensions of growth that only transfer person-to-person. Information you can find anywhere. Formation — the actual rebuilding of who you are — requires a human being who has walked where you are entering and can see what you cannot yet see.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 4: MIND RENEWAL SIMULATOR ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">🧠 The Mind Renewal Process (SIMULATION)</h2></div>
+    <div class="card gold-b">
+      <p class="body-text stag">Your conscious mind is where you analyze. Your subconscious is where you actually <em>live</em> — your automatic responses, instinctive reactions, what comes out of you under real pressure. The only way to move truth from conscious to subconscious is through <strong>sustained repetition</strong> until it becomes automatic.</p>
+      <div class="sim-box" style="margin-top:32px">
+        <p class="sim-title">THE MIND RENEWAL ENGINE</p>
+        <p class="sim-sub">Walk through the 4-Step process. Watch the old mental architecture be displaced by the new.</p>
+        <div class="mind-stage" id="mind-stage">
+          <div class="mind-layer ml-old" id="ml-old">OLD MENTAL ARCHITECTURE</div>
+          <div class="mind-layer ml-new" id="ml-new">NEW TRUTH ENTERING</div>
+          <div class="mind-layer ml-mastery" id="ml-mastery">TRANSFORMATION SECURED</div>
+        </div>
+        <div class="step-btns">
+          <button class="step-btn" id="sbtn1" onclick="mindStep(1)">1. Name the Lie</button>
+          <button class="step-btn" id="sbtn2" onclick="mindStep(2)">2. Find the Truth</button>
+          <button class="step-btn" id="sbtn3" onclick="mindStep(3)">3. Repeat Until Automatic</button>
+          <button class="step-btn" id="sbtn4" onclick="mindStep(4)">4. See It Before It Arrives</button>
+          <button class="step-btn" style="opacity:.5" onclick="mindReset()">↺ Reset</button>
+        </div>
+        <div class="sim-console" id="mind-console">STATUS: Mind running the old architecture. Awaiting renewal process.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 5: THE FOUR STEPS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">📋 The 4 Steps to Renewing Your Mind</h2></div>
+    <p class="body-text stag" style="margin-bottom:32px">Not a religious formula. A real, practical process. Mark each as you genuinely engage it.</p>
+    <div class="steps-wrap">
+      <div class="steps-line"></div>
+      <div class="step-item sr">
+        <div class="step-dot" id="dot1">01</div>
+        <div class="step-body">
+          <h4>Be Brutally Honest About Where Your Thinking Actually Is</h4>
+          <p>Not where it should be. Not where you want it to appear. Where it <em>actually</em> is. Name the specific belief — out loud or on paper. Ask honestly: where did this come from? Not where it should have come from. Where did it actually originate?</p>
+          <p style="margin-top:12px;color:var(--muted);font-size:1rem">Most people stay vague here. Vague transformation produces vague results.</p>
+          <span class="step-check" onclick="checkStep(1)">MARK AS ENGAGED →</span>
+        </div>
+      </div>
+      <div class="step-item sr">
+        <div class="step-dot" id="dot2">02</div>
+        <div class="step-body">
+          <h4>Find the Truth That Is Superior to What You Identified</h4>
+          <p>A mind cannot simply be emptied. Remove a belief and the blank space fills immediately — usually with a slightly different version of the same thing. You need a precise replacement. Not a general sense of positivity. A targeted counter-statement anchored in who God actually says you are.</p>
+          <span class="step-check" onclick="checkStep(2)">MARK AS ENGAGED →</span>
+        </div>
+      </div>
+      <div class="step-item sr">
+        <div class="step-dot" id="dot3">03</div>
+        <div class="step-body">
+          <h4>Repeat Until It Becomes Automatic</h4>
+          <p>Most people hear a truth that shifts them — and stop there. They feel it. Declare it for two weeks. Then life gets busy. Three months later, they are back in the same place. The subconscious cannot be updated in a single encounter. Only sustained, consistent repetition moves truth from what you remind yourself of to simply what you <em>are</em>.</p>
+          <span class="step-check" onclick="checkStep(3)">MARK AS ENGAGED →</span>
+        </div>
+      </div>
+      <div class="step-item sr">
+        <div class="step-dot" id="dot4">04</div>
+        <div class="step-body">
+          <h4>Learn to See Yourself in the New Reality Before It Arrives</h4>
+          <p>When God told Abraham he would father nations, everything visible in his life said impossible. He chose to align his internal picture with what God had spoken — not denial of reality, but a deliberate decision to let the promise be more real to him than the problem. This is spiritual intelligence. And it is available to you.</p>
+          <div class="scripture stag">He believed in the God who gives life to the dead and calls things that are not as though they were.<cite>— Romans 4:17</cite></div>
+          <span class="step-check" onclick="checkStep(4)">MARK AS ENGAGED →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 6: SEVEN ROOTS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🌳 The Seven Foundations of Transformation</h2></div>
+    <p class="body-text stag" style="margin-bottom:26px">The tree does not stay standing in a storm because its branches are beautiful. It stays standing because the roots go deep. These seven things need to go <em>deep</em> in you.</p>
+    <div class="roots-grid">
+      <div class="root-item sr">
+        <div class="root-num">01</div>
+        <div class="root-content"><h4>The Word as Authority</h4><p>The standard against which everything in your life is measured. Not one voice among many.</p></div>
+      </div>
+      <div class="root-item sr">
+        <div class="root-num">02</div>
+        <div class="root-content"><h4>Prayer as Identity</h4><p>A function of who you are — not a chore you perform. Deliberate communion with heaven that changes what happens on earth.</p></div>
+      </div>
+      <div class="root-item sr">
+        <div class="root-num">03</div>
+        <div class="root-content"><h4>Real Community</h4><p>Not the performance of attending. Actual, honest relationships with people committed to calling out who you are becoming.</p></div>
+      </div>
+      <div class="root-item sr">
+        <div class="root-num">04</div>
+        <div class="root-content"><h4>Identity in Christ</h4><p>A deep, settled understanding of who you actually are now. Not who your past says. Not who your failures say. Who God says.</p></div>
+      </div>
+      <div class="root-item sr">
+        <div class="root-num">05</div>
+        <div class="root-content"><h4>Your Divine Purpose</h4><p>The directional anchor. There is a specific assignment attached to your name and the sooner you orient toward it, the sooner your life produces what it was built to produce.</p></div>
+      </div>
+      <div class="root-item sr">
+        <div class="root-num">06</div>
+        <div class="root-content"><h4>How the Kingdom Works</h4><p>How grace functions. How favor operates. How the invisible interacts with the visible. Most believers never go here — because they were never told it existed.</p></div>
+      </div>
+      <div class="root-item sr" style="grid-column:1/-1;background:rgba(212,175,55,.03);border-color:var(--gold-d)">
+        <div class="root-num" style="color:var(--gold);opacity:1">07</div>
+        <div class="root-content"><h4 style="color:var(--gold)">Becoming a Resource to Others</h4><p>The destination of transformation. The point where you stop being someone who mostly needs help and start being someone who provides it. Where your presence in a room changes what that room is capable of producing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 7: SECRET PLACE + DECLARATION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🚪 The Secret Place &amp; Final Declaration</h2></div>
+    <div class="secret-box">
+      <p style="font-family:'Cinzel';font-size:.68rem;letter-spacing:.3em;color:var(--purple);margin-bottom:18px">WHERE ALL OF THIS ACTUALLY HAPPENS</p>
+      <p class="statement stag" style="font-size:clamp(1.2rem,2.5vw,2rem)">"Go into your room. Shut the door. Pray to your Father in secret. And your Father who sees in secret will reward you <span style="color:var(--gold)">openly.</span>"</p>
+      <div class="scripture stag" style="max-width:620px;margin:28px auto;text-align:left">The reward is public. The building is private. What is built in the private place — through consistent, unhurried, genuine time alone with God — is not just discipline. It is the development of an internal sensitivity to what is real.<cite>— Matthew 6:6 (Applied)</cite></div>
+      <div style="width:60px;height:1px;background:var(--purple);opacity:.3;margin:32px auto"></div>
+      <p class="statement stag" style="font-size:clamp(1.1rem,2vw,1.7rem);margin-top:0">"I refuse to stay in the gap between what I am and what I was made to be. I cooperate with the transformation. I renew my mind. I am not conformed — I am <span style="color:var(--purple)">being changed.</span>"</p>
+      <div style="margin-top:44px;display:flex;justify-content:center">
+        <a href="data:text/plain;charset=utf-8,FROM%20NEW%20BELIEVER%20TO%20TRANSFORMED%20BELIEVER%0A%0AKEY%20INSIGHTS%3A%0A1.%20You%20can%20be%20genuinely%20saved%20and%20live%20like%20nothing%20changed%20if%20your%20mind%20is%20not%20renewed.%0A2.%20The%20three%20engines%3A%20Holy%20Spirit%2C%20Word%20of%20God%2C%20A%20Teacher%20Ahead%20of%20You.%0A3.%20The%204%20steps%3A%20Name%20the%20Lie%20%7C%20Find%20the%20Truth%20%7C%20Repeat%20Until%20Automatic%20%7C%20See%20It%20Before%20It%20Arrives.%0A4.%20The%207%20Roots%3A%20Word%2C%20Prayer%2C%20Community%2C%20Identity%2C%20Purpose%2C%20Kingdom%20Knowledge%2C%20Becoming%20a%20Resource.%0A5.%20The%20secret%20place%20is%20where%20all%20of%20this%20actually%20happens." download="New_to_Transformed_Believer.txt" class="d-btn">DOWNLOAD FULL MANUSCRIPT ⭳</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ── CANVAS BG ──
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
+let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight;pts=[];for(let i=0;i<70;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.8,a:Math.random()*.4});}
+addEventListener('resize',rs);rs();
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(168,85,247,${p.a*.12})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// ── SCROLL REVEAL ──
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.06});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*20));});},{threshold:.1});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// ── MIND RENEWAL SIMULATOR ──
+let mindCurrent=0;
+const mindMessages=[
+  'STATUS: Mind running the old architecture. Awaiting renewal process.',
+  'STATUS: <span style="color:var(--danger)">Step 1 activated. The lie has been named and exposed. Awareness is the beginning of displacement.</span>',
+  'STATUS: <span style="color:var(--purple)">Step 2 activated. Superior truth identified and introduced. The old pattern is being challenged.</span>',
+  'STATUS: <span style="color:var(--cyan)">Step 3 activated. Sustained repetition in progress. Subconscious architecture being rebuilt layer by layer.</span>',
+  'STATUS: <span style="color:var(--gold)">TRANSFORMATION SECURED. The new reality is seen before it arrives. Abraham-faith operating. Mind successfully renewed.</span>'
+];
+function mindStep(step){
+  if(step<=mindCurrent)return;
+  mindCurrent=step;
+  document.querySelectorAll('.step-btn').forEach((b,i)=>{if(i===step-1)b.classList.add('active');});
+  const old=document.getElementById('ml-old');
+  const nw=document.getElementById('ml-new');
+  const mas=document.getElementById('ml-mastery');
+  const co=document.getElementById('mind-console');
+  const maxH=100;
+  if(step===1){old.style.height='50%';nw.style.height='5%';mas.style.height='0%';}
+  if(step===2){old.style.height='40%';nw.style.height='30%';mas.style.height='0%';}
+  if(step===3){old.style.height='20%';nw.style.height='50%';mas.style.height='5%';}
+  if(step===4){old.style.height='0%';nw.style.height='30%';mas.style.height='70%';co.style.borderColor='var(--gold)';}
+  co.innerHTML=mindMessages[step];
+}
+function mindReset(){
+  mindCurrent=0;
+  document.getElementById('ml-old').style.height='50%';
+  document.getElementById('ml-new').style.height='0%';
+  document.getElementById('ml-mastery').style.height='0%';
+  document.getElementById('mind-console').innerHTML=mindMessages[0];
+  document.getElementById('mind-console').style.borderColor='var(--border)';
+  document.querySelectorAll('.step-btn').forEach(b=>b.classList.remove('active'));
+}
+
+// ── STEP TRACKER ──
+const checked=new Set();
+function checkStep(n){
+  if(checked.has(n))return;
+  checked.add(n);
+  const btn=event.target;
+  btn.textContent='✓ ENGAGED';
+  btn.classList.add('done');
+  document.getElementById('dot'+n).classList.add('complete');
+  document.getElementById('dot'+n).textContent='✓';
+}
+</script>
+</body>
+</html>
