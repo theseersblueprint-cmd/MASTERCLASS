@@ -1,1639 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Season of Discovery — Spiritual Course Framework</title>
-  <meta name="description" content="An interactive 7-layer framework exploring The Season of Discovery: when God puts you in a room with yourself to reveal who He is and who you truly are." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Season of Discovery | Masterclass</title>
+  <meta name="description" content="A 7-layer interactive infographic mapping the season of discovery, the 5 mindset builders, and the 4 signs of seasonal transition."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
   <style>
-    /* ===== DESIGN TOKENS ===== */
-    :root {
-      --gold: #C9A84C;
-      --gold-light: #E8C97A;
-      --gold-dim: #8B6F2E;
-      --gold-glow: rgba(201, 168, 76, 0.15);
-      --gold-glow-strong: rgba(201, 168, 76, 0.35);
-      --bg-void: #06050A;
-      --bg-deep: #0C0A14;
-      --bg-mid: #110E1C;
-      --bg-card: rgba(255, 255, 255, 0.03);
-      --bg-glass: rgba(255, 255, 255, 0.05);
-      --text-primary: #F0EBE0;
-      --text-muted: #8B867A;
-      --text-dim: #5A5550;
-      --accent-purple: #6B54A0;
-      --accent-purple-dim: rgba(107, 84, 160, 0.2);
-      --border-gold: rgba(201, 168, 76, 0.3);
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --radius: 16px;
-      --radius-sm: 8px;
-    }
-
-    /* ===== SCROLLBAR ===== */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg-void); }
-    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
-
-    /* ===== RESET & BASE ===== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg-void);
-      color: var(--text-primary);
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 18px;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
-
-    /* ===== PROGRESS BAR ===== */
-    #progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
-      z-index: 1000;
-      transition: width 0.1s linear;
-      box-shadow: 0 0 10px var(--gold-glow-strong);
-    }
-
-    /* ===== LAYER TRACKER ===== */
-    #layer-tracker {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(6, 5, 10, 0.85);
-      border: 1px solid var(--border-gold);
-      border-radius: 50px;
-      padding: 8px 18px;
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      z-index: 999;
-      backdrop-filter: blur(12px);
-      transition: opacity 0.3s;
-    }
-
-    /* ===== STAR BACKGROUND ===== */
-    #star-canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.5;
-    }
-
-    /* ===== MAIN CONTAINER ===== */
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 24px 120px;
-    }
-
-    /* ===== PAGE LOAD ANIMATION ===== */
-    .fade-cascade {
-      opacity: 0;
-      transform: translateY(24px);
-      animation: fadeUp 0.9s ease forwards;
-    }
-    .fade-cascade:nth-child(1) { animation-delay: 0.1s; }
-    .fade-cascade:nth-child(2) { animation-delay: 0.3s; }
-    .fade-cascade:nth-child(3) { animation-delay: 0.5s; }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== SCROLL ANIMATION ===== */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .scroll-reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 0 60px;
-      position: relative;
-    }
-
-    .hero-eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 28px;
-    }
-
-    .hero-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      font-weight: 700;
-      color: var(--gold-light);
-      line-height: 1.2;
-      margin-bottom: 16px;
-      text-shadow: 0 0 60px rgba(201, 168, 76, 0.4);
-    }
-
-    .hero-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      font-style: italic;
-      color: var(--text-muted);
-      max-width: 580px;
-      margin: 0 auto 48px;
-    }
-
-    .hero-divider {
-      width: 80px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0 auto 48px;
-    }
-
-    .hero-tagline {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      color: var(--gold-dim);
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-dim);
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      animation: bounce 2s ease-in-out infinite;
-    }
-
-    .scroll-hint::after {
-      content: '';
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--gold-dim), transparent);
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-8px); }
-    }
-
-    /* ===== LAYER SECTIONS ===== */
-    .layer {
-      margin-bottom: 80px;
-      position: relative;
-    }
-
-    .layer-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .layer-number {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: var(--gold-dim);
-      background: rgba(201, 168, 76, 0.08);
-      border: 1px solid var(--border-gold);
-      padding: 6px 14px;
-      border-radius: 50px;
-      white-space: nowrap;
-    }
-
-    .layer-label {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 3vw, 1.7rem);
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: 0.05em;
-    }
-
-    /* ===== LAYER 1: THESIS ===== */
-    .thesis-card {
-      background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(107, 84, 160, 0.08));
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius);
-      padding: 48px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-    }
-
-    .thesis-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.12), transparent 70%);
-      pointer-events: none;
-    }
-
-    .thesis-quote-mark {
-      font-family: 'Cinzel', serif;
-      font-size: 5rem;
-      color: var(--gold-dim);
-      line-height: 0.5;
-      opacity: 0.4;
-      margin-bottom: 20px;
-    }
-
-    .thesis-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.3rem, 3vw, 1.9rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--text-primary);
-      line-height: 1.6;
-    }
-
-    /* ===== LAYER 2: SCRIPTURE ===== */
-    .scripture-card {
-      background: var(--bg-glass);
-      border-left: 3px solid var(--gold);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 40px 40px 40px 44px;
-      position: relative;
-      backdrop-filter: blur(10px);
-    }
-
-    .scripture-verse {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-      font-style: italic;
-      color: var(--text-primary);
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    .scripture-ref {
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-    }
-
-    .scripture-insight {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border-subtle);
-      font-size: 1rem;
-      color: var(--text-muted);
-      font-style: normal;
-    }
-
-    /* ===== LAYER 3: FRAMEWORK MAP ===== */
-    .framework-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .framework-row {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 20px;
-      background: var(--bg-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 20px 24px;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      cursor: default;
-    }
-
-    .framework-row:hover {
-      border-color: var(--border-gold);
-      transform: translateX(4px);
-      box-shadow: -4px 0 20px rgba(201, 168, 76, 0.1);
-    }
-
-    .framework-icon {
-      font-size: 1.5rem;
-      width: 40px;
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .framework-row:hover .framework-icon {
-      transform: scale(1.2);
-    }
-
-    .framework-content h4 {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      margin-bottom: 4px;
-    }
-
-    .framework-content p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .framework-step {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.15em;
-    }
-
-    /* ===== LAYER 4: DEEP DIVE PANELS ===== */
-    .deep-dive-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .deep-dive-card {
-      background: var(--bg-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-      cursor: pointer;
-    }
-
-    .deep-dive-card:hover {
-      border-color: var(--border-gold);
-      box-shadow: 0 8px 32px rgba(201, 168, 76, 0.12);
-      transform: translateY(-4px);
-    }
-
-    .deep-dive-header {
-      padding: 24px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .deep-dive-emoji {
-      font-size: 1.8rem;
-      transition: transform 0.3s;
-    }
-
-    .deep-dive-card:hover .deep-dive-emoji,
-    .deep-dive-card.open .deep-dive-emoji {
-      transform: scale(1.15);
-    }
-
-    .deep-dive-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      color: var(--gold-light);
-      letter-spacing: 0.05em;
-      flex: 1;
-    }
-
-    .deep-dive-toggle {
-      font-size: 1.2rem;
-      color: var(--gold-dim);
-      transition: transform 0.4s;
-      line-height: 1;
-    }
-
-    .deep-dive-card.open .deep-dive-toggle {
-      transform: rotate(135deg);
-    }
-
-    .deep-dive-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .deep-dive-card.open .deep-dive-body {
-      max-height: 500px;
-    }
-
-    .deep-dive-content {
-      padding: 0 24px 24px;
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 20px;
-    }
-
-    .deep-dive-content p {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 12px;
-    }
-
-    .deep-dive-content p:last-child { margin-bottom: 0; }
-
-    .deep-dive-content .highlight {
-      color: var(--gold-light);
-      font-style: italic;
-    }
-
-    /* ===== TAB SECTION (inside Layer 4) ===== */
-    .tab-section {
-      margin-top: 32px;
-    }
-
-    .tab-buttons {
-      display: flex;
-      gap: 2px;
-      background: var(--bg-mid);
-      border-radius: var(--radius-sm);
-      padding: 4px;
-      margin-bottom: 24px;
-      border: 1px solid var(--border-subtle);
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 12px;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.3s;
-    }
-
-    .tab-btn.active {
-      background: rgba(201, 168, 76, 0.12);
-      color: var(--gold);
-      border: 1px solid var(--border-gold);
-    }
-
-    .tab-panel {
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
-
-    .tab-panel.active { display: block; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .wisdom-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    .wisdom-card {
-      background: var(--bg-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-      transition: border-color 0.3s;
-    }
-
-    .wisdom-card:hover { border-color: var(--border-gold); }
-
-    .wisdom-card .number {
-      font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
-      color: var(--gold-dim);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .wisdom-card h5 {
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-
-    .wisdom-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* ===== LAYER 5: WARNING ===== */
-    .warning-card {
-      background: linear-gradient(135deg, rgba(180, 60, 60, 0.08), rgba(201, 168, 76, 0.05));
-      border: 1px solid rgba(180, 60, 60, 0.3);
-      border-radius: var(--radius);
-      padding: 36px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .warning-card::before {
-      content: '⚠';
-      position: absolute;
-      right: -20px;
-      top: -20px;
-      font-size: 8rem;
-      opacity: 0.04;
-      line-height: 1;
-    }
-
-    .warning-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      letter-spacing: 0.15em;
-      color: #C87070;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .warning-items {
-      display: grid;
-      gap: 16px;
-    }
-
-    .warning-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-
-    .warning-bullet {
-      width: 6px;
-      height: 6px;
-      background: #C87070;
-      border-radius: 50%;
-      margin-top: 10px;
-      flex-shrink: 0;
-    }
-
-    .warning-text {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .warning-text strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-
-    /* ===== LAYER 6: REFLECTION ===== */
-    .reflection-container {
-      background: var(--bg-glass);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius);
-      padding: 40px;
-      backdrop-filter: blur(10px);
-    }
-
-    .reflection-heading {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      color: var(--gold-dim);
-      margin-bottom: 8px;
-    }
-
-    .reflection-pause-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.3rem, 3vw, 1.7rem);
-      font-style: italic;
-      color: var(--text-primary);
-      margin-bottom: 36px;
-    }
-
-    .reflection-question-area {
-      min-height: 120px;
-      margin-bottom: 28px;
-    }
-
-    .reflection-question {
-      display: none;
-      animation: questionFade 0.6s ease forwards;
-    }
-
-    @keyframes questionFade {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reflection-question.shown { display: block; }
-
-    .reflection-q-number {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--gold-dim);
-      margin-bottom: 12px;
-    }
-
-    .reflection-q-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      font-style: italic;
-      color: var(--text-primary);
-      line-height: 1.7;
-      padding-left: 20px;
-      border-left: 2px solid var(--gold);
-    }
-
-    .reflection-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(201, 168, 76, 0.1);
-      border: 1px solid var(--border-gold);
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      padding: 14px 28px;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .reflection-btn:hover {
-      background: rgba(201, 168, 76, 0.2);
-      box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
-    }
-
-    .reflection-dots {
-      display: flex;
-      gap: 8px;
-      margin-top: 28px;
-    }
-
-    .reflection-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      border: 1px solid var(--gold-dim);
-      transition: background 0.3s;
-    }
-
-    .reflection-dot.active {
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-
-    /* ===== NINE PERSPECTIVES SECTION ===== */
-    .nine-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    @media (max-width: 650px) {
-      .nine-grid { grid-template-columns: 1fr; }
-    }
-
-    .perspective-card {
-      background: var(--bg-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .perspective-card:hover {
-      border-color: var(--border-gold);
-      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.1);
-    }
-
-    .perspective-num {
-      font-family: 'Cinzel', serif;
-      font-size: 2rem;
-      color: rgba(201, 168, 76, 0.15);
-      line-height: 1;
-      position: absolute;
-      top: 12px;
-      right: 16px;
-    }
-
-    .perspective-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
-    }
-
-    .perspective-text {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ===== MINDSET BUILDERS ===== */
-    .builder-timeline {
-      position: relative;
-      padding-left: 32px;
-    }
-
-    .builder-timeline::before {
-      content: '';
-      position: absolute;
-      left: 5px;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-    }
-
-    .builder-item {
-      position: relative;
-      padding: 0 0 28px 24px;
-    }
-
-    .builder-item::before {
-      content: '';
-      position: absolute;
-      left: -27px;
-      top: 8px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--bg-void);
-      border: 2px solid var(--gold-dim);
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .builder-item:hover::before {
-      border-color: var(--gold);
-      box-shadow: 0 0 8px rgba(201, 168, 76, 0.4);
-    }
-
-    .builder-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      margin-bottom: 6px;
-    }
-
-    .builder-text {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ===== SEASON SIGNS ===== */
-    .signs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    @media (max-width: 600px) {
-      .signs-grid { grid-template-columns: 1fr; }
-    }
-
-    .sign-card {
-      background: var(--bg-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
-      padding: 28px;
-      transition: all 0.3s;
-    }
-
-    .sign-card:hover {
-      border-color: var(--border-gold);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.1);
-    }
-
-    .sign-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
-
-    .sign-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-    }
-
-    .sign-text {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ===== LAYER 7: CLOSING DECLARATION ===== */
-    .declaration-wrapper {
-      position: relative;
-      background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(107, 84, 160, 0.1));
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius);
-      padding: 60px 48px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .declaration-wrapper::before,
-    .declaration-wrapper::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201, 168, 76, 0.15), transparent 70%);
-    }
-
-    .declaration-wrapper::before {
-      width: 300px; height: 300px;
-      top: -120px; left: -80px;
-    }
-
-    .declaration-wrapper::after {
-      width: 200px; height: 200px;
-      bottom: -80px; right: -40px;
-    }
-
-    .declaration-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--gold-dim);
-      margin-bottom: 28px;
-    }
-
-    .declaration-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 4vw, 2.2rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--gold-light);
-      line-height: 1.5;
-      max-width: 680px;
-      margin: 0 auto 36px;
-      text-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
-    }
-
-    .declaration-divider {
-      width: 60px;
-      height: 1px;
-      background: var(--gold-dim);
-      margin: 0 auto 24px;
-    }
-
-    .declaration-footnote {
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      color: var(--text-dim);
-    }
-
-    /* ===== PRINT BUTTON ===== */
-    .print-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-dim);
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      padding: 10px 20px;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin: 40px auto 0;
-      display: flex;
-    }
-
-    .print-btn:hover {
-      border-color: var(--border-gold);
-      color: var(--gold);
-    }
-
-    /* ===== TOOLTIP ===== */
-    .scripture-tooltip {
-      position: relative;
-      cursor: help;
-      color: var(--gold);
-      border-bottom: 1px dashed var(--gold-dim);
-    }
-
-    .scripture-tooltip .tooltip-content {
-      display: none;
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--bg-mid);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      font-style: italic;
-      font-size: 0.85rem;
-      color: var(--text-primary);
-      white-space: nowrap;
-      max-width: 300px;
-      white-space: normal;
-      z-index: 100;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    }
-
-    .scripture-tooltip:hover .tooltip-content { display: block; }
-
-    /* ===== DIVIDER ===== */
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-      margin: 20px 0 60px;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 700px) {
-      .deep-dive-grid { grid-template-columns: 1fr; }
-      .thesis-card { padding: 32px 24px; }
-      .declaration-wrapper { padding: 40px 24px; }
-      .reflection-container { padding: 28px 20px; }
-    }
-
-    /* ===== PRINT STYLES ===== */
-    @media print {
-      body { background: white; color: #111; }
-      #progress-bar, #layer-tracker, .scroll-hint, .print-btn { display: none !important; }
-      #star-canvas { display: none; }
-      .fade-cascade, .scroll-reveal { opacity: 1 !important; transform: none !important; }
-      .deep-dive-body { max-height: none !important; }
-      .hero { min-height: auto; }
-      * { box-shadow: none !important; }
-      .thesis-card, .scripture-card, .deep-dive-card, .warning-card, .reflection-container, .declaration-wrapper {
-        border: 1px solid #ccc !important;
-        background: white !important;
-        color: #111 !important;
-      }
-      .hero-title, .layer-label, .deep-dive-title, .declaration-text { color: #111 !important; }
-    }
+    :root{--void:#02040A;--deep:#050810;--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--gold-g:rgba(255,215,0,.06);--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--purple:#B08FFF;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.1)}50%{box-shadow:0 0 50px rgba(255,215,0,.25)}}
+    @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:100%;max-width:920px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,215,0,.1);box-shadow:0 0 100px rgba(255,215,0,.08),0 30px 80px rgba(0,0,0,.8);animation:pulse 6s ease-in-out infinite;margin-bottom:44px}
+    .hero-img img{width:100%;height:420px;object-fit:cover;object-position:center top;display:block;transition:transform .8s ease}
+    .hero-img:hover img{transform:scale(1.02)}
+    .ch-tag{font-family:'Inter';font-size:.7rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter';font-size:.78rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:28px auto 0;line-height:1.65}
+
+    /* ── SECTION HEADERS ── */
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--gold);background:var(--gold-g);border:1px solid var(--gold-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
+
+    /* ── TYPOGRAPHY ── */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.cyan-b{border-color:var(--cyan-d);border-left:3px solid var(--cyan)}
+    .card.danger-b{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}
+    .body-text.lg{font-size:1.45rem}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.3rem;margin:24px 0;color:var(--text)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .scripture{padding:16px 22px;border-left:2px solid rgba(255,215,0,.25);font-style:italic;color:var(--muted);font-size:1.1rem;line-height:1.7;margin:22px 0}
+    .scripture cite{display:block;font-style:normal;font-family:'Inter';font-size:.68rem;color:var(--gold);margin-top:8px;letter-spacing:.1em}
+
+    /* ── ACCORDIONS ── */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-num{font-family:'Inter';font-size:.62rem;letter-spacing:.2em;color:var(--gold);margin-bottom:4px}
+    .ac-icon{font-size:1.4rem;color:var(--gold);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s,padding .55s}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--cyan)}
+
+    /* ── MASTER MIND MAP ── */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px}
+    .fw-row{display:flex;justify-content:center;gap:18px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:36px;color:var(--gold);font-size:1.4rem;opacity:.45;position:relative;z-index:1}
+    .map-label{font-family:'Inter';font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px;position:relative;z-index:1}
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center}
+    .node:hover{transform:translateY(-3px);border-color:var(--gold-d);box-shadow:0 8px 30px rgba(255,215,0,.08)}
+    .node.root{width:280px;padding:28px 20px;border-color:var(--gold-d);background:rgba(255,215,0,.04)}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:6px}
+    .node.root .n-sub{font-family:'Inter';font-size:.7rem;color:var(--muted)}
+    .node.sm{width:175px;padding:18px 14px}
+    .node.sm .n-title{font-family:'Cinzel',serif;font-size:.8rem;color:#fff;margin-bottom:4px}
+    .node.sm .n-sub{font-family:'Inter';font-size:.6rem;color:var(--muted)}
+    .node.sm.human{border-color:rgba(255,215,0,.3);background:rgba(255,215,0,.04)}.node.sm.human .n-title{color:var(--gold)}
+    .node.sm.god{border-color:rgba(0,240,255,.3);background:rgba(0,240,255,.04)}.node.sm.god .n-title{color:var(--cyan)}
+    .node.kind{width:190px;padding:20px 14px}
+    .node.kind .n-title{font-family:'Cinzel',serif;font-size:.78rem;color:#fff;margin-bottom:5px}
+    .node.kind .n-sub{font-family:'Inter';font-size:.58rem;color:var(--muted);line-height:1.5}
+    .node.proto{width:160px;padding:16px 12px}
+    .node.proto .n-title{font-family:'Cinzel',serif;font-size:.72rem;color:var(--gold);margin-bottom:3px}
+    .node.proto .n-sub{font-family:'Inter';font-size:.58rem;color:var(--muted)}
+
+    /* ── MODAL PANEL ── */
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;backdrop-filter:blur(3px)}#overlay.show{display:block}
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(580px,90vw);background:#0A0E18;border:1px solid var(--border);border-radius:28px;padding:44px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.95)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:.3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.12rem;line-height:1.85;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+
+    /* ── SIMULATOR ── */
+    .lab{border:1px solid var(--gold-d);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:300px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter';font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter';font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:.3s;margin:6px}
+    .btn:hover{background:var(--hover)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover,.btn.c.on{background:rgba(0,240,255,.1)}
+    
+    .ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;width:100%;max-width:700px}
+    .ch-card{background:#0a0a0a;border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:.35s}
+    .ch-card:hover,.ch-card.on{border-color:var(--cyan);background:rgba(0,240,255,.06)}
+    .ch-card .cc-title{font-family:'Cinzel';font-size:.75rem;color:#fff;margin-bottom:4px}
+    .ch-detail{border:1px solid rgba(0,240,255,.2);border-radius:14px;padding:22px;background:rgba(0,240,255,.03);text-align:left;display:none;animation:popIn .35s ease forward}
+    .ch-detail.show{display:block}.ch-detail h4{font-family:'Cinzel';color:var(--cyan);margin-bottom:10px}
+    .ch-detail p{font-size:1.05rem;line-height:1.7;color:var(--muted)}
+
+    /* ── CHECKER ── */
+    .proto-wrap{display:flex;flex-direction:column;gap:14px;width:100%;max-width:620px}
+    .proto-item{background:#080808;border:1px solid var(--border);border-radius:14px;padding:22px 26px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:.35s}
+    .proto-item:hover{border-color:var(--gold-d)}.proto-item.done{border-color:var(--success);background:rgba(0,217,126,.04)}
+    .proto-check{width:32px;height:32px;border-radius:50%;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:.35s}
+    .proto-item.done .proto-check{background:var(--success);border-color:var(--success);color:#000}
+    .proto-body h5{font-family:'Cinzel';font-size:.82rem;color:#fff;margin-bottom:4px}
+    .proto-body p{font-size:.95rem;color:var(--muted)}.proto-item.done .proto-body h5{color:var(--success)}
+
+    /* ── DECLARATION ── */
+    .decl{border:1px dashed rgba(255,215,0,.18);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(255,215,0,.04) 0%,transparent 70%)}
+
+    /* ── GRID ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np">
+  <button class="np-close" onclick="closePanel()">✕</button>
+  <p class="np-tag" id="np-tag"></p>
+  <h2 class="np-title" id="np-title"></h2>
+  <p class="np-body" id="np-body"></p>
+</div>
 
-  <!-- Progress Bar -->
-  <div id="progress-bar"></div>
+<main>
 
-  <!-- Layer Tracker -->
-  <div id="layer-tracker">LAYER 1 OF 7</div>
+  <!-- ── LAYER 1: HERO ── -->
+  <section class="hero sr">
+    <div class="hero-img">
+      <img src="discovery_hero.png" alt="The Season of Discovery" onerror="this.parentElement.style.display='none'">
+    </div>
+    <p class="ch-tag">When God Put Me in a Room with Myself</p>
+    <h1 class="hero-title stag">THE SEASON OF<br>DISCOVERY</h1>
+    <p class="hero-sub">Connecting The Deep Internal Dots</p>
+    <p class="hero-def stag">Your life is not random. It moves through seasons. The Season of Discovery comes to make you hungry enough to go find the answers. It reveals two things: Who God actually is. And who you actually are.</p>
+  </section>
 
-  <!-- Star Canvas -->
-  <canvas id="star-canvas"></canvas>
-
-  <!-- Print Button -->
-  <button class="print-btn" onclick="window.print()" style="position:fixed;bottom:24px;right:20px;z-index:999;">
-    🖨 PRINT / PDF
-  </button>
-
-  <main>
-
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="fade-cascade">
-        <p class="hero-eyebrow">FROM NEW BELIEVER TO TRANSFORMED BELIEVER · CHAPTER FRAMEWORK</p>
-      </div>
-      <div class="fade-cascade">
-        <h1 class="hero-title">The Season<br/>of Discovery</h1>
-        <div class="hero-divider"></div>
-        <p class="hero-subtitle">When God Put Me in a Room with Myself</p>
-      </div>
-      <div class="fade-cascade">
-        <p class="hero-tagline">🔑 &nbsp; WHO GOD ACTUALLY IS · WHO YOU ACTUALLY ARE · WHY YOU WERE MADE</p>
-      </div>
-      <div class="scroll-hint">SCROLL TO BEGIN</div>
-    </section>
-
-    <!-- ===== LAYER 1: THESIS ===== -->
-    <section class="layer scroll-reveal" id="layer-1" data-layer="1">
-      <div class="layer-header">
-        <span class="layer-number">LAYER 1 OF 7</span>
-        <h2 class="layer-label">🔑 The One-Line Thesis</h2>
-      </div>
-
-      <div class="thesis-card">
-        <div class="thesis-quote-mark">"</div>
-        <p class="thesis-text">
-          A Season of Discovery is the period where God intentionally isolates you from noise so He can reveal the two things that determine everything else: who He actually is — and who you actually are.
-        </p>
-      </div>
-    </section>
-
-    <div class="section-divider scroll-reveal"></div>
-
-    <!-- ===== LAYER 2: SCRIPTURE ===== -->
-    <section class="layer scroll-reveal" id="layer-2" data-layer="2">
-      <div class="layer-header">
-        <span class="layer-number">LAYER 2 OF 7</span>
-        <h2 class="layer-label">📜 The Anchor Scripture</h2>
-      </div>
-
-      <div class="scripture-card">
-        <p class="scripture-verse">
-          "If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him."
-        </p>
-        <p class="scripture-ref">— JAMES 1:5 (ESV)</p>
-        <p class="scripture-insight">
-          This promise is not casual. It is the bedrock of what the Season of Discovery offers: not cleverness, not information — but <em>divine intelligence</em>, given generously, without judgment, to whoever is desperate enough to actually ask. The operative word is <strong>ask</strong> — which assumes a hunger, a recognition of lack, and a willingness to go to the right Source.
-        </p>
-
-        <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border-subtle);">
-          <p style="font-size:0.85rem;color:var(--text-dim);font-family:'Inter',sans-serif;letter-spacing:0.05em;margin-bottom:12px;">SUPPORTING SCRIPTURES — hover to reveal</p>
-          <div style="display:flex;flex-wrap:wrap;gap:10px;">
-            <span class="scripture-tooltip">
-              Jeremiah 29:13
-              <span class="tooltip-content">"You will seek me and find me, when you seek me with all your heart." — Jer 29:13</span>
-            </span>
-            <span class="scripture-tooltip" style="margin-left:8px;">
-              Proverbs 4:7
-              <span class="tooltip-content">"Wisdom is the principal thing; therefore get wisdom. And in all your getting, get understanding." — Prov 4:7</span>
-            </span>
-            <span class="scripture-tooltip" style="margin-left:8px;">
-              Psalm 46:10
-              <span class="tooltip-content">"Be still, and know that I am God." — Psalm 46:10</span>
-            </span>
+  <!-- ── LAYER 2: THESIS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">⏳ The Seasonal Architecture</h2></div>
+    <div class="card gold-b">
+      <p class="statement stag">"The fundamental tragedy is experiencing a season of isolation and calling it depression, or experiencing closed doors and calling it an attack... when God is repositioning you."</p>
+      <div class="g2" style="margin-top:28px">
+        <div>
+          <p class="body-text stag">Not every difficult period is a divinely structured season. But often, the instinct to isolate—to step back from surface-level participation—is the grace required to enter a season that demands your full attention.</p>
+          <p class="pipe stag">This season does not come to give you answers easily. It comes to make you desperate enough to go find them.</p>
+        </div>
+        <div>
+          <p style="font-family:'Cinzel';font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-align:center;margin-bottom:18px">THE DISCOVERY</p>
+          <div style="background:rgba(255,215,0,.04);border:1px solid var(--gold-d);border-radius:14px;padding:18px;text-align:center">
+            <p style="font-size:1.1rem;color:var(--text);line-height:1.6;margin-bottom:8px">It is not primarily about finding information. It is primarily about finding yourself.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="section-divider scroll-reveal"></div>
+  <!-- ── LAYER 3: MASTER MIND MAP ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🗺 The Architecture of Formation</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to reveal the deep insight behind it.</p>
+    <div class="map-wrap"><div class="map-canvas">
 
-    <!-- ===== LAYER 3: FRAMEWORK MAP ===== -->
-    <section class="layer scroll-reveal" id="layer-3" data-layer="3">
-      <div class="layer-header">
-        <span class="layer-number">LAYER 3 OF 7</span>
-        <h2 class="layer-label">🗺 The Framework Map</h2>
+      <!-- Row 1: The Core -->
+      <div class="fw-row">
+        <div class="node root" onclick="sp('sd','THE CRUCIBLE','The Season of Discovery','A divinely structured period where the vague sense that you were made for something specific starts to become a shape you can see clearly. Where you dismantle the borrowed parts of your identity.')"><div class="n-title">🔮 THE SEASON OF DISCOVERY</div><div class="n-sub">Finding God and Finding You</div></div>
       </div>
+      <div class="map-arrow">↓ THE SUBCONSCIOUS BUILDERS ↓</div>
 
-      <p style="font-size:1rem;color:var(--text-muted);margin-bottom:28px;line-height:1.7;">
-        The Season of Discovery has a specific anatomy. It does not arrive without structure. Here is the architecture of how it unfolds — seven movements, each one building on the last:
-      </p>
-
-      <div class="framework-grid">
-        <div class="framework-row">
-          <span class="framework-icon">🔇</span>
-          <div class="framework-content">
-            <h4>THE NOISE BECOMES UNBEARABLE</h4>
-            <p>Contradictions in your beliefs reach a critical mass. The surface answers no longer satisfy. Something in you refuses to settle.</p>
-          </div>
-          <span class="framework-step">STEP 01</span>
-        </div>
-
-        <div class="framework-row">
-          <span class="framework-icon">🚪</span>
-          <div class="framework-content">
-            <h4>THE INSTINCT TO ISOLATE</h4>
-            <p>Social gatherings feel like interruptions. Shallow conversations feel like distractions you cannot afford. The need for depth becomes urgent.</p>
-          </div>
-          <span class="framework-step">STEP 02</span>
-        </div>
-
-        <div class="framework-row">
-          <span class="framework-icon">🗓</span>
-          <div class="framework-content">
-            <h4>SEASONS ARE RECOGNIZED</h4>
-            <p>You discover that your life moves through periods with specific characters and developmental purposes — confusion is not failure; it is preparation.</p>
-          </div>
-          <span class="framework-step">STEP 03</span>
-        </div>
-
-        <div class="framework-row">
-          <span class="framework-icon">🔍</span>
-          <div class="framework-content">
-            <h4>THE AUDIT BEGINS</h4>
-            <p>You examine the five builders of your mindset — information, people, environment, experiences, and exposure — and find that most of your "beliefs" were inherited, not chosen.</p>
-          </div>
-          <span class="framework-step">STEP 04</span>
-        </div>
-
-        <div class="framework-row">
-          <span class="framework-icon">🧱</span>
-          <div class="framework-content">
-            <h4>STRONGHOLDS ARE NAMED</h4>
-            <p>What you cannot name, you cannot dismantle. The poverty mindset, the victim mindset, and territorial patterns are identified — not to condemn, but to begin dismantling.</p>
-          </div>
-          <span class="framework-step">STEP 05</span>
-        </div>
-
-        <div class="framework-row">
-          <span class="framework-icon">👁</span>
-          <div class="framework-content">
-            <h4>NINE PERSPECTIVES EMERGE</h4>
-            <p>A new framework forms: position, union, responsibility, decision, pressure, relationships, transformation, purpose, and eternity — nine new lenses for seeing everything.</p>
-          </div>
-          <span class="framework-step">STEP 06</span>
-        </div>
-
-        <div class="framework-row">
-          <span class="framework-icon">🌅</span>
-          <div class="framework-content">
-            <h4>THE SEASON SHIFTS</h4>
-            <p>Four signs appear: restlessness, closing doors, emerging clarity, and escalating hunger. When you read these correctly, you stop resisting and start submitting.</p>
-          </div>
-          <span class="framework-step">STEP 07</span>
-        </div>
+      <!-- Row 2: 5 Mindset Builders -->
+      <p class="map-label">WHAT CONSTRUCTS YOUR MINDSET</p>
+      <div class="fw-row">
+        <div class="node sm" onclick="sp('b1','BUILDER 1','Information','What you listen to repeatedly becomes your deep subconscious truth that runs your daily experience.')"><div class="n-title">📖 Information</div></div>
+        <div class="node sm" onclick="sp('b2','BUILDER 2','People','You absorb the dominant thought patterns and ceilings of whoever you spend consistent time with.')"><div class="n-title">👥 Proximity</div></div>
+        <div class="node sm" onclick="sp('b3','BUILDER 3','Environment','Culture is the invisible architecture telling you what is achievable and acceptable for your background.')"><div class="n-title">🌍 Culture</div></div>
+        <div class="node sm" onclick="sp('b4','BUILDER 4','Past Experiences','The conclusions you drew from painful experiences become fortified beliefs if left unhealed.')"><div class="n-title">🕰 Experiences</div></div>
+        <div class="node sm" onclick="sp('b5','BUILDER 5','Levels of Exposure','The human mind cannot aspire to what it has never seen. Imagination is bounded by exposure.')"><div class="n-title">👁 Exposure</div></div>
       </div>
-    </section>
+      <div class="map-arrow">↓ THE HIERARCHY OF WISDOM ↓</div>
 
-    <div class="section-divider scroll-reveal"></div>
-
-    <!-- ===== LAYER 4: DEEP DIVE ===== -->
-    <section class="layer scroll-reveal" id="layer-4" data-layer="4">
-      <div class="layer-header">
-        <span class="layer-number">LAYER 4 OF 7</span>
-        <h2 class="layer-label">🧩 Deep Dive Panels</h2>
+      <!-- Row 3: 4 Kinds of Wisdom -->
+      <p class="map-label">WHAT CLOSES THE GAP</p>
+      <div class="fw-row">
+        <div class="node kind" onclick="sp('w1','LEVEL 1','Natural Wisdom','Common sense. Basic reasoning. It is necessary but limited by human comprehension unaided.')"><div class="n-title">🌱 Natural Wisdom</div><div class="n-sub">Common Sense</div></div>
+        <div class="node kind" onclick="sp('w2','LEVEL 2','Philosophical Wisdom','Academic training and deep study. Brilliant, but blind to spiritual realities because it relies only on the 5 senses.')"><div class="n-title">📚 Philosophical Wisdom</div><div class="n-sub">Intellectual Analysis</div></div>
+        <div class="node kind" onclick="sp('w3','LEVEL 3','Dark Strategic Wisdom','Intelligence operating through spiritually compromised systems producing unexplainable foresight.')"><div class="n-title" style="color:var(--danger)">🌑 Dark Wisdom</div><div class="n-sub">Compromised Intelligence</div></div>
+        <div class="node kind" style="border-color:rgba(0,240,255,.3);background:rgba(0,240,255,.04)" onclick="sp('w4','LEVEL 4','Divine Wisdom','Actual supernatural intelligence. Insight from the Creator downloaded into a human mind, producing impossible outcomes.')"><div class="n-title" style="color:var(--cyan)">⚡ Divine Wisdom</div><div class="n-sub" style="color:var(--cyan);opacity:.8">Supernatural Insight</div></div>
       </div>
+    </div></div>
+  </section>
 
-      <p style="font-size:1rem;color:var(--text-muted);margin-bottom:28px;">Click any panel to expand it.</p>
-
-      <!-- TAB SECTION: Four Types of Wisdom -->
-      <div class="tab-section">
-        <p style="font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.15em;color:var(--gold-dim);margin-bottom:12px;">THE FOUR KINDS OF WISDOM</p>
-        <div class="tab-buttons">
-          <button class="tab-btn active" onclick="switchTab(this,'tab-natural')">Natural</button>
-          <button class="tab-btn" onclick="switchTab(this,'tab-philosophical')">Philosophical</button>
-          <button class="tab-btn" onclick="switchTab(this,'tab-compromised')">Counterfeit</button>
-          <button class="tab-btn" onclick="switchTab(this,'tab-divine')">Divine</button>
-        </div>
-
-        <div id="tab-natural" class="tab-panel active">
-          <div class="wisdom-grid">
-            <div class="wisdom-card">
-              <div class="number">01</div>
-              <h5>NATURAL WISDOM</h5>
-              <p>Common sense. Basic logic. The ability to reason through a problem and arrive at a practical conclusion. Necessary, but limited by the ceiling of unassisted human comprehension.</p>
-            </div>
-            <div class="wisdom-card">
-              <div class="number">↓</div>
-              <h5>ITS LIMITATION</h5>
-              <p>Natural wisdom cannot see beyond what human experience has already mapped. It has no access to the spiritual dimension — where most of the significant forces in your life actually operate.</p>
-            </div>
-          </div>
-        </div>
-
-        <div id="tab-philosophical" class="tab-panel">
-          <div class="wisdom-grid">
-            <div class="wisdom-card">
-              <div class="number">02</div>
-              <h5>PHILOSOPHICAL WISDOM</h5>
-              <p>Deep study, research, academic training, and intellectual engagement. Powerful within its domain — it can explain how the physical world works.</p>
-            </div>
-            <div class="wisdom-card">
-              <div class="number">↓</div>
-              <h5>ITS LIMITATION</h5>
-              <p>It operates exclusively through the five senses and human analysis. And because the most significant forces in any human life are spiritual — not physical — philosophical wisdom is essentially blind to the most important layer of reality.</p>
-            </div>
-          </div>
-        </div>
-
-        <div id="tab-compromised" class="tab-panel">
-          <div class="wisdom-grid">
-            <div class="wisdom-card">
-              <div class="number">03</div>
-              <h5>COUNTERFEIT INTELLIGENCE</h5>
-              <p>There is a strategic intelligence that can operate through spiritually compromised systems — evidenced by foresight and coordination that natural intelligence alone does not reliably produce.</p>
-            </div>
-            <div class="wisdom-card">
-              <div class="number">⚠</div>
-              <h5>THE CRITICAL TEST</h5>
-              <p><strong style="color:var(--gold-light)">Results are not proof of origin.</strong> The fact that something produces results does not mean it comes from God. The Season of Discovery forces you to ask not just "does this work?" but "where is this actually coming from?"</p>
-            </div>
-          </div>
-        </div>
-
-        <div id="tab-divine" class="tab-panel">
-          <div class="wisdom-grid">
-            <div class="wisdom-card">
-              <div class="number">04</div>
-              <h5>DIVINE WISDOM</h5>
-              <p>Wisdom that comes directly from the Spirit of God — operating independently of your education, natural intelligence, or background.</p>
-            </div>
-            <div class="wisdom-card">
-              <div class="number">✦</div>
-              <h5>WHAT IT PRODUCES</h5>
-              <p>Actual, supernatural intelligence — insight from the Creator of reality, downloaded into a human mind — that produces outcomes that defy natural explanation. This is what the Season of Discovery was pointing toward.</p>
-            </div>
+  <!-- ── LAYER 4: DEEP DIVES ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🧩 The Difference in The Data</h2></div>
+    
+    <div class="g2" style="margin-bottom:48px">
+      <div>
+        <h3 style="font-family:'Cinzel';color:var(--gold);font-size:1.3rem;margin-bottom:16px">THE DANGEROUS CONFUSION</h3>
+        <p class="body-text stag">Most people treat knowledge, understanding, and wisdom as the same thing.</p>
+        <p class="body-text stag"><strong style="color:white">Knowledge</strong> is accumulation of facts. It cannot change your life by itself. <strong style="color:white">Understanding</strong> sees the "why" behind what you know. But <strong style="color:white">Wisdom</strong> is the ability to take what you know and apply it to get actual results. Wisdom is defined by motion.</p>
+      </div>
+      <div>
+        <div class="ac" onclick="this.classList.toggle('open')">
+          <div class="ac-hdr"><div><p class="ac-num">THE DANGER OF STRONGHOLDS</p><h3 class="ac-title">Invisible Architecture</h3></div><span class="ac-icon">+</span></div>
+          <div class="ac-body" onclick="event.stopPropagation()">
+            <p class="body-text stag">A stronghold is not just a bad habit. It is a fortified belief system that presents itself as reality. The poverty mindset is a stronghold—it interprets everything through scarcity. The victim mindset is a stronghold—it frames your life as something happening *to* you. You cannot dismantle what you will not name.</p>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Accordion Cards -->
-      <div style="margin-top:36px;">
-        <p style="font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.15em;color:var(--gold-dim);margin-bottom:16px;">CORE CONCEPTS — CLICK TO EXPAND</p>
-        <div class="deep-dive-grid">
+  </section>
 
-          <div class="deep-dive-card" onclick="toggleDeepDive(this)">
-            <div class="deep-dive-header">
-              <span class="deep-dive-emoji">🌀</span>
-              <h3 class="deep-dive-title">Knowledge vs. Understanding vs. Wisdom</h3>
-              <span class="deep-dive-toggle">+</span>
-            </div>
-            <div class="deep-dive-body">
-              <div class="deep-dive-content">
-                <p><strong class="highlight">Knowledge</strong> is information — the accumulation of what is true. You can know every scripture about divine provision. But knowledge alone cannot change your life.</p>
-                <p><strong class="highlight">Understanding</strong> is the why behind what you know. It sees how pieces connect, turns isolated facts into a coherent picture. But even understanding does not automatically produce results.</p>
-                <p><strong class="highlight">Wisdom</strong> is understanding with skin on it — applied in actual, real-life situations in ways that produce outcomes. It is knowledge in motion. The Season of Discovery is specifically designed to close the gap between knowing and operating.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="deep-dive-card" onclick="toggleDeepDive(this)">
-            <div class="deep-dive-header">
-              <span class="deep-dive-emoji">🏗</span>
-              <h3 class="deep-dive-title">The Five Mindset Builders</h3>
-              <span class="deep-dive-toggle">+</span>
-            </div>
-            <div class="deep-dive-body">
-              <div class="deep-dive-content">
-                <div class="builder-timeline">
-                  <div class="builder-item">
-                    <p class="builder-title">1. INFORMATION</p>
-                    <p class="builder-text">What you listen to repeatedly becomes your <em>deep truth</em> — not what you'd state consciously, but what actually runs your daily experience.</p>
-                  </div>
-                  <div class="builder-item">
-                    <p class="builder-title">2. PEOPLE AROUND YOU</p>
-                    <p class="builder-text">You absorb the dominant thought patterns of whoever you spend consistent time with. Proximity is the most powerful form of influence.</p>
-                  </div>
-                  <div class="builder-item">
-                    <p class="builder-title">3. ENVIRONMENT & CULTURE</p>
-                    <p class="builder-text">The invisible architecture of what is "normal" — it tells you what someone like you can achieve, and it does this silently.</p>
-                  </div>
-                  <div class="builder-item">
-                    <p class="builder-title">4. PAST EXPERIENCES</p>
-                    <p class="builder-text">Not the experiences themselves — but the conclusions you drew from them. Every major wound becomes a belief if it is not properly processed.</p>
-                  </div>
-                  <div class="builder-item">
-                    <p class="builder-title">5. LEVELS OF EXPOSURE</p>
-                    <p class="builder-text">The human mind cannot genuinely aspire to what it has never seen. Your imagination of what is possible is bounded by what you have been exposed to.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="deep-dive-card" onclick="toggleDeepDive(this)">
-            <div class="deep-dive-header">
-              <span class="deep-dive-emoji">🧱</span>
-              <h3 class="deep-dive-title">The Three Key Strongholds</h3>
-              <span class="deep-dive-toggle">+</span>
-            </div>
-            <div class="deep-dive-body">
-              <div class="deep-dive-content">
-                <p>A stronghold is a fortified belief system that resists the truth of God. Its most dangerous feature: it does not announce itself as a distortion — it presents itself as <em>just the way things are.</em></p>
-                <p><strong class="highlight">The Poverty Mindset</strong> — not poverty as a financial condition, but poverty as a <em>way of seeing</em>. The conviction that scarcity is normal and abundance is for others. You can receive a miracle and lose it in a season, because the mindset didn't change.</p>
-                <p><strong class="highlight">The Victim Mindset</strong> — everything is interpreted through the lens of what has been done to you. It keeps you permanently in reaction mode, unable to take ownership of your trajectory.</p>
-                <p><strong class="highlight">Territorial Strongholds</strong> — patterns that run in families and communities, disguised as culture but driven by spiritual forces that benefit from those patterns continuing.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="deep-dive-card" onclick="toggleDeepDive(this)">
-            <div class="deep-dive-header">
-              <span class="deep-dive-emoji">🌱</span>
-              <h3 class="deep-dive-title">Identity: Revealed AND Formed</h3>
-              <span class="deep-dive-toggle">+</span>
-            </div>
-            <div class="deep-dive-body">
-              <div class="deep-dive-content">
-                <p>Identity is not a static original buried under layers of other people's influence, waiting to be uncovered like an artifact.</p>
-                <p>Identity is both <strong class="highlight">revealed</strong> by God — who knew you before you were born — and <strong class="highlight">formed</strong> through experience, through the crucible of the life you have actually lived, through the character that pressure and growth and surrender have built in you.</p>
-                <p>The discovery is not just recovering something you lost. It is becoming someone you have never yet fully been. And that process is not comfortable — because it requires dismantling things you have mistaken for yourself.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="deep-dive-card" onclick="toggleDeepDive(this)">
-            <div class="deep-dive-header">
-              <span class="deep-dive-emoji">🌬</span>
-              <h3 class="deep-dive-title">The 4 Signs Season Is Changing</h3>
-              <span class="deep-dive-toggle">+</span>
-            </div>
-            <div class="deep-dive-body">
-              <div class="deep-dive-content">
-                <div class="signs-grid">
-                  <div>
-                    <p style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--gold);margin-bottom:6px;">① RESTLESSNESS</p>
-                    <p class="builder-text">Not anxiety — but internal agitation that your current environment has become too small. You have outgrown your container.</p>
-                  </div>
-                  <div>
-                    <p style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--gold);margin-bottom:6px;">② CLOSING DOORS</p>
-                    <p class="builder-text">God closes the doors that belong to the old season so you are not tempted to stay. This is not abandonment — it is redirection.</p>
-                  </div>
-                  <div>
-                    <p style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--gold);margin-bottom:6px;">③ EMERGING CLARITY</p>
-                    <p class="builder-text">Even amid restlessness, a direction begins to form. Not a complete map — but enough light for the next step.</p>
-                  </div>
-                  <div>
-                    <p style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--gold);margin-bottom:6px;">④ ESCALATING HUNGER</p>
-                    <p class="builder-text">A sudden, inexplicable increase in desire to pray, to study, to seek God at a deeper level. This hunger is not manufactured — it arrives. It is the grace for the transition.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="deep-dive-card" onclick="toggleDeepDive(this)">
-            <div class="deep-dive-header">
-              <span class="deep-dive-emoji">👁</span>
-              <h3 class="deep-dive-title">Nine Perspective Shifts</h3>
-              <span class="deep-dive-toggle">+</span>
-            </div>
-            <div class="deep-dive-body">
-              <div class="deep-dive-content">
-                <div class="nine-grid" style="grid-template-columns:1fr;gap:12px;">
-                  <p><strong class="highlight">1. Positional</strong> — Your position in God is not earned. It is already established. The question is whether you are living <em>from</em> it.</p>
-                  <p><strong class="highlight">2. Relational</strong> — Oneness with God is not poetic language. It is meant to be a daily, functional power source.</p>
-                  <p><strong class="highlight">3. Personal Responsibility</strong> — Your life is not happening <em>to</em> you. It is happening <em>from</em> you.</p>
-                  <p><strong class="highlight">4. Decisional</strong> — Nothing moves without a real decision — not an intention, not a prayer, but a costly, courageous choice backed by willingness to pay its price.</p>
-                  <p><strong class="highlight">5. Pressure Reframed</strong> — A vehicle only encounters resistance when it is moving. Resistance is often evidence of motion, not failure.</p>
-                  <p><strong class="highlight">6. Relational Intelligence</strong> — God mostly operates through people. Managing relationships with wisdom and honor is a spiritual discipline.</p>
-                  <p><strong class="highlight">7. Transformation Primacy</strong> — Who you are becoming is infinitely more important than what you are accumulating.</p>
-                  <p><strong class="highlight">8. Purpose</strong> — Gifts and resources only produce genuine satisfaction when connected to something bigger than yourself.</p>
-                  <p><strong class="highlight">9. Eternal Perspective</strong> — The only things you carry beyond this life are your relationship with God, your peace, and the completion of your assignment.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+  <!-- ── LAYER 5: THE ACTIVATION LAB ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">📡 The Paradigm Audit — Activation Lab</h2></div>
+    <p class="body-text stag" style="margin-bottom:8px">Select the 4 markers of a changing season to evaluate if you are in transition.</p>
+    <div class="lab">
+      <div class="lab-stage">
+        <div class="ch-grid" id="sGrid">
+          <div class="ch-card" onclick="openSign('s1',this)"><div class="cc-title">1. Restlessness</div></div>
+          <div class="ch-card" onclick="openSign('s2',this)"><div class="cc-title">2. Closing Doors</div></div>
+          <div class="ch-card" onclick="openSign('s3',this)"><div class="cc-title">3. Clarity</div></div>
+          <div class="ch-card" onclick="openSign('s4',this)"><div class="cc-title">4. Escalating Hunger</div></div>
+        </div>
+        <div class="ch-detail" id="s-detail" style="margin-top:22px;width:100%;max-width:700px">
+          <h4 id="s-d-title">Select a Marker</h4>
+          <p id="s-d-body" style="font-size:1.1rem;line-height:1.75;color:var(--muted)">Explore the profound parameters of seasonal transition.</p>
         </div>
       </div>
-    </section>
+      <div class="lab-footer" id="s-footer">STATUS: Waiting for selection.</div>
+    </div>
+  </section>
 
-    <div class="section-divider scroll-reveal"></div>
-
-    <!-- ===== LAYER 5: WARNING ===== -->
-    <section class="layer scroll-reveal" id="layer-5" data-layer="5">
-      <div class="layer-header">
-        <span class="layer-number">LAYER 5 OF 7</span>
-        <h2 class="layer-label">⚠️ The Critical Warning</h2>
-      </div>
-
-      <div class="warning-card">
-        <p class="warning-title">⚠&nbsp; WHAT HAPPENS WHEN THIS SEASON IS MISREAD</p>
-        <div class="warning-items">
-          <div class="warning-item">
-            <div class="warning-bullet"></div>
-            <p class="warning-text">
-              <strong>Spiritualizing depression.</strong> Not every season of isolation and hunger is a divine invitation. If what you are experiencing is genuine depression, do not spiritualize it in a way that keeps you from getting real support. Honoring your humanity is not a lack of faith. Getting help is not a failure of trust in God.
-            </p>
-          </div>
-          <div class="warning-item">
-            <div class="warning-bullet"></div>
-            <p class="warning-text">
-              <strong>Calling confusion "attack."</strong> Most people who experience the Season of Discovery call it the enemy attacking. They call restlessness instability. They call closing doors failure. And because they misread it, they spend enormous energy fighting what they should be submitting to.
-            </p>
-          </div>
-          <div class="warning-item">
-            <div class="warning-bullet"></div>
-            <p class="warning-text">
-              <strong>Accumulating knowledge without wisdom.</strong> You can read every book, attend every conference, write perfect notes — and emerge with more information but no transformation. The point of a Season of Discovery is not more data. It is a new way of <em>seeing.</em>
-            </p>
-          </div>
-          <div class="warning-item">
-            <div class="warning-bullet"></div>
-            <p class="warning-text">
-              <strong>Over-attributing spiritual causes.</strong> Not every unexplained success has a dark spiritual source. Most extraordinary outcomes have perfectly observable explanations — discipline, preparation, timing, and systems built over years. We must be careful not to assign hidden spiritual causes where clear natural ones already exist.
-            </p>
-          </div>
-          <div class="warning-item">
-            <div class="warning-bullet"></div>
-            <p class="warning-text">
-              <strong>Medicating the hunger.</strong> The restlessness of this season can be numbed with distraction — entertainment, busyness, social noise. But numbing it only delays the question it is forcing you to answer. And delayed questions do not disappear — they compound.
-            </p>
-          </div>
+  <!-- ── LAYER 6: THE AUDIT ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🔓 The Transformation Audit</h2></div>
+    
+    <p class="body-text stag">The Season of Discovery builds 9 specific shifts in perspective. Check the ones you have secured.</p>
+    <div class="proto-wrap" style="margin: 30px auto;">
+        <div class="proto-item" id="fw1" onclick="markFW('fw1')">
+        <div class="proto-check" id="fc1">○</div>
+        <div class="proto-body"><h5>Personal Responsibility</h5><p>My life is not happening to me. It is happening from me.</p></div>
         </div>
-      </div>
-    </section>
-
-    <div class="section-divider scroll-reveal"></div>
-
-    <!-- ===== LAYER 6: REFLECTION ===== -->
-    <section class="layer scroll-reveal" id="layer-6" data-layer="6">
-      <div class="layer-header">
-        <span class="layer-number">LAYER 6 OF 7</span>
-        <h2 class="layer-label">🪞 Reflection Prompts</h2>
-      </div>
-
-      <div class="reflection-container">
-        <p class="reflection-heading">BEFORE YOU CONTINUE — PAUSE HERE.</p>
-        <p class="reflection-pause-title">Three mirrors. One at a time.</p>
-
-        <div class="reflection-question-area">
-          <div class="reflection-question" id="rq-0">
-            <!-- placeholder state -->
-          </div>
-          <div class="reflection-question" id="rq-1">
-            <p class="reflection-q-number">QUESTION 1 OF 3</p>
-            <p class="reflection-q-text">
-              Are you currently in a season of unusual restlessness — where what used to be enough no longer is, and the environment that once felt adequate has started to feel too small? If yes: what is the specific thing in you that has outgrown its current container?
-            </p>
-          </div>
-          <div class="reflection-question" id="rq-2">
-            <p class="reflection-q-number">QUESTION 2 OF 3</p>
-            <p class="reflection-q-text">
-              Which of the five mindset builders — information, people, environment, experiences, or exposure — has had the most unchallenged influence over what you believe is possible for your life? And what is one concrete step you could take to audit it?
-            </p>
-          </div>
-          <div class="reflection-question" id="rq-3">
-            <p class="reflection-q-number">QUESTION 3 OF 3</p>
-            <p class="reflection-q-text">
-              What is one question about yourself — your identity, your purpose, your design — that you have been carrying for a long time without an honest answer? Not the version you give when people ask. The real version. The one that lives in the quiet place that has not yet been satisfied.
-            </p>
-          </div>
-          <div class="reflection-question" id="rq-done">
-            <p style="font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.15em;color:var(--gold-dim);margin-bottom:12px;">ALL THREE QUESTIONS RECEIVED</p>
-            <p style="font-style:italic;color:var(--text-muted);font-size:1.1rem;">Sit with them. Do not rush past what they surface. The answer you need most is probably the one that made you pause the longest.</p>
-          </div>
+        <div class="proto-item" id="fw2" onclick="markFW('fw2')">
+        <div class="proto-check" id="fc2">○</div>
+        <div class="proto-body"><h5>Decisional Edge</h5><p>Nothing moves without real, costly decisions backed by the willingness to pay the price.</p></div>
         </div>
-
-        <button class="reflection-btn" id="reveal-btn" onclick="revealQuestion()">
-          <span id="reveal-btn-text">✦ &nbsp; REVEAL QUESTION 1</span>
-        </button>
-
-        <div class="reflection-dots">
-          <div class="reflection-dot" id="dot-1"></div>
-          <div class="reflection-dot" id="dot-2"></div>
-          <div class="reflection-dot" id="dot-3"></div>
+        <div class="proto-item" id="fw3" onclick="markFW('fw3')">
+        <div class="proto-check" id="fc3">○</div>
+        <div class="proto-body"><h5>Perspective on Pressure</h5><p>Resistance is not abandonment; it is evidence that I am in motion.</p></div>
         </div>
-      </div>
-    </section>
+        <div class="proto-item" id="fw4" onclick="markFW('fw4')">
+        <div class="proto-check" id="fc4">○</div>
+        <div class="proto-body"><h5>Priority of Transformation</h5><p>Who I am becoming is infinitely more important than what I am accumulating.</p></div>
+        </div>
+    </div>
+  </section>
 
-    <div class="section-divider scroll-reveal"></div>
+  <!-- ── LAYER 7: REFLECTION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Identity Reflection</h2></div>
+    <div class="card" style="text-align:center">
+      <p class="body-text lg stag" style="font-style:italic">Identity is not a static original buried under layers. It is both revealed and formed.</p>
+      <p class="body-text stag">The Season of Discovery is when God takes you seriously enough to put you in a room with yourself. The question goes beyond 'what do I achieve?' to <span style="color:var(--gold)">'who am I, really, and what did God put me here to do?'</span></p>
+    </div>
+  </section>
 
-    <!-- ===== LAYER 7: CLOSING DECLARATION ===== -->
-    <section class="layer scroll-reveal" id="layer-7" data-layer="7">
-      <div class="layer-header">
-        <span class="layer-number">LAYER 7 OF 7</span>
-        <h2 class="layer-label">🔥 The Closing Declaration</h2>
-      </div>
+  <!-- ── LAYER 8: DECLARATION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel';font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">THE SEASONAL SURRENDER</p>
+      <p class="statement stag">"I will not medicate my hunger with distraction. I embrace the Season of Discovery. I give myself permission to dismantle borrowed identity and step into the architecture of my true divine design. I choose wisdom over information."</p>
+      <button class="btn g" style="margin-top:30px" id="decl-btn" onclick="declAccepted()">✦ INHABIT YOUR TRUE IDENTITY</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel';color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">SEALED · THE SEASON OF DISCOVERY IS ACTIVE.</p>
+    </div>
+  </section>
 
-      <div class="declaration-wrapper">
-        <p class="declaration-label">CARRY THIS WITH YOU</p>
-        <p class="declaration-text">
-          "The Season of Discovery is where God takes you seriously enough to prepare you — not just for survival, but for significance. It is the season where He puts you in a room with yourself. And the question it demands you answer is not what do I want to achieve — but who am I, really, and what did God actually put me here to do."
-        </p>
-        <div class="declaration-divider"></div>
-        <p class="declaration-footnote">FROM NEW BELIEVER TO TRANSFORMED BELIEVER · THE SEASON OF DISCOVERY</p>
-      </div>
-    </section>
+</main>
 
-  </main>
+<script>
+// ── CANVAS ──
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight;}addEventListener('resize',rs);rs();
+for(let i=0;i<90;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,215,0,${p.a*.15})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
 
-  <script>
-    /* ===== STAR CANVAS ===== */
-    (function() {
-      const canvas = document.getElementById('star-canvas');
-      const ctx = canvas.getContext('2d');
-      let stars = [];
+// ── SCROLL REVEAL ──
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*28));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
 
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
+// ── MODAL PANEL ──
+const panelData={
+  sd:{tag:'THE CRUCIBLE',title:'The Season of Discovery',body:'A divinely structured period where the vague sense that you were made for something specific starts to become a shape you can see clearly. Where you dismantle the borrowed parts of your identity.'},
+  b1:{tag:'BUILDER 1',title:'Information',body:'What you listen to repeatedly becomes your profound subconscious truth. The data streaming into your soul quietly constructs your worldview without your deliberate permission.'},
+  b2:{tag:'BUILDER 2',title:'Proximity & People',body:'You absorb the dominant thought patterns of whoever you spend consistent time with. The fears, ceilings, and worldviews of closed associations migrate into you.'},
+  b3:{tag:'BUILDER 3',title:'Environment & Culture',body:'Culture is the invisible architecture of normal. It tells you what is achievable for your background and what is foolish to hope for.'},
+  b4:{tag:'BUILDER 4',title:'Past Experiences',body:'The conclusions you draw from painful events. Every unchecked wound or betrayal becomes a fortified belief system if left unhealed.'},
+  b5:{tag:'BUILDER 5',title:'Levels of Exposure',body:'The most limiting builder. The human mind cannot genuinely aspire to what it has never seen. Your imagination is strictly bounded by exposure.'},
+  w1:{tag:'LEVEL 1',title:'Natural Wisdom',body:'Common sense, logic, and basic reasoning. Necessary for living, but severely limited by what human comprehension can reach unaided.'},
+  w2:{tag:'LEVEL 2',title:'Philosophical Wisdom',body:'Deep academic study and research. Explains the physical world beautifully but is essentially blind to the spiritual reality since it relies only on five senses.'},
+  w3:{tag:'LEVEL 3',title:'Dark Strategic Wisdom',body:'Intelligence operating through compromised spiritual systems producing unexplainable foresight. Just because something produces results does not mean it is from God.'},
+  w4:{tag:'LEVEL 4',title:'Divine Wisdom',body:'Actual supernatural intelligence from the Creator that operates completely independently of your education or natural intellect to produce impossible outcomes.'}
+};
+function sp(id,t,tt,b){const d=panelData[id]||{tag:t,title:tt,body:b};document.getElementById('np-tag').textContent=d.tag||t||'';document.getElementById('np-title').textContent=d.title||tt;document.getElementById('np-body').textContent=d.body||b;document.getElementById('np').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
 
-      function initStars() {
-        stars = [];
-        for (let i = 0; i < 200; i++) {
-          stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            r: Math.random() * 1.2 + 0.2,
-            opacity: Math.random() * 0.4 + 0.1
-          });
-        }
-      }
+// ── ACTIVATION LAB ──
+const signsData={
+  s1:{title:'1. Restlessness',body:'An internal agitation. Not because things are terrible, but because something in you has outgrown the current container. The environment feels too small.'},
+  s2:{title:'2. Closing Doors',body:'Things that used to be available stop. Relationships strain. This is not abandonment; it is redirection. God closes doors to the old season so you aren\'t tempted to stay.'},
+  s3:{title:'3. Clarification',body:'Even amidst closed doors, a new picture forms. Not a complete map, but a direction of what the next thing is supposed to look like.'},
+  s4:{title:'4. Escalating Hunger',body:'An inexplicable desire to seek God at a deeper level. This isn\'t manufactured discipline; it is the grace provided to push you through the threshold of transition.'}
+};
+function openSign(id,el){document.querySelectorAll('#sGrid .ch-card').forEach(c=>c.classList.remove('on'));el.classList.add('on');const d=signsData[id];const det=document.getElementById('s-detail');det.classList.add('show');document.getElementById('s-d-title').textContent=d.title;document.getElementById('s-d-body').textContent=d.body;document.getElementById('s-footer').textContent='TRANSITION DETECTED: '+d.title;}
 
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(star => {
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(201, 168, 76, ${star.opacity})`;
-          ctx.fill();
-        });
-      }
+// ── FRAMEWORK AUDIT ──
+const fwChecked=new Set();
+function markFW(id){
+    if(fwChecked.has(id))return;
+    fwChecked.add(id);
+    document.getElementById(id).classList.add('done');
+    const num=id.replace('fw','');
+    document.getElementById('fc'+num).textContent='✓';
+    const n=fwChecked.size;
+}
 
-      resize();
-      initStars();
-      draw();
-      window.addEventListener('resize', () => { resize(); initStars(); draw(); });
-    })();
-
-    /* ===== SCROLL PROGRESS BAR ===== */
-    window.addEventListener('scroll', function() {
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
-      document.getElementById('progress-bar').style.width = pct + '%';
-    });
-
-    /* ===== SCROLL REVEAL ===== */
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    const layerSections = document.querySelectorAll('[data-layer]');
-    const tracker = document.getElementById('layer-tracker');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    revealElements.forEach(el => observer.observe(el));
-
-    /* ===== LAYER TRACKER ===== */
-    const layerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const layer = entry.target.dataset.layer;
-          if (layer) tracker.textContent = `LAYER ${layer} OF 7`;
-        }
-      });
-    }, { threshold: 0.5 });
-
-    layerSections.forEach(el => layerObserver.observe(el));
-
-    /* ===== DEEP DIVE ACCORDION ===== */
-    function toggleDeepDive(card) {
-      card.classList.toggle('open');
-    }
-
-    /* ===== TAB SWITCHING ===== */
-    function switchTab(btn, panelId) {
-      const section = btn.closest('.tab-section');
-      section.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      section.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(panelId).classList.add('active');
-    }
-
-    /* ===== REFLECTION REVEAL ===== */
-    let currentQ = 0;
-
-    function revealQuestion() {
-      currentQ++;
-
-      // hide all
-      document.querySelectorAll('.reflection-question').forEach(q => q.classList.remove('shown'));
-
-      // show current
-      const el = document.getElementById('rq-' + currentQ);
-      if (el) el.classList.add('shown');
-
-      // update dots
-      document.querySelectorAll('.reflection-dot').forEach((d, i) => {
-        d.classList.toggle('active', i < currentQ);
-      });
-
-      // update button
-      const btn = document.getElementById('reveal-btn');
-      const btnTxt = document.getElementById('reveal-btn-text');
-
-      if (currentQ === 1) btnTxt.textContent = '✦   REVEAL QUESTION 2';
-      else if (currentQ === 2) btnTxt.textContent = '✦   REVEAL QUESTION 3';
-      else if (currentQ === 3) {
-        btnTxt.textContent = '✦   COMPLETE';
-        setTimeout(() => {
-          document.getElementById('rq-' + currentQ).classList.remove('shown');
-          document.getElementById('rq-done').classList.add('shown');
-          btn.style.opacity = '0.4';
-          btn.style.pointerEvents = 'none';
-        }, 6000);
-      }
-    }
-  </script>
-
+// ── DECLARATION ──
+function declAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+</script>
 </body>
 </html>
