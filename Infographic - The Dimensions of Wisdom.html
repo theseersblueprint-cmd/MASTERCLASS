@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Dimensions of Wisdom | Masterclass</title>
+  <meta name="description" content="A 7-layer interactive infographic mapping the four kinds of wisdom, five divine channels, and four protocols that open access to supernatural intelligence."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--gold-g:rgba(255,215,0,.06);--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--purple:#B08FFF;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.1)}50%{box-shadow:0 0 50px rgba(255,215,0,.25)}}
+    @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:100%;max-width:920px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,215,0,.1);box-shadow:0 0 100px rgba(255,215,0,.08),0 30px 80px rgba(0,0,0,.8);animation:pulse 6s ease-in-out infinite;margin-bottom:44px}
+    .hero-img img{width:100%;height:420px;object-fit:cover;object-position:center top;display:block;transition:transform .8s ease}
+    .hero-img:hover img{transform:scale(1.02)}
+    .ch-tag{font-family:'Inter';font-size:.7rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter';font-size:.78rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:28px auto 0;line-height:1.65}
+
+    /* ── SECTION HEADERS ── */
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--gold);background:var(--gold-g);border:1px solid var(--gold-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
+
+    /* ── TYPOGRAPHY ── */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.cyan-b{border-color:var(--cyan-d);border-left:3px solid var(--cyan)}
+    .card.danger-b{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}
+    .body-text.lg{font-size:1.45rem}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.3rem;margin:24px 0;color:var(--text)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .scripture{padding:16px 22px;border-left:2px solid rgba(255,215,0,.25);font-style:italic;color:var(--muted);font-size:1.1rem;line-height:1.7;margin:22px 0}
+    .scripture cite{display:block;font-style:normal;font-family:'Inter';font-size:.68rem;color:var(--gold);margin-top:8px;letter-spacing:.1em}
+    .em-text{color:var(--gold);font-style:italic}.cyan-text{color:var(--cyan);font-style:italic}
+
+    /* ── ACCORDIONS ── */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-num{font-family:'Inter';font-size:.62rem;letter-spacing:.2em;color:var(--gold);margin-bottom:4px}
+    .ac-icon{font-size:1.4rem;color:var(--gold);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s,padding .55s}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--cyan)}
+
+    /* ── MASTER MIND MAP (VB pattern) ── */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px}
+    .fw-row{display:flex;justify-content:center;gap:18px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:36px;color:var(--gold);font-size:1.4rem;opacity:.45;position:relative;z-index:1}
+    .map-label{font-family:'Inter';font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px;position:relative;z-index:1}
+    /* node types — copied from VB */
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center}
+    .node:hover{transform:translateY(-3px);border-color:var(--gold-d);box-shadow:0 8px 30px rgba(255,215,0,.08)}
+    .node.root{width:280px;padding:28px 20px;border-color:var(--gold-d);background:rgba(255,215,0,.04)}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:6px}
+    .node.root .n-sub{font-family:'Inter';font-size:.7rem;color:var(--muted)}
+    .node.sm{width:175px;padding:18px 14px}
+    .node.sm .n-title{font-family:'Cinzel',serif;font-size:.8rem;color:#fff;margin-bottom:4px}
+    .node.sm .n-sub{font-family:'Inter';font-size:.6rem;color:var(--muted)}
+    .node.sm.human{border-color:rgba(255,215,0,.3);background:rgba(255,215,0,.04)}.node.sm.human .n-title{color:var(--gold)}
+    .node.sm.god{border-color:rgba(0,240,255,.3);background:rgba(0,240,255,.04)}.node.sm.god .n-title{color:var(--cyan)}
+    .node.sm.channel{border-color:rgba(176,143,255,.3);background:rgba(176,143,255,.04)}.node.sm.channel .n-title{color:var(--purple)}
+    .node.sm.danger{border-color:rgba(255,51,102,.25);background:rgba(255,51,102,.03)}.node.sm.danger .n-title{color:rgba(255,130,130,.9)}
+    .node.sm.success{border-color:rgba(0,217,126,.25);background:rgba(0,217,126,.04)}.node.sm.success .n-title{color:var(--success)}
+    .node.kind{width:190px;padding:20px 14px}
+    .node.kind .n-title{font-family:'Cinzel',serif;font-size:.78rem;color:#fff;margin-bottom:5px}
+    .node.kind .n-sub{font-family:'Inter';font-size:.58rem;color:var(--muted);line-height:1.5}
+    .node.proto{width:160px;padding:16px 12px}
+    .node.proto .n-title{font-family:'Cinzel',serif;font-size:.72rem;color:var(--gold);margin-bottom:3px}
+    .node.proto .n-sub{font-family:'Inter';font-size:.58rem;color:var(--muted)}
+
+    /* ── MODAL PANEL (identical to VB) ── */
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;backdrop-filter:blur(3px)}#overlay.show{display:block}
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(580px,90vw);background:#0A0E18;border:1px solid var(--border);border-radius:28px;padding:44px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.95)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:.3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.12rem;line-height:1.85;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+
+    /* ── LAB / SIMULATOR ── */
+    .lab{border:1px solid var(--gold-d);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:300px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter';font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter';font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:.3s;margin:6px}
+    .btn:hover{background:var(--hover)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover,.btn.c.on{background:rgba(0,240,255,.1)}.btn.d{border-color:var(--danger);color:var(--danger)}.btn.d:hover{background:rgba(255,51,102,.1)}
+
+    /* Wisdom Gap gauge */
+    .gap-track{width:100%;max-width:560px;height:10px;background:#111;border-radius:10px;overflow:hidden;margin:16px 0}
+    .gap-fill{height:100%;background:linear-gradient(90deg,var(--danger),var(--gold),var(--success));border-radius:10px;width:0%;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+
+    /* Channel stage */
+    .ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;width:100%;max-width:700px}
+    .ch-card{background:#0a0a0a;border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:.35s}
+    .ch-card:hover,.ch-card.on{border-color:var(--purple);background:rgba(176,143,255,.06)}
+    .ch-card .cc-icon{font-size:1.8rem;margin-bottom:8px}
+    .ch-card .cc-title{font-family:'Cinzel';font-size:.68rem;color:#fff;margin-bottom:4px}
+    .ch-card .cc-sub{font-family:'Inter';font-size:.58rem;color:var(--muted)}
+    .ch-detail{border:1px solid rgba(176,143,255,.2);border-radius:14px;padding:22px;background:rgba(176,143,255,.03);text-align:left;display:none;animation:popIn .35s ease forward}
+    .ch-detail.show{display:block}.ch-detail h4{font-family:'Cinzel';color:var(--purple);margin-bottom:10px}
+    .ch-detail p{font-size:1.05rem;line-height:1.7;color:var(--muted)}
+
+    /* Protocol checker */
+    .proto-wrap{display:flex;flex-direction:column;gap:14px;width:100%;max-width:620px}
+    .proto-item{background:#080808;border:1px solid var(--border);border-radius:14px;padding:22px 26px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:.35s}
+    .proto-item:hover{border-color:var(--gold-d)}.proto-item.done{border-color:var(--success);background:rgba(0,217,126,.04)}
+    .proto-check{width:32px;height:32px;border-radius:50%;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:.35s}
+    .proto-item.done .proto-check{background:var(--success);border-color:var(--success);color:#000}
+    .proto-body h5{font-family:'Cinzel';font-size:.82rem;color:#fff;margin-bottom:4px}
+    .proto-body p{font-size:.95rem;color:var(--muted)}.proto-item.done .proto-body h5{color:var(--success)}
+
+    /* ── REFLECTION ── */
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:24px}
+    .q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);cursor:pointer;transition:.3s}.q-dot.active{background:var(--gold)}
+
+    /* ── DECLARATION ── */
+    .decl{border:1px dashed rgba(255,215,0,.18);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(255,215,0,.04) 0%,transparent 70%)}
+
+    /* ── GRID ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}
+    .rev{direction:rtl}.rev>*{direction:ltr}
+    .img-box{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+    .img-box img{width:100%;display:block;object-fit:cover;height:320px;transition:transform .5s}.img-box:hover img{transform:scale(1.02)}
+    .img-caption{font-family:'Inter';font-size:.6rem;letter-spacing:.15em;color:var(--muted);text-align:center;margin-top:8px;text-transform:uppercase}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np">
+  <button class="np-close" onclick="closePanel()">✕</button>
+  <p class="np-tag" id="np-tag"></p>
+  <h2 class="np-title" id="np-title"></h2>
+  <p class="np-body" id="np-body"></p>
+</div>
+
+<main>
+
+  <!-- ── LAYER 1: HERO ── -->
+  <section class="hero sr">
+    <div class="hero-img">
+      <img src="wisdom_hero.png" alt="The Dimensions of Wisdom — the one thing that builds the house" onerror="this.parentElement.style.display='none'">
+    </div>
+    <p class="ch-tag">The Dimensions of Wisdom</p>
+    <h1 class="hero-title stag">THE ONE THING<br>THAT BUILDS<br>THE HOUSE</h1>
+    <p class="hero-sub">Divine Intelligence — The Missing Ingredient</p>
+    <p class="hero-def stag">Knowledge without wisdom is like owning a perfect plot of land and having no blueprint, no tools, and no knowledge of how to build. Character is the foundation. Wisdom is the construction.</p>
+  </section>
+
+  <!-- ── LAYER 2: THESIS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 The Inciting Thesis</h2></div>
+    <div class="card gold-b">
+      <p class="statement stag">"It is through <span style="color:var(--gold)">wisdom</span> that a house is built. Not through character. Character determines whether what you build will hold. <em>Wisdom is the act of construction itself.</em>"</p>
+      <div class="scripture stag">Through wisdom a house is built, and by understanding it is established; by knowledge the rooms are filled with all precious and pleasant riches.<cite>— Proverbs 24:3–4</cite></div>
+      <div class="g2" style="margin-top:28px">
+        <div>
+          <p class="body-text stag">Character gets a lot of attention. Faith gets a lot of attention. But <em class="em-text">wisdom</em> — the third ingredient on the human side of the victorious life equation — gets almost none.</p>
+          <p class="body-text stag">And that absence is why so many believers who have genuine character and sincere faith are still building lives that do not match what they believe is possible.</p>
+          <p class="pipe stag">You can be deeply good and still lose at life. Character is required. But character alone cannot build the house.</p>
+        </div>
+        <div>
+          <p style="font-family:'Cinzel';font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-align:center;margin-bottom:18px">THE SIX-INGREDIENT EQUATION</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:rgba(255,215,0,.04);border:1px solid var(--gold-d);border-radius:14px;padding:16px;text-align:center">
+              <p style="font-family:'Cinzel';font-size:.6rem;color:var(--gold);margin-bottom:10px">YOUR SIDE</p>
+              <p style="font-size:1.1rem;margin-bottom:6px">🏛 Character</p>
+              <p style="font-size:1.1rem;margin-bottom:6px;color:var(--gold);font-weight:bold">🧠 Wisdom</p>
+              <p style="font-size:1.1rem">🔥 Faith</p>
+            </div>
+            <div style="background:rgba(0,240,255,.03);border:1px solid var(--cyan-d);border-radius:14px;padding:16px;text-align:center">
+              <p style="font-family:'Cinzel';font-size:.6rem;color:var(--cyan);margin-bottom:10px">GOD'S SIDE</p>
+              <p style="font-size:1.1rem;margin-bottom:6px">⚡ Power</p>
+              <p style="font-size:1.1rem;margin-bottom:6px">🕊 Grace</p>
+              <p style="font-size:1.1rem">🛡 Mercy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 3: MASTER MIND MAP ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🗺 The Wisdom Architecture Map</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to reveal the deep insight behind it.</p>
+    <div class="map-wrap"><div class="map-canvas">
+
+      <!-- Row 0: The Problem -->
+      <p class="map-label" style="color:var(--danger)">THE COMMON CONFUSION</p>
+      <div class="fw-row">
+        <div class="node sm danger" onclick="sp('k','LEVEL 1','Knowledge','Knowledge is facts, information, accumulated data. You can know every scripture about divine provision and quote them in your sleep. That is knowledge. And by itself it cannot change your situation. A person can know everything right about God and still be in the exact same circumstances five years later. Knowing is not enough. Knowing is the beginning.')"><div class="n-title">📚 KNOWLEDGE</div><div class="n-sub">Facts · Cannot change your situation</div></div>
+        <div class="node sm danger" onclick="sp('u','LEVEL 2','Understanding','Understanding is deeper — the ability to see the why behind what you know. A person with understanding does not just know God provides; they understand how: through people, through relationships, through seed and faith and obedience. Understanding turns isolated facts into a picture. But even a clear, connected picture does not automatically produce results in your actual life.')"><div class="n-title">🔍 UNDERSTANDING</div><div class="n-sub">The why · Still theoretical</div></div>
+      </div>
+      <div class="map-arrow">↓ THE GAP EVERY STUCK BELIEVER LIVES IN ↓</div>
+
+      <!-- Row 1: Wisdom Centre -->
+      <div class="fw-row">
+        <div class="node root" onclick="sp('w','THE DEFINITION','Wisdom: Knowledge in Motion','Wisdom is what happens when knowledge and understanding leave the realm of the theoretical and enter the realm of the real. It is the ability to take what you know and what you understand, and apply it — in your specific, current, actual situation — in a way that produces the outcome you are reaching for. Wisdom is knowledge in motion. It is understanding with hands on it. A person with wisdom does not just know God provides or understand how He provides. They look at their specific situation and know the exact next move.')"><div class="n-title">🧠 WISDOM</div><div class="n-sub">Knowledge in motion · Understanding with hands</div></div>
+      </div>
+      <div class="map-arrow">↓</div>
+
+      <!-- Row 2: The four kinds -->
+      <p class="map-label">THE FOUR KINDS OF WISDOM</p>
+      <div class="fw-row">
+        <div class="node kind" onclick="sp('n1','KIND 1','Natural Wisdom','Basic human intelligence. Common sense. The logic that comes from observation and experience. Every functioning human operates in some level of this. But it has a hard ceiling: natural wisdom operates entirely within the range of what human observation and experience can reach. The most important realities governing your life — the spiritual ones — are invisible to natural observation. Natural wisdom, at its best, is blind to the most significant layer of your existence.')"><div class="n-title">🏔 Natural</div><div class="n-sub">Observation & common sense · Hard ceiling exists</div></div>
+        <div class="node kind" onclick="sp('n2','KIND 2','Philosophical Wisdom','The product of deep study, academic training, research, scientific inquiry. Medicine, engineering, and economics have done extraordinary things with this. But like natural wisdom it operates exclusively through the five senses and human intellect. It can explain the physical world with great sophistication and still be unable to see the spiritual architecture governing the outcomes that matter most. You cannot solve a fundamentally spiritual problem using only philosophical wisdom.')"><div class="n-title">📐 Philosophical</div><div class="n-sub">Study & research · Still limited to the senses</div></div>
+        <div class="node kind" onclick="sp('n3','KIND 3','Counterfeit Wisdom','Scripture is honest: there is a wisdom that James calls earthly, sensual, demonic — producing envy, selfish ambition, and confusion. Results alone are not proof of divine origin. Discipline, preparation, timing, and intelligence explain most human success. But do not let results alone determine who or what you follow, or covet what someone achieved without understanding the full picture of what it cost them and where it is taking them. Results are not proof of origin.')"><div class="n-title">⚠️ Counterfeit</div><div class="n-sub">Earthly, sensual, demonic · Results ≠ proof</div></div>
+        <div class="node kind" style="border-color:var(--gold-d);background:rgba(255,215,0,.04)" onclick="sp('n4','KIND 4 — TARGET','Divine Wisdom','This is what you were looking for without being able to name it. Divine wisdom is supernatural intelligence. The direct transmission of God thoughts, strategies, and blueprints into a human mind. Not the product of education. Not the product of experience. Not dependent on your IQ or your background. It operates from a position of complete knowledge — from the One who sees the beginning and the end of every situation simultaneously. It produces outcomes the other three types cannot replicate.')"><div class="n-title" style="color:var(--gold)">✦ Divine</div><div class="n-sub" style="color:var(--gold);opacity:.7">Supernatural · From above · Available NOW</div></div>
+      </div>
+      <div class="map-arrow" style="color:var(--purple)">↓</div>
+
+      <!-- Row 3: How it arrives -->
+      <p class="map-label" style="color:var(--purple)">FIVE CHANNELS OF DIVINE WISDOM</p>
+      <div class="fw-row">
+        <div class="node sm channel" onclick="sp('c1','CHANNEL 1','Direct Revelation','The Holy Spirit, in a moment of genuine need, speaks directly. Not necessarily an audible voice — more often a strong internal impression. An illumination. A specific clarity about what to do next. Not from your own reasoning. You will know the difference because the thought will arrive from a different place than where your own thoughts originate. This is available. But it requires a spirit sensitive enough to receive it. Which is why the protocols matter.')"><div class="n-title">💡 Direct Revelation</div><div class="n-sub">Internal impression</div></div>
+        <div class="node sm channel" onclick="sp('c2','CHANNEL 2','Scripture Illumination','You open the Word and suddenly what was always just text becomes alive and specific. Not a general truth that applies broadly, but a precise answer to the exact question you were carrying. The Word becomes alive in your hand as the strategic answer to your specific situation. This is the difference between reading the Bible as a historical document and reading it as a living communication. The same text can be both — depending on the spiritual posture of the reader.')"><div class="n-title">📖 Scripture Light</div><div class="n-sub">Text becomes personal strategy</div></div>
+        <div class="node sm channel" onclick="sp('c3','CHANNEL 3','The Witness of the Spirit','An internal knowing. A peace or an agitation that arrives before you have reasoned to a conclusion. Something in you says no — not a thought, not a reason, a deep settled resistance you cannot fully explain. Or an unexpected peace about a decision that should make you anxious. This is the Spirit functioning as an internal guidance system. It is extraordinarily reliable when you are trained enough to distinguish it from your own preferences and fears.')"><div class="n-title">🫀 Spirit Witness</div><div class="n-sub">Peace or agitation</div></div>
+        <div class="node sm channel" onclick="sp('c4','CHANNEL 4','People & Resources','God regularly deposits wisdom in human vessels. Books, conversations, messages, teachers, mentors. What is fascinating is how often the right resource arrives at the exact right moment. The prerequisite for this channel is humility. The ability to receive wisdom wrapped in a person you were not expecting. From someone younger. From an unconventional source. Without pride filtering it out because it did not arrive through the channel you expected.')"><div class="n-title">🌐 People & Resources</div><div class="n-sub">Humility required</div></div>
+        <div class="node sm channel" onclick="sp('c5','CHANNEL 5','Prayer in the Spirit','When you pray in the Spirit, the Holy Spirit prays through you — bypassing the limits of your intellect — and accessing the deep counsel of the Father directly. Your natural mind can only ask for solutions within the boundaries of its current understanding. But praying in the Spirit bypasses that ceiling. The result — over time and sometimes immediately — is that ideas surface in your mind that were not there before. Strategies. Solutions. Directions. They arrive as gifts from the realm where all problems already have solutions.')"><div class="n-title">🔥 Prayer in Spirit</div><div class="n-sub">Most underused ·Most effective</div></div>
+      </div>
+      <div class="map-arrow" style="color:var(--gold)">↓</div>
+
+      <!-- Row 4: Protocols -->
+      <p class="map-label" style="color:var(--gold)">FOUR PROTOCOLS THAT OPEN THE CHANNELS</p>
+      <div class="fw-row">
+        <div class="node proto" onclick="sp('p1','PROTOCOL 1','Wholehearted Pursuit','The deep things of God are not available to people who are browsing. They tend to open for people who are desperate — who have moved from wanting to needing. The threshold is all of the heart. Not perfection — but genuine, undivided orientation. A direction that is consistent. A hunger that persists. Half-hearted seeking tends to produce thin results. Not because God withholds out of punishment, but because a scattered gaze rarely lands on what it is looking for.')"><div class="n-title">❤️ Whole Heart</div><div class="n-sub">Desperate hunger</div></div>
+        <div class="node proto" onclick="sp('p2','PROTOCOL 2','Love Over Results','There is a version of seeking God that is really seeking what He can give you. The wisdom of God — the classified, deep, divine intelligence — tends to flow most freely to people who want God Himself more than they want the results He can produce. People who can honestly say: if nothing changes, if the breakthrough is delayed, I am still here. Not resignation. But love that is not contingent on delivery. That posture unlocks the deepest levels of divine wisdom.')"><div class="n-title">🕊 Love Not Results</div><div class="n-sub">Want Him, not things</div></div>
+        <div class="node proto" onclick="sp('p3','PROTOCOL 3','Release the Isaac','Every person has an Isaac — the dream, the relationship, the ambition, the plan — the thing whose loss would be the hardest to absorb. The protocol is to reach genuine surrender on that specific thing. Not suppressing the desire. But genuinely releasing it into God\'s hands, reaching the point where your love for God is no longer held hostage by whether that particular thing survives. That release is not earning a divine response — it is settling the most foundational question of the heart.')"><div class="n-title">🗡 Release Isaac</div><div class="n-sub">Full surrender</div></div>
+        <div class="node proto" onclick="sp('p4','PROTOCOL 4','Maintain Purity','Three things introduce static into your relationship with the Holy Spirit: the lust of the flesh (sensual appetite regardless of cost), the lust of the eyes (covetousness for what belongs to another season), and the pride of life (the conviction that what you have achieved gives you standing independent of God). These do not eliminate the relationship — but they introduce static. And static reduces the quality and precision of what gets through.')"><div class="n-title">🌊 Purity</div><div class="n-sub">Clear the channel</div></div>
+      </div>
+      <div class="map-arrow" style="color:var(--success)">↓</div>
+
+      <!-- Row 5: The Output -->
+      <div class="fw-row">
+        <div class="node root" style="width:320px;border-color:rgba(0,217,126,.3);background:rgba(0,217,126,.04)" onclick="sp('out','THE OUTPUT','The Shift That Changes Everything','From knowledge accumulation to wisdom activation. From someone who knows a lot about God to someone whose life is actually being directed by God. Not reading about the Holy Spirit — having a relationship in which He can speak. Not collecting strategies — receiving specific, real-time instructions from the One who authored the outcome. Not accumulating theological facts — operating from divine intelligence far above what your intellect can produce.')"><div class="n-title" style="color:var(--success)">✦ WISDOM ACTIVATED</div><div class="n-sub" style="color:var(--success);opacity:.7">Life directed by God · Not just known by head</div></div>
+      </div>
+
+    </div></div>
+  </section>
+
+  <!-- ── LAYER 4: DEEP DIVES ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🧩 The Four Kinds — Full Architecture</h2></div>
+    <div class="g2" style="margin-bottom:48px">
+      <div>
+        <h3 style="font-family:'Cinzel';color:var(--gold);font-size:1.3rem;margin-bottom:16px">THE MOST UNCOMFORTABLE SENTENCE</h3>
+        <p class="body-text stag">You can be a deeply good person and still lose at life. Honest. Prayerful. Pure. Consistent. A person whose heart is right before God. And still experience defeat that makes no sense.</p>
+        <div class="ac" onclick="this.classList.toggle('open')">
+          <div class="ac-hdr"><div><p class="ac-num">THE DISTINCTION</p><h3 class="ac-title">Character vs. Wisdom — The Critical Difference</h3></div><span class="ac-icon">+</span></div>
+          <div class="ac-body" onclick="event.stopPropagation()">
+            <p class="body-text stag">Character is the foundation beneath the house. It determines whether what you build will hold — the depth, quality, and sustainability. But the actual act of construction — the daily work, the decisions, the strategies, finding what works — that requires wisdom.</p>
+            <p class="body-text stag">A person with excellent character but no wisdom is like a man with a perfect plot of land, excellent moral credentials, no blueprint, no tools, and no knowledge of how to build. He is everything a builder should be in character. And he is still living without a house.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'Cinzel';font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-align:center;margin-bottom:16px">THE THREE LEVELS</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="background:rgba(255,51,102,.04);border:1px solid rgba(255,51,102,.15);border-radius:14px;padding:18px 22px;border-left:3px solid var(--danger)"><p style="font-family:'Cinzel';font-size:.75rem;color:var(--danger)">LEVEL 1: KNOWLEDGE</p><p style="font-size:1rem;color:var(--muted);margin-top:6px">Facts. Cannot change your situation alone.</p></div>
+          <div style="background:rgba(0,240,255,.03);border:1px solid var(--cyan-d);border-radius:14px;padding:18px 22px;border-left:3px solid var(--cyan)"><p style="font-family:'Cinzel';font-size:.75rem;color:var(--cyan)">LEVEL 2: UNDERSTANDING</p><p style="font-size:1rem;color:var(--muted);margin-top:6px">The why. A picture. Still theoretical.</p></div>
+          <div style="background:rgba(255,215,0,.05);border:1px solid var(--gold-d);border-radius:14px;padding:18px 22px;border-left:3px solid var(--gold)"><p style="font-family:'Cinzel';font-size:.75rem;color:var(--gold)">LEVEL 3: WISDOM</p><p style="font-size:1rem;color:var(--muted);margin-top:6px">Applied. Specific. Produces the outcome.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><div><p class="ac-num">DETAILED EXPLORATION</p><h3 class="ac-title">Natural & Philosophical Wisdom — AND Their Limits</h3></div><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Natural wisdom is basic human intelligence — common sense and the logic of observation. It is useful and necessary. But it has a hard ceiling. Natural wisdom operates entirely within the range of what human observation reaches. The most important realities governing your life — the spiritual ones — are invisible to natural observation.</p>
+        <p class="body-text stag">Philosophical wisdom is the product of deep study, academic training, and research. Medicine, engineering, and economics have done extraordinary things. But like natural wisdom, it operates exclusively through the five senses and human intellect. It can explain the physical world with great sophistication and still be unable to see the spiritual architecture governing the outcomes that matter most.</p>
+        <p class="pipe stag">When you try to solve a fundamentally spiritual problem using only philosophical wisdom, you will consistently hit a wall you cannot see and cannot explain.</p>
+      </div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><div><p class="ac-num">HANDLE WITH CARE</p><h3 class="ac-title">⚠️ Counterfeit Wisdom — Results Are Not Proof of Origin</h3></div><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Scripture acknowledges a wisdom that is "earthly, sensual, demonic" — producing envy, selfish ambition, and confusion. This is a biblical reality, not fearful religion.</p>
+        <p class="body-text stag">The key insight: discipline, preparation, timing, and intelligence explain the majority of human success — and that is right to name. But do not let results alone determine who or what you follow. Do not covet what a person achieved without understanding the full picture of what it cost them and where it is taking them.</p>
+        <p class="pipe stag" style="border-color:var(--danger);color:#FF8F9C">Results are not proof of origin. Discernment is careful, evidence-based, and slow to conclude.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 5: THE CHANNELS + SIMULATOR ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">📡 The Five Channels — Activation Lab</h2></div>
+    <p class="body-text stag" style="margin-bottom:8px">Divine wisdom does not arrive through one channel. There are five distinct ways the Holy Spirit transmits it. Click each to study the mechanism — then audit which you are most closed to.</p>
+    <div class="lab">
+      <div class="lab-stage">
+        <div class="ch-grid" id="chGrid">
+          <div class="ch-card" onclick="openChannel('c1',this)"><div class="cc-icon">💡</div><div class="cc-title">Direct Revelation</div><div class="cc-sub">Internal illumination</div></div>
+          <div class="ch-card" onclick="openChannel('c2',this)"><div class="cc-icon">📖</div><div class="cc-title">Scripture Light</div><div class="cc-sub">Text becomes strategy</div></div>
+          <div class="ch-card" onclick="openChannel('c3',this)"><div class="cc-icon">🫀</div><div class="cc-title">Spirit Witness</div><div class="cc-sub">Peace or agitation</div></div>
+          <div class="ch-card" onclick="openChannel('c4',this)"><div class="cc-icon">🌐</div><div class="cc-title">People & Resources</div><div class="cc-sub">Humility required</div></div>
+          <div class="ch-card" onclick="openChannel('c5',this)"><div class="cc-icon">🔥</div><div class="cc-title">Prayer in Spirit</div><div class="cc-sub">Most underused</div></div>
+        </div>
+        <div class="ch-detail" id="ch-detail" style="margin-top:22px;width:100%;max-width:700px">
+          <h4 id="ch-d-title">Select a channel above</h4>
+          <p id="ch-d-body" style="font-size:1.1rem;line-height:1.75;color:var(--muted)">Each of the five channels requires a different posture to remain open. Clicking each will reveal its specific mechanism and what keeps believers locked out of it.</p>
+        </div>
+      </div>
+      <div class="lab-footer" id="ch-footer">STATUS: No channel selected. Tap a card above to activate.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 6: THE PROTOCOLS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🔓 The Four Protocols — Personal Audit</h2></div>
+    <p class="body-text stag" style="margin-bottom:4px">These are not formulas that obligate a divine output. They are postures — orientations of the heart that create the internal conditions for receptivity. God is not a vending machine. These position you.</p>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><div><p class="ac-num">IMPORTANT NOTICE</p><h3 class="ac-title">What "Protocols" Really Means</h3></div><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">God sometimes speaks loudly into broken, imperfect, undisciplined lives — because that is grace. And He sometimes goes very quiet even in seasons when everything looks spiritually correct — because He is sovereign. These protocols do not control God. They position you. The schedule belongs to God. Wisdom administered in faith, over time, with patience — produces outcomes that the shortcuts could never have built and that the hurry could never sustain.</p>
+      </div>
+    </div>
+    <div class="lab" style="margin-top:28px">
+      <div class="lab-stage">
+        <div class="proto-wrap" id="protoWrap">
+          <div class="proto-item" id="pr1" onclick="markProto('pr1')">
+            <div class="proto-check" id="pc1">○</div>
+            <div class="proto-body"><h5>PROTOCOL 1: Wholehearted Pursuit</h5><p>Not browsing — desperate. A consistent, genuinely undivided orientation. A hunger that persists.</p></div>
+          </div>
+          <div class="proto-item" id="pr2" onclick="markProto('pr2')">
+            <div class="proto-check" id="pc2">○</div>
+            <div class="proto-body"><h5>PROTOCOL 2: Love Over Results</h5><p>I want God Himself more than the breakthrough He can produce. My love is not contingent on delivery.</p></div>
+          </div>
+          <div class="proto-item" id="pr3" onclick="markProto('pr3')">
+            <div class="proto-check" id="pc3">○</div>
+            <div class="proto-body"><h5>PROTOCOL 3: Release the Isaac</h5><p>I have reached genuine surrender on the specific thing whose loss would be the hardest to absorb.</p></div>
+          </div>
+          <div class="proto-item" id="pr4" onclick="markProto('pr4')">
+            <div class="proto-check" id="pc4">○</div>
+            <div class="proto-body"><h5>PROTOCOL 4: Maintaining Purity</h5><p>I am actively addressing: lust of the flesh, lust of the eyes, and the pride of life — the three sources of static.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="lab-footer" id="proto-footer">STATUS: Mark each protocol you are actively operating in.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 7: REFLECTION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Three Honest Questions</h2></div>
+    <div class="card" style="text-align:center">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">In which area of your life do you have the most knowledge and the least results? The gap between those two is not a faith problem or a character problem. <span style="color:var(--gold)">That is your wisdom gap.</span></p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">Of the five channels — direct revelation, Scripture illumination, the internal witness, providential connections, praying in the Spirit — which one are you most consistently closed to or underdeveloped in?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">Of the four protocols — wholehearted pursuit, love over results, releasing the Isaac, maintaining purity — which one, if you were completely honest, <span style="color:var(--gold)">is the one you have been protecting rather than surrendering?</span> That answer is the specific bottleneck in your access to divine wisdom. Not a barrier God built. A door you have not yet opened.</p></div>
+      <button class="btn g" style="margin-top:28px" id="rq-btn" onclick="nextQ()">✦ REVEAL NEXT QUESTION</button>
+      <div class="q-nav"><div class="q-dot active" id="qd1" onclick="goQ(1)"></div><div class="q-dot" id="qd2" onclick="goQ(2)"></div><div class="q-dot" id="qd3" onclick="goQ(3)"></div></div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 8: DECLARATION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel';font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">WISDOM ACTIVATED</p>
+      <p class="statement stag">"The house requires <span style="color:var(--gold)">wisdom</span>. Not more information. Not more effort. Not more character — though character must always grow. I am shifting from knowledge accumulation to wisdom activation. I am done treating a wisdom problem like a knowledge problem. I choose relationship with the Spirit of Wisdom."</p>
+      <div class="scripture stag" style="max-width:640px;margin:32px auto;text-align:left">If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him.<cite>— James 1:5</cite></div>
+      <button class="btn g" style="margin-top:30px" id="decl-btn" onclick="declAccepted()">✦ ACCEPT THIS DECLARATION</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel';color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">DECLARATION ESTABLISHED · YOUR WISDOM JOURNEY BEGINS NOW.</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ── CANVAS ──
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight;}addEventListener('resize',rs);rs();
+for(let i=0;i<90;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,215,0,${p.a*.2})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// ── SCROLL REVEAL ──
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*28));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// ── MODAL PANEL ──
+const panelData={
+  k:{tag:'LEVEL 1',title:'Knowledge',body:'Knowledge is facts, information, and data. You can know every scripture about divine provision, quote them in your sleep, and teach them to others. That is knowledge. And by itself it cannot change your situation. A person can know everything right about God and still be in the same circumstances five years later. Knowing is the beginning — not the destination.'},
+  u:{tag:'LEVEL 2',title:'Understanding',body:'Understanding is the ability to see the why behind what you know. A person with understanding does not just know God provides; they understand how — through people, through relationships, through seed and faith. Understanding turns isolated facts into a picture. But even a clear, connected picture does not automatically produce results in your actual life.'},
+  w:{tag:'THE DEFINITION',title:'Wisdom: Knowledge in Motion',body:'Wisdom is what happens when knowledge and understanding leave the theoretical and enter the real. It is the ability to take what you know and understand and apply it — in your specific, current, actual situation — in a way that produces the outcome you are reaching for. Wisdom is knowledge in motion. It is understanding with hands on it.'},
+  n1:{tag:'KIND 1',title:'Natural Wisdom',body:'Basic human intelligence — common sense and the logic of observation. Every functioning human operates in some level of this. But it has a hard ceiling. Natural wisdom operates entirely within the range what human observation can reach. The most important realities governing your life — the spiritual ones — are invisible to natural observation. Natural wisdom, at its best, is blind to the most significant layer of your existence.'},
+  n2:{tag:'KIND 2',title:'Philosophical Wisdom',body:'The product of deep study, academic training, research, and scientific inquiry. Medicine, engineering, economics — this has done extraordinary things. But like natural wisdom, it operates exclusively through the five senses and human intellect. It can explain the physical world with great sophistication and still be unable to see the spiritual architecture governing the outcomes that matter most.'},
+  n3:{tag:'KIND 3',title:'Counterfeit Wisdom',body:'James describes a wisdom that is earthly, sensual, demonic — producing envy, selfish ambition, and confusion. Results alone are not proof of divine origin. Do not let results alone determine who or what you follow. Do not covet what a person achieved without understanding the full picture of what it cost them and where it is taking them. Results are not proof of origin.'},
+  n4:{tag:'KIND 4 — TARGET',title:'Divine Wisdom',body:'Supernatural intelligence. The direct transmission of God\'s thoughts, strategies, and blueprints into a human mind. Not the product of education. Not dependent on your IQ or your background. It operates from a position of complete knowledge — from the One who sees the beginning and end of every situation simultaneously. It produces outcomes the other three types cannot replicate. And it is available to you now.'},
+  c1:{tag:'CHANNEL 1',title:'Direct Revelation',body:'The Holy Spirit, in a moment of genuine need, speaks directly. Not necessarily an audible voice — more often a strong internal impression. A specific clarity about what to do next. Not from your own reasoning. You will know the difference because the thought will arrive from a different place than where your own thoughts originate. This requires a spirit sensitive enough to receive it.'},
+  c2:{tag:'CHANNEL 2',title:'Scripture Illumination',body:'You open the Word and suddenly what was always just text becomes alive and specific — not a general truth that applies broadly, but a precise answer to the exact question you were carrying. The Word becomes alive in your hand as the strategic answer to your specific situation. The same text can be historical document or living communication, depending on the spiritual posture of the reader.'},
+  c3:{tag:'CHANNEL 3',title:'The Witness of the Spirit',body:'An internal knowing. A peace or an agitation that arrives before you have reasoned your way to a conclusion. You are about to make a decision. Something in you says no — not a thought, not a reason, a deep settled resistance you cannot fully explain. Or an unexpected peace about a decision that should make you anxious. This is the Spirit functioning as an internal guidance system.'},
+  c4:{tag:'CHANNEL 4',title:'People & Resources',body:'God regularly deposits wisdom in human vessels. Books, conversations, messages, teachers, mentors. What is fascinating is how often the right resource arrives at the exact right moment. The prerequisite for this channel is humility — the ability to receive wisdom wrapped in a person or source you were not expecting. From someone younger. An unconventional source. Without pride filtering it out.'},
+  c5:{tag:'CHANNEL 5',title:'Prayer in the Spirit',body:'When you pray in the Spirit, the Holy Spirit prays through you — bypassing the limits of your intellect — accessing the deep counsel of the Father directly. Your natural mind can only ask for solutions within its current understanding. But praying in the Spirit bypasses that ceiling. Ideas surface in your mind that were not there before. Strategies, solutions, specific instructions. They arrive as gifts from the realm where all problems already have solutions.'},
+  p1:{tag:'PROTOCOL 1',title:'Wholehearted Pursuit',body:'The deep things of God are not available to people who are browsing. They tend to open for people who are desperate — who have moved from wanting to needing. The threshold is all of the heart. Not perfection — but genuine, undivided orientation. A direction that is consistent. A hunger that persists. Half-hearted seeking tends to produce thin results.'},
+  p2:{tag:'PROTOCOL 2',title:'Love Over Results',body:'The wisdom of God tends to flow most freely to people who want God Himself more than they want the results He can produce. People who can honestly say: if nothing changes, if the breakthrough is delayed, I am still here. Not resignation. But love that is not contingent on delivery. That posture — love that does not hold God ransom to outcomes — unlocks the deepest levels of divine wisdom.'},
+  p3:{tag:'PROTOCOL 3',title:'Release the Isaac',body:'Every person has an Isaac — the thing whose loss would be the hardest to absorb. The protocol is genuine surrender on that specific thing. Not suppressing the desire. But genuinely releasing it into God\'s hands — reaching the point where your love for God is no longer held hostage by whether that particular thing survives. That release settles the most foundational question of the heart.'},
+  p4:{tag:'PROTOCOL 4',title:'Maintaining Purity',body:'Three things introduce static into your relationship with the Holy Spirit: the lust of the flesh (sensual appetite regardless of cost), the lust of the eyes (covetousness for what belongs to another season), and the pride of life (the conviction that your achievements give you standing independent of God). These reduce the quality and precision of what gets through. Purity is not moralism — it is the practical clearing of the channel through which the clearest communication flows.'},
+  out:{tag:'THE OUTPUT',title:'Wisdom Activated',body:'From knowledge accumulation to wisdom activation. From someone who knows a lot about God to someone whose life is actually being directed by God. Not reading about the Holy Spirit — having a relationship in which He can speak. Not collecting strategies — receiving specific, real-time instructions from the One who authored the outcome. Not accumulating theological facts — operating from divine intelligence far above what your intellect can produce.'}
+};
+function sp(id,t,tt,b){const d=panelData[id]||{tag:t,title:tt,body:b};document.getElementById('np-tag').textContent=d.tag||t||'';document.getElementById('np-title').textContent=d.title||tt;document.getElementById('np-body').textContent=d.body||b;document.getElementById('np').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// ── CHANNEL LAB ──
+const chData={
+  c1:{title:'💡 Channel 1: Direct Revelation',body:'The Holy Spirit speaks directly in a moment of genuine need — often as a strong internal impression or illumination. Not from your own reasoning; you will know the difference because the thought arrives from a different place. This requires a spirit sensitive enough to receive it. Which is why the protocols matter — they tune the receiver.'},
+  c2:{title:'📖 Channel 2: Scripture Illumination',body:'You open the Word and suddenly what was always just text becomes alive and specific — not general truth, but a precise answer to the exact question you were carrying. The Word becomes alive as the strategic answer to your specific situation. The same text can be historical document or living communication, depending completely on your spiritual posture.'},
+  c3:{title:'🫀 Channel 3: The Witness of the Spirit',body:'An internal knowing — a peace or agitation that arrives before you have reasoned your way to a conclusion. A deep settled resistance you cannot explain, or an unexpected peace about a decision that by every natural calculation should make you anxious. This is the Spirit as internal guidance system. Extraordinarily reliable when you are trained to distinguish it from your own preferences and fears.'},
+  c4:{title:'🌐 Channel 4: People & Resources',body:'God regularly deposits wisdom in human vessels. What is fascinating is how often the right resource arrives at the exact right moment — a message you were not searching for that contains the exact answer, or someone saying something almost casually that restructures an entire area of your thinking. The prerequisite is humility — to receive wisdom wrapped in a person or source you were not expecting, without pride filtering it out.'},
+  c5:{title:'🔥 Channel 5: Prayer in the Spirit',body:'The most consistently effective and most consistently underused channel. When you pray in the Spirit, the Holy Spirit prays through you — bypassing the limits of your intellect — accessing the deep counsel of the Father directly. Your natural mind can only ask for solutions within its current understanding. Praying in the Spirit bypasses that ceiling entirely. Strategies, solutions, and specific instructions arrive as gifts from the realm where all problems already have solutions.'}
+};
+function openChannel(id,el){document.querySelectorAll('.ch-card').forEach(c=>c.classList.remove('on'));el.classList.add('on');const d=chData[id];const det=document.getElementById('ch-detail');det.classList.add('show');document.getElementById('ch-d-title').textContent=d.title;document.getElementById('ch-d-body').textContent=d.body;document.getElementById('ch-footer').textContent='CHANNEL ACTIVE: '+d.title+' — study this mechanism and audit your receptivity.';}
+
+// ── PROTOCOLS ──
+const protoChecked=new Set();
+function markProto(id){if(protoChecked.has(id))return;protoChecked.add(id);document.getElementById(id).classList.add('done');const num=id.replace('pr','');document.getElementById('pc'+num).textContent='✓';const n=protoChecked.size;document.getElementById('proto-footer').textContent=`STATUS: ${n} of 4 protocols engaged. ${n===4?'All channels positioned to be open.':'Continue the audit — honesty matters more than completion.'}`;}
+
+// ── REFLECTION ──
+let curQ=1;
+function goQ(n){[1,2,3].forEach(i=>{document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('active');});document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('active');curQ=n;document.getElementById('rq-btn').style.display=curQ>=3?'none':'inline-block';}
+function nextQ(){if(curQ<3)goQ(curQ+1);}
+
+// ── DECLARATION ──
+function declAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+</script>
+</body>
+</html>
