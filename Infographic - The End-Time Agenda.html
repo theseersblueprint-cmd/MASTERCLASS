@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The End-Time Agenda | Masterclass</title>
+  <meta name="description" content="A 7-layer interactive infographic mapping the End-Time Prophetic Program, the 7 Mountains of Influence, and the journey from believer to witness."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--gold-g:rgba(255,215,0,.06);--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--purple:#B08FFF;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.1)}50%{box-shadow:0 0 50px rgba(255,215,0,.25)}}
+    @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:100%;max-width:920px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,215,0,.1);box-shadow:0 0 100px rgba(255,215,0,.08),0 30px 80px rgba(0,0,0,.8);animation:pulse 6s ease-in-out infinite;margin-bottom:44px}
+    .hero-img img{width:100%;height:420px;object-fit:cover;object-position:center top;display:block;transition:transform .8s ease}
+    .hero-img:hover img{transform:scale(1.02)}
+    .ch-tag{font-family:'Inter';font-size:.7rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter';font-size:.78rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:28px auto 0;line-height:1.65}
+
+    /* ── SECTION HEADERS ── */
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--gold);background:var(--gold-g);border:1px solid var(--gold-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
+
+    /* ── TYPOGRAPHY ── */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.cyan-b{border-color:var(--cyan-d);border-left:3px solid var(--cyan)}
+    .card.danger-b{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}
+    .body-text.lg{font-size:1.45rem}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.3rem;margin:24px 0;color:var(--text)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .scripture{padding:16px 22px;border-left:2px solid rgba(255,215,0,.25);font-style:italic;color:var(--muted);font-size:1.1rem;line-height:1.7;margin:22px 0}
+    .scripture cite{display:block;font-style:normal;font-family:'Inter';font-size:.68rem;color:var(--gold);margin-top:8px;letter-spacing:.1em}
+
+    /* ── ACCORDIONS ── */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-num{font-family:'Inter';font-size:.62rem;letter-spacing:.2em;color:var(--gold);margin-bottom:4px}
+    .ac-icon{font-size:1.4rem;color:var(--gold);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s,padding .55s}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--cyan)}
+
+    /* ── MASTER MIND MAP ── */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px}
+    .fw-row{display:flex;justify-content:center;gap:18px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:36px;color:var(--gold);font-size:1.4rem;opacity:.45;position:relative;z-index:1}
+    .map-label{font-family:'Inter';font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px;position:relative;z-index:1}
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center}
+    .node:hover{transform:translateY(-3px);border-color:var(--gold-d);box-shadow:0 8px 30px rgba(255,215,0,.08)}
+    .node.root{width:280px;padding:28px 20px;border-color:var(--gold-d);background:rgba(255,215,0,.04)}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:6px}
+    .node.root .n-sub{font-family:'Inter';font-size:.7rem;color:var(--muted)}
+    .node.sm{width:175px;padding:18px 14px}
+    .node.sm .n-title{font-family:'Cinzel',serif;font-size:.8rem;color:#fff;margin-bottom:4px}
+    .node.sm .n-sub{font-family:'Inter';font-size:.6rem;color:var(--muted)}
+    .node.sm.human{border-color:rgba(255,215,0,.3);background:rgba(255,215,0,.04)}.node.sm.human .n-title{color:var(--gold)}
+    .node.sm.god{border-color:rgba(0,240,255,.3);background:rgba(0,240,255,.04)}.node.sm.god .n-title{color:var(--cyan)}
+    .node.kind{width:190px;padding:20px 14px}
+    .node.kind .n-title{font-family:'Cinzel',serif;font-size:.78rem;color:#fff;margin-bottom:5px}
+    .node.kind .n-sub{font-family:'Inter';font-size:.58rem;color:var(--muted);line-height:1.5}
+
+    /* ── MODAL PANEL ── */
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;backdrop-filter:blur(3px)}#overlay.show{display:block}
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(580px,90vw);background:#0A0E18;border:1px solid var(--border);border-radius:28px;padding:44px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.95)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:.3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.12rem;line-height:1.85;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+
+    /* ── SIMULATOR ── */
+    .lab{border:1px solid var(--gold-d);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:300px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter';font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter';font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:.3s;margin:6px}
+    .btn:hover{background:var(--hover)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover,.btn.c.on{background:rgba(0,240,255,.1)}
+    
+    .ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;width:100%;max-width:700px}
+    .ch-card{background:#0a0a0a;border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:.35s}
+    .ch-card:hover,.ch-card.on{border-color:var(--cyan);background:rgba(0,240,255,.06)}
+    .ch-card .cc-title{font-family:'Cinzel';font-size:.75rem;color:#fff;margin-bottom:4px}
+    .ch-detail{border:1px solid rgba(0,240,255,.2);border-radius:14px;padding:22px;background:rgba(0,240,255,.03);text-align:left;display:none;animation:popIn .35s ease forward}
+    .ch-detail.show{display:block}.ch-detail h4{font-family:'Cinzel';color:var(--cyan);margin-bottom:10px}
+    .ch-detail p{font-size:1.05rem;line-height:1.7;color:var(--muted)}
+
+    /* ── CHECKER ── */
+    .proto-wrap{display:flex;flex-direction:column;gap:14px;width:100%;max-width:620px}
+    .proto-item{background:#080808;border:1px solid var(--border);border-radius:14px;padding:22px 26px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:.35s}
+    .proto-item:hover{border-color:var(--gold-d)}.proto-item.done{border-color:var(--success);background:rgba(0,217,126,.04)}
+    .proto-check{width:32px;height:32px;border-radius:50%;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:.35s}
+    .proto-item.done .proto-check{background:var(--success);border-color:var(--success);color:#000}
+    .proto-body h5{font-family:'Cinzel';font-size:.82rem;color:#fff;margin-bottom:4px}
+    .proto-body p{font-size:.95rem;color:var(--muted)}.proto-item.done .proto-body h5{color:var(--success)}
+
+    /* ── REFLECTION ── */
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:24px}
+    .q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);cursor:pointer;transition:.3s}.q-dot.active{background:var(--gold)}
+
+    /* ── DECLARATION ── */
+    .decl{border:1px dashed rgba(255,215,0,.18);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(255,215,0,.04) 0%,transparent 70%)}
+
+    /* ── GRID ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np">
+  <button class="np-close" onclick="closePanel()">✕</button>
+  <p class="np-tag" id="np-tag"></p>
+  <h2 class="np-title" id="np-title"></h2>
+  <p class="np-body" id="np-body"></p>
+</div>
+
+<main>
+
+  <!-- ── LAYER 1: HERO ── -->
+  <section class="hero sr">
+    <div class="hero-img">
+      <img src="endtime_hero.png" alt="The End-Time Agenda" onerror="this.parentElement.style.display='none'">
+    </div>
+    <p class="ch-tag">The Blueprint for Global Impact</p>
+    <h1 class="hero-title stag">THE END-TIME<br>AGENDA</h1>
+    <p class="hero-sub">What You Were Actually Born For</p>
+    <p class="hero-def stag">The end-time agenda is not primarily about catastrophe. It is about harvest. The last days are the most dangerous season in human history and simultaneously the most glorious season for the prepared believer.</p>
+  </section>
+
+  <!-- ── LAYER 2: THESIS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🌍 The Foundational Shift</h2></div>
+    <div class="card gold-b">
+      <p class="statement stag">"Arise, shine; for your light has come! For behold, the darkness shall cover the earth... but the Lord will arise over you."</p>
+      <div class="g2" style="margin-top:28px">
+        <div>
+          <p class="body-text stag">Most believers relate to the end times through the lens of fear — survival, holding on, waiting for evacuation. But this is the blueprint for the most significant advance of the Kingdom of God in history.</p>
+          <p class="pipe stag">The question is not whether the darkness is coming. It is whether you will have built the kind of life from which glory can rise while the darkness does its worst.</p>
+        </div>
+        <div>
+          <p style="font-family:'Cinzel';font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-align:center;margin-bottom:18px">THE MENTAL TRANSITION</p>
+          <div style="background:rgba(255,215,0,.04);border:1px solid var(--gold-d);border-radius:14px;padding:18px;text-align:center">
+            <p style="font-size:1.05rem;color:var(--text);line-height:1.6;margin-bottom:8px">From watching signs ➔ To executing strategy.</p>
+            <p style="font-size:1.05rem;color:var(--text);line-height:1.6;margin-bottom:8px">From fear-based observation ➔ To faith-based advance.</p>
+            <p style="font-size:1.05rem;color:var(--text);line-height:1.6">From passive waiting ➔ To active occupying.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 3: MASTER MIND MAP ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🗺 The End-Time Architecture Map</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to reveal the deep insight behind it.</p>
+    <div class="map-wrap"><div class="map-canvas">
+
+      <!-- Row 1: The Core Agenda -->
+      <div class="fw-row">
+        <div class="node root" onclick="sp('ea','THE BLUEPRINT','The 3 Pillars of His Agenda','God\'s end-time prophetic program has three main objectives: World Evangelization reaching all 8 billion souls, bringing the saints into full maturity to end the campaign of ignorance, and Territorial Transformation—capturing systems and spheres until the value system of the Kingdom becomes dominant.')"><div class="n-title">⚡ THE PROPHETIC PROGRAM</div><div class="n-sub">Three Pillars of Advancement</div></div>
+      </div>
+      <div class="map-arrow">↓ EXECUTED THROUGH ↓</div>
+
+      <!-- Row 2: The Journey of the Believer -->
+      <p class="map-label">THE 4 STAGES OF FORMATION</p>
+      <div class="fw-row">
+        <div class="node sm human" onclick="sp('s1','STAGE 1','Salvation: The Legal Translation','The foundation. He has delivered us from the power of darkness and conveyed us into the kingdom of His Son. Without this, nothing else is accessible.')"><div class="n-title">1. Salvation</div><div class="n-sub">Legal Translation</div></div>
+        <div class="node sm human" onclick="sp('s2','STAGE 2','Transformation: The Renovation of Mind','An untransformed mind can sabotage a saved spirit. Transformation is the intentional renovation of the soul — replacing carnal mindsets with Kingdom-based information.')"><div class="n-title">2. Transformation</div><div class="n-sub">Mind Renovation</div></div>
+        <div class="node sm human" onclick="sp('s3','STAGE 3','Empowerment: The Holy Spirit Unction','Power from the Holy Spirit. This provides the actual authority, unction, and supernatural grace that turns a formed believer into a genuine witness by producing undeniable demonstration.')"><div class="n-title">3. Empowerment</div><div class="n-sub">Supernatural Unction</div></div>
+        <div class="node sm human" onclick="sp('s4','STAGE 4','The Witness: The Living Epistle','A mature individual functioning as a living demonstration of the Kingdom in a specific sphere. Whose professional success is a platform, resources are tools, and network is deployed for the gospel.')"><div class="n-title">4. The Witness</div><div class="n-sub">The Living Epistle</div></div>
+      </div>
+      <div class="map-arrow">↓ DEPLOYED INTO ↓</div>
+
+      <!-- Row 3: The 7 Mountains -->
+      <p class="map-label">THE 7 MOUNTAINS OF SPHERICAL INFLUENCE</p>
+      <div class="fw-row">
+        <div class="node sm" onclick="sp('m1','MOUNTAIN 1','Religion','The local church as the mobilization center — training, equipping, deploying, and covering believers across every other sphere. A base of operations for an entire society.')"><div class="n-title">⛪ Religion</div></div>
+        <div class="node sm" onclick="sp('m2','MOUNTAIN 2','Family','The first government. The fundamental unit shaping society. Raising a generation formed by Kingdom values and sent into the earth with a divine mandate.')"><div class="n-title">👨‍👩‍👧 Family</div></div>
+        <div class="node sm" onclick="sp('m3','MOUNTAIN 3','Education','Recapturing the worldview-shaping function. Educational systems transmit worldviews; without truth, they produce generations who are technically brilliant but completely disoriented.')"><div class="n-title">🎓 Education</div></div>
+        <div class="node sm" onclick="sp('m4','MOUNTAIN 4','Government & Law','Laws create culture. Believers enter here to represent values that produce genuine justice and equity, embedding them in the legal structures of the nation.')"><div class="n-title">⚖️ Government</div></div>
+        <div class="node sm" onclick="sp('m5','MOUNTAIN 5','Media','Whoever controls the narrative controls the culture. Believers must enter with creative sophistication to master the language and deliver truth effectively against opposing narratives.')"><div class="n-title">📡 Media</div></div>
+        <div class="node sm" onclick="sp('m6','MOUNTAIN 6','Arts & Entertainment','Art bypasses intellectual defense and plants values directly into the soul. The mandate is producing extraordinary artistic excellence reflecting the beauty of God.')"><div class="n-title">🎭 Arts</div></div>
+        <div class="node sm" onclick="sp('m7','MOUNTAIN 7','Business & Finance','The strategic engine. Without economic power, every other mountain operates under resource constraints. The end-time harvest requires massive financial infrastructure.')"><div class="n-title">💼 Business</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ── LAYER 4: DEEP DIVES ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🧩 The Mechanics of Dominion</h2></div>
+    
+    <div class="g2" style="margin-bottom:48px">
+      <div>
+        <h3 style="font-family:'Cinzel';color:var(--cyan);font-size:1.3rem;margin-bottom:16px">THE PRIESTHOOD AND TERRITORIAL WARFARE</h3>
+        <p class="body-text stag">Every territory is governed by a spiritual authority structure. Persistent social problems are not random—they are the output of spiritual altars established over regions.</p>
+        <p class="body-text stag">Reclaiming a territory requires believers to function as priests — raising a superior altar through prayer, worship, and obedient execution. This is strategic legal action, identifying the strongman and binding their operational influence.</p>
+      </div>
+      <div>
+        <div class="ac" onclick="this.classList.toggle('open')">
+          <div class="ac-hdr"><div><p class="ac-num">THE ECONOMY</p><h3 class="ac-title">The Law of Value & Wealth Transfer</h3></div><span class="ac-icon">+</span></div>
+          <div class="ac-body" onclick="event.stopPropagation()">
+            <p class="body-text stag">Wealth in the Kingdom is the consequence of providing value that solves real problems at scale. The wealth of the sinner is stored up for the righteous—but it is reserved for believers who demonstrate faithfulness and can deploy resources for the global harvest.</p>
+          </div>
+        </div>
+        <div class="ac" onclick="this.classList.toggle('open')">
+          <div class="ac-hdr"><div><p class="ac-num">THE ADVANTAGE</p><h3 class="ac-title">The Rhema Edge</h3></div><span class="ac-icon">+</span></div>
+          <div class="ac-body" onclick="event.stopPropagation()">
+            <p class="body-text stag">General biblical knowledge is insufficient. The believer pursuing a specific assignment needs the "Rhema" — specific divine intelligence for precise circumstances. A strategic directive from the Spirit gives an advantage that cannot be replicated by natural excellence alone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── LAYER 5: DESTINY QUESTIONS LAB ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">📡 The 5 Destiny Questions — Activation Lab</h2></div>
+    <p class="body-text stag" style="margin-bottom:8px">Clarity is required before deployment. Answer these five questions to calibrate your exact assignment.</p>
+    <div class="lab">
+      <div class="lab-stage">
+        <div class="ch-grid" id="qGrid">
+          <div class="ch-card" onclick="openQ('q1',this)"><div class="cc-title">1. Who am I?</div></div>
+          <div class="ch-card" onclick="openQ('q2',this)"><div class="cc-title">2. Where am I from?</div></div>
+          <div class="ch-card" onclick="openQ('q3',this)"><div class="cc-title">3. Why am I here?</div></div>
+          <div class="ch-card" onclick="openQ('q4',this)"><div class="cc-title">4. What can I do?</div></div>
+          <div class="ch-card" onclick="openQ('q5',this)"><div class="cc-title">5. Where am I going?</div></div>
+        </div>
+        <div class="ch-detail" id="q-detail" style="margin-top:22px;width:100%;max-width:700px">
+          <h4 id="q-d-title">Select a Question</h4>
+          <p id="q-d-body" style="font-size:1.1rem;line-height:1.75;color:var(--muted)">Explore the profound parameters of your individual calling.</p>
+        </div>
+      </div>
+      <div class="lab-footer" id="q-footer">STATUS: Waiting for selection.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 6: THE AUDIT ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🔓 The Daily Framework Audit</h2></div>
+    
+    <p class="body-text stag">Maintaining the edge requires a daily routine. Check the pillars you are actively engaging.</p>
+    <div class="proto-wrap" style="margin: 30px auto;">
+        <div class="proto-item" id="fw1" onclick="markFW('fw1')">
+        <div class="proto-check" id="fc1">○</div>
+        <div class="proto-body"><h5>Systematic Prayer</h5><p>Not crisis management—the regular laboratory of transformation and receiving divine strategy.</p></div>
+        </div>
+        <div class="proto-item" id="fw2" onclick="markFW('fw2')">
+        <div class="proto-check" id="fc2">○</div>
+        <div class="proto-body"><h5>Word Study & Meditation</h5><p>Deliberate mining of Kingdom principles; replacing carnal thoughts with divine truth.</p></div>
+        </div>
+        <div class="proto-item" id="fw3" onclick="markFW('fw3')">
+        <div class="proto-check" id="fc3">○</div>
+        <div class="proto-body"><h5>Personal Communion</h5><p>Quiet time away from noise to hear the Spirit. Intelligence gathering for the active soldier.</p></div>
+        </div>
+        <div class="proto-item" id="fw4" onclick="markFW('fw4')">
+        <div class="proto-check" id="fc4">○</div>
+        <div class="proto-body"><h5>Corporate Fellowship</h5><p>Consistent participation in a community that provides accountability, reinforcement, and covering.</p></div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 7: REFLECTION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Role of Suffering Reflection</h2></div>
+    <div class="card" style="text-align:center">
+      <p class="body-text lg stag" style="font-style:italic">"That the trial of your faith, being much more precious than gold... might be found unto praise."</p>
+      <p class="body-text stag">Every great assignment requires a great instrument. Instruments are forged through pressure, fire, and sustained tests. These trials are not God's indifference—they are the necessary calibration and testing of your faithfulness in preparation for end-time glory.</p>
+      <p class="body-text stag" style="color:var(--gold)">Will you trust the process?</p>
+    </div>
+  </section>
+
+  <!-- ── LAYER 8: DECLARATION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel';font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">OCCUPY TILL HE COMES</p>
+      <p class="statement stag">"I am not waiting for evacuation; I am occupying. I am a living epistle, submitted to the forming process, ready to reclaim my specific mountain of influence. I embrace my assignment in the end-time global harvest."</p>
+      <button class="btn g" style="margin-top:30px" id="decl-btn" onclick="declAccepted()">✦ ACCEPT THIS MANDATE</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel';color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">MANDATE ESTABLISHED · YOU ARE DEPLOYED.</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ── CANVAS ──
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight;}addEventListener('resize',rs);rs();
+for(let i=0;i<90;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,215,0,${p.a*.15})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// ── SCROLL REVEAL ──
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*28));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// ── MODAL PANEL ──
+const panelData={
+  ea:{tag:'THE BLUEPRINT',title:'The 3 Pillars of His Agenda',body:'God\'s end-time prophetic program has three main objectives: World Evangelization reaching all 8 billion souls, bringing the saints into full maturity to end the campaign of ignorance, and Territorial Transformation—capturing systems and spheres until the value system of the Kingdom becomes dominant.'},
+  s1:{tag:'STAGE 1',title:'Salvation: Legal Translation',body:'The foundation. He has delivered us from the power of darkness and conveyed us into the kingdom of His Son. Without this, nothing else in the journey is accessible.'},
+  s2:{tag:'STAGE 2',title:'Transformation: Mind Renovation',body:'An untransformed mind can sabotage a saved spirit. Transformation is the intentional renovation of the soul — the systematic introduction of Kingdom-based information that displaces inferior carnal mindsets.'},
+  s3:{tag:'STAGE 3',title:'Empowerment: Supernatural Unction',body:'Power from the Holy Spirit. This provides the actual authority, the unction, the supernatural grace that turns a formed believer into a genuine witness capable of undeniable demonstration.'},
+  s4:{tag:'STAGE 4',title:'The Witness: Living Epistle',body:'A mature individual who functions as a living demonstration of the Kingdom in a specific sphere. Whose professional success is a platform, financial resources are tools, and relational capital is an evangelism network.'},
+  m1:{tag:'MOUNTAIN 1',title:'Religion',body:'The local church as the mobilization center — training, equipping, deploying, and covering believers across every other sphere. A base of operations for an entire society.'},
+  m2:{tag:'MOUNTAIN 2',title:'Family',body:'The first government and fundamental societal unit. Bringing up a generation shaped by Kingdom values, sent with a divine mandate.'},
+  m3:{tag:'MOUNTAIN 3',title:'Education',body:'Recapturing the worldview-shaping function. Educational systems transmit worldviews; without truth, they produce generations who are brilliant but completely disoriented.'},
+  m4:{tag:'MOUNTAIN 4',title:'Government & Law',body:'Laws create culture. Believers enter here to represent values that produce genuine justice and equity, ensuring those are embedded in the legal and governmental structures.'},
+  m5:{tag:'MOUNTAIN 5',title:'Media',body:'Whoever controls the narrative controls the culture. Believers must enter with creative sophistication to master the language and deliver truth effectively against opposing narratives.'},
+  m6:{tag:'MOUNTAIN 6',title:'Arts & Entertainment',body:'Art bypasses intellectual defense and plants values directly into the soul. The mandate is producing extraordinary artistic excellence that reflects the beauty and holiness of God.'},
+  m7:{tag:'MOUNTAIN 7',title:'Business & Finance',body:'The strategic engine of the harvest. Without economic power, every other mountain operates under resource constraints. The end-time harvest requires massive financial infrastructure.'}
+};
+function sp(id,t,tt,b){const d=panelData[id]||{tag:t,title:tt,body:b};document.getElementById('np-tag').textContent=d.tag||t||'';document.getElementById('np-title').textContent=d.title||tt;document.getElementById('np-body').textContent=d.body||b;document.getElementById('np').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// ── QUESTIONS LAB ──
+const qData={
+  q1:{title:'1. Who am I?',body:'Not your name or your profession. Your identity in Christ. The specific dimension of God\'s nature expressed through your life. Until this is settled, every external pressure threatens your foundation.'},
+  q2:{title:'2. Where am I from?',body:'Your spiritual heritage. The source of the grace operating in your life. The genealogy of your anointing — what specific stream of divine grace carries your assignment.'},
+  q3:{title:'3. Why am I here?',body:'The specific mountain. The precise, identifiable assignment God placed you on earth to execute. Not a general desire to serve, but a specific mandate with identifiable parameters.'},
+  q4:{title:'4. What can I do?',body:'The inventory of graces, gifts, and natural talents that constitute your toolkit. The assignment and the equipment always match; understanding this prevents the tragic waste of gifts.'},
+  q5:{title:'5. Where am I going?',body:'The long-term vision. The fully completed form of your contribution. Clarity allows every daily decision to be evaluated for alignment.'}
+};
+function openQ(id,el){document.querySelectorAll('#qGrid .ch-card').forEach(c=>c.classList.remove('on'));el.classList.add('on');const d=qData[id];const det=document.getElementById('q-detail');det.classList.add('show');document.getElementById('q-d-title').textContent=d.title;document.getElementById('q-d-body').textContent=d.body;document.getElementById('q-footer').textContent='QUESTION ENGAGED: '+d.title;}
+
+// ── FRAMEWORK AUDIT ──
+const fwChecked=new Set();
+function markFW(id){
+    if(fwChecked.has(id))return;
+    fwChecked.add(id);
+    document.getElementById(id).classList.add('done');
+    const num=id.replace('fw','');
+    document.getElementById('fc'+num).textContent='✓';
+    const n=fwChecked.size;
+}
+
+// ── DECLARATION ──
+function declAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+</script>
+</body>
+</html>
