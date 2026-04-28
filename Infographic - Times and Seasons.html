@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Times and Seasons | Masterclass</title>
+  <meta name="description" content="A 7-layer interactive infographic mapping the rhythm of God, Chronos vs Kairos, and the spiritual physics of shifting seasons."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--gold-g:rgba(255,215,0,.06);--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--purple:#B08FFF;--sunset:#FF8C42;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(255,140,66,.1)}50%{box-shadow:0 0 50px rgba(255,140,66,.25)}}
+    @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:100%;max-width:920px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,140,66,.15);box-shadow:0 0 100px rgba(255,140,66,.08),0 30px 80px rgba(0,0,0,.8);animation:pulse 6s ease-in-out infinite;margin-bottom:44px}
+    .hero-img img{width:100%;height:420px;object-fit:cover;object-position:center top;display:block;transition:transform .8s ease}
+    .hero-img:hover img{transform:scale(1.02)}
+    .ch-tag{font-family:'Inter';font-size:.7rem;letter-spacing:.35em;color:var(--sunset);text-transform:uppercase;margin-bottom:18px;opacity:.9}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter';font-size:.78rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:28px auto 0;line-height:1.65}
+
+    /* ── SECTION HEADERS ── */
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--sunset);background:rgba(255,140,66,.05);border:1px solid rgba(255,140,66,.15);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--sunset);font-weight:600}
+
+    /* ── TYPOGRAPHY ── */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.sunset-b{border-color:rgba(255,140,66,.2);border-left:3px solid var(--sunset);background:rgba(255,140,66,.02)}
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}
+    .body-text.lg{font-size:1.45rem}
+    .pipe{padding-left:20px;border-left:2px solid var(--sunset);font-style:italic;font-size:1.3rem;margin:24px 0;color:var(--text)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .scripture{padding:16px 22px;border-left:2px solid rgba(255,215,0,.25);font-style:italic;color:var(--muted);font-size:1.1rem;line-height:1.7;margin:22px 0}
+    .scripture cite{display:block;font-style:normal;font-family:'Inter';font-size:.68rem;color:var(--gold);margin-top:8px;letter-spacing:.1em}
+
+    /* ── ACCORDIONS ── */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:rgba(255,140,66,.3)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-num{font-family:'Inter';font-size:.62rem;letter-spacing:.2em;color:var(--sunset);margin-bottom:4px}
+    .ac-icon{font-size:1.4rem;color:var(--sunset);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s,padding .55s}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
+
+    /* ── MASTER MIND MAP ── */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px}
+    .fw-row{display:flex;justify-content:center;gap:18px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:36px;color:var(--sunset);font-size:1.4rem;opacity:.45;position:relative;z-index:1}
+    .map-label{font-family:'Inter';font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px;position:relative;z-index:1}
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center}
+    .node:hover{transform:translateY(-3px);border-color:rgba(255,140,66,.4);box-shadow:0 8px 30px rgba(255,140,66,.08)}
+    .node.root{width:280px;padding:28px 20px;border-color:rgba(255,140,66,.5);background:rgba(255,140,66,.06)}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--sunset);margin-bottom:6px}
+    .node.root .n-sub{font-family:'Inter';font-size:.7rem;color:var(--text)}
+    .node.sm{width:160px;padding:18px 14px}
+    .node.sm .n-title{font-family:'Cinzel',serif;font-size:.8rem;color:#fff;margin-bottom:4px}
+    .node.sm .n-sub{font-family:'Inter';font-size:.6rem;color:var(--muted)}
+    .node.kind{width:190px;padding:20px 14px}
+    .node.kind .n-title{font-family:'Cinzel',serif;font-size:.75rem;color:#fff;margin-bottom:5px}
+    .node.kind .n-sub{font-family:'Inter';font-size:.55rem;color:var(--muted);line-height:1.5}
+
+    /* ── MODAL PANEL ── */
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;backdrop-filter:blur(3px)}#overlay.show{display:block}
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(580px,90vw);background:#0A0E18;border:1px solid rgba(255,140,66,.3);border-radius:28px;padding:44px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.95)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:.3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--sunset);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.12rem;line-height:1.85;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+
+    /* ── DYNAMIC SIMULATOR ── */
+    .lab{border:1px solid rgba(255,140,66,.2);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:480px;}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter';font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    
+    .sim-header{text-align:center;margin-bottom:30px;}
+    .sim-header h3{font-family:'Cinzel';color:var(--sunset);font-size:1.4rem;margin-bottom:8px;}
+    .sim-header p{color:var(--muted);font-size:1.05rem;}
+    
+    .sim-options{display:flex;flex-direction:column;gap:12px;width:100%;max-width:500px;}
+    .sim-btn{background:rgba(255,255,255,.02);border:1px solid var(--border);color:#fff;font-family:'Inter';font-size:.85rem;padding:16px 24px;border-radius:12px;cursor:pointer;transition:.3s;text-align:left;display:flex;align-items:center;gap:14px;}
+    .sim-btn:hover{background:rgba(255,140,66,.05);border-color:rgba(255,140,66,.3);transform:translateX(5px);}
+    .sim-btn.active{background:rgba(255,140,66,.1);border-color:var(--sunset);color:var(--gold);}
+    .sim-btn span{display:inline-block;width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;}
+    .sim-btn.active span{background:var(--sunset);border-color:var(--sunset);color:#000;}
+    
+    .sim-result{display:none;width:100%;max-width:560px;margin-top:30px;padding:30px;background:rgba(255,140,66,.03);border:1px solid rgba(255,140,66,.2);border-radius:16px;animation:popIn .4s ease;}
+    .sim-result.show{display:block;}
+    .sim-result h4{font-family:'Cinzel';font-size:1.3rem;color:var(--gold);margin-bottom:12px;}
+    .sim-result p{font-size:1.1rem;line-height:1.7;color:var(--text);margin-bottom:18px;}
+    .sim-result .protocol-box{background:#000;border-left:3px solid var(--sunset);padding:16px;font-size:1rem;color:var(--muted);}
+
+    /* ── CHECKER ── */
+    .proto-wrap{display:flex;flex-direction:column;gap:14px;width:100%;max-width:620px}
+    .proto-item{background:#080808;border:1px solid var(--border);border-radius:14px;padding:22px 26px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:.35s}
+    .proto-item:hover{border-color:rgba(255,140,66,.3)}.proto-item.done{border-color:var(--gold);background:rgba(255,215,0,.04)}
+    .proto-check{width:32px;height:32px;border-radius:50%;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:.35s}
+    .proto-item.done .proto-check{background:var(--gold);border-color:var(--gold);color:#000}
+    .proto-body h5{font-family:'Cinzel';font-size:.82rem;color:#fff;margin-bottom:4px}
+    .proto-body p{font-size:.95rem;color:var(--muted)}.proto-item.done .proto-body h5{color:var(--gold)}
+
+    /* ── DECLARATION ── */
+    .decl{border:1px dashed rgba(255,140,66,.3);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(255,140,66,.05) 0%,transparent 70%)}
+    .btn-submit{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter';font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:.3s;margin:6px}
+    .btn-submit.s{border-color:var(--sunset);color:var(--sunset)}.btn-submit.s:hover{background:rgba(255,140,66,.1)}
+
+    /* ── GRID ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np">
+  <button class="np-close" onclick="closePanel()">✕</button>
+  <p class="np-tag" id="np-tag"></p>
+  <h2 class="np-title" id="np-title"></h2>
+  <p class="np-body" id="np-body"></p>
+</div>
+
+<main>
+
+  <!-- ── LAYER 1: HERO ── -->
+  <section class="hero sr">
+    <div class="hero-img">
+      <img src="seasons_hero.png" alt="Times and Seasons" onerror="this.parentElement.style.display='none'">
+    </div>
+    <p class="ch-tag">Understanding The Rhythm of God</p>
+    <h1 class="hero-title stag">TIMES &<br>SEASONS</h1>
+    <p class="hero-sub">Chronos vs Kairos</p>
+    <p class="hero-def stag">God does not operate in chronological time alone. He administers grace, assignments, and acceleration in *Kairos*—the specific, divinely orchestrated appointed time that compresses years into moments.</p>
+  </section>
+
+  <!-- ── LAYER 2: THESIS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">⏳ The Problem With The Clock</h2></div>
+    <div class="card sunset-b">
+      <p class="statement stag">"Is the right time actually coming? Or is 'waiting' just the name we give to seasons where nothing is happening?"</p>
+      <div class="g2" style="margin-top:28px">
+        <div>
+          <p class="body-text stag">Chronos is sequential time. It is the time on your clock, measurable and continuous. It does not speed up because you are in a hurry. Kairos is a different category entirely. It is appointed time.</p>
+          <p class="pipe stag">Many believers are frustrated because they are measuring their progress in Chronos—counting years—while God is working in Kairos.</p>
+        </div>
+        <div>
+          <p style="font-family:'Cinzel';font-size:.65rem;letter-spacing:.2em;color:var(--sunset);text-align:center;margin-bottom:18px">WHY SEASONS EXIST</p>
+          <div style="background:rgba(255,140,66,.04);border:1px solid rgba(255,140,66,.2);border-radius:14px;padding:18px;text-align:center">
+            <p style="font-size:1.05rem;color:var(--text);line-height:1.6;margin-bottom:8px">Seasons are God's refusal to let you be a fast-grown tree. If a person is placed in a position of immense power before character formation has taken place, the exposure will not elevate them—it will destroy them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 3: MASTER MIND MAP ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🗺 The Architecture of Timing</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to reveal the deep insight behind it.</p>
+    <div class="map-wrap"><div class="map-canvas">
+
+      <!-- Row 1: The Core -->
+      <div class="fw-row">
+        <div class="node root" onclick="sp('ts','THE FOUNDATION','Times and Seasons','The divine system of progressive development. It prevents spiritual comfort, forces reliance, and ensures the vessel is deep enough for the oil.')"><div class="n-title">⚙️ THE DIVINE RHYTHM</div><div class="n-sub">Kairos Appointment</div></div>
+      </div>
+      <div class="map-arrow">↓ THE THREE INTERNAL PHASES ↓</div>
+
+      <!-- Row 2: The Phases -->
+      <p class="map-label">THE PROGRESSIVE PIPELINE</p>
+      <div class="fw-row">
+        <div class="node sm" style="border-color:rgba(255,140,66,.4)" onclick="sp('p1','PHASE 1','Discovery & Preparation','The invisible phase. You are in the dirt of formation, learning to distinguish between what you desire and what you were actually sent to do.')"><div class="n-title">1. Preparation</div></div>
+        <div class="node sm" style="border-color:rgba(255,51,102,.4)" onclick="sp('p2','PHASE 2','Testing & Pruning','The silence of God. You are doing everything right, but nothing is working. The enemy introduces offense here to abort the formation.')"><div class="n-title">2. Pruning</div></div>
+        <div class="node sm" style="border-color:rgba(255,215,0,.4)" onclick="sp('p3','PHASE 3','Manifestation','The danger zone. What was hidden becomes suddenly visible. The prerequisite for thriving here is a genuine death to self.')"><div class="n-title">3. Manifestation</div></div>
+      </div>
+      <div class="map-arrow">↓ THE FOUR SIGNS OF SHIFTING ↓</div>
+
+      <!-- Row 3: The Signals -->
+      <p class="map-label">INDICATORS OF TRANSITION</p>
+      <div class="fw-row">
+        <div class="node kind" onclick="sp('s1','SIGNAL 1','Unshakeable Restlessness','A quality of discontentment disproportionate to your actual circumstances. The grace that made your current place feel sufficient has lifted.')"><div class="n-title" style="color:var(--sunset)">Restlessness</div><div class="n-sub">The Grace Lifting</div></div>
+        <div class="node kind" onclick="sp('s2','SIGNAL 2','Closed Doors','Relationships dissolve, streams dry up. God is refusing to let you establish permanence in a place meant to be a transit point.')"><div class="n-title" style="color:var(--sunset)">Abrupt Endings</div><div class="n-sub">Forced Departure</div></div>
+        <div class="node kind" onclick="sp('s3','SIGNAL 3','Escalating Hunger','An insatiable desire for prayer and fasting that feels less like discipline and more like necessity. This generates the momentum for the threshold.')"><div class="n-title" style="color:var(--sunset)">Spiritual Hunger</div><div class="n-sub">Fuel for Transition</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ── LAYER 4: DEEP DIVES ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🧩 The Illusion of Success</h2></div>
+    
+    <div class="g2" style="margin-bottom:48px">
+      <div>
+        <h3 style="font-family:'Cinzel';color:var(--sunset);font-size:1.3rem;margin-bottom:16px">THE SEASON OF INCREASE</h3>
+        <p class="body-text stag">During a season of ease, you assume your methods are correct. You settle into an assumption that erodes the hunger you had before the ease arrived. You don't realize some of that success is the season—not your skill.</p>
+        <p class="body-text stag">When the season shifts, methods that appeared to be working are exposed as insufficient. The surplus is meant for construction, not consumption.</p>
+      </div>
+      <div>
+        <div class="ac" onclick="this.classList.toggle('open')">
+          <div class="ac-hdr"><div><p class="ac-num">THE ANT AND THE SCARCITY</p><h3 class="ac-title">The Season of Pressure</h3></div><span class="ac-icon">+</span></div>
+          <div class="ac-body" onclick="event.stopPropagation()">
+            <p class="body-text stag">An unprepared season of pressure will consume what was accumulated during increase, leaving you in destitution. This is why you must not make destiny decisions from a position of desperation during the winter. You survive it by drawing from the spiritual and relational reserves you built when you had the luxury of time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 5: THE ACTIVATION LAB (SIMULATOR) ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">📡 Season Identification Simulator</h2></div>
+    <p class="body-text stag" style="margin-bottom:8px">Examine the atmospheric clues in your current life to determine your exact spiritual coordinate. Which of these environments best describes you right now?</p>
+    
+    <div class="lab">
+      <div class="lab-stage">
+        
+        <div class="sim-header">
+          <h3>Environmental Audit</h3>
+          <p>Select the reality that feels most accurate to your day-to-day.</p>
+        </div>
+
+        <div class="sim-options" id="sim-opts">
+          <div class="sim-btn" onclick="runSim('prep', this)">
+             <span>A</span> "I have deep desires, but I am largely hidden. I am learning, fasting, but there is no audience."
+          </div>
+          <div class="sim-btn" onclick="runSim('prun', this)">
+             <span>B</span> "I am obeying God, praying perfectly, but everything is failing. The silence is deafening."
+          </div>
+          <div class="sim-btn" onclick="runSim('mani', this)">
+             <span>C</span> "Doors are suddenly opening rapidly. Unusual favor is locating me. People are noticing what I carry."
+          </div>
+          <div class="sim-btn" onclick="runSim('tran', this)">
+             <span>D</span> "What used to work has dried up. I feel a deep, unexplainable agitation and desire to pray more."
+          </div>
+        </div>
+
+        <div class="sim-result" id="sim-res">
+          <h4 id="res-title">Season Discovered</h4>
+          <p id="res-body">Result text.</p>
+          <div class="protocol-box" id="res-proto">Protocol instruction.</div>
+        </div>
+
+      </div>
+      <div class="lab-footer" id="sim-footer">SYSTEM: Awaiting environmental input.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 6: THE AUDIT ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🔓 The Transition Checklist</h2></div>
+    <p class="body-text stag">Before a transition officially executes in the spirit, you must not abort it through emotional panicking. Verify your posture:</p>
+    <div class="proto-wrap" style="margin: 30px auto;">
+        <div class="proto-item" id="cp1" onclick="markCP('cp1')">
+        <div class="proto-check" id="cc1">○</div>
+        <div class="proto-body"><h5>1. Stop the Panic</h5><p>Acknowledge that closed doors are forced departures, not abandonment.</p></div>
+        </div>
+        <div class="proto-item" id="cp2" onclick="markCP('cp2')">
+        <div class="proto-check" id="cc2">○</div>
+        <div class="proto-body"><h5>2. Reject Offense</h5><p>Refuse to carry bitterness against God because of a prolonged season of delay.</p></div>
+        </div>
+        <div class="proto-item" id="cp3" onclick="markCP('cp3')">
+        <div class="proto-check" id="cc3">○</div>
+        <div class="proto-body"><h5>3. Feed The Hunger</h5><p>Lean into the sudden desire to pray and fast—it is the fuel for the coming threshold.</p></div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 7: REFLECTION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Reframe</h2></div>
+    
+    <div class="g2">
+      <div>
+        <p class="statement stag" style="font-size:2rem;text-align:left;color:var(--sunset)">Your Kairos is not late.<br><span style="color:var(--gold)">It is waiting for you to become worthy of it.</span></p>
+      </div>
+      <div>
+        <p class="body-text stag">The hard season stops feeling like a closed case. It becomes a curriculum. The distance between where you are now and where that moment is waiting for you is not made up of arbitrary years of divine inattention.</p>
+        <p class="body-text stag">It is made up of you. The character being formed in you. The death to self being accomplished in you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 8: DECLARATION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel';font-size:.7rem;letter-spacing:.3em;color:var(--sunset);margin-bottom:18px">THE KAIROS OATH</p>
+      <p class="statement stag">"I submit to the process of God. I will not measure my Kingdom progress by a Chronos clock. I will use my season of increase to build, and I will endure my season of pressure without offense."</p>
+      <button class="btn-submit s" style="margin-top:30px" id="decl-btn" onclick="declAccepted()">✦ SUBMIT TO THE SEASON</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel';color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">SEALED · THE TIMING IS SECURED.</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ── CANVAS ──
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight;}addEventListener('resize',rs);rs();
+for(let i=0;i<90;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,140,66,${p.a*.15})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// ── SCROLL REVEAL ──
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*28));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// ── MODAL PANEL ──
+const panelData={
+  ts:{tag:'THE FOUNDATION',title:'The Divine Rhythm',body:'The timeline of God is not based on sequential human urgency, but entirely on progressive structural readiness.'},
+  p1:{tag:'PHASE 1',title:'Preparation',body:'Before your destiny can be unveiled to the world, it must first be defined in the secret place. You are learning the blueprint without an audience.'},
+  p2:{tag:'PHASE 2',title:'Pruning',body:'The silence of God. Sincere obedience meeting continuous negative outcomes. This is where offense tries to abort the process.'},
+  p3:{tag:'PHASE 3',title:'Manifestation',body:'The glorious but dangerous season where the anointing amplifies whatever you carry. If the ego is not dead, the platform will destroy you.'},
+  s1:{tag:'SIGNAL 1',title:'Unshakeable Restlessness',body:'A specific internal agitation entirely disproportionate to your circumstances. Your current environment can no longer contain what God built in you.'},
+  s2:{tag:'SIGNAL 2',title:'Closed Doors',body:'Like the Brook Cherith drying up while Elijah was doing everything right. God is tearing down the transit point so you are forced to move.'},
+  s3:{tag:'SIGNAL 3',title:'Escalating Hunger',body:'A sudden drive to fast and pray intensely. This is the divine fuel required to push through the resistance of the impending threshold.'}
+};
+function sp(id,t,tt,b){const d=panelData[id]||{tag:t,title:tt,body:b};document.getElementById('np-tag').textContent=d.tag||t||'';document.getElementById('np-title').textContent=d.title||tt;document.getElementById('np-body').textContent=d.body||b;document.getElementById('np').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// ── DYNAMIC SIMULATOR ──
+const simData = {
+  prep: { title: "Phase 1: Discovery & Preparation", body: "You are in the foundational phase. Nobody is watching, and there is no external validation. The lack of forward movement is not a delay; it is the time required to read the architectural blueprint of who you are.", proto: "PROTOCOL: Focus purely on scriptural depth and skill acquisition. Ignore the lack of applause." },
+  prun: { title: "Phase 2: The Season of Pruning", body: "You are enduring the Silence of God. The enemy is aggressively attempting to introduce offense into your heart because the pressure is extremely high despite your faithfulness.", proto: "PROTOCOL: Refuse offense. Do not interpret silence as abandonment. Settle your emotions and do not make destiny decisions in this pain." },
+  mani: { title: "Phase 3: The Season of Manifestation", body: "You are experiencing sudden, rapid expansion. The grace is amplifying everything. This is highly dangerous because the success will mask any structural flaws in your character.", proto: "PROTOCOL: Require total death to self. Ensure you are not striving for vain glory or trying to 'prove something' to those who doubted you." },
+  tran: { title: "The Transition Threshold", body: "You are actively crossing from one season to another. The brook has dried up, the restlessness is peaking, and the hunger is increasing. God is shutting doors.", proto: "PROTOCOL: Do not panic. Feed the spiritual hunger with intense prayer, and allow the old season to die peacefully." }
+};
+
+function runSim(type, el) {
+  document.querySelectorAll('.sim-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  const d = simData[type];
+  const res = document.getElementById('sim-res');
+  res.classList.remove('show');
+  setTimeout(() => {
+    document.getElementById('res-title').textContent = d.title;
+    document.getElementById('res-body').textContent = d.body;
+    document.getElementById('res-proto').innerHTML = "<strong>" + d.proto.split(':')[0] + ":</strong>" + d.proto.split(':')[1];
+    res.classList.add('show');
+    document.getElementById('sim-footer').textContent = 'SYSTEM: ' + d.title.toUpperCase() + ' IDENTIFIED.';
+  }, 100);
+}
+
+// ── FRAMEWORK AUDIT ──
+const cpChecked=new Set();
+function markCP(id){
+    if(cpChecked.has(id))return;
+    cpChecked.add(id);
+    document.getElementById(id).classList.add('done');
+    const num=id.replace('cp','');
+    document.getElementById('cc'+num).textContent='✓';
+}
+
+// ── DECLARATION ──
+function declAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+</script>
+</body>
+</html>
