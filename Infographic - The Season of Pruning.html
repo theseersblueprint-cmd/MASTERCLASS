@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Season of Pruning | Masterclass</title>
+  <meta name="description" content="A 7-layer interactive infographic mapping the season of testing, the purpose of silence, and the process of pruning."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--gold-g:rgba(255,215,0,.06);--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--purple:#B08FFF;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(255,51,102,.1)}50%{box-shadow:0 0 50px rgba(255,51,102,.25)}}
+    @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:100%;max-width:920px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,51,102,.15);box-shadow:0 0 100px rgba(255,51,102,.08),0 30px 80px rgba(0,0,0,.8);animation:pulse 6s ease-in-out infinite;margin-bottom:44px}
+    .hero-img img{width:100%;height:420px;object-fit:cover;object-position:center top;display:block;transition:transform .8s ease}
+    .hero-img:hover img{transform:scale(1.02)}
+    .ch-tag{font-family:'Inter';font-size:.7rem;letter-spacing:.35em;color:var(--danger);text-transform:uppercase;margin-bottom:18px;opacity:.9}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter';font-size:.78rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:28px auto 0;line-height:1.65}
+
+    /* ── SECTION HEADERS ── */
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--danger);background:rgba(255,51,102,.05);border:1px solid rgba(255,51,102,.15);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--danger);font-weight:600}
+
+    /* ── TYPOGRAPHY ── */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.danger-b{border-color:rgba(255,51,102,.2);border-left:3px solid var(--danger);background:rgba(255,51,102,.02)}
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}
+    .body-text.lg{font-size:1.45rem}
+    .pipe{padding-left:20px;border-left:2px solid var(--danger);font-style:italic;font-size:1.3rem;margin:24px 0;color:var(--text)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .scripture{padding:16px 22px;border-left:2px solid rgba(255,215,0,.25);font-style:italic;color:var(--muted);font-size:1.1rem;line-height:1.7;margin:22px 0}
+    .scripture cite{display:block;font-style:normal;font-family:'Inter';font-size:.68rem;color:var(--gold);margin-top:8px;letter-spacing:.1em}
+
+    /* ── ACCORDIONS ── */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:rgba(255,51,102,.3)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-num{font-family:'Inter';font-size:.62rem;letter-spacing:.2em;color:var(--danger);margin-bottom:4px}
+    .ac-icon{font-size:1.4rem;color:var(--danger);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s,padding .55s}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
+
+    /* ── MASTER MIND MAP ── */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px}
+    .fw-row{display:flex;justify-content:center;gap:18px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:36px;color:var(--danger);font-size:1.4rem;opacity:.45;position:relative;z-index:1}
+    .map-label{font-family:'Inter';font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px;position:relative;z-index:1}
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center}
+    .node:hover{transform:translateY(-3px);border-color:rgba(255,51,102,.4);box-shadow:0 8px 30px rgba(255,51,102,.08)}
+    .node.root{width:280px;padding:28px 20px;border-color:rgba(255,51,102,.5);background:rgba(255,51,102,.06)}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--danger);margin-bottom:6px}
+    .node.root .n-sub{font-family:'Inter';font-size:.7rem;color:var(--text)}
+    .node.sm{width:175px;padding:18px 14px}
+    .node.sm .n-title{font-family:'Cinzel',serif;font-size:.8rem;color:#fff;margin-bottom:4px}
+    .node.sm .n-sub{font-family:'Inter';font-size:.6rem;color:var(--muted)}
+    .node.kind{width:190px;padding:20px 14px}
+    .node.kind .n-title{font-family:'Cinzel',serif;font-size:.78rem;color:#fff;margin-bottom:5px}
+    .node.kind .n-sub{font-family:'Inter';font-size:.58rem;color:var(--muted);line-height:1.5}
+
+    /* ── MODAL PANEL ── */
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;backdrop-filter:blur(3px)}#overlay.show{display:block}
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(580px,90vw);background:#0A0E18;border:1px solid rgba(255,51,102,.3);border-radius:28px;padding:44px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.95)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:.3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--danger);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.12rem;line-height:1.85;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+
+    /* ── SIMULATOR ── */
+    .lab{border:1px solid rgba(255,51,102,.2);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:300px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter';font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter';font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:.3s;margin:6px}
+    .btn:hover{background:var(--hover)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.d{border-color:var(--danger);color:var(--danger)}.btn.d:hover,.btn.d.on{background:rgba(255,51,102,.1)}
+    
+    .ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;width:100%;max-width:700px}
+    .ch-card{background:#0a0a0a;border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:.35s}
+    .ch-card:hover,.ch-card.on{border-color:var(--danger);background:rgba(255,51,102,.06)}
+    .ch-card .cc-title{font-family:'Cinzel';font-size:.8rem;color:#fff;margin-bottom:4px}
+    .ch-detail{border:1px solid rgba(255,51,102,.2);border-radius:14px;padding:22px;background:rgba(255,51,102,.03);text-align:left;display:none;animation:popIn .35s ease forward}
+    .ch-detail.show{display:block}.ch-detail h4{font-family:'Cinzel';color:var(--danger);margin-bottom:10px}
+    .ch-detail p{font-size:1.05rem;line-height:1.7;color:var(--muted)}
+
+    /* ── CHECKER ── */
+    .proto-wrap{display:flex;flex-direction:column;gap:14px;width:100%;max-width:620px}
+    .proto-item{background:#080808;border:1px solid var(--border);border-radius:14px;padding:22px 26px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:.35s}
+    .proto-item:hover{border-color:rgba(255,51,102,.3)}.proto-item.done{border-color:var(--gold);background:rgba(255,215,0,.04)}
+    .proto-check{width:32px;height:32px;border-radius:50%;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:.35s}
+    .proto-item.done .proto-check{background:var(--gold);border-color:var(--gold);color:#000}
+    .proto-body h5{font-family:'Cinzel';font-size:.82rem;color:#fff;margin-bottom:4px}
+    .proto-body p{font-size:.95rem;color:var(--muted)}.proto-item.done .proto-body h5{color:var(--gold)}
+
+    /* ── DECLARATION ── */
+    .decl{border:1px dashed rgba(255,51,102,.3);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(255,51,102,.05) 0%,transparent 70%)}
+
+    /* ── GRID ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np">
+  <button class="np-close" onclick="closePanel()">✕</button>
+  <p class="np-tag" id="np-tag"></p>
+  <h2 class="np-title" id="np-title"></h2>
+  <p class="np-body" id="np-body"></p>
+</div>
+
+<main>
+
+  <!-- ── LAYER 1: HERO ── -->
+  <section class="hero sr">
+    <div class="hero-img">
+      <img src="pruning_hero.png" alt="The Season of Pruning" onerror="this.parentElement.style.display='none'">
+    </div>
+    <p class="ch-tag">When Everything You Try Fails</p>
+    <h1 class="hero-title stag">THE SEASON OF<br>PRUNING</h1>
+    <p class="hero-sub">The Divine Fire of Preparation</p>
+    <p class="hero-def stag">The Season of Pruning and Testing is the most important season in a believer's development. It is where everything that is in you is put under pressure to reveal what it is actually made of.</p>
+  </section>
+
+  <!-- ── LAYER 2: THESIS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔥 The Fire Does Not Defeat, It Reveals</h2></div>
+    <div class="card danger-b">
+      <p class="statement stag">"The fire does not create the gold. It reveals it. And what it burns away are the things that look like strength but are actually fragility."</p>
+      <div class="g2" style="margin-top:28px">
+        <div>
+          <p class="body-text stag">You are not cursed. You are not being punished. You are not behind. You are in the fire. And the fire is doing exactly what it was designed to do: it is burning away what was never supposed to be there.</p>
+          <p class="pipe stag">This is not a season of rejection. It is the most sophisticated form of teaching available to a human being.</p>
+        </div>
+        <div>
+          <p style="font-family:'Cinzel';font-size:.65rem;letter-spacing:.2em;color:var(--danger);text-align:center;margin-bottom:18px">THE SILENCE OF GOD</p>
+          <div style="background:rgba(255,51,102,.04);border:1px solid rgba(255,51,102,.2);border-radius:14px;padding:18px;text-align:center">
+            <p style="font-size:1.05rem;color:var(--text);line-height:1.6;margin-bottom:8px">It is not the silence of absence. It is the silence of a deliberate withdrawal of noise, so that internal formation can happen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 3: MASTER MIND MAP ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🗺 The Architecture of Pruning</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to reveal the deep insight behind it.</p>
+    <div class="map-wrap"><div class="map-canvas">
+
+      <!-- Row 1: The Core -->
+      <div class="fw-row">
+        <div class="node root" onclick="sp('sp','THE FORGE','The Season of Pruning','The most uncomfortable season, where you do everything right and nothing works. Not a punishment, but the purification of the vessel.')"><div class="n-title">⚔️ THE FIRE</div><div class="n-sub">The Process of Pruning</div></div>
+      </div>
+      <div class="map-arrow">↓ WHAT IT BURNS AWAY ↓</div>
+
+      <!-- Row 2: The Burning -->
+      <p class="map-label">THE FALSE FOUNDATIONS</p>
+      <div class="fw-row">
+        <div class="node sm" style="border-color:rgba(255,51,102,.4)" onclick="sp('u1','BURNED','Willpower Disguised as Faith','Effort masquerading as trust. It collapses under sustained pressure because willpower has a limit.')"><div class="n-title">Willpower</div><div class="n-sub">Disguised as Faith</div></div>
+        <div class="node sm" style="border-color:rgba(255,51,102,.4)" onclick="sp('u2','BURNED','Ambition Disguised as Calling','The drive for personal platform hiding behind spiritual language. The fire burns the self-promotion out.')"><div class="n-title">Ambition</div><div class="n-sub">Disguised as Calling</div></div>
+        <div class="node sm" style="border-color:rgba(255,51,102,.4)" onclick="sp('u3','BURNED','Performance Disguised as Character','Doing the right things just to maintain appearances rather than operating from internal integrity.')"><div class="n-title">Performance</div><div class="n-sub">Disguised as Character</div></div>
+        <div class="node sm" style="border-color:rgba(255,51,102,.4)" onclick="sp('u4','BURNED','Dependency on Evidence','The version of you that only serves God when He responds visibly. This must be eliminated.')"><div class="n-title">Evidence</div><div class="n-sub">Dependency on Results</div></div>
+      </div>
+      <div class="map-arrow">↓ WHAT IT BUILDS ↓</div>
+
+      <!-- Row 3: The Product -->
+      <p class="map-label">THE ENDURANCE YIELD</p>
+      <div class="fw-row">
+        <div class="node kind" onclick="sp('p1','YIELD','Radical Obedience','Learning the difference between moving from personal agenda vs. moving on God’s specific instruction.')"><div class="n-title" style="color:var(--gold)">Radical Obedience</div><div class="n-sub">Moving on Instruction</div></div>
+        <div class="node kind" onclick="sp('p2','YIELD','Earned Compassion','Knowing firsthand what it is to fail repeatedly. This changes how you relate to the struggles of others.')"><div class="n-title" style="color:var(--gold)">Earned Compassion</div><div class="n-sub">Understanding Failure</div></div>
+        <div class="node kind" onclick="sp('p3','YIELD','Iron Character','A vessel capable of holding enormous breakthrough and resources without being destroyed by them.')"><div class="n-title" style="color:var(--gold)">Forged Character</div><div class="n-sub">Capacity to Steward</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ── LAYER 4: DEEP DIVES ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🧩 The Difference in The Wait</h2></div>
+    
+    <div class="g2" style="margin-bottom:48px">
+      <div>
+        <h3 style="font-family:'Cinzel';color:var(--danger);font-size:1.3rem;margin-bottom:16px">ACTIVITY VS INSTRUCTION</h3>
+        <p class="body-text stag">During the pruning, every failed attempt is a lesson revealing what it looks like to move from your own energy rather than God's instruction.</p>
+        <p class="body-text stag">The season trains your spiritual reflexes. It teaches you the difference between going out of your own initiative, and being explicitly sent.</p>
+      </div>
+      <div>
+        <div class="ac" onclick="this.classList.toggle('open')">
+          <div class="ac-hdr"><div><p class="ac-num">THE COMMISSIONING</p><h3 class="ac-title">The Price of Power</h3></div><span class="ac-icon">+</span></div>
+          <div class="ac-body" onclick="event.stopPropagation()">
+            <p class="body-text stag">The authority, the graces, and the mantles you request do not come without cost. You must be shaped into the kind of vessel that can carry them. Not someone who avoided the fire, but someone who walked right through it and is still standing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 5: THE ACTIVATION LAB ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">📡 The Time-Compression Tactics</h2></div>
+    <p class="body-text stag" style="margin-bottom:8px">Select the two deliberate choices that can significantly accelerate the end of the pruning season.</p>
+    <div class="lab">
+      <div class="lab-stage">
+        <div class="ch-grid" id="cGrid">
+          <div class="ch-card" onclick="openChoice('c1',this)"><div class="cc-title">1. Self-Awareness</div></div>
+          <div class="ch-card" onclick="openChoice('c2',this)"><div class="cc-title">2. Organized Structure</div></div>
+        </div>
+        <div class="ch-detail" id="c-detail" style="margin-top:22px;width:100%;max-width:700px">
+          <h4 id="c-d-title">Select a Tactic</h4>
+          <p id="c-d-body" style="font-size:1.1rem;line-height:1.75;color:var(--muted)">Explore how to actively cooperate with the season rather than passively suffering through it.</p>
+        </div>
+      </div>
+      <div class="lab-footer" id="c-footer">STATUS: Waiting for selection.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 6: THE AUDIT ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🔓 The Frustration Audit</h2></div>
+    <div class="card" style="text-align:center">
+      <p class="body-text lg stag" style="font-style:italic">"What is the thing you keep trying that keeps not working?"</p>
+      <p class="body-text stag" style="color:var(--danger);margin-top:20px;">What if the repeated failure is not evidence that you need a different strategy, but evidence that <br>the season is trying to teach you something a successful outcome would have prevented?</p>
+      <p class="body-text stag">The lesson is more valuable than the breakthrough.</p>
+    </div>
+  </section>
+
+  <!-- ── LAYER 7: REFLECTION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Reframe</h2></div>
+    
+    <div class="g2">
+      <div>
+        <p class="statement stag" style="font-size:2rem;text-align:left;color:var(--danger)">The season of pruning is not trying to stop you.<br><span style="color:var(--gold)">It is trying to finish you.</span></p>
+      </div>
+      <div>
+        <p class="body-text stag">If you had received everything you asked for immediately, without the wait, you would have had the breakthrough, but not the character to steward it.</p>
+        <p class="body-text stag">The character is worth infinitely more than the breakthrough.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 8: DECLARATION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel';font-size:.7rem;letter-spacing:.3em;color:var(--danger);margin-bottom:18px">THE FIRE ACCEPTED</p>
+      <p class="statement stag">"I stop demanding a breakthrough that would destroy me. I submit to the fire. I choose to let the frustration forge my character. I will wait for God's instruction rather than producing my own activity."</p>
+      <button class="btn d" style="margin-top:30px" id="decl-btn" onclick="declAccepted()">✦ SUBMIT TO THE FORGE</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel';color:var(--gold);margin-top:20px;letter-spacing:.15em;font-size:.85rem">SEALED · THE VESSEL IS IN PREPARATION.</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ── CANVAS ──
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight;}addEventListener('resize',rs);rs();
+for(let i=0;i<90;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,51,102,${p.a*.15})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// ── SCROLL REVEAL ──
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*28));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// ── MODAL PANEL ──
+const panelData={
+  sp:{tag:'THE FORGE',title:'The Season of Pruning',body:'The most uncomfortable season, where you do everything right and nothing works. Not a punishment, but the purification of the vessel.'},
+  u1:{tag:'BURNED',title:'Willpower Disguised',body:'Effort masquerading as trust. It collapses under sustained pressure because human willpower always has a breaking point.'},
+  u2:{tag:'BURNED',title:'Ambition Disguised',body:'The drive for personal platform hiding behind spiritual language. The fire burns away the self-promoting ego.'},
+  u3:{tag:'BURNED',title:'Performance Disguised',body:'Doing the right things just to maintain appearances rather than operating from internal integrity and genuine love.'},
+  u4:{tag:'BURNED',title:'Dependency on Evidence',body:'The version of you that only serves God when He responds visibly. This shallow state must be eliminated.'},
+  p1:{tag:'YIELD',title:'Radical Obedience',body:'Learning the painful difference between moving from an energetic personal agenda versus waiting for God’s specific instruction.'},
+  p2:{tag:'YIELD',title:'Earned Compassion',body:'Knowing firsthand what it is to fail repeatedly. This destroys judgement and changes how you relate to the struggles of others.'},
+  p3:{tag:'YIELD',title:'Forged Character',body:'Creating a resilient internal structure capable of holding enormous breakthrough and kingdom resources without crumbling under their weight.'}
+};
+function sp(id,t,tt,b){const d=panelData[id]||{tag:t,title:tt,body:b};document.getElementById('np-tag').textContent=d.tag||t||'';document.getElementById('np-title').textContent=d.title||tt;document.getElementById('np-body').textContent=d.body||b;document.getElementById('np').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// ── ACTIVATION LAB ──
+const choicesData={
+  c1:{title:'1. Self-Awareness',body:'The ability to observe your reactions honestly. To catch pride or panic operating beneath the surface and correct it immediately. The faster the course correction, the faster the lesson completes.'},
+  c2:{title:'2. Organized Structure',body:'Designing a curriculum for your own development instead of consuming truth passively. Truth that arrives in structured layers reshapes the mind efficiently and accelerates the end of the pruning season.'}
+};
+function openChoice(id,el){document.querySelectorAll('#cGrid .ch-card').forEach(c=>c.classList.remove('on'));el.classList.add('on');const d=choicesData[id];const det=document.getElementById('c-detail');det.classList.add('show');document.getElementById('c-d-title').textContent=d.title;document.getElementById('c-d-body').textContent=d.body;document.getElementById('c-footer').textContent='TACTIC ENGAGED: '+d.title;}
+
+// ── DECLARATION ──
+function declAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+</script>
+</body>
+</html>
