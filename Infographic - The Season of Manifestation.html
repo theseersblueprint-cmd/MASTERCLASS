@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Season of Manifestation | Masterclass</title>
+  <meta name="description" content="A 7-layer interactive infographic mapping the season of manifestation, the danger of visibility, and moving from theory to reality."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--gold-g:rgba(255,215,0,.06);--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--purple:#B08FFF;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(0,240,255,.1)}50%{box-shadow:0 0 50px rgba(0,240,255,.25)}}
+    @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:100%;max-width:920px;border-radius:24px;overflow:hidden;border:1px solid rgba(0,240,255,.15);box-shadow:0 0 100px rgba(0,240,255,.08),0 30px 80px rgba(0,0,0,.8);animation:pulse 6s ease-in-out infinite;margin-bottom:44px}
+    .hero-img img{width:100%;height:420px;object-fit:cover;object-position:center top;display:block;transition:transform .8s ease}
+    .hero-img:hover img{transform:scale(1.02)}
+    .ch-tag{font-family:'Inter';font-size:.7rem;letter-spacing:.35em;color:var(--cyan);text-transform:uppercase;margin-bottom:18px;opacity:.9}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter';font-size:.78rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:28px auto 0;line-height:1.65}
+
+    /* ── SECTION HEADERS ── */
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--cyan);background:rgba(0,240,255,.05);border:1px solid rgba(0,240,255,.15);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--cyan);font-weight:600}
+
+    /* ── TYPOGRAPHY ── */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.cyan-b{border-color:rgba(0,240,255,.2);border-left:3px solid var(--cyan);background:rgba(0,240,255,.02)}
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}
+    .body-text.lg{font-size:1.45rem}
+    .pipe{padding-left:20px;border-left:2px solid var(--cyan);font-style:italic;font-size:1.3rem;margin:24px 0;color:var(--text)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .scripture{padding:16px 22px;border-left:2px solid rgba(255,215,0,.25);font-style:italic;color:var(--muted);font-size:1.1rem;line-height:1.7;margin:22px 0}
+    .scripture cite{display:block;font-style:normal;font-family:'Inter';font-size:.68rem;color:var(--gold);margin-top:8px;letter-spacing:.1em}
+
+    /* ── ACCORDIONS ── */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:rgba(0,240,255,.3)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-num{font-family:'Inter';font-size:.62rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:4px}
+    .ac-icon{font-size:1.4rem;color:var(--cyan);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s,padding .55s}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
+
+    /* ── MASTER MIND MAP ── */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px}
+    .fw-row{display:flex;justify-content:center;gap:18px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:36px;color:var(--cyan);font-size:1.4rem;opacity:.45;position:relative;z-index:1}
+    .map-label{font-family:'Inter';font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px;position:relative;z-index:1}
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center}
+    .node:hover{transform:translateY(-3px);border-color:rgba(0,240,255,.4);box-shadow:0 8px 30px rgba(0,240,255,.08)}
+    .node.root{width:280px;padding:28px 20px;border-color:rgba(0,240,255,.5);background:rgba(0,240,255,.06)}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--cyan);margin-bottom:6px}
+    .node.root .n-sub{font-family:'Inter';font-size:.7rem;color:var(--text)}
+    .node.sm{width:175px;padding:18px 14px}
+    .node.sm .n-title{font-family:'Cinzel',serif;font-size:.8rem;color:#fff;margin-bottom:4px}
+    .node.sm .n-sub{font-family:'Inter';font-size:.6rem;color:var(--muted)}
+    .node.kind{width:200px;padding:20px 14px}
+    .node.kind .n-title{font-family:'Cinzel',serif;font-size:.78rem;color:#fff;margin-bottom:5px}
+    .node.kind .n-sub{font-family:'Inter';font-size:.58rem;color:var(--muted);line-height:1.5}
+
+    /* ── MODAL PANEL ── */
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;backdrop-filter:blur(3px)}#overlay.show{display:block}
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(580px,90vw);background:#0A0E18;border:1px solid rgba(0,240,255,.3);border-radius:28px;padding:44px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.95)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:.3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.12rem;line-height:1.85;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+
+    /* ── SIMULATOR ── */
+    .lab{border:1px solid rgba(0,240,255,.2);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:300px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter';font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter';font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:.3s;margin:6px}
+    .btn:hover{background:var(--hover)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover,.btn.c.on{background:rgba(0,240,255,.1)}
+    
+    .ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;width:100%;max-width:700px}
+    .ch-card{background:#0a0a0a;border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:.35s}
+    .ch-card:hover,.ch-card.on{border-color:var(--cyan);background:rgba(0,240,255,.06)}
+    .ch-card .cc-title{font-family:'Cinzel';font-size:.8rem;color:#fff;margin-bottom:4px}
+    .ch-detail{border:1px solid rgba(0,240,255,.2);border-radius:14px;padding:22px;background:rgba(0,240,255,.03);text-align:left;display:none;animation:popIn .35s ease forward}
+    .ch-detail.show{display:block}.ch-detail h4{font-family:'Cinzel';color:var(--cyan);margin-bottom:10px}
+    .ch-detail p{font-size:1.05rem;line-height:1.7;color:var(--muted)}
+
+    /* ── CHECKER ── */
+    .proto-wrap{display:flex;flex-direction:column;gap:14px;width:100%;max-width:620px}
+    .proto-item{background:#080808;border:1px solid var(--border);border-radius:14px;padding:22px 26px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:.35s}
+    .proto-item:hover{border-color:rgba(0,240,255,.3)}.proto-item.done{border-color:var(--success);background:rgba(0,217,126,.04)}
+    .proto-check{width:32px;height:32px;border-radius:50%;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:.35s}
+    .proto-item.done .proto-check{background:var(--success);border-color:var(--success);color:#000}
+    .proto-body h5{font-family:'Cinzel';font-size:.82rem;color:#fff;margin-bottom:4px}
+    .proto-body p{font-size:.95rem;color:var(--muted)}.proto-item.done .proto-body h5{color:var(--success)}
+
+    /* ── DECLARATION ── */
+    .decl{border:1px dashed rgba(0,240,255,.3);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(0,240,255,.05) 0%,transparent 70%)}
+
+    /* ── GRID ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np">
+  <button class="np-close" onclick="closePanel()">✕</button>
+  <p class="np-tag" id="np-tag"></p>
+  <h2 class="np-title" id="np-title"></h2>
+  <p class="np-body" id="np-body"></p>
+</div>
+
+<main>
+
+  <!-- ── LAYER 1: HERO ── -->
+  <section class="hero sr">
+    <div class="hero-img">
+      <img src="manifestation_hero.png" alt="The Season of Manifestation" onerror="this.parentElement.style.display='none'">
+    </div>
+    <p class="ch-tag">When Theory Becomes Reality</p>
+    <h1 class="hero-title stag">THE SEASON OF<br>MANIFESTATION</h1>
+    <p class="hero-sub">The Danger of Visibility</p>
+    <p class="hero-def stag">The Season of Manifestation is when what was built in the hidden places becomes visible in the public ones. It does not always come with a dramatic announcement. It begins with small obediences producing small results.</p>
+  </section>
+
+  <!-- ── LAYER 2: THESIS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">⚡ When Theory Becomes Testimony</h2></div>
+    <div class="card cyan-b">
+      <p class="statement stag">"The things you held in your head as beliefs become things you hold in your body as experiences. The knowing becomes a different kind of knowing. Unshakeable in a way academic knowledge can never be."</p>
+      <div class="g2" style="margin-top:28px">
+        <div>
+          <p class="body-text stag">If God says it is possible — believe Him. Specifically, when God gives you an instruction that comes with an implicit or explicit promise, believe it enough to act on it before the evidence.</p>
+          <p class="pipe stag">Because the outcome is always downstream of the obedience.</p>
+        </div>
+        <div>
+          <p style="font-family:'Cinzel';font-size:.65rem;letter-spacing:.2em;color:var(--cyan);text-align:center;margin-bottom:18px">THE ADVANTAGE</p>
+          <div style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.2);border-radius:14px;padding:18px;text-align:center">
+            <p style="font-size:1.05rem;color:var(--text);line-height:1.6;margin-bottom:8px">Your intelligence, network, and hustle are not the advantage. The instructions are the advantage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 3: MASTER MIND MAP ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🗺 The Architecture of Arrival</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to reveal the deep insight behind it.</p>
+    <div class="map-wrap"><div class="map-canvas">
+
+      <!-- Row 1: The Core -->
+      <div class="fw-row">
+        <div class="node root" onclick="sp('sm','THE ARRIVAL','The Season of Manifestation','The third and final micro-season. Where identity has taken shape, character is forged, and now the preparation becomes operational in public visibility.')"><div class="n-title">🦋 THE MANIFESTATION</div><div class="n-sub">When the Curtain Draws Back</div></div>
+      </div>
+      <div class="map-arrow">↓ THE DANGERS OF VISIBILITY ↓</div>
+
+      <!-- Row 2: The Dangers -->
+      <p class="map-label">THE EGO TRAP</p>
+      <div class="fw-row">
+        <div class="node sm" style="border-color:rgba(255,51,102,.4)" onclick="sp('d1','DANGER','The Need for Validation','The self that is still alive will measure success by people\'s reactions instead of divine alignment.')"><div class="n-title">Validation Metric</div><div class="n-sub">Proving a Point</div></div>
+        <div class="node sm" style="border-color:rgba(255,51,102,.4)" onclick="sp('d2','DANGER','Premature Visibility','Announcing the first bud as if it is the full tree. Premature flexing attracts the wrong forces.')"><div class="n-title">Premature Flexing</div><div class="n-sub">Corrupting the Motive</div></div>
+        <div class="node sm" style="border-color:rgba(255,51,102,.4)" onclick="sp('d3','DANGER','Relying on Momentum','Stopping the wait for instruction because things are working. This begins a new pruning season immediately.')"><div class="n-title">Momentum Trap</div><div class="n-sub">Blindness to Instruction</div></div>
+      </div>
+      <div class="map-arrow">↓ THE SUSTAINING PROTOCOLS ↓</div>
+
+      <!-- Row 3: The Sustaining Actions -->
+      <p class="map-label">THE POSTURE THAT SUSTAINS</p>
+      <div class="fw-row">
+        <div class="node kind" onclick="sp('s1','PROTOCOL','Execution over Optics','Making decisions based on what serves the assignment, rather than what looks impressive on the surface.')"><div class="n-title" style="color:var(--cyan)">Execution > Optics</div><div class="n-sub">Alignment Focused</div></div>
+        <div class="node kind" onclick="sp('s2','PROTOCOL','Moderate Celebration','Jumping in the room is fine. But then get back to work. Don\'t let excitement pull you into premature visibility.')"><div class="n-title" style="color:var(--cyan)">Moderate Celebration</div><div class="n-sub">Honoring Without Ego</div></div>
+        <div class="node kind" onclick="sp('s3','PROTOCOL','Sharpened Hearing','Manifestation requires MORE spiritual sensitivity, not less. Because now the instructions have high, visible stakes.')"><div class="n-title" style="color:var(--cyan)">Sharpened Hearing</div><div class="n-sub">Precision Waiting</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ── LAYER 4: DEEP DIVES ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🧩 The Most Dangerous Season</h2></div>
+    
+    <div class="g2" style="margin-bottom:48px">
+      <div>
+        <h3 style="font-family:'Cinzel';color:var(--danger);font-size:1.3rem;margin-bottom:16px">THE THREAT OF THE EGO</h3>
+        <p class="body-text stag">The season of manifestation amplifies everything. What was hidden is now visible. The grace for visibility is highly dangerous if the self is still alive.</p>
+        <p class="body-text stag">The version of you still trying to prove doubters wrong finds this season the most tempting environment ever. It corrupts the motive and aborts a season that took years to build.</p>
+      </div>
+      <div>
+        <div class="ac" onclick="this.classList.toggle('open')">
+          <div class="ac-hdr"><div><p class="ac-num">THE OTHERS</p><h3 class="ac-title">It Is Not For You</h3></div><span class="ac-icon">+</span></div>
+          <div class="ac-body" onclick="event.stopPropagation()">
+            <p class="body-text stag">The visibility, resources, and influence do not exist for your comfort. They exist because there are people on the other side of your assignment who desperately need what only your specific journey sets you up to provide. The person who earned compassion through failure is the one who can trusted with visibility.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 5: THE ACTIVATION LAB ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">📡 The Motive Evaluation Lab</h2></div>
+    <p class="body-text stag" style="margin-bottom:8px">Test your motivation. Select what metric you use to determine if a season is working.</p>
+    <div class="lab">
+      <div class="lab-stage">
+        <div class="ch-grid" id="mGrid">
+          <div class="ch-card" onclick="openMetric('m1',this)"><div class="cc-title">1. Other People's Response</div></div>
+          <div class="ch-card" onclick="openMetric('m2',this)"><div class="cc-title">2. Proving Doubters Wrong</div></div>
+          <div class="ch-card" onclick="openMetric('m3',this)"><div class="cc-title">3. Executing the Mandate</div></div>
+        </div>
+        <div class="ch-detail" id="m-detail" style="margin-top:22px;width:100%;max-width:700px">
+          <h4 id="m-d-title">Select a Metric</h4>
+          <p id="m-d-body" style="font-size:1.1rem;line-height:1.75;color:var(--muted)">Analyze the true intention behind your desire for breakthrough.</p>
+        </div>
+      </div>
+      <div class="lab-footer" id="m-footer">STATUS: Waiting for selection.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 6: THE AUDIT ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🔓 Recognizing the Arrival</h2></div>
+    <div class="card" style="text-align:center">
+      <p class="body-text lg stag" style="font-style:italic">"It does not always begin with the big thing. It begins with small things succeeding."</p>
+      <p class="body-text stag" style="color:var(--cyan);margin-top:20px;">Most people wait for the spectacular deal that announces their arrival. Instead, recognize the first buds.</p>
+      <p class="body-text stag">A dormant project activating. Provision arriving unexpectedly. The person who recognizes the first bud knows to sharpen up, not slack off.</p>
+    </div>
+  </section>
+
+  <!-- ── LAYER 7: REFLECTION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 The Reframe</h2></div>
+    
+    <div class="g2">
+      <div>
+        <p class="statement stag" style="font-size:2rem;text-align:left;color:var(--cyan)">If God says it is possible, believe Him.<br><span style="color:var(--gold)">Before the outcome is visible.</span></p>
+      </div>
+      <div>
+        <p class="body-text stag">What would you do differently right now if you genuinely believed that a specific, logistically awkward instruction from God would produce a result your best independent effort could not replicate?</p>
+        <p class="body-text stag">The season does not wait for you to feel ready. It waits for you to obey.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 8: DECLARATION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel';font-size:.7rem;letter-spacing:.3em;color:var(--cyan);margin-bottom:18px">THE SUSTAINING OATH</p>
+      <p class="statement stag">"I declare that my manifestation is not for my validation. I will not trade my assignment for an audience. I will obey the instruction regardless of the optics. I will let theory become testimony."</p>
+      <button class="btn c" style="margin-top:30px" id="decl-btn" onclick="declAccepted()">✦ RECEIVE THE MANIFESTATION</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel';color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">SEALED · THE SEASON IS OPERATIONAL.</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ── CANVAS ──
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight;}addEventListener('resize',rs);rs();
+for(let i=0;i<90;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(0,240,255,${p.a*.15})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// ── SCROLL REVEAL ──
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*28));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// ── MODAL PANEL ──
+const panelData={
+  sm:{tag:'THE ARRIVAL',title:'The Season of Manifestation',body:'The third micro-season. Where identity and forged character become operational in public visibility.'},
+  d1:{tag:'DANGER',title:'Validation Metric',body:'Measuring success by whether doubters finally respect you or people notice you. This corrupts the entire purpose of the season.'},
+  d2:{tag:'DANGER',title:'Premature Flexing',body:'Announcing the first bud of success as if it is the full tree. This attracts the wrong forces and derails the growth process.'},
+  d3:{tag:'DANGER',title:'Momentum Trap',body:'Thinking you\'ve figured out the formula and no longer need to wait for God’s instructions. This leads straight to a new pruning season.'},
+  s1:{tag:'PROTOCOL',title:'Execution over Optics',body:'Making every decision based on what aligns with the divine assignment, completely ignoring whether it looks impressive or not.'},
+  s2:{tag:'PROTOCOL',title:'Moderate Celebration',body:'Celebrating in private, thanking God deeply, but avoiding the ego-driven broadcast that positions you as the main character.'},
+  s3:{tag:'PROTOCOL',title:'Sharpened Hearing',body:'Increasing your spiritual sensitivity. Because you now operate with resources and visibility, the stakes of missing an instruction are much higher.'}
+};
+function sp(id,t,tt,b){const d=panelData[id]||{tag:t,title:tt,body:b};document.getElementById('np-tag').textContent=d.tag||t||'';document.getElementById('np-title').textContent=d.title||tt;document.getElementById('np-body').textContent=d.body||b;document.getElementById('np').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// ── ACTIVATION LAB ──
+const metricsData={
+  m1:{title:'1. Other People\'s Response',body:'[OPTICS] If you are manifesting just to get recognized in rooms you were previously excluded from, your ego is in control. This leads to burnout and a wasted season.'},
+  m2:{title:'2. Proving Doubters Wrong',body:'[OPTICS] If your motivation is revenge dressed as success, you will make decisions that look impressive but are fundamentally misaligned.'},
+  m3:{title:'3. Executing the Mandate',body:'[ALIGNMENT] This is the only metric that sustains a season. You use the resources to solve problems for others, operating purely on God\'s instruction.'}
+};
+function openMetric(id,el){document.querySelectorAll('#mGrid .ch-card').forEach(c=>c.classList.remove('on'));el.classList.add('on');const d=metricsData[id];const det=document.getElementById('m-detail');det.classList.add('show');document.getElementById('m-d-title').textContent=d.title;document.getElementById('m-d-body').textContent=d.body;document.getElementById('m-footer').textContent='METRIC EVALUATED: '+d.title;}
+
+// ── DECLARATION ──
+function declAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+</script>
+</body>
+</html>
