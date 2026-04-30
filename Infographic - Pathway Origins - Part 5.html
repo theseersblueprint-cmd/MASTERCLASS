@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pathway Origins | Part 5: The Theology of Suffering</title>
-  <meta name="description" content="A systematic framework mapping the transition from a masochistic theology into the true biblical understanding of suffering and victory."/>
+  <title>Pathway Origins | Part 5: The Vision of the Crucified King</title>
+  <meta name="description" content="A framework mapping the divine transaction and the mystery of spiritual incubation."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
   <style>
@@ -21,9 +21,9 @@
     
     .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
     .hero-img{width:340px;height:340px;border-radius:50%;overflow:hidden;border:1px solid var(--danger);box-shadow:0 0 80px rgba(255,51,102,.1),0 0 160px rgba(255,51,102,.05);animation:float 7s ease-in-out infinite,pulse 4s ease-in-out infinite;margin-bottom:40px; background:var(--deep)}
-    .hero-img img{width:100%;height:100%;object-fit:cover; filter: grayscale(40%) contrast(1.2); opacity:0.8;}
+    .hero-img img{width:100%;height:100%;object-fit:cover; filter: grayscale(20%) contrast(1.1); opacity:0.8;}
     .ch-tag{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.35em;color:var(--danger);text-transform:uppercase;margin-bottom:18px;opacity:.8}
-    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.6rem,6vw,5.5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px; text-shadow: 0 0 30px rgba(255,51,102,0.3);}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px; text-shadow: 0 0 30px rgba(255,51,102,0.3);}
     .hero-sub{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
     .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:30px auto 0;line-height:1.6}
     
@@ -41,7 +41,7 @@
     .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
     .map-canvas{min-width:700px;position:relative;padding:30px; display: flex; flex-direction: column; align-items: center;}
     .fw-row{display:flex;justify-content:center;gap:20px;position:relative;z-index:1;margin-bottom:10px;flex-wrap:wrap; width: 100%;}
-    .map-arrow{display:flex;justify-content:center;align-items:center;height:40px;color:var(--danger);font-size:1.4rem;opacity:.5;position:relative;z-index:1}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:40px;color:var(--gold);font-size:1.4rem;opacity:.5;position:relative;z-index:1}
     .map-label{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.25em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:10px;position:relative;z-index:1}
     
     .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center; position: relative;}
@@ -77,22 +77,16 @@
     .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px;}
     .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
 
-    .lab{border:1px solid var(--danger-d);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab{border:1px solid rgba(255,51,102,0.3);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
     .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:320px;justify-content:center}
     .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
     
-    /* Suffering Audit Simulator */
-    .audit-grid { display: grid; grid-template-columns: 1fr; gap: 15px; width: 100%; max-width: 600px; }
-    .audit-row { display: flex; align-items: center; justify-content: space-between; background: var(--glass); padding: 15px 25px; border: 1px solid var(--border); border-radius: 12px; transition: 0.3s; }
-    .audit-row:hover { border-color: var(--gold); }
-    .audit-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #fff; flex: 1; }
-    .audit-actions { display: flex; gap: 10px; }
-    .audit-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'Inter', sans-serif; font-size: 0.65rem; padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
-    .audit-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
-    .audit-row.legal { border-color: var(--success); background: rgba(0,217,126,0.05); }
-    .audit-row.legal .audit-btn.legal-btn { background: var(--success); color: #000; border-color: var(--success); }
-    .audit-row.illegal { border-color: var(--danger); background: rgba(255,51,102,0.05); }
-    .audit-row.illegal .audit-btn.illegal-btn { background: var(--danger); color: #fff; border-color: var(--danger); }
+    /* The Incubation Simulator */
+    .sim-box { width: 100%; max-width: 500px; text-align: center; }
+    .seed { font-size: 4rem; cursor: pointer; transition: 0.3s; margin-bottom: 20px; }
+    .seed:hover { transform: scale(1.1); filter: drop-shadow(0 0 20px var(--danger)); }
+    .time-bar { width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-top: 20px; }
+    .time-fill { height: 100%; width: 0%; background: var(--danger); transition: 2s linear; }
 
     /* Reflection */
     .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
@@ -110,58 +104,58 @@
 <main>
   <!-- LAYER 1: HERO -->
   <section class="hero sr">
-    <div class="hero-img"><img src="images/ch7_pride_fall_hero.png" alt="The Theology of Suffering" onerror="this.style.opacity=0"></div>
+    <div class="hero-img"><img src="images/ch6_jesus_vision_hero.png" alt="The Vision of the King" onerror="this.style.opacity=0"></div>
     <p class="ch-tag">Pathway Origins · Part 5</p>
-    <h1 class="hero-title stag">THE THEOLOGY<br>OF SUFFERING</h1>
-    <p class="hero-sub">Dismantling the Masochistic Gospel</p>
-    <p class="hero-def stag">"I finally understood the difference between suffering for righteousness and suffering because of a curse. God does not use the devil's tools to teach His children. <span class="em-text">Poverty is not a fruit of the Spirit.</span>"</p>
+    <h1 class="hero-title stag">THE CRUCIFIED<br>KING</h1>
+    <p class="hero-sub">The Divine Transaction & The Silence</p>
+    <p class="hero-def stag">"I expected my life to change in five minutes because Jesus had just come to my house. But nothing happened. For many months after that, there was nothing. <span class="em-text">Total silence.</span>"</p>
   </section>
 
   <!-- LAYER 2: THESIS -->
   <section class="sr">
     <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 One-Line Thesis</h2></div>
-    <div class="card danger-border"><p class="statement stag">We must draw a rigid boundary between the <span style="color:var(--success)">legal suffering</span> of persecution and character building, and the <span style="color:var(--danger)">illegal suffering</span> of generational curses and demonic oppression.</p></div>
+    <div class="card danger-border"><p class="statement stag">Divine transactions in the spiritual realm are rarely given as immediate magic tricks; they are planted as <span style="color:var(--danger)">seeds that require time and silence</span> to incubate.</p></div>
   </section>
 
   <!-- LAYER 3: CORE SCRIPTURE / NARRATIVE -->
   <section class="sr">
-    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">📜 The Core Realization</h2></div>
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">📜 The Core Encounter</h2></div>
     <div class="card" style="border-left:3px solid var(--gold)">
-      <p class="body-text lg stag" style="font-style:italic">"I used to believe that my sickness, my poverty, and my constant failure were mysterious 'trials' ordained by God to make me holy. But when my eyes opened, I realized I had been passively accepting illegal demonic oppression while calling it the will of God."</p>
-      <p style="font-family:'Cinzel',serif;color:var(--gold);letter-spacing:.12em;margin-top:14px;font-size:.85rem">— THE GREAT UNLEARNING</p>
+      <p class="body-text lg stag" style="font-style:italic">"In the vision of the night, I saw Jesus. He wasn't wearing a golden crown. He was wearing torn, ragged clothes. Covered in blood. He said, 'What would you like me to give you?' I asked for Wisdom. Grace. Mantles. Authority. He stretched out His hand, and I blacked out for four days in the spirit."</p>
+      <p style="font-family:'Cinzel',serif;color:var(--gold);letter-spacing:.12em;margin-top:14px;font-size:.85rem">— THE SUPERNATURAL TRANSACTION</p>
     </div>
   </section>
 
   <!-- LAYER 4: MASTER FRAMEWORK MAP -->
   <section class="sr">
-    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Suffering Architecture Map</h2></div>
-    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to explore the true biblical definitions of suffering.</p>
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Architecture of The Seed</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to explore how divine empowerment actually manifests.</p>
     
     <div class="map-wrap"><div class="map-canvas">
       
-      <p class="map-label" style="color:var(--gold)">THE FOUNDATIONAL ERROR</p>
+      <p class="map-label" style="color:var(--danger)">THE ENCOUNTER</p>
       <div class="fw-row">
-        <div class="node root" onclick="showPanel('root', 'The Masochistic Gospel', 'The dangerous theological lie that claims God inflicts sickness, poverty, and premature death to teach us humility. It turns the Father into a warden who breaks His children\'s legs so they won\'t run away.')">
-          <div class="n-title" style="color:var(--danger)">🩸 THE MASOCHISTIC GOSPEL</div><div class="n-sub">Believing God uses the devil's tools.</div>
+        <div class="node root" onclick="showPanel('e1', 'The Ragged King', 'He appeared not as the glorified King in white robes, but as the crucified sacrifice in torn clothes. It proved that the power we ask for is rooted in the blood and the cross, not in our own glory.')">
+          <div class="n-title" style="color:var(--danger)">👑 THE CRUCIFIED KING</div><div class="n-sub">The ultimate sacrifice.</div>
         </div>
       </div>
       
-      <div class="map-arrow" style="color:var(--muted)">↓ THE DIVIDING LINE ↓</div>
+      <div class="map-arrow" style="color:var(--gold)">↓ THE TRANSACTION ↓</div>
       
       <div class="fw-row">
-        <div class="node success" onclick="showPanel('leg', 'Legal Suffering', 'Suffering for righteousness. Persecution for preaching the gospel. The internal agonizing pain of dying to the flesh and disciplining your character. This is legal, expected, and necessary.')">
-          <div class="n-title">🛡 LEGAL SUFFERING</div><div class="n-sub">Persecution & Character Building</div>
-        </div>
-        <div class="node action" style="border-color:rgba(255,51,102,.4);" onclick="showPanel('ill', 'Illegal Suffering', 'Sickness, generational poverty, cyclical failure, mental torment. Christ died to pay the exact price for these. Tolerating them is an insult to the finished work of the Cross.')">
-          <div class="n-title" style="color:var(--danger)">⚠️ ILLEGAL SUFFERING</div><div class="n-sub">Curses & Demonic Oppression</div>
+        <div class="node action" style="border-color:rgba(255,215,0,.4);" onclick="showPanel('t1', 'The Blank Check', 'Like Solomon, I was asked what I wanted. I threw everything at Him—Wisdom, Grace, Mantles, Authority. He simply stretched out His hand.')">
+          <div class="n-title" style="color:var(--gold)">📜 THE REQUEST</div><div class="n-sub">Asking for the weight of the Kingdom.</div>
         </div>
       </div>
       
-      <div class="map-arrow" style="color:var(--gold)">↓ THE VICTORIOUS STANCE ↓</div>
+      <div class="map-arrow" style="color:var(--muted)">↓ THE INCUBATION ↓</div>
       
       <div class="fw-row">
-        <div class="node action" style="width:300px;border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.04);" onclick="showPanel('vs', 'The Enforcer Posture', 'We endure legal suffering with joy and patience. We attack illegal suffering with violent faith, prayer, and absolute intolerance. We do not negotiate with the devourer.')">
-          <div class="n-title" style="color:var(--gold)">⚔️ THE ENFORCER</div><div class="n-sub">Endure the legal. Destroy the illegal.</div>
+        <div class="node action" onclick="showPanel('i1', 'The Spiritual Blackout', 'The human frame cannot instantly process the weight of a divine deposit. I was blacked out for four days in the realm of the spirit while the angels finalized the transaction.')">
+          <div class="n-title">⬛ THE BLACKOUT</div><div class="n-sub">The system overriding.</div>
+        </div>
+        <div class="node danger" onclick="showPanel('i2', 'The Silence', 'When I woke up in reality, I expected an instant superpower. Instead, I got months of silence. God implants the seed, but the believer must water it through study and surrender.')">
+          <div class="n-title" style="color:var(--danger)">⏳ THE SILENCE</div><div class="n-sub">The ultimate test of faith.</div>
         </div>
       </div>
 
@@ -173,43 +167,25 @@
     <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">🧩 Deep Dives & The Simulator</h2></div>
     
     <div class="ac" onclick="this.classList.toggle('open')">
-      <div class="ac-hdr"><h3 class="ac-title">TAP: WHY THE ENEMY WANTS YOU CONFUSED</h3><span class="ac-icon">+</span></div>
+      <div class="ac-hdr"><h3 class="ac-title">TAP: WHY NOTHING HAPPENED IMMEDIATELY</h3><span class="ac-icon">+</span></div>
       <div class="ac-body" onclick="event.stopPropagation()">
-        <p class="body-text stag">If the enemy can convince you that your sickness or poverty is a "trial from God," <span class="em-text">you will not fight it.</span> You will submit to the destruction of your life because you think you are submitting to God. Deception is the ultimate paralyzer.</p>
+        <p class="body-text stag">We want microwave miracles; God builds eternal oaks. A spiritual encounter does not usually give you the fully-grown tree; it gives you the <span class="em-text">seed</span>. It took almost a year for that prophetic knowing to become a constant, integrated companion in my life.</p>
       </div>
     </div>
 
     <div class="ac" onclick="this.classList.toggle('open')">
-      <div class="ac-hdr"><h3 class="ac-title">⚡ LAB: THE SUFFERING AUDIT</h3><span class="ac-icon">+</span></div>
+      <div class="ac-hdr"><h3 class="ac-title">⚡ LAB: THE INCUBATION SIMULATOR</h3><span class="ac-icon">+</span></div>
       <div class="ac-body" onclick="event.stopPropagation()">
-        <p class="body-text stag">Review the scenarios below. Categorize them correctly to train your spiritual discernment.</p>
-        <div class="lab" style="border-color:var(--danger-d)">
+        <p class="body-text stag">Click the Seed of Encounter. Watch what happens to your expectation vs. God's timeline.</p>
+        <div class="lab" style="border-color:rgba(255,51,102,0.3)">
           <div class="lab-stage">
-            <div class="audit-grid">
-                <div class="audit-row" id="ar1">
-                    <div class="audit-text">1. Mocked by family for your faith.</div>
-                    <div class="audit-actions">
-                        <button class="audit-btn legal-btn" onclick="audit(1, 'legal')">LEGAL</button>
-                        <button class="audit-btn illegal-btn" onclick="audit(1, 'illegal')">ILLEGAL</button>
-                    </div>
-                </div>
-                <div class="audit-row" id="ar2">
-                    <div class="audit-text">2. A sudden, inexplicable disease.</div>
-                    <div class="audit-actions">
-                        <button class="audit-btn legal-btn" onclick="audit(2, 'legal')">LEGAL</button>
-                        <button class="audit-btn illegal-btn" onclick="audit(2, 'illegal')">ILLEGAL</button>
-                    </div>
-                </div>
-                <div class="audit-row" id="ar3">
-                    <div class="audit-text">3. The pain of fasting and discipline.</div>
-                    <div class="audit-actions">
-                        <button class="audit-btn legal-btn" onclick="audit(3, 'legal')">LEGAL</button>
-                        <button class="audit-btn illegal-btn" onclick="audit(3, 'illegal')">ILLEGAL</button>
-                    </div>
-                </div>
+            <div class="sim-box">
+                <div class="seed" onclick="plantSeed()">🌱</div>
+                <h3 id="sim-text" style="font-family:'Cinzel',serif;color:#fff;">Click the seed to receive the impartation.</h3>
+                <div class="time-bar"><div class="time-fill" id="t-fill"></div></div>
             </div>
           </div>
-          <div class="lab-footer" id="audit-status">STATUS: Audit your circumstances. Classify them to enforce victory.</div>
+          <div class="lab-footer" id="sim-status">STATUS: Awaiting the transaction.</div>
         </div>
       </div>
     </div>
@@ -217,9 +193,9 @@
 
   <!-- LAYER 6: WARNING -->
   <section class="sr">
-    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">⚠️ Warning: The Danger of Passive Sovereignty</h2></div>
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">⚠️ Warning: The Danger of Ignoring the Process</h2></div>
     <div class="card" style="border-color:rgba(255,51,102,.3);background:rgba(255,51,102,.02)">
-        <p class="body-text stag" style="color:#FFB3C6">"If you believe God controls absolutely everything without human partnership, you will never engage in warfare. <span style="color:var(--danger)">You will just watch the devil destroy your life and call it 'God's sovereign will.'</span>"</p>
+        <p class="body-text stag" style="color:#FFB3C6">"I had been told by the Spirit to honor that moment with fasting, praise, and thanksgiving. <span style="color:var(--danger)">But I ignored it.</span> I went about my life like a normal person, not realizing the magnitude of the seed."</p>
     </div>
   </section>
 
@@ -227,9 +203,9 @@
   <section class="sr">
     <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 Reflection Prompts</h2></div>
     <div class="card" style="text-align:center">
-      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">What area of illegal suffering have you been passively tolerating because you thought God was "teaching you a lesson"?</p></div>
-      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">Are you avoiding the legal suffering of character discipline and wondering why you have no spiritual authority?</p></div>
-      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">If Jesus paid for your healing and provision at the cross, why are you still paying the bill?</p></div>
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">Are you frustrated because you asked God for power, but all He gave you was a seed that requires your patience to grow?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">When God gives you a profound encounter, do you honor it with fasting and gratitude, or do you treat it casually?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">Are you willing to endure the "silence" that always follows a massive divine transaction?</p></div>
       <button class="btn d" style="margin-top:28px" id="rq-btn" onclick="nextQ()">✦ REVEAL NEXT QUESTION</button>
       <div class="q-nav"><div class="q-dot active" id="qd1" onclick="goQ(1)"></div><div class="q-dot" id="qd2" onclick="goQ(2)"></div><div class="q-dot" id="qd3" onclick="goQ(3)"></div></div>
     </div>
@@ -239,10 +215,10 @@
   <section class="sr">
     <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
     <div class="decl">
-      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--danger);margin-bottom:18px">THE LINE IN THE SAND</p>
-      <p class="statement stag">"I declare that I will endure persecution with joy, and I will attack sickness, poverty, and torment with absolute violence. I refuse to let the devil hand me a curse and tell me it's a gift from my Father."</p>
-      <button class="btn d" style="margin-top:40px" id="decl-btn" onclick="declarationAccepted()">✦ DRAW THE LINE</button>
-      <p id="decl-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">VICTORY ENFORCED. PROCEED TO PART 6.</p>
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--danger);margin-bottom:18px">THE INCUBATION MANDATE</p>
+      <p class="statement stag">"I declare that I will not demand microwave miracles from an eternal God. I will receive His seeds, I will honor His transactions, and I will stand faithfully through the silence until the manifestation arrives."</p>
+      <button class="btn d" style="margin-top:40px" id="decl-btn" onclick="declarationAccepted()">✦ HONOR THE SEED</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">THE SEED IS PLANTED. PROCEED TO PART 6.</p>
       
       <!-- Download Static Engine -->
       <button class="btn" style="margin-top:30px; border-color:var(--gold); color:var(--gold)" id="download-btn" onclick="downloadStaticHTML()">⭳ DOWNLOAD STATIC MANUSCRIPT (SCROLLABLE)</button>
@@ -274,29 +250,27 @@ function showPanel(id, t, b) {
 function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
 
 // Simulator Logic
-function audit(id, type) {
-    const row = document.getElementById('ar'+id);
-    const status = document.getElementById('audit-status');
+let planted = false;
+function plantSeed() {
+    if(planted) return;
+    planted = true;
     
-    row.classList.remove('legal', 'illegal');
+    document.getElementById('sim-text').textContent = "EXPECTATION: Immediate Explosion of Power.";
+    document.getElementById('sim-status').textContent = "STATUS: Transaction complete. Waiting for manifestation...";
     
-    // Correct answers: 1 is legal, 2 is illegal, 3 is legal.
-    const correctMap = {1: 'legal', 2: 'illegal', 3: 'legal'};
-    
-    if(type === correctMap[id]) {
-        row.classList.add(type);
-        if(type === 'legal') {
-            status.textContent = "CORRECT: This is legal suffering. Endure it with patience. It builds character.";
-            status.style.color = "var(--success)";
-        } else {
-            status.textContent = "CORRECT: This is illegal suffering. Attack it with violent faith. Enforce the cross.";
-            status.style.color = "var(--danger)";
-        }
-    } else {
-        row.classList.add('illegal');
-        status.textContent = "INCORRECT THEOLOGY: You are confusing the tools of the devil with the tools of God.";
-        status.style.color = "var(--gold)";
-    }
+    setTimeout(() => {
+        document.getElementById('sim-text').textContent = "REALITY: Absolute Silence. Months pass.";
+        document.getElementById('sim-text').style.color = "var(--muted)";
+        document.getElementById('t-fill').style.width = "100%";
+    }, 1000);
+
+    setTimeout(() => {
+        document.querySelector('.seed').textContent = "🌳";
+        document.getElementById('sim-text').textContent = "THE MANIFESTATION: Prophetic Knowing is fully integrated.";
+        document.getElementById('sim-text').style.color = "var(--success)";
+        document.getElementById('sim-status').textContent = "STATUS: The seed has broken the ground.";
+        document.getElementById('sim-status').style.color = "var(--success)";
+    }, 3000);
 }
 
 // Reflection Logic
