@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pathway Origins | Part 1: The Invisible Prison</title>
+  <meta name="description" content="A systematic framework map exploring the iron cage of legalism and the four limiting beliefs."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--danger-d:rgba(255,51,102,.15);--success:#00D97E;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(255,51,102,.15)}50%{box-shadow:0 0 50px rgba(255,51,102,.3)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+    
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:340px;height:340px;border-radius:50%;overflow:hidden;border:1px solid var(--danger);box-shadow:0 0 80px rgba(255,51,102,.1),0 0 160px rgba(255,51,102,.05);animation:float 7s ease-in-out infinite,pulse 4s ease-in-out infinite;margin-bottom:40px}
+    .hero-img img{width:100%;height:100%;object-fit:cover; filter: grayscale(50%) contrast(1.2);}
+    .ch-tag{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.35em;color:var(--danger);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px; text-shadow: 0 0 30px rgba(255,51,102,0.3);}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:640px;margin:30px auto 0;line-height:1.6}
+    
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--danger);background:rgba(255,51,102,.07);border:1px solid var(--danger-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.danger-border{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}.body-text.lg{font-size:1.45rem}
+    .em-text{color:var(--danger);font-style:italic}.gold-text{color:var(--gold);font-style:italic}
+    .statement{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .pipe{padding-left:20px;border-left:2px solid var(--danger);font-style:italic;font-size:1.3rem;margin:24px 0;color:var(--text)}
+    
+    /* Interactive Map Architecture */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px;}
+    .fw-row{display:flex;justify-content:center;gap:20px;position:relative;z-index:1;margin-bottom:10px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:36px;color:var(--danger);font-size:1.4rem;opacity:.5;position:relative;z-index:1}
+    .map-label{font-family:'Inter',sans-serif;font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px;position:relative;z-index:1}
+    
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center}
+    .node:hover{transform:translateY(-3px);border-color:var(--danger-d);box-shadow:0 8px 30px rgba(255,51,102,.1)}
+    
+    .node.root{width:260px;padding:28px 20px;border-color:rgba(255,51,102,.3);background:rgba(255,51,102,.04)}.node.root .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--danger);margin-bottom:6px}.node.root .n-sub{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--muted)}
+    
+    .node.sm{width:175px;padding:18px 14px}.node.sm .n-title{font-family:'Cinzel',serif;font-size:.8rem;color:#fff;margin-bottom:4px}.node.sm .n-sub{font-family:'Inter',sans-serif;font-size:.6rem;color:var(--muted)}
+    .node.sm.belief{border-color:rgba(255,215,0,.2);background:rgba(255,215,0,.04)}.node.sm.belief .n-title{color:var(--gold)}
+
+    /* Modal Panel */
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(560px,90vw);background:#0A0E18;border:1px solid var(--border);border-radius:28px;padding:40px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.9)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:all .3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--danger);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.1rem;line-height:1.8;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;backdrop-filter:blur(3px)}#overlay.show{display:block}
+    
+    /* Accordions & Labs */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--danger-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-icon{font-size:1.4rem;color:var(--danger);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s cubic-bezier(.4,0,.2,1),padding .55s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px;}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
+
+    /* Table Styles */
+    .table-wrapper { width: 100%; overflow-x: auto; margin: 24px 0; border-radius: 16px; border: 1px solid var(--border); background: var(--glass); }
+    .truth-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    .truth-table th { padding: 20px; text-align: left; background: rgba(0,0,0,0.4); font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); border-bottom: 1px solid var(--border); letter-spacing: 0.1em; }
+    .truth-table td { padding: 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
+    .truth-table tr:last-child td { border-bottom: none; }
+    .truth-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .td-lie { color: var(--danger); font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.6; border-right: 1px solid var(--border); width: 45%; }
+    .td-truth { color: var(--text); font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; line-height: 1.6; }
+    .verse-ref { display: block; margin-top: 10px; font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--cyan); text-transform: uppercase; }
+
+    .lab{border:1px solid var(--cyan-d);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:320px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+
+    .align-ring{width:250px;height:250px;border-radius:50%;border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+    .align-inner{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,51,102,.15),transparent);border:1px solid var(--danger);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.75rem;color:var(--danger);transition:all .3s;text-align:center;padding:10px}
+    .align-slider{-webkit-appearance:none;width:280px;height:3px;background:rgba(255,255,255,.15);border-radius:3px}.align-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--danger);cursor:pointer}
+    
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:all .3s;margin:6px}.btn:hover{background:var(--hover)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover,.btn.c.on{background:rgba(0,240,255,.1)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.d{border-color:var(--danger);color:var(--danger)}.btn.d:hover,.btn.d.on{background:rgba(255,51,102,.1)}.btn.s{border-color:var(--success);color:var(--success)}.btn.s:hover,.btn.s.on{background:rgba(0,217,126,.1)}
+    
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:24px}.q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--danger);cursor:pointer;transition:background .3s}.q-dot.active{background:var(--danger)}
+    .decl{border:1px dashed var(--border);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle,rgba(255,51,102,.04) 0%,transparent 70%)}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np"><button class="np-close" onclick="closePanel()">✕</button><p class="np-tag" id="np-tag"></p><h2 class="np-title" id="np-title"></h2><p class="np-body" id="np-body"></p></div>
+
+<main>
+  <section class="hero sr">
+    <div class="hero-img"><img src="images/ch1_iron_cage_hero_1777570050940.png" alt="The Iron Cage" onerror="this.style.opacity=0"></div>
+    <p class="ch-tag">Pathway Origins · Part 1</p>
+    <h1 class="hero-title stag">THE INVISIBLE<br>PRISON</h1>
+    <p class="hero-sub">The Iron Cage of Legalism & The Four Limiting Beliefs</p>
+    <p class="hero-def stag">"If you listened to the wrong beat... you were going to hell. If you moved your body the wrong way... you were going to hell. It wasn't that I loved God. <span class="em-text">It was that I was terrified of Him.</span>"</p>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 One-Line Thesis</h2></div>
+    <div class="card danger-border"><p class="statement stag">A religion built entirely on the fear of an omnipresent <span style="color:var(--danger)">surveillance camera</span> will never produce dominion — it will only produce an iron cage of guilt and limitation.</p></div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">📜 The False Narrative</h2></div>
+    <div class="card" style="border-left:3px solid var(--danger)">
+      <p class="body-text lg stag" style="font-style:italic">"I lived every day thinking that if I didn't get every single rule right, this omnipresent surveillance camera—which is how I viewed God—would find a reason to wipe my name out of the Book of Life forever."</p>
+      <p style="font-family:'Cinzel',serif;color:var(--danger);letter-spacing:.12em;margin-top:14px;font-size:.85rem">— THE THEOLOGY OF LIMITATION</p>
+    </div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Architecture of the Cage</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to dismantle the lie behind it.</p>
+    <div class="map-wrap"><div class="map-canvas">
+      
+      <p class="map-label" style="color:var(--danger)">THE ROOT</p>
+      <div class="fw-row">
+        <div class="node root" onclick="showPanel('root', 'The Warden God', 'A distorted perception of God not as a Father, but as a judge, a warden, and a scorekeeper. A God who is just waiting for you to fail so He can disqualify you.')">
+          <div class="n-title">👁 THE WARDEN GOD</div><div class="n-sub">God viewed as a surveillance camera</div>
+        </div>
+      </div>
+      
+      <div class="map-arrow">↓</div>
+      <p class="map-label">PRODUCES THE FOUR LIMITING BELIEFS</p>
+      
+      <div class="fw-row">
+        <div class="node sm belief" onclick="showPanel('lie1', 'Lie #1: Success is Pride', 'The belief that to want something big, to want to be \'someone,\' is seen as pride. We were told this world belongs to the sinners. We are just passing through.')">
+          <div class="n-title">🚫 SUCCESS = PRIDE</div><div class="n-sub">Ambition is seen as sin</div>
+        </div>
+        <div class="node sm belief" onclick="showPanel('lie2', 'Lie #2: Smallness is Humility', 'They taught me that staying small is humility. That God loves the small, the quiet, the people who don\'t ask for much. This forced me to shrink my destiny.')">
+          <div class="n-title">📉 SMALLNESS = HUMILITY</div><div class="n-sub">Poverty equated with devotion</div>
+        </div>
+        <div class="node sm belief" onclick="showPanel('lie3', 'Lie #3: Wealth is Evil', 'Demonising wealth itself and creating a silent resentment toward anyone who had more, believing that resources automatically disqualify you from heaven.')">
+          <div class="n-title">💰 WEALTH = EVIL</div><div class="n-sub">Money demonised as worldly</div>
+        </div>
+        <div class="node sm belief" onclick="showPanel('lie4', 'Lie #4: Suffering is Disqualification', 'The constant guilt that if life was brutal and you weren\'t succeeding, it meant you had failed God and He had rejected you.')">
+          <div class="n-title">⛓ SUFFERING = REJECTION</div><div class="n-sub">Failure equated to God's absence</div>
+        </div>
+      </div>
+      
+      <div class="map-arrow" style="color:var(--danger)">↓</div>
+      <div class="fw-row">
+        <div class="node root" style="width:300px;border-color:rgba(255,51,102,.5);background:rgba(255,51,102,.08)" onclick="showPanel('result', 'The Result: The Rebellion', 'I decided to leave the one they called God. If there was no evidence, why was I carrying the burden? I decided to forget the rules, forget the guilt, and go after what I actually wanted.')">
+          <div class="n-title" style="color:#fff">⚔️ THE REBELLION</div><div class="n-sub">"I tried to get rich and cut off God."</div>
+        </div>
+      </div>
+
+    </div></div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">🧩 Experiential Deep-Dives & Labs</h2></div>
+    
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">TAP: THE SCRIPTURAL TRUTH TABLE</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">The iron cage was constructed using out-of-context religious fear. Below is the direct scriptural evidence that dismantles each limiting belief.</p>
+        
+        <div class="table-wrapper">
+          <table class="truth-table">
+            <thead>
+              <tr>
+                <th>THE LIMITING BELIEF (THE LIE)</th>
+                <th>THE COVENANT REALITY (THE SCRIPTURE)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-lie"><strong>Success is Pride.</strong> To want influence or resource is a worldly ambition that threatens your salvation.</td>
+                <td class="td-truth">"You are the light of the world. A town built on a hill cannot be hidden... let your light shine before others, that they may see your good deeds and glorify your Father in heaven."<span class="verse-ref">Matthew 5:14-16</span></td>
+              </tr>
+              <tr>
+                <td class="td-lie"><strong>Smallness is Humility.</strong> Poverty and obscurity are the highest forms of spiritual purity and devotion.</td>
+                <td class="td-truth">"But remember the Lord your God, for it is He who gives you the ability to produce wealth, and so confirms His covenant, which He swore to your ancestors."<span class="verse-ref">Deuteronomy 8:18</span></td>
+              </tr>
+              <tr>
+                <td class="td-lie"><strong>Wealth is Evil.</strong> Resources inherently corrupt the soul, so believers should avoid financial accumulation.</td>
+                <td class="td-truth">"For the love of money is a root of all kinds of evil. Some people, eager for money, have wandered from the faith." (The *love* of money is the root, not the tool itself).<span class="verse-ref">1 Timothy 6:10</span></td>
+              </tr>
+              <tr>
+                <td class="td-lie"><strong>Suffering is Disqualification.</strong> If your life is brutal, God has rejected you or is punishing your hidden sin.</td>
+                <td class="td-truth">"And we know that in all things God works for the good of those who love him, who have been called according to his purpose." The process builds character; it is not rejection.<span class="verse-ref">Romans 8:28</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">TAP: WHY LEGALISM DRIVES MEN AWAY</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">When relationship is measured entirely by what you *do not do*, the believer is forced to focus constantly on sin rather than on the Saviour. <span class="em-text">It creates an impossible standard.</span> Inside that cage, I found no evidence that God was real. All I found were rules. All I found was guilt.</p>
+      </div>
+    </div>
+
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">⚡ LAB: THE PRESSURE COOKER</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Slide the dial to increase the burden of religious rules. Watch what happens to the internal state when legalism reaches 100%.</p>
+        <div class="lab" style="border-color:var(--danger-d)">
+          <div class="lab-stage">
+            <div class="align-ring"><div class="align-inner" id="al-inner">SUSTAINABLE</div></div>
+            <input type="range" class="align-slider" id="al-slide" min="0" max="100" value="0">
+            <p style="font-family:'Inter';font-size:.65rem;color:var(--muted);margin-top:12px;letter-spacing:.12em">SLIDE TO INCREASE LEGALISTIC PRESSURE</p>
+          </div>
+          <div class="lab-footer" id="al-con">STATUS: Normal. Focus is still on God.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">⚠️ Warning: The Illusion of Freedom</h2></div>
+    <div class="card danger-border">
+        <p class="body-text stag" style="color:#FF8F9C">I thought that if I could just get rich, I could finally be free from the surveillance camera in the sky. <span style="color:var(--danger)">But cutting off God doesn't give you freedom. It just transfers you to a different warden.</span> The prison of futility is worse than the cage of rules.</p>
+        <p class="pipe stag" style="border-color:var(--danger);color:#FF8F9C">Rebellion is not a strategy. It is an act of desperation.</p>
+    </div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 Reflection Prompts</h2></div>
+    <div class="card" style="text-align:center">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">Is your view of God currently framed as a loving Father guiding your assignment, or an omnipresent surveillance camera waiting for you to fail?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">Which of the four limiting beliefs — Success is Pride, Smallness is Humility, Wealth is Evil, Suffering is Disqualification — has subtly wired itself into your subconscious?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">Have you ever reached a point of spiritual exhaustion where you felt tempted to "cut off God" just to relieve the pressure of religious expectations?</p></div>
+      <button class="btn d" style="margin-top:28px" id="rq-btn" onclick="nextQ()">✦ REVEAL NEXT QUESTION</button>
+      <div class="q-nav"><div class="q-dot active" id="qd1" onclick="goQ(1)"></div><div class="q-dot" id="qd2" onclick="goQ(2)"></div><div class="q-dot" id="qd3" onclick="goQ(3)"></div></div>
+    </div>
+  </section>
+
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--danger);margin-bottom:18px">THE CAGE REJECTED</p>
+      <p class="statement stag">"I refuse to live in the iron cage of fear-based religion. I reject the theology of limitation, and I declare that my God is a Father, not a Warden. <span style="color:var(--gold)">My ambition is not pride; it is preparation for Kingdom influence.</span>"</p>
+      <button class="btn d" style="margin-top:40px" id="decl-btn" onclick="declarationAccepted()">✦ BREAK THE CAGE</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">THE IRON CAGE IS BROKEN. PROCEED TO PART 2.</p>
+      <button class="btn g" style="margin-top:30px" id="download-btn" onclick="downloadStaticHTML()">⭳ DOWNLOAD STATIC MANUSCRIPT (SCROLLABLE)</button>
+    </div>
+  </section>
+</main>
+
+<script>
+// Ambient Background Animation
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight}addEventListener('resize',rs);rs();
+for(let i=0;i<90;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,s:Math.random()*1.2,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,51,102,${p.a*.3})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// Observers
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');else e.target.classList.remove('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*32));else ws.forEach(w=>w.classList.remove('v'));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// Panel Logic
+function showPanel(id, t, b) {
+    document.getElementById('np-tag').textContent = "MAP INSIGHT";
+    document.getElementById('np-title').textContent = t;
+    document.getElementById('np-body').textContent = b;
+    document.getElementById('np').classList.add('show');
+    document.getElementById('overlay').classList.add('show');
+}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// Lab Slider Logic
+const alSlide=document.getElementById('al-slide'),alInner=document.getElementById('al-inner'),alCon=document.getElementById('al-con');
+alSlide.addEventListener('input',function(){
+    const v=+this.value;
+    if(v<30){
+        alInner.textContent='SUSTAINABLE';
+        alInner.style.borderColor='var(--success)';
+        alInner.style.color='var(--success)';
+        alCon.textContent=`PRESSURE ${v}%: Normal state. God is viewed as a loving Father.`;
+    }else if(v<70){
+        alInner.textContent='GUILT RISING';
+        alInner.style.borderColor='var(--gold)';
+        alInner.style.color='var(--gold)';
+        alCon.textContent=`PRESSURE ${v}%: The focus shifts from relationship to rules. Fear increases.`;
+    }else if(v<100){
+        alInner.textContent='PARALYZED';
+        alInner.style.borderColor='var(--danger)';
+        alInner.style.color='var(--danger)';
+        alCon.textContent=`PRESSURE ${v}%: Extreme legalism. Identity crushed. The only desire is to escape.`;
+    }else{
+        alInner.textContent='REBELLION';
+        alInner.style.borderColor='#fff';
+        alInner.style.color='#fff';
+        alInner.style.background='rgba(255,255,255,0.2)';
+        alCon.style.color='var(--danger)';
+        alCon.textContent='PRESSURE 100% 💥 THE SYSTEM BREAKS: "I tried to get rich and cut off God."';
+    }
+});
+
+// Reflection Logic
+let curQ=1;
+function goQ(n){[1,2,3].forEach(i=>{document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('active');});document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('active');curQ=n;document.getElementById('rq-btn').style.display=curQ>=3?'none':'inline-block';}
+function nextQ(){if(curQ<3)goQ(curQ+1);}
+
+function declarationAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+
+function downloadStaticHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    
+    // Expand all accordions permanently and remove interactivity
+    clone.querySelectorAll('.ac').forEach(ac => {
+        ac.classList.add('open');
+        ac.removeAttribute('onclick');
+        ac.style.cursor = 'default';
+        ac.style.borderColor = 'var(--border)';
+    });
+    
+    // Force reveal all scroll-triggered text
+    clone.querySelectorAll('.sr, .word').forEach(el => {
+        el.classList.add('v');
+        el.style.transition = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+    
+    // Expand reflection questions
+    clone.querySelectorAll('.rq').forEach(rq => rq.classList.add('show'));
+    const qNav = clone.querySelector('.q-nav'); if(qNav) qNav.remove();
+    const rqBtn = clone.querySelector('#rq-btn'); if(rqBtn) rqBtn.remove();
+    
+    // Clean up interactive elements
+    clone.querySelectorAll('script').forEach(s => s.remove());
+    clone.querySelectorAll('*').forEach(el => el.removeAttribute('onclick'));
+    
+    // Remove the canvas and modals since it's static
+    const cvs = clone.querySelector('#cvs'); if(cvs) cvs.remove();
+    const np = clone.querySelector('#np'); if(np) np.remove();
+    const overlay = clone.querySelector('#overlay'); if(overlay) overlay.remove();
+    const dBtn = clone.querySelector('#download-btn'); if(dBtn) dBtn.remove();
+    
+    // Change title
+    const title = clone.querySelector('title');
+    if(title) title.textContent += " (Static Manuscript)";
+
+    const htmlContent = "<!DOCTYPE html>\n" + clone.outerHTML;
+    const blob = new Blob([htmlContent], {type: "text/html;charset=utf-8"});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = "Pathway_Origins_Part_1_Manuscript.html";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pathway Origins | Part 2: Diligent Futility</title>
+  <meta name="description" content="A systematic framework mapping the transition from religious rebellion into the exhausting cycle of diligent futility."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--danger-d:rgba(255,51,102,.15);--success:#00D97E;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.1)}50%{box-shadow:0 0 50px rgba(255,215,0,.3)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+    
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:340px;height:340px;border-radius:50%;overflow:hidden;border:1px solid var(--gold);box-shadow:0 0 80px rgba(255,215,0,.1),0 0 160px rgba(255,215,0,.05);animation:float 7s ease-in-out infinite,pulse 4s ease-in-out infinite;margin-bottom:40px}
+    .hero-img img{width:100%;height:100%;object-fit:cover; filter: grayscale(30%) contrast(1.2);}
+    .ch-tag{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px; text-shadow: 0 0 30px rgba(255,215,0,0.2);}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:640px;margin:30px auto 0;line-height:1.6}
+    
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);background:var(--gold-d);border:1px solid var(--gold);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-border{border-color:rgba(255,215,0,.3);border-left:3px solid var(--gold);background:rgba(255,215,0,.02)}
+    
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}.body-text.lg{font-size:1.45rem}
+    .em-text{color:var(--gold);font-style:italic}.cyan-text{color:var(--cyan);font-style:italic}
+    .statement{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    
+    /* Interactive Map Architecture (Dimensions of Wisdom Style) */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px; display: flex; flex-direction: column; align-items: center;}
+    .fw-row{display:flex;justify-content:center;gap:20px;position:relative;z-index:1;margin-bottom:10px;flex-wrap:wrap; width: 100%;}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:40px;color:var(--danger);font-size:1.4rem;opacity:.5;position:relative;z-index:1}
+    .map-label{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.25em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:10px;position:relative;z-index:1}
+    
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center; position: relative;}
+    .node:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 8px 30px rgba(255,215,0,.15)}
+    .node.root{width:320px;padding:30px 20px;border-color:var(--danger);background:rgba(255,51,102,.05); margin: 0 auto;}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--danger);margin-bottom:8px; text-shadow: 0 0 10px rgba(255,51,102,0.4);}
+    .node.root .n-sub{font-family:'Inter',sans-serif;font-size:.75rem;color:var(--muted); line-height: 1.5;}
+    
+    .node.action{width:200px;padding:24px 16px; border-color: rgba(255,255,255,0.15);}
+    .node.action .n-title{font-family:'Cinzel',serif;font-size:.9rem;color:#fff;margin-bottom:8px}
+    .node.action .n-sub{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--muted); line-height: 1.6;}
+    
+    .node.wall{width:220px;padding:24px 16px; border-color: rgba(255,215,0,0.3); background:rgba(255,215,0,0.03);}
+    .node.wall .n-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);margin-bottom:8px}
+    .node.wall .n-sub{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--muted); line-height: 1.6;}
+
+    /* Modal Panel */
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(560px,90vw);background:#0A0E18;border:1px solid var(--border);border-radius:28px;padding:40px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.9)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:all .3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.1rem;line-height:1.8;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:9999;backdrop-filter:blur(5px)}#overlay.show{display:block}
+    
+    /* Labs & Accordions */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-icon{font-size:1.4rem;color:var(--gold);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s cubic-bezier(.4,0,.2,1),padding .55s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px;}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--cyan)}
+
+    .lab{border:1px solid var(--gold-d);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:320px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    
+    .align-ring{width:250px;height:250px;border-radius:50%;border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+    .align-inner{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.15),transparent);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.75rem;color:var(--gold);transition:all .3s;text-align:center;padding:10px}
+    .align-slider{-webkit-appearance:none;width:280px;height:3px;background:rgba(255,255,255,.15);border-radius:3px}.align-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer}
+
+    /* Reflection */
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:24px}.q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);cursor:pointer;transition:background .3s}.q-dot.active{background:var(--gold)}
+    
+    .decl{border:1px dashed var(--border);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle,rgba(255,215,0,.04) 0%,transparent 70%)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:all .3s;margin:6px}.btn:hover{background:var(--hover)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.d{border-color:var(--danger);color:var(--danger)}.btn.d:hover{background:rgba(255,51,102,.1)}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np"><button class="np-close" onclick="closePanel()">✕</button><p class="np-tag" id="np-tag"></p><h2 class="np-title" id="np-title"></h2><p class="np-body" id="np-body"></p></div>
+
+<main>
+  <!-- LAYER 1: HERO -->
+  <section class="hero sr">
+    <div class="hero-img"><img src="images/ch2_diligent_hustle_hero_1777570701869.png" alt="Diligent Futility" onerror="this.style.opacity=0"></div>
+    <p class="ch-tag">Pathway Origins · Part 2</p>
+    <h1 class="hero-title stag">DILIGENT<br>FUTILITY</h1>
+    <p class="hero-sub">The Wall of Zero Returns</p>
+    <p class="hero-def stag">"I worked all day long. Hours upon hours. Days turned into weeks... I was doing online businesses, studying, executing. I was the definition of 'hustle'. <span class="em-text">But I never made even a single cent.</span>"</p>
+  </section>
+
+  <!-- LAYER 2: THESIS -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 One-Line Thesis</h2></div>
+    <div class="card gold-border"><p class="statement stag">Rebellion against a distorted God does not lead to genuine freedom; it leads to a new prison—<span style="color:var(--gold)">the exhausting, unforgiving wall of diligent futility.</span></p></div>
+  </section>
+
+  <!-- LAYER 3: CORE SCRIPTURE / NARRATIVE -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">📜 The False Freedom</h2></div>
+    <div class="card" style="border-left:3px solid var(--danger)">
+      <p class="body-text lg stag" style="font-style:italic">"I was working like a slave, but the resources weren't there. It was one of the most difficult moments of my life. I had cut off God to find freedom, but I ended up in a different kind of prison—the prison of futility."</p>
+      <p style="font-family:'Cinzel',serif;color:var(--danger);letter-spacing:.12em;margin-top:14px;font-size:.85rem">— THE ILLUSION OF SELF-RELIANCE</p>
+    </div>
+  </section>
+
+  <!-- LAYER 4: MASTER FRAMEWORK MAP -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Architecture of Exhaustion</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to explore the psychological trap of hustle without alignment.</p>
+    
+    <div class="map-wrap"><div class="map-canvas">
+      
+      <p class="map-label" style="color:var(--danger)">THE DECISION</p>
+      <div class="fw-row">
+        <div class="node root" onclick="showPanel('root', 'The Great Rebellion', 'The conscious decision to walk away from the Warden God. The attempt to seize destiny by sheer willpower, ignoring spiritual mechanics entirely.')">
+          <div class="n-title">⚔️ SEVERING THE TIE</div><div class="n-sub">"I decided to leave the one they called God."</div>
+        </div>
+      </div>
+      
+      <div class="map-arrow">↓ THE ILLUSION OF MOTION ↓</div>
+      
+      <div class="fw-row">
+        <div class="node action" onclick="showPanel('h1', 'Action #1: Study & Grind', 'The obsessive consumption of worldly strategies, tutorials, and business models, believing that purely natural knowledge would produce supernatural breakthrough.')">
+          <div class="n-title">📚 CONSTANT STUDY</div><div class="n-sub">Gathering natural intelligence</div>
+        </div>
+        <div class="node action" onclick="showPanel('h2', 'Action #2: Blind Execution', 'Applying every trick, tactic, and formula to force a result. Operating under the false premise that effort alone guarantees success.')">
+          <div class="n-title">⚙️ BLIND EXECUTION</div><div class="n-sub">Working like a slave</div>
+        </div>
+        <div class="node action" onclick="showPanel('h3', 'Action #3: The Hustle', 'Sacrificing peace, rest, and relationships for the idol of productivity. If I just work harder, the system has to pay out.')">
+          <div class="n-title">🏃‍♂️ THE HUSTLE</div><div class="n-sub">Motion without direction</div>
+        </div>
+      </div>
+      
+      <div class="map-arrow" style="color:var(--gold)">↓ THE WALL ↓</div>
+      
+      <div class="fw-row">
+        <div class="node wall" onclick="showPanel('w1', 'Result #1: Zero Returns', 'The terrifying reality that the physical world does not have to respond to your effort if you are spiritually misaligned. I never made a single cent.')">
+          <div class="n-title">📉 ZERO RETURNS</div><div class="n-sub">Effort ≠ Output</div>
+        </div>
+        <div class="node wall" onclick="showPanel('w2', 'Result #2: Lingering Guilt', 'The subconscious programming from the Iron Cage never left. I felt guilty for resting. I felt guilty for enjoying a meal. The Warden was gone, but the ghost remained.')">
+          <div class="n-title">👻 LINGERING GUILT</div><div class="n-sub">Unable to rest or breathe</div>
+        </div>
+        <div class="node wall" onclick="showPanel('w3', 'Result #3: Total Exhaustion', 'Building a kingdom on sand inevitably leads to collapse. The human spirit was never designed to bear the weight of destiny independently.')">
+          <div class="n-title">🔋 TOTAL EXHAUSTION</div><div class="n-sub">The end of self-reliance</div>
+        </div>
+      </div>
+      
+      <div class="map-arrow" style="color:var(--cyan)">↓ THE BREAKING POINT ↓</div>
+      
+      <div class="fw-row">
+        <div class="node root" style="width:300px;border-color:rgba(0,240,255,.5);background:rgba(0,240,255,.08)" onclick="showPanel('shift', 'The Shift: Seeking Truth', 'I started looking for a crumb of hope. I was tired of the scattered truth. I didn\'t want religion anymore. I wanted healing. I wanted to know if the spiritual realm was even a thing.')">
+          <div class="n-title" style="color:#fff">🌅 THE HUNGER</div><div class="n-sub" style="color:var(--cyan)">"Is God real? How do the systems work?"</div>
+        </div>
+      </div>
+
+    </div></div>
+  </section>
+
+  <!-- LAYER 5: EXPERIENTIAL LABS -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">🧩 Deep Dives & The Simulator</h2></div>
+    
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">TAP: THE GHOST OF THE CAGE</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Even though I had consciously decided to ignore God, subconsciously, those beliefs were buried deep in my system. <span class="em-text">I felt guilty for resting.</span> I felt guilty for doing anything that wasn't "work." You cannot outwork a spiritual misalignment.</p>
+      </div>
+    </div>
+
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">⚡ LAB: THE HUSTLE TREADMILL</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Slide the dial to increase physical effort without spiritual alignment. Watch how the return on investment collapses.</p>
+        <div class="lab" style="border-color:var(--gold-d)">
+          <div class="lab-stage">
+            <div class="align-ring"><div class="align-inner" id="al-inner" style="color:#fff;border-color:#fff;">AT REST</div></div>
+            <input type="range" class="align-slider" id="al-slide" min="0" max="100" value="0">
+            <p style="font-family:'Inter';font-size:.65rem;color:var(--muted);margin-top:12px;letter-spacing:.12em">SLIDE TO INCREASE HUMAN EFFORT</p>
+          </div>
+          <div class="lab-footer" id="al-con">STATUS: Zero effort. Zero return.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 6: WARNING -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">⚠️ Warning: The Sand Foundation</h2></div>
+    <div class="card" style="border-color:rgba(255,215,0,.3);background:rgba(255,215,0,.02)">
+        <p class="body-text stag" style="color:#FFF0A8">"I was a man trying to build a kingdom on a foundation of sand, and it was collapsing." <span style="color:var(--gold)">Hustle without divine intelligence is just rapidly accelerating your arrival at burnout.</span></p>
+    </div>
+  </section>
+
+  <!-- LAYER 7: REFLECTION -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 Reflection Prompts</h2></div>
+    <div class="card" style="text-align:center">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">Where in your life are you currently substituting spiritual alignment with pure human hustle?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">Do you feel a subconscious guilt when you try to rest, driven by a deep-seated fear that you are entirely responsible for your own survival?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">Have you hit the 'Wall of Zero Returns', where despite doing everything "right" in the natural, nothing is yielding a harvest?</p></div>
+      <button class="btn g" style="margin-top:28px" id="rq-btn" onclick="nextQ()">✦ REVEAL NEXT QUESTION</button>
+      <div class="q-nav"><div class="q-dot active" id="qd1" onclick="goQ(1)"></div><div class="q-dot" id="qd2" onclick="goQ(2)"></div><div class="q-dot" id="qd3" onclick="goQ(3)"></div></div>
+    </div>
+  </section>
+
+  <!-- LAYER 8: DECLARATION -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">THE SURRENDER OF EFFORT</p>
+      <p class="statement stag">"I recognize the futility of building on sand. I lay down the idol of self-reliance, and I trade the exhausting treadmill of human hustle for the supreme advantage of Divine Intelligence."</p>
+      <button class="btn g" style="margin-top:40px" id="decl-btn" onclick="declarationAccepted()">✦ STEP OFF THE TREADMILL</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">HUSTLE SURRENDERED. PROCEED TO PART 3.</p>
+      
+      <!-- Download Static Engine -->
+      <button class="btn" style="margin-top:30px; border-color:var(--cyan); color:var(--cyan)" id="download-btn" onclick="downloadStaticHTML()">⭳ DOWNLOAD STATIC MANUSCRIPT (SCROLLABLE)</button>
+    </div>
+  </section>
+</main>
+
+<script>
+// Ambient Background Animation
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight}addEventListener('resize',rs);rs();
+for(let i=0;i<80;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.2,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,215,0,${p.a*.3})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// Observers
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');else e.target.classList.remove('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*32));else ws.forEach(w=>w.classList.remove('v'));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// Panel Logic
+function showPanel(id, t, b) {
+    document.getElementById('np-tag').textContent = "MAP INSIGHT";
+    document.getElementById('np-title').textContent = t;
+    document.getElementById('np-body').textContent = b;
+    document.getElementById('np').classList.add('show');
+    document.getElementById('overlay').classList.add('show');
+}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// Lab Slider Logic
+const alSlide=document.getElementById('al-slide'),alInner=document.getElementById('al-inner'),alCon=document.getElementById('al-con');
+alSlide.addEventListener('input',function(){
+    const v=+this.value;
+    if(v===0){
+        alInner.textContent='AT REST';
+        alInner.style.borderColor='#fff';
+        alInner.style.color='#fff';
+        alCon.textContent=`STATUS: Zero effort. Zero return.`;
+    }else if(v<40){
+        alInner.textContent='HUSTLING';
+        alInner.style.borderColor='var(--gold)';
+        alInner.style.color='var(--gold)';
+        alCon.textContent=`EFFORT ${v}%: Busy, but feeling a strange lack of traction.`;
+    }else if(v<80){
+        alInner.textContent='GRINDING';
+        alInner.style.borderColor='var(--danger)';
+        alInner.style.color='var(--danger)';
+        alCon.textContent=`EFFORT ${v}%: Working like a slave. Resources are not appearing. Guilt rising.`;
+    }else{
+        alInner.textContent='FUTILITY';
+        alInner.style.borderColor='#fff';
+        alInner.style.color='#fff';
+        alInner.style.background='rgba(255,215,0,0.2)';
+        alCon.style.color='var(--gold)';
+        alCon.textContent=`EFFORT 100% 💥 THE WALL: Complete exhaustion. Zero cents made.`;
+    }
+});
+
+// Reflection Logic
+let curQ=1;
+function goQ(n){[1,2,3].forEach(i=>{document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('active');});document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('active');curQ=n;document.getElementById('rq-btn').style.display=curQ>=3?'none':'inline-block';}
+function nextQ(){if(curQ<3)goQ(curQ+1);}
+
+function declarationAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+
+// Static Download Engine
+function downloadStaticHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.ac').forEach(ac => {
+        ac.classList.add('open');
+        ac.removeAttribute('onclick');
+        ac.style.cursor = 'default';
+        ac.style.borderColor = 'var(--border)';
+    });
+    clone.querySelectorAll('.sr, .word').forEach(el => {
+        el.classList.add('v');
+        el.style.transition = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+    clone.querySelectorAll('.rq').forEach(rq => rq.classList.add('show'));
+    const qNav = clone.querySelector('.q-nav'); if(qNav) qNav.remove();
+    const rqBtn = clone.querySelector('#rq-btn'); if(rqBtn) rqBtn.remove();
+    clone.querySelectorAll('script').forEach(s => s.remove());
+    clone.querySelectorAll('*').forEach(el => el.removeAttribute('onclick'));
+    const cvs = clone.querySelector('#cvs'); if(cvs) cvs.remove();
+    const np = clone.querySelector('#np'); if(np) np.remove();
+    const overlay = clone.querySelector('#overlay'); if(overlay) overlay.remove();
+    const dBtn = clone.querySelector('#download-btn'); if(dBtn) dBtn.remove();
+    
+    const title = clone.querySelector('title');
+    if(title) title.textContent += " (Static Manuscript)";
+
+    const htmlContent = "<!DOCTYPE html>\n" + clone.outerHTML;
+    const blob = new Blob([htmlContent], {type: "text/html;charset=utf-8"});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = "Pathway_Origins_Part_2_Manuscript.html";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+</script>
+</body>
+</html>

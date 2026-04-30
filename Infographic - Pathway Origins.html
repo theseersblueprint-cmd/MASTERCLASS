@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathway Origins | The Master Syllabus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #02040A;
+      --cyan: #00F0FF;
+      --gold: #FFD700;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --danger: #FF3366;
+      --text: #F0F4F8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      background: var(--void); 
+      color: var(--text); 
+      font-family: 'Cormorant Garamond', serif; 
+      overflow-x: hidden;
+    }
+    
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .chapter {
+      margin-bottom: 150px;
+      padding-top: 50px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .chapter:first-of-type { border-top: none; }
+
+    .hero-image-container {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #111;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    
+    .hero-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1, h2 { font-family: 'Cinzel', serif; color: var(--gold); }
+    h1 { font-size: 3rem; text-align: center; margin-bottom: 60px; }
+    h2 { font-size: 2rem; margin-bottom: 20px; }
+
+    p.script-text {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      color: var(--text);
+    }
+    
+    .highlight-cyan { color: var(--cyan); font-style: italic; }
+    .highlight-gold { color: var(--gold); font-style: italic; }
+    .highlight-danger { color: var(--danger); font-style: italic; }
+
+    /* Interactive Node Style */
+    .node-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 40px 0;
+    }
+    
+    .node {
+        background: var(--glass);
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        padding: 20px;
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .node:hover {
+        border-color: var(--cyan);
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+    }
+    .node-title { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--cyan); margin-bottom: 10px;}
+    .node-content { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #aaa; }
+    .hidden-content { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); color: var(--gold); font-style: italic; }
+    .node.active .hidden-content { display: block; }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <main>
+    <h1>The Pathway Origins</h1>
+
+    <!-- CHAPTER 1: THE IRON CAGE -->
+    <section class="chapter" id="ch1">
+      <div class="hero-image-container">
+        <img src="images/ch1_legalism_rules_detail.png" alt="The Iron Cage">
+      </div>
+      <h2>Chapter 1: The Iron Cage</h2>
+      <p class="script-text">
+        If you listened to the wrong beat... you were going to hell. If you moved your body the wrong way... you were going to hell. It wasn't that I loved God. It was that I was terrified of Him.
+      </p>
+      <p class="script-text">
+        I was guilt-driven. I lived every day thinking that if I didn't get every single rule right... this omnipresent surveillance camera, which is how I pictured God, would find a reason... to wipe my name out of the Book of Life. <span class="highlight-danger">Forever.</span>
+      </p>
+      <p class="script-text">
+        I want you to feel that for a second. Imagine a God who is just waiting for you to fail... so He can disqualify you. Not a Father. A judge. A warden. A scorekeeper.
+      </p>
+      
+      <div class="node-container">
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Warden</div>
+          <div class="node-content">God as an omnipresent surveillance camera waiting for failure.</div>
+          <div class="hidden-content">Reality Check: God is a Father, not a warden.</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Book of Life</div>
+          <div class="node-content">Constant fear of having your name wiped out.</div>
+          <div class="hidden-content">Reality Check: Salvation is not sustained by fear.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 2: THE 4 LIMITING BELIEFS -->
+    <section class="chapter" id="ch2">
+      <div class="hero-image-container">
+        <img src="images/ch2_futility_detail.png" alt="Diligent Hustle">
+      </div>
+      <h2>Chapter 2: The 4 Limiting Beliefs</h2>
+      <p class="script-text">
+        Now... I also had big dreams. I wanted to build things. I wanted to create things that would change society. I wanted to be someone. But here is the thing... even THAT felt like a sin.
+      </p>
+      <p class="script-text">
+        Let me name the specific lies I was taught... because I know some of you are nodding right now. These are the limiting beliefs that millions of believers are walking around with... and nobody is naming them clearly enough.
+      </p>
+
+      <!-- Limiting Beliefs Simulator Integration -->
+      <div class="node-container">
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">BLOCK #01: Success is Pride</div>
+          <div class="node-content">The belief that ambition is spiritual suicide and that money belongs to sinners.</div>
+          <div class="hidden-content">COVENANT REALITY: "With God, all things are possible. Success is a platform for Kingdom influence." (MATTHEW 19:26)</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">BLOCK #02: Smallness is Humility</div>
+          <div class="node-content">The idea that shrinking yourself and staying poor is a form of worship.</div>
+          <div class="hidden-content">COVENANT REALITY: "He gives you the ability to produce wealth. God is not embarrassed by your prosperity." (DEUTERONOMY 8:18)</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">BLOCK #03: Wealth is Evil</div>
+          <div class="node-content">Demonising the tool because you have been taught to fear the love of it.</div>
+          <div class="hidden-content">COVENANT REALITY: "The LOVE of money is the root of evil. Money itself is a servant to the Vision." (1 TIMOTHY 6:10)</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">BLOCK #04: The Accusation</div>
+          <div class="node-content">If you aren't blessed, it's because you've sinned or God is withholding.</div>
+          <div class="hidden-content">COVENANT REALITY: "The training ground is not God's absence. It is the signature of His hand." (GENESIS 39:21)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3: THE BREAKING POINT -->
+    <section class="chapter" id="ch3">
+      <div class="hero-image-container">
+        <img src="images/ch3_phone_scroll_detail.png" alt="The Breaking Point">
+      </div>
+      <h2>Chapter 3: The Breaking Point</h2>
+      <p class="script-text">
+        I tried to live inside all of these beliefs. I tried to be the humble, small person who followed all the rules and asked for nothing. But life was brutal. And inside that cage, I found no evidence that God was even real. All I found were rules. All I found was guilt.
+      </p>
+      <p class="script-text">
+        So I made a choice. I decided to leave the one they called God. If there was no evidence... why was I carrying the burden? I decided to forget the rules, forget the guilt... and go after what I actually wanted. Money. Success. Destiny.
+      </p>
+      <p class="script-text">
+        I worked all day long. Hours upon hours. Days turned into weeks... weeks into months... months into years. By every human definition... I was the picture of the self-made man.
+      </p>
+      <p class="script-text">
+        But here is the part that haunts me... when I think back. <span class="highlight-danger">I never made even a single cent. Not one.</span>
+      </p>
+
+      <div class="node-container">
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Illusion of Freedom</div>
+          <div class="node-content">Cutting off God didn't bring freedom. It brought a different cage.</div>
+          <div class="hidden-content">"When I surveyed all that my hands had done... everything was meaningless." (ECCLESIASTES 2:11)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4: THE 7-DAY FAST -->
+    <section class="chapter" id="ch4">
+      <div class="hero-image-container">
+        <img src="images/ch4_two_books_detail.png" alt="The 7-Day Fast">
+      </div>
+      <h2>Chapter 4: The 7-Day Fast</h2>
+      <p class="script-text">
+        I wanted to know... is God actually real? Or is this all just a massive, guilt-ridden lie... that broke a generation of people who deserved better? That hunger... that was the beginning of the shift.
+      </p>
+      <p class="script-text">
+        I decided to fast. Intermittent fasting, eating once a day, only after the sun went down. Seven days. No church program. No audience. Just me... an empty stomach... and a desperate need for the truth.
+      </p>
+      <p class="script-text">
+        During those seven days... something happened in my mind that I cannot fully explain with words. It was like a veil was being systematically removed. All the scattered information I had been collecting for years... they started clicking into place.
+      </p>
+
+      <div class="node-container">
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Encounter</div>
+          <div class="node-content">Seeking God with all your heart, not just a distracted prayer.</div>
+          <div class="hidden-content">"You will seek me and find me... when you seek me with all your heart." (JEREMIAH 29:13)</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Download</div>
+          <div class="node-content">Writing two full books in a week. Capturing divine clarity.</div>
+          <div class="hidden-content">Revelation arriving faster than it could be processed.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5: THE PROPHETIC DREAMS -->
+    <section class="chapter" id="ch5">
+      <div class="hero-image-container">
+        <img src="images/ch5_prophetic_dreams_hero.png" alt="Prophetic Dreams">
+      </div>
+      <h2>Chapter 5: The Prophetic Dreams</h2>
+      <p class="script-text">
+        I finished that fast changed. I saw the world differently. I felt like God had finally answered the questions I had been carrying for years. I felt ready. I felt like I finally had the keys. But I did not know... that I was only just entering the training ground.
+      </p>
+      <p class="script-text">
+        After the fast, I started having dreams. Cinematic. Prophetic. I would dream something... and then it would happen. Exactly as I had seen it.
+      </p>
+      <p class="script-text">
+        God was using those dreams for something far deeper than predicting events. He was using them to show me... the actual state of my own heart. I realised something critical. <span class="highlight-cyan">Bitterness drains your spiritual energy.</span>
+      </p>
+
+      <div class="node-container">
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Root of Bitterness</div>
+          <div class="node-content">Forgiveness must be from the root, not performed.</div>
+          <div class="hidden-content">"A peaceful heart gives life to the body... but envy rots the bones." (PROVERBS 14:30)</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Character Test</div>
+          <div class="node-content">God wasn't building my business yet. He was building my character.</div>
+          <div class="hidden-content">"...suffering produces perseverance... character... and hope." (ROMANS 5:3-4)</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Deception Trap</div>
+          <div class="node-content">Over-interpreting reality due to hyper-sensitivity.</div>
+          <div class="hidden-content">"Do not believe every spirit. But test the spirits..." (1 JOHN 4:1)</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Discernment Protocol</div>
+          <div class="node-content">Finding clarity, peace, and joy through writing.</div>
+          <div class="hidden-content">"Let the peace of Christ RULE in your hearts." (COLOSSIANS 3:15)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 6: THE TRANSACTION -->
+    <section class="chapter" id="ch6">
+      <div class="hero-image-container">
+        <img src="images/ch6_jesus_vision_hero.png" alt="The Jesus Vision">
+      </div>
+      <h2>Chapter 6: The Transaction</h2>
+      <p class="script-text">
+        Months passed. And then one night... without any announcement or preparation... I had a vision. I saw Jesus.
+      </p>
+      <p class="script-text">
+        But He was not the Jesus in the paintings. He was not wearing a golden crown or clean white robes. He was wearing torn, ragged clothing. He was covered in blood.
+      </p>
+      <p class="script-text">
+        He said... <span class="highlight-cyan">"They want to crucify me."</span> That is when I knew it was Him. It is Jesus who gets crucified. Nobody else in the spiritual realm makes that claim.
+      </p>
+      <p class="script-text">
+        He asked me something that reminded me of what God said to Solomon... "What would you like me to give you?" I listed everything I could think of. Wisdom. Grace. Mantles. Authority. Gifts. All He did... was stretch out His hand toward me. And I blacked out.
+      </p>
+
+      <div class="node-container">
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Encounter</div>
+          <div class="node-content">A transaction completed over four days in the spirit.</div>
+          <div class="hidden-content">The beginning of true spiritual knowing.</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Silent Growth</div>
+          <div class="node-content">A seed planted takes time to produce fruit.</div>
+          <div class="hidden-content">"Unless a grain of wheat falls into the ground and dies... it remains alone." (JOHN 12:24)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 7: THE SYLLABUS & THE FALL -->
+    <section class="chapter" id="ch7">
+      <div class="hero-image-container">
+        <img src="images/ch7_syllabus_study_detail.png" alt="The Syllabus and the Fall">
+      </div>
+      <h2>Chapter 7: The Syllabus & The Fall</h2>
+      <p class="script-text">
+        That is when I made the syllabus. I wasn't satisfied with surface-level Christianity anymore. I wanted to know how everything worked. The mechanics of the spirit. How omnipresence actually functioned. What prayer was actually doing on a spiritual level. Why some people walked in authority... and others didn't.
+      </p>
+      <p class="script-text">
+        Because as it says in Proverbs 25:2... "It is the glory of God to conceal a matter... to search out a matter is the glory of kings."
+      </p>
+      <p class="script-text">
+        I spent months in deep research. I would sit for hours and the clarity I received was beyond what I could produce on my own. But then... <span class="highlight-danger">pride started to grow.</span>
+      </p>
+      <div class="hero-image-container" style="margin-top: 40px;">
+        <img src="images/ch7_pride_fall_hero.png" alt="Pride and Fall">
+      </div>
+      <p class="script-text">
+        I knew too much. I started seeing the gaps in everyone around me. Their wrong beliefs. Their limiting mindsets. Their fear-based religion. I was angry at them for staying in those old ways... I felt like the smartest person in every room I entered.
+      </p>
+      <p class="script-text">
+        I prayed every prayer I knew. I applied every spiritual law I had studied. I did everything correctly. And I failed anyway. Publicly. In front of the very people I had looked down on.
+      </p>
+      
+      <div class="node-container">
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Danger of Knowledge</div>
+          <div class="node-content">Mastering the architecture of reality without humility.</div>
+          <div class="hidden-content">"Pride goes before destruction... a haughty spirit before a fall." (PROVERBS 16:18)</div>
+        </div>
+        <div class="node" onclick="this.classList.toggle('active')">
+          <div class="node-title">The Greatest Mercy</div>
+          <div class="node-content">The failure that broke the pride.</div>
+          <div class="hidden-content">"God opposes the proud... but shows favour to the humble." (JAMES 4:6)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 8: THE PATHWAY BIRTH -->
+    <section class="chapter" id="ch8">
+      <div class="hero-image-container">
+        <img src="images/ch8_pathway_birth_hero.png" alt="The Pathway Birth">
+      </div>
+      <h2>Chapter 8: The Pathway Birth</h2>
+      <p class="script-text">
+        I became humble because life made it impossible to be anything else. I became patient with people who held limiting beliefs because I finally understood, I was just as broken as they were. I just wore my brokenness differently.
+      </p>
+      <p class="script-text">
+        God had to rebuild me. He had to take me through the training ground first... because if I had succeeded when I was proud, I would have fallen much harder and hurt many more people in the process.
+      </p>
+      <p class="script-text">
+        I am here to help you connect the dots that God helped me connect. To show you that there is a pathway to the victorious life, but it doesn't run through your ego. It runs through your surrender.
+      </p>
+      <p class="script-text highlight-gold" style="font-size: 1.8rem; text-align: center; margin-top: 60px; font-weight: 600;">
+        This is why THE PATHWAY MASTERCLASS exists.
+      </p>
+
+      <div class="node-container">
+        <div class="node" onclick="this.classList.toggle('active')" style="border-color: var(--gold);">
+          <div class="node-title" style="color: var(--gold);">The Masterclass</div>
+          <div class="node-content">Built to help you see what took years of pain to understand.</div>
+          <div class="hidden-content">All 29 interactive frameworks available inside.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

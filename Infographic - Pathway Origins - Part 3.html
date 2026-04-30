@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pathway Origins | Part 3: The Seven-Day Fast</title>
+  <meta name="description" content="A systematic framework mapping the transition through the seven-day fast and the initiation of prophetic dreams."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--void:#02040A;--deep:#050810;--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--danger-d:rgba(255,51,102,.15);--success:#00D97E;--purple:#B08FFF;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(0,240,255,.15)}50%{box-shadow:0 0 50px rgba(0,240,255,.4)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
+    
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:340px;height:340px;border-radius:50%;overflow:hidden;border:1px solid var(--cyan);box-shadow:0 0 80px rgba(0,240,255,.1),0 0 160px rgba(0,240,255,.05);animation:float 7s ease-in-out infinite,pulse 4s ease-in-out infinite;margin-bottom:40px}
+    .hero-img img{width:100%;height:100%;object-fit:cover; filter: grayscale(20%) contrast(1.1);}
+    .ch-tag{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.35em;color:var(--cyan);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.6rem,6vw,5.5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px; text-shadow: 0 0 30px rgba(0,240,255,0.3);}
+    .hero-sub{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:30px auto 0;line-height:1.6}
+    
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--cyan);background:rgba(0,240,255,.08);border:1px solid var(--cyan);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.cyan-border{border-color:rgba(0,240,255,.3);border-left:3px solid var(--cyan);background:rgba(0,240,255,.03)}
+    
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}.body-text.lg{font-size:1.45rem}
+    .em-text{color:var(--cyan);font-style:italic}.gold-text{color:var(--gold);font-style:italic}
+    .statement{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    
+    /* Interactive Map Architecture */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px; display: flex; flex-direction: column; align-items: center;}
+    .fw-row{display:flex;justify-content:center;gap:20px;position:relative;z-index:1;margin-bottom:10px;flex-wrap:wrap; width: 100%;}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:40px;color:var(--gold);font-size:1.4rem;opacity:.5;position:relative;z-index:1}
+    .map-label{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.25em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:10px;position:relative;z-index:1}
+    
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center; position: relative;}
+    .node:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 8px 30px rgba(0,240,255,.15)}
+    .node.root{width:320px;padding:30px 20px;border-color:var(--gold);background:rgba(255,215,0,.05); margin: 0 auto;}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold);margin-bottom:8px;}
+    .node.root .n-sub{font-family:'Inter',sans-serif;font-size:.75rem;color:var(--muted); line-height: 1.5;}
+    
+    .node.action{width:220px;padding:24px 16px; border-color: rgba(255,255,255,0.15);}
+    .node.action .n-title{font-family:'Cinzel',serif;font-size:.95rem;color:#fff;margin-bottom:8px}
+    .node.action .n-sub{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--muted); line-height: 1.6;}
+    
+    .node.spirit{width:220px;padding:24px 16px; border-color: rgba(0,240,255,0.3); background:rgba(0,240,255,0.03);}
+    .node.spirit .n-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--cyan);margin-bottom:8px}
+    .node.spirit .n-sub{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--muted); line-height: 1.6;}
+
+    .node.danger{width:220px;padding:24px 16px; border-color: rgba(255,51,102,0.3); background:rgba(255,51,102,0.03);}
+    .node.danger .n-title{font-family:'Cinzel',serif;font-size:.95rem;color:var(--danger);margin-bottom:8px}
+    .node.danger .n-sub{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--muted); line-height: 1.6;}
+
+    /* Modal Panel */
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(560px,90vw);background:#0A0E18;border:1px solid var(--border);border-radius:28px;padding:40px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.9)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:all .3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.1rem;line-height:1.8;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:9999;backdrop-filter:blur(5px)}#overlay.show{display:block}
+    
+    /* Labs & Accordions */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--cyan)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-icon{font-size:1.4rem;color:var(--cyan);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s cubic-bezier(.4,0,.2,1),padding .55s cubic-bezier(.4,0,.2,1)}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px;}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--gold)}
+
+    .lab{border:1px solid var(--cyan-d);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:320px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    
+    /* Heart Cleansing Simulator */
+    .heart-sim { width: 100%; max-width: 600px; display: flex; flex-direction: column; gap: 15px; }
+    .heart-bar { background: var(--glass); border: 1px solid var(--danger-d); padding: 15px 25px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.3s; }
+    .heart-bar:hover { background: rgba(255,51,102,0.1); border-color: var(--danger); transform: translateX(10px); }
+    .heart-bar.forgiven { opacity: 0.5; border-color: var(--success); pointer-events: none; transform: translateX(30px); background: rgba(0,217,126,0.05); }
+    .cb-text { font-family: 'Cinzel', serif; font-size: 1rem; color: #fff; }
+    .cb-action { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--danger); border: 1px solid var(--danger); padding: 4px 10px; border-radius: 20px; }
+    .heart-bar:hover .cb-action { background: var(--danger); color: #fff; }
+
+    /* Reflection */
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:24px}.q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--cyan);cursor:pointer;transition:background .3s}.q-dot.active{background:var(--cyan)}
+    
+    .decl{border:1px dashed var(--border);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle,rgba(0,240,255,.04) 0%,transparent 70%)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:all .3s;margin:6px}.btn:hover{background:var(--hover)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover,.btn.c.on{background:rgba(0,240,255,.1)}
+  </style>
+</head>
+<body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np"><button class="np-close" onclick="closePanel()">✕</button><p class="np-tag" id="np-tag"></p><h2 class="np-title" id="np-title"></h2><p class="np-body" id="np-body"></p></div>
+
+<main>
+  <!-- LAYER 1: HERO -->
+  <section class="hero sr">
+    <div class="hero-img"><img src="images/ch4_seven_day_fast_hero_1777570754778.png" alt="The Seven-Day Fast" onerror="this.style.opacity=0"></div>
+    <p class="ch-tag">Pathway Origins · Part 3</p>
+    <h1 class="hero-title stag">THE SEVEN-DAY<br>FAST</h1>
+    <p class="hero-sub">Prophetic Dreams & The Character Training Ground</p>
+    <p class="hero-def stag">"In January of that year, my hunger hit the ceiling. I couldn't live one more day with the 'maybe'. I decided to fast for seven days. No fanfare. No church program. <span class="em-text">Just me and my hunger for the truth.</span>"</p>
+  </section>
+
+  <!-- LAYER 2: THESIS -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 One-Line Thesis</h2></div>
+    <div class="card cyan-border"><p class="statement stag">The moment you stop defending what you were taught and start genuinely seeking what is actually true, <span style="color:var(--cyan)">the veil of confusion is ripped away.</span></p></div>
+  </section>
+
+  <!-- LAYER 3: CORE SCRIPTURE / NARRATIVE -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">📜 The Core Realization</h2></div>
+    <div class="card" style="border-left:3px solid var(--gold)">
+      <p class="body-text lg stag" style="font-style:italic">"I realized that what that preacher had said was true: The failure and the pain I had been through were just God shaping a version of me that was compatible with the assignment. He wasn't building my business yet. He was building my character. He was building my spirit."</p>
+      <p style="font-family:'Cinzel',serif;color:var(--gold);letter-spacing:.12em;margin-top:14px;font-size:.85rem">— THE DIVINE PURPOSE OF THE PROCESS</p>
+    </div>
+  </section>
+
+  <!-- LAYER 4: MASTER FRAMEWORK MAP -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">🗺 The Architecture of The Shift</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to explore the mechanics of spiritual clarification.</p>
+    
+    <div class="map-wrap"><div class="map-canvas">
+      
+      <p class="map-label" style="color:var(--gold)">THE INITIATION</p>
+      <div class="fw-row">
+        <div class="node root" onclick="showPanel('root', 'The 7-Day Fast', 'Eating only once a day after the sun went down. This wasn\'t a religious performance; it was an act of absolute desperation to connect the dots and know if God was real.')">
+          <div class="n-title" style="color:var(--gold)">🔥 THE SUNSET FAST</div><div class="n-sub">Quiet, unannounced, desperate hunger.</div>
+        </div>
+      </div>
+      
+      <div class="map-arrow" style="color:var(--cyan)">↓ THE VEIL RIPS ↓</div>
+      
+      <div class="fw-row">
+        <div class="node spirit" onclick="showPanel('s1', 'The Flow of Revelation', 'During those seven days, a veil was ripped away. Scattered information started clicking into place. I wasn\'t just thinking; I was seeing.')">
+          <div class="n-title">👁 DEEP CLARITY</div><div class="n-sub">Dots connecting instantly</div>
+        </div>
+        <div class="node spirit" onclick="showPanel('s2', 'The Overflow', 'The volume of revelation pouring in was so massive that I ended up writing two full books during that single week, just to capture it.')">
+          <div class="n-title">✍️ MASSIVE CAPTURE</div><div class="n-sub">Writing two books in a week</div>
+        </div>
+      </div>
+      
+      <div class="map-arrow" style="color:var(--purple)">↓ THE TRAINING GROUND ↓</div>
+      
+      <div class="fw-row">
+        <div class="node action" style="border-color:rgba(176,143,255,.3);background:rgba(176,143,255,.03);" onclick="showPanel('d1', 'Cinematic Prophetic Dreams', 'I started having dreams that would happen exactly as I saw them. I thought this was just a superpower, but God was using it for something much deeper.')">
+          <div class="n-title" style="color:var(--purple)">🌌 PROPHETIC SIGHT</div><div class="n-sub">Dreams that became reality</div>
+        </div>
+      </div>
+
+      <div class="map-arrow" style="color:var(--danger)">↓ THE HEART CHECK ↓</div>
+      
+      <div class="fw-row">
+        <div class="node danger" onclick="showPanel('d2', 'The Static of Bitterness', 'I would see people who had wronged me in my dreams, and I\'d be angry. I realized that as long as I was bitter, they kept appearing. Unforgiveness was blocking my spiritual ascent.')">
+          <div class="n-title">🛑 UNFORGIVENESS</div><div class="n-sub">The anchor of the soul</div>
+        </div>
+        <div class="node action" style="border-color:rgba(0,217,126,.3);background:rgba(0,217,126,.03);" onclick="showPanel('d3', 'The Release', 'The moment I genuinely forgave them in my heart, they stopped appearing, or we walked in love. The failure and pain were shaping me to carry the assignment.')">
+          <div class="n-title" style="color:var(--success)">🕊 GENUINE FORGIVENESS</div><div class="n-sub">Restoring spiritual energy</div>
+        </div>
+      </div>
+
+    </div></div>
+  </section>
+
+  <!-- LAYER 5: EXPERIENTIAL LABS -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">🧩 Deep Dives & The Simulator</h2></div>
+    
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">TAP: BITTERNESS DRAINS SPIRITUAL ENERGY</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Bitterness is not just an emotion; it is an active spiritual drain. It requires massive amounts of internal energy to sustain a grudge. God will often withhold the next level of your assignment until you prove you can <span class="em-text">genuinely forgive</span> the people who wronged you in the training ground.</p>
+      </div>
+    </div>
+
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><h3 class="ac-title">⚡ LAB: THE FORGIVENESS SIMULATOR</h3><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">These unresolved offenses are anchors holding down your prophetic sight. Click each to release it and restore your spiritual energy.</p>
+        <div class="lab" style="border-color:var(--cyan-d)">
+          <div class="lab-stage">
+            <div class="heart-sim">
+                <div class="heart-bar" id="hb1" onclick="forgive(1, 'Offense Released: Energy Restored')">
+                    <span class="cb-text">The betrayal of a close friend.</span>
+                    <span class="cb-action">FORGIVE</span>
+                </div>
+                <div class="heart-bar" id="hb2" onclick="forgive(2, 'Anger Released: Vision Cleared')">
+                    <span class="cb-text">The injustice of the legalistic system.</span>
+                    <span class="cb-action">FORGIVE</span>
+                </div>
+                <div class="heart-bar" id="hb3" onclick="forgive(3, 'Resentment Released: Heart Purified')">
+                    <span class="cb-text">The people who mocked my failure.</span>
+                    <span class="cb-action">FORGIVE</span>
+                </div>
+            </div>
+          </div>
+          <div class="lab-footer" id="heart-status">STATUS: Your spiritual energy is drained by 3 active offenses.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 6: WARNING -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">⚠️ Warning: The Illusion of "Arrival"</h2></div>
+    <div class="card" style="border-color:rgba(0,240,255,.3);background:rgba(0,240,255,.02)">
+        <p class="body-text stag" style="color:#A8F0FF">"I finished that fast, and I wasn't the same person... I felt ready to conquer. I felt like I had the keys to success. <span style="color:var(--cyan)">But I didn't know that I was just entering the training ground.</span>" Revelation is the beginning of the process, not the end of it.</p>
+    </div>
+  </section>
+
+  <!-- LAYER 7: REFLECTION -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🪞 Reflection Prompts</h2></div>
+    <div class="card" style="text-align:center">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">When was the last time you fasted not to fulfill a church program, but out of absolute, desperate hunger for the truth?</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">Who is currently starring in the 'angry dreams' of your subconscious mind because you refuse to forgive them?</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">Are you willing to accept that your current pain or failure is simply God building your character to handle the weight of your future assignment?</p></div>
+      <button class="btn c" style="margin-top:28px" id="rq-btn" onclick="nextQ()">✦ REVEAL NEXT QUESTION</button>
+      <div class="q-nav"><div class="q-dot active" id="qd1" onclick="goQ(1)"></div><div class="q-dot" id="qd2" onclick="goQ(2)"></div><div class="q-dot" id="qd3" onclick="goQ(3)"></div></div>
+    </div>
+  </section>
+
+  <!-- LAYER 8: DECLARATION -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🔥 The Closing Declaration</h2></div>
+    <div class="decl">
+      <p style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.3em;color:var(--cyan);margin-bottom:18px">THE PURIFICATION OF THE VESSEL</p>
+      <p class="statement stag">"I surrender my right to bitterness. I release those who have wronged me, and I embrace the training ground. I understand that God must build my character before He builds my empire."</p>
+      <button class="btn c" style="margin-top:40px" id="decl-btn" onclick="declarationAccepted()">✦ PURIFY THE VESSEL</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel',serif;color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">VESSEL PURIFIED. PROCEED TO PART 4.</p>
+      
+      <!-- Download Static Engine -->
+      <button class="btn" style="margin-top:30px; border-color:var(--gold); color:var(--gold)" id="download-btn" onclick="downloadStaticHTML()">⭳ DOWNLOAD STATIC MANUSCRIPT (SCROLLABLE)</button>
+    </div>
+  </section>
+</main>
+
+<script>
+// Ambient Background Animation
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight}addEventListener('resize',rs);rs();
+for(let i=0;i<80;i++)pts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.2,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(0,240,255,${p.a*.3})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// Observers
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');else e.target.classList.remove('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*32));else ws.forEach(w=>w.classList.remove('v'));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))? t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// Panel Logic
+function showPanel(id, t, b) {
+    document.getElementById('np-tag').textContent = "MAP INSIGHT";
+    document.getElementById('np-title').textContent = t;
+    document.getElementById('np-body').textContent = b;
+    document.getElementById('np').classList.add('show');
+    document.getElementById('overlay').classList.add('show');
+}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// Simulator Logic
+let forgivenCount = 0;
+function forgive(id, truth) {
+    const bar = document.getElementById('hb'+id);
+    if(bar.classList.contains('forgiven')) return;
+    
+    bar.classList.add('forgiven');
+    bar.innerHTML = `<span class="cb-text" style="color:var(--success); font-size:0.9rem;">${truth}</span>`;
+    
+    forgivenCount++;
+    const status = document.getElementById('heart-status');
+    if(forgivenCount === 1) status.textContent = "STATUS: 1 Offense Released. Spiritual energy returning.";
+    else if(forgivenCount === 2) status.textContent = "STATUS: 2 Offenses Released. Prophetic sight clearing.";
+    else {
+        status.textContent = "STATUS: ALL OFFENSES CLEARED. YOU ARE READY FOR THE NEXT DIMENSION.";
+        status.style.color = "var(--success)";
+        document.querySelector('.heart-sim').style.boxShadow = "0 0 50px rgba(0,217,126,0.15)";
+    }
+}
+
+// Reflection Logic
+let curQ=1;
+function goQ(n){[1,2,3].forEach(i=>{document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('active');});document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('active');curQ=n;document.getElementById('rq-btn').style.display=curQ>=3?'none':'inline-block';}
+function nextQ(){if(curQ<3)goQ(curQ+1);}
+
+function declarationAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+
+// Static Download Engine
+function downloadStaticHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.ac').forEach(ac => {
+        ac.classList.add('open');
+        ac.removeAttribute('onclick');
+        ac.style.cursor = 'default';
+        ac.style.borderColor = 'var(--border)';
+    });
+    clone.querySelectorAll('.sr, .word').forEach(el => {
+        el.classList.add('v');
+        el.style.transition = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+    clone.querySelectorAll('.rq').forEach(rq => rq.classList.add('show'));
+    const qNav = clone.querySelector('.q-nav'); if(qNav) qNav.remove();
+    const rqBtn = clone.querySelector('#rq-btn'); if(rqBtn) rqBtn.remove();
+    clone.querySelectorAll('script').forEach(s => s.remove());
+    clone.querySelectorAll('*').forEach(el => el.removeAttribute('onclick'));
+    const cvs = clone.querySelector('#cvs'); if(cvs) cvs.remove();
+    const np = clone.querySelector('#np'); if(np) np.remove();
+    const overlay = clone.querySelector('#overlay'); if(overlay) overlay.remove();
+    const dBtn = clone.querySelector('#download-btn'); if(dBtn) dBtn.remove();
+    
+    const title = clone.querySelector('title');
+    if(title) title.textContent += " (Static Manuscript)";
+
+    const htmlContent = "<!DOCTYPE html>\n" + clone.outerHTML;
+    const blob = new Blob([htmlContent], {type: "text/html;charset=utf-8"});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = "Pathway_Origins_Part_3_Manuscript.html";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+</script>
+</body>
+</html>
