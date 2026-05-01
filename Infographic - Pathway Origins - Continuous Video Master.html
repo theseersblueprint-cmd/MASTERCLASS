@@ -17,19 +17,31 @@
     
     .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
     
+    /* Scroll Reveal & Typography Fluidity */
+    .word { display: inline-block; opacity: 0; transform: translateY(15px) scale(0.98); transition: opacity 0.6s cubic-bezier(0.2, 0, 0, 1), transform 0.6s cubic-bezier(0.2, 0, 0, 1); }
+    .word.v { opacity: 1; transform: none; }
+    .sr { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .sr.v { opacity: 1; transform: none; }
+    
     main { max-width: 900px; margin: 0 auto; padding: 60px 20px 200px; position:relative; z-index:2; }
     
     /* Typography */
     .part-title { font-family:'Cinzel', serif; font-size:2.8rem; color:var(--gold); text-align:center; margin: 120px 0 40px; text-shadow: 0 0 40px rgba(255,215,0,0.2); }
-    .script-text { font-size: 1.6rem; color: #D1D5DB; margin-bottom: 30px; font-weight: 300; }
-    .script-text.highlight { color: #fff; font-size: 1.8rem; font-style: italic; border-left: 3px solid var(--purple); padding-left: 20px; margin: 40px 0; background:rgba(176,143,255,0.05); padding: 20px;}
-    .script-text.action { font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; text-align: center; margin: 40px 0; }
+    .script-text { font-size: 1.6rem; color: #D1D5DB; margin-bottom: 30px; font-weight: 300; line-height:1.9; }
+    .script-text.highlight { color: #fff; font-size: 1.9rem; font-style: italic; border-left: 3px solid var(--purple); padding-left: 20px; margin: 40px 0; background:rgba(176,143,255,0.05); padding: 25px;}
     
+    /* Dynamic Text Coloring */
+    .c-gold { color: var(--gold); font-weight: 400; }
+    .c-danger { color: #FF6B8B; font-weight: 400; }
+    .c-success { color: #4ADE80; font-weight: 400; }
+    .c-cyan { color: var(--cyan); font-weight: 400; }
+    .c-purple { color: #C084FC; font-weight: 400; }
+
     /* Imagery */
-    .inline-hero { width: 100%; max-width: 600px; margin: 40px auto; display: block; border-radius: var(--r); border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .inline-hero { width: 100%; max-width: 600px; margin: 50px auto; display: block; border-radius: var(--r); border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
     
     /* Maps & Tables */
-    .map-wrap { width: 100%; margin: 60px 0; padding: 40px; background: var(--glass); border: 1px solid var(--border); border-radius: var(--r); }
+    .map-wrap { width: 100%; margin: 70px 0; padding: 50px; background: var(--glass); border: 1px solid var(--border); border-radius: var(--r); }
     .fw-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
     .map-arrow { display: flex; justify-content: center; align-items: center; height: 40px; color: var(--muted); font-size: 1.4rem; opacity: .5; margin: 10px 0; }
     .node { border-radius: 16px; border: 1px solid var(--border); background: var(--deep); padding: 24px; text-align: center; width: 240px; transition: 0.3s; cursor: pointer; }
@@ -37,14 +49,8 @@
     .node.root { width: 340px; border-color: var(--purple); background: rgba(176,143,255,0.05); }
     .n-title { font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 8px; }
     .n-sub { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
-    
-    .color-gold { color: var(--gold) !important; }
-    .color-danger { color: var(--danger) !important; }
-    .color-success { color: var(--success) !important; }
-    .color-cyan { color: var(--cyan) !important; }
-    .color-purple { color: var(--purple) !important; }
 
-    .sim-box { border: 1px solid var(--border); border-radius: var(--r); padding: 40px; text-align: center; background: var(--deep); margin: 40px 0; }
+    .sim-box { border: 1px solid var(--border); border-radius: var(--r); padding: 40px; text-align: center; background: var(--deep); margin: 60px 0; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
   </style>
 </head>
 <body>
@@ -52,54 +58,51 @@
 
 <main>
   <!-- PART 1 -->
-  <h1 class="part-title">PART 1: THE INVISIBLE PRISON</h1>
+  <h1 class="part-title sr stag">PART 1: THE INVISIBLE PRISON</h1>
   
-  <p class="script-text">I want you to look at the thumbnail of this video one more time.</p>
-  <p class="script-text highlight">"I tried to get rich and cut off God."</p>
-  <p class="script-text">To most religious people, that sounds like a headline from a backslider’s confession. But for me, it wasn’t a backslide. It was a calculated, desperate attempt at survival.</p>
-  <p class="script-text">You see, for the first part of my life, God wasn't a Father. He was a burden. He was the "Man in the Sky" who had given us a list of rules that felt like an iron cage. Where I grew up, your relationship with God was measured by what you didn't do.</p>
+  <p class="script-text sr stag">I want you to look at the thumbnail of this video one more time.</p>
+  <p class="script-text highlight sr stag">"I tried to get rich and cut off God."</p>
+  <p class="script-text sr stag">To most religious people, that sounds like a headline from a backslider’s confession. But for me, it wasn’t a backslide. <span class="c-danger">It was a calculated, desperate attempt at survival.</span></p>
+  <p class="script-text sr stag">You see, for the first part of my life, God wasn't a Father. He was a burden. He was the "Man in the Sky" who had given us a list of rules that felt like an iron cage. Where I grew up, <span class="c-gold">your relationship with God was measured by what you didn't do.</span></p>
   
-  <img src="images/ch1_legalism_rules_detail.png" class="inline-hero" style="border-color:var(--danger);" />
+  <img src="images/ch1_legalism_rules_detail.png" class="inline-hero sr" style="border-color:var(--danger);" />
   
-  <p class="script-text">We don't dance. We don't listen to secular music. We don't do this, we don't do that.</p>
-  <p class="script-text action">[LONG PAUSE]</p>
-  <p class="script-text">And the consequence for every single slip-up was the same: Hell.</p>
-  <p class="script-text">If you listened to the wrong beat, you were going to hell. If you moved your body the wrong way, you were going to hell. It wasn't that I loved God; it was that I was terrified of Him. I was guilt-driven. I lived every day thinking that if I didn't get every single rule right, this omnipresent surveillance camera—which is how I viewed God—would find a reason to wipe my name out of the Book of Life forever.</p>
-  <p class="script-text">I want you to feel that for a second. Imagine living with a God who is just waiting for you to fail so He can disqualify you.</p>
+  <p class="script-text sr stag">We don't dance. We don't listen to secular music. We don't do this, we don't do that.</p>
+  <p class="script-text sr stag">And the consequence for every single slip-up was the same: <span class="c-danger">Hell.</span></p>
+  <p class="script-text sr stag">If you listened to the wrong beat, you were going to hell. If you moved your body the wrong way, you were going to hell. It wasn't that I loved God; it was that I was terrified of Him. I was guilt-driven. I lived every day thinking that if I didn't get every single rule right, <span class="c-cyan">this omnipresent surveillance camera</span>—which is how I viewed God—would find a reason to wipe my name out of the Book of Life forever.</p>
+  <p class="script-text sr stag">I want you to feel that for a second. Imagine living with a God who is just waiting for you to fail so He can disqualify you.</p>
   
-  <div class="map-wrap">
+  <div class="map-wrap sr">
     <div class="fw-row">
       <div class="node root" style="border-color:var(--danger)">
-        <div class="n-title color-danger">THE SURVEILLANCE CAMERA</div>
+        <div class="n-title c-danger">THE SURVEILLANCE CAMERA</div>
         <div class="n-sub">Viewing God as an entity waiting to wipe your name from the Book of Life.</div>
       </div>
     </div>
   </div>
 
-  <p class="script-text">I had big dreams. I wanted to be successful. I wanted to make an impact. I wanted to build things that would change society. But even that dream felt like a sin. In the environment I was raised in, we were told this world belongs to the sinners. We’re just passing through. To want something big, to want to be "someone," was seen as pride.</p>
-  <p class="script-text">They taught me that staying small is humility. That God loves the small, the quiet, the people who don't ask for much.</p>
-  <p class="script-text">I tried. I really tried to live that life. I tried to be the humble, small person who just followed the rules. But life was brutal. And inside that cage of legalism, I found no evidence that God was even real. All I found were rules. All I found was guilt.</p>
-  <p class="script-text">So I made a choice.</p>
-  <p class="script-text action">[PAUSE]</p>
-  <p class="script-text highlight">I decided to leave the one they called God. If there was no evidence, why was I carrying the burden? I decided to forget the rules, forget the guilt, and go after what I actually wanted: Money. Success. Destiny.</p>
-  <p class="script-text">I thought that if I could just get rich, I could finally be free from the surveillance camera in the sky.</p>
+  <p class="script-text sr stag">I had big dreams. I wanted to be successful. I wanted to make an impact. I wanted to build things that would change society. But even that dream felt like a sin. In the environment I was raised in, we were told this world belongs to the sinners. We’re just passing through. <span class="c-gold">To want something big, to want to be "someone," was seen as pride.</span></p>
+  <p class="script-text sr stag">They taught me that staying small is humility. That God loves the small, the quiet, the people who don't ask for much.</p>
+  <p class="script-text sr stag">I tried. I really tried to live that life. I tried to be the humble, small person who just followed the rules. But life was brutal. And inside that cage of legalism, <span class="c-danger">I found no evidence that God was even real.</span> All I found were rules. All I found was guilt.</p>
+  <p class="script-text sr stag">So I made a choice.</p>
+  <p class="script-text highlight sr stag">I decided to leave the one they called God. If there was no evidence, why was I carrying the burden? I decided to forget the rules, forget the guilt, and go after what I actually wanted: Money. Success. Destiny.</p>
+  <p class="script-text sr stag">I thought that if I could just get rich, I could finally be free from the surveillance camera in the sky.</p>
 
-  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;">
+  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;" class="sr">
 
   <!-- PART 2 -->
-  <h1 class="part-title">PART 2: THE WALL OF DILIGENT FUTILITY</h1>
+  <h1 class="part-title sr stag">PART 2: THE WALL OF DILIGENT FUTILITY</h1>
   
-  <p class="script-text">I was diligent. I want to emphasize that. I didn't just walk away and start partying. I walked away and started working.</p>
+  <p class="script-text sr stag">I was diligent. I want to emphasize that. I didn't just walk away and start partying. I walked away and started working.</p>
   
-  <img src="images/ch2_futility_detail.png" class="inline-hero" style="border-color:var(--muted); filter: grayscale(50%);" />
+  <img src="images/ch2_futility_detail.png" class="inline-hero sr" style="border-color:var(--muted); filter: grayscale(50%);" />
 
-  <p class="script-text">I worked all day long. Hours upon hours. Days turned into weeks, weeks into months, and months into years. I was coming from nothing—literally nothing—and I was determined to make something meaningful out of my destiny. I was doing online businesses, I was studying, I was executing. I was the definition of "hustle."</p>
-  <p class="script-text">But here is the part that haunts me when I think back:</p>
-  <p class="script-text highlight">I never made even a single cent.</p>
-  <p class="script-text action">[PAUSE]</p>
-  <p class="script-text">Not one.</p>
+  <p class="script-text sr stag">I worked all day long. Hours upon hours. Days turned into weeks, weeks into months, and months into years. I was coming from nothing—literally nothing—and I was determined to make something meaningful out of my destiny. I was doing online businesses, I was studying, I was executing. <span class="c-gold">I was the definition of "hustle."</span></p>
+  <p class="script-text sr stag">But here is the part that haunts me when I think back:</p>
+  <p class="script-text highlight sr stag">I never made even a single cent.</p>
+  <p class="script-text sr stag">Not one.</p>
   
-  <div class="map-wrap">
+  <div class="map-wrap sr">
     <div class="fw-row">
       <div class="node root" style="border-color:#555">
         <div class="n-title" style="color:#aaa">THE HUSTLE TREADMILL</div>
@@ -108,145 +111,140 @@
     </div>
   </div>
 
-  <p class="script-text">I was working like a slave, but the resources weren't there. It was one of the most difficult moments of my life. I had cut off God to find freedom, but I ended up in a different kind of prison—the prison of futility.</p>
-  <p class="script-text">And the worst part? The guilt didn't leave. Even though I had consciously decided to ignore God, subconsciously, those beliefs were buried deep in my system. I felt guilty for resting. I felt guilty for enjoying a meal. I felt guilty for doing anything that wasn't "work."</p>
-  <p class="script-text">I was exhausted. I was at the end of my rope. I was a man trying to build a kingdom on a foundation of sand, and it was collapsing.</p>
-  <p class="script-text">I started scrolling my phone late at night, listening to preachers—preachers I used to ignore—and motivational speakers. I was looking for a crumb of hope. I reached a point where I was just tired of the "beliefs." I didn't want a religion. I wanted healing.</p>
-  <p class="script-text">I wanted to know: Is God real? Or is this all just a massive, guilt-ridden lie?</p>
-  <p class="script-text">I wanted to connect the dots. I was tired of the truth being scattered. I wanted to know how the systems worked. How God worked. If the spiritual realm was even a thing.</p>
-  <p class="script-text">That hunger... that was the beginning of the shift.</p>
+  <p class="script-text sr stag">I was working like a slave, but the resources weren't there. It was one of the most difficult moments of my life. <span class="c-danger">I had cut off God to find freedom, but I ended up in a different kind of prison—the prison of futility.</span></p>
+  <p class="script-text sr stag">And the worst part? The guilt didn't leave. Even though I had consciously decided to ignore God, subconsciously, those beliefs were buried deep in my system. I felt guilty for resting. I felt guilty for enjoying a meal. I felt guilty for doing anything that wasn't "work."</p>
+  <p class="script-text sr stag">I was exhausted. I was at the end of my rope. I was a man trying to build a kingdom on a foundation of sand, and it was collapsing.</p>
+  <p class="script-text sr stag">I started scrolling my phone late at night, listening to preachers—preachers I used to ignore—and motivational speakers. I was looking for a crumb of hope. <span class="c-purple">I reached a point where I was just tired of the "beliefs." I didn't want a religion. I wanted healing.</span></p>
+  <p class="script-text sr stag">I wanted to know: Is God real? Or is this all just a massive, guilt-ridden lie?</p>
+  <p class="script-text sr stag">I wanted to connect the dots. I was tired of the truth being scattered. I wanted to know how the systems worked. How God worked. If the spiritual realm was even a thing.</p>
+  <p class="script-text sr stag">That hunger... that was the beginning of the shift.</p>
 
-  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;">
+  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;" class="sr">
 
   <!-- PART 3 -->
-  <h1 class="part-title">PART 3: THE SEVEN-DAY FAST & PROPHETIC DREAMS</h1>
+  <h1 class="part-title sr stag">PART 3: THE SEVEN-DAY FAST & PROPHETIC DREAMS</h1>
   
-  <p class="script-text">In January of that year, my hunger hit the ceiling. I couldn't live one more day with the "maybe."</p>
-  <p class="script-text">I decided to fast. Intermittent fasting—eating only once a day after the sun went down. I decided to do this for seven days. No fanfare. No church program. Just me and my hunger for the truth.</p>
-  <p class="script-text">That is where I had my first encounter.</p>
-  
-  <p class="script-text action">[POINTING TO INFOGRAPHIC - THE SHIFT]</p>
-  <p class="script-text">Look at the framework on your screen. This is what I call "The Shift." It's the moment you stop defending what you were taught and start seeking what is actually true.</p>
+  <p class="script-text sr stag">In January of that year, my hunger hit the ceiling. I couldn't live one more day with the "maybe."</p>
+  <p class="script-text sr stag">I decided to fast. Intermittent fasting—eating only once a day after the sun went down. I decided to do this for seven days. No fanfare. No church program. Just me and my hunger for the truth.</p>
+  <p class="script-text sr stag">That is where I had my first encounter.</p>
+  <p class="script-text sr stag">Look at the framework on your screen. This is what I call "The Shift." <span class="c-gold">It's the moment you stop defending what you were taught and start seeking what is actually true.</span></p>
 
   <!-- INFOGRAPHIC INSERTION: THE SHIFT MAP -->
-  <div class="map-wrap">
+  <div class="map-wrap sr">
     <div class="fw-row">
       <div class="node root" style="border-color:var(--purple)">
-        <div class="n-title color-purple">THE SHIFT</div>
+        <div class="n-title c-purple">THE SHIFT</div>
         <div class="n-sub">From defending inherited religion to desperately seeking actual truth.</div>
       </div>
     </div>
-    <div class="map-arrow color-purple">↓ SEVEN DAY FAST ↓</div>
+    <div class="map-arrow c-purple">↓ SEVEN DAY FAST ↓</div>
     <div class="fw-row">
       <div class="node" style="border-color:rgba(255,255,255,0.2)">
         <div class="n-title">THE VEIL RIPPED</div>
         <div class="n-sub">Scattered information begins to align.</div>
       </div>
       <div class="node" style="border-color:var(--gold)">
-        <div class="n-title color-gold">CLARITY ACHIEVED</div>
+        <div class="n-title c-gold">CLARITY ACHIEVED</div>
         <div class="n-sub">Writing two books of pure revelation.</div>
       </div>
     </div>
   </div>
   
-  <p class="script-text">During those seven days, something happened in my mind. It was like a veil was being ripped away. All the scattered information, all the dots I had been trying to connect for years—they started clicking into place.</p>
-  <p class="script-text">The level of clarity was insane. I wasn't just thinking; I was seeing. I ended up writing two full books during that week. Not for a publisher, just for me. I had to capture the sheer volume of revelation that was pouring in.</p>
-  <p class="script-text">I finished that fast, and I wasn't the same person. I viewed the world differently. I felt like God had finally answered my questions. I felt ready to conquer. I felt like I had the keys to success.</p>
-  <p class="script-text">But I didn't know that I was just entering the training ground.</p>
+  <p class="script-text sr stag">During those seven days, something happened in my mind. It was like a veil was being ripped away. <span class="c-gold">All the scattered information, all the dots I had been trying to connect for years—they started clicking into place.</span></p>
+  <p class="script-text sr stag">The level of clarity was insane. I wasn't just thinking; I was seeing. I ended up writing two full books during that week. Not for a publisher, just for me. I had to capture the sheer volume of revelation that was pouring in.</p>
+  <p class="script-text sr stag">I finished that fast, and I wasn't the same person. I viewed the world differently. I felt like God had finally answered my questions. I felt ready to conquer. I felt like I had the keys to success.</p>
+  <p class="script-text sr stag">But I didn't know that I was just entering the training ground.</p>
   
-  <img src="images/ch5_prophetic_dreams_hero.png" class="inline-hero" style="border-color:var(--cyan);" />
+  <img src="images/ch5_prophetic_dreams_hero.png" class="inline-hero sr" style="border-color:var(--cyan);" />
   
-  <p class="script-text">I started having dreams. Not just "dreams," but cinematic, prophetic experiences. I would dream something, and then it would happen exactly as I saw it.</p>
-  <p class="script-text">I got obsessed. I started searching online for interpretations. Some were right, some were wrong. But God was using those dreams for something much deeper than "predicting the future."</p>
-  <p class="script-text highlight">He was using them to show me the true state of my heart. I realized something critical: Bitterness drains your spiritual energy.</p>
+  <p class="script-text sr stag">I started having dreams. Not just "dreams," but cinematic, prophetic experiences. I would dream something, and then it would happen exactly as I saw it.</p>
+  <p class="script-text sr stag">I got obsessed. I started searching online for interpretations. Some were right, some were wrong. But God was using those dreams for something much deeper than "predicting the future."</p>
+  <p class="script-text highlight sr stag">He was using them to show me the true state of my heart. I realized something critical: <span class="c-danger">Bitterness drains your spiritual energy.</span></p>
   
   <!-- INTERACTIVE LAB PLACEMENT -->
-  <div class="sim-box" style="border-color:var(--cyan)">
+  <div class="sim-box sr" style="border-color:var(--cyan)">
     <h3 style="font-family:'Cinzel',serif; color:var(--cyan); margin-bottom:20px;">DREAM DIAGNOSTIC: THE BITTERNESS LOOP</h3>
     <p style="font-size:1.2rem; color:var(--muted); margin-bottom:20px;">If I harbored anger, the enemy looped the same dream.</p>
     <div style="display:flex; justify-content:center; gap:15px; margin-top:20px;">
-        <button style="padding:15px 30px; background:transparent; border:1px solid var(--danger); color:var(--danger); border-radius:30px; font-family:'Inter',sans-serif; cursor:pointer;">HARBOR ANGER</button>
-        <button style="padding:15px 30px; background:var(--success); border:1px solid var(--success); color:#000; border-radius:30px; font-family:'Inter',sans-serif; font-weight:bold; cursor:pointer;">RELEASE FORGIVENESS</button>
+        <button style="padding:15px 30px; background:transparent; border:1px solid var(--danger); color:var(--danger); border-radius:30px; font-family:'Inter',sans-serif; cursor:pointer; pointer-events:none;">HARBOR ANGER</button>
+        <button style="padding:15px 30px; background:var(--success); border:1px solid var(--success); color:#000; border-radius:30px; font-family:'Inter',sans-serif; font-weight:bold; cursor:pointer; pointer-events:none;">RELEASE FORGIVENESS</button>
     </div>
   </div>
 
-  <p class="script-text">In my dreams, I would see people who had wronged me in the past, and I’d be angry. I realized that as long as I was bitter, they kept appearing. The moment I genuinely forgave them in my heart, they stopped appearing. Or better yet, we’d be walking together in love in the dream.</p>
-  <p class="script-text">I realized that what that preacher had said was true: The failure and the pain I had been through were just God shaping a version of me that was compatible with the assignment. He wasn't building my business yet. He was building my character. He was building my spirit.</p>
+  <p class="script-text sr stag">In my dreams, I would see people who had wronged me in the past, and I’d be angry. I realized that as long as I was bitter, they kept appearing. <span class="c-success">The moment I genuinely forgave them in my heart, they stopped appearing.</span> Or better yet, we’d be walking together in love in the dream.</p>
+  <p class="script-text sr stag">I realized that what that preacher had said was true: The failure and the pain I had been through were just God shaping a version of me that was compatible with the assignment. <span class="c-success">He wasn't building my business yet. He was building my character. He was building my spirit.</span></p>
 
-  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;">
+  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;" class="sr">
 
   <!-- PART 4 -->
-  <h1 class="part-title">PART 4: THE TRAP OF SPIRITUALIZING EVERYTHING</h1>
+  <h1 class="part-title sr stag">PART 4: THE TRAP OF SPIRITUALIZING EVERYTHING</h1>
   
-  <p class="script-text">I was happy with this milestone. I was praying one hour a day. I had worship music in the background constantly. I felt like I was finally "spiritual."</p>
-  <p class="script-text">But then, I walked into a trap.</p>
+  <p class="script-text sr stag">I was happy with this milestone. I was praying one hour a day. I had worship music in the background constantly. I felt like I was finally "spiritual."</p>
+  <p class="script-text sr stag">But then, I walked into a trap.</p>
   
-  <img src="images/ch3_phone_scroll_detail.png" class="inline-hero" style="border-color:var(--danger);" />
+  <img src="images/ch3_phone_scroll_detail.png" class="inline-hero sr" style="border-color:var(--danger);" />
 
-  <p class="script-text">Because I was so sensitive to the prophetic and the dreams, I started over-interpreting everything. If a bird flew a certain way, I’d ask what it "meant" spiritually. If I stubbed my toe, I’d look for a spiritual law I had broken.</p>
-  <p class="script-text">I was trying to spiritualize every single detail of reality. And that is the fastest path to deception.</p>
-  <p class="script-text action">[PAUSE]</p>
-  <p class="script-text">I had to find a system. I needed a way to discern the voice of the Lord that wasn't based on my own overactive imagination.</p>
+  <p class="script-text sr stag">Because I was so sensitive to the prophetic and the dreams, I started over-interpreting everything. If a bird flew a certain way, I’d ask what it "meant" spiritually. If I stubbed my toe, I’d look for a spiritual law I had broken.</p>
+  <p class="script-text sr stag"><span class="c-danger">I was trying to spiritualize every single detail of reality. And that is the fastest path to deception.</span></p>
+  <p class="script-text sr stag">I had to find a system. I needed a way to discern the voice of the Lord that wasn't based on my own overactive imagination.</p>
 
   <!-- INFOGRAPHIC INSERTION: DISCERNMENT PROTOCOL -->
-  <div class="map-wrap">
+  <div class="map-wrap sr">
     <div class="fw-row">
       <div class="node root" style="border-color:var(--purple)">
-        <div class="n-title color-purple">THE SILENT PROTOCOL</div>
+        <div class="n-title c-purple">THE SILENT PROTOCOL</div>
         <div class="n-sub">Find a silent place. Pick up a pen. Write it down.</div>
       </div>
     </div>
-    <div class="map-arrow color-gold">↓ THE FILTER ↓</div>
+    <div class="map-arrow c-gold">↓ THE FILTER ↓</div>
     <div class="fw-row">
       <div class="node" style="border-color:var(--danger)">
-        <div class="n-title color-danger">ANXIETY / CONFUSION</div>
+        <div class="n-title c-danger">ANXIETY / CONFUSION</div>
         <div class="n-sub">Signature of the flesh or the enemy.</div>
       </div>
       <div class="node" style="border-color:var(--success)">
-        <div class="n-title color-success">JOY & PEACE</div>
+        <div class="n-title c-success">JOY & PEACE</div>
         <div class="n-sub">The true signature of the Holy Spirit.</div>
       </div>
     </div>
   </div>
 
-  <p class="script-text highlight">My method became very simple: I would find a silent, peaceful place. I’d pick up a pen and a piece of paper. And I’d write.</p>
-  <p class="script-text">I learned that if I felt clarity, peace, and joy after writing it down—that was the Holy Spirit. If I felt anxiety or confusion, it wasn't Him. I always looked for joy and peace first, even before the clarity. And I would wait for God to confirm it two or three times before I took a leap.</p>
-  <p class="script-text">I was starting to find my purpose. I stopped trying to do "online business" the way everyone else was doing it. I stopped chasing the money directly and started focusing on studying and becoming.</p>
-  <p class="script-text">I became so sensitive that I knew what would happen before it happened—like a sharp intuition.</p>
-  <p class="script-text">But there was still a massive piece of the puzzle missing. I knew "about" the Holy Spirit. I knew "about" spiritual systems. But I hadn't truly met the King.</p>
+  <p class="script-text highlight sr stag">My method became very simple: I would find a silent, peaceful place. I’d pick up a pen and a piece of paper. And I’d write.</p>
+  <p class="script-text sr stag">I learned that if I felt clarity, peace, and joy after writing it down—that was the Holy Spirit. If I felt anxiety or confusion, it wasn't Him. <span class="c-success">I always looked for joy and peace first, even before the clarity.</span> And I would wait for God to confirm it two or three times before I took a leap.</p>
+  <p class="script-text sr stag">I was starting to find my purpose. I stopped trying to do "online business" the way everyone else was doing it. I stopped chasing the money directly and started focusing on studying and becoming.</p>
+  <p class="script-text sr stag">I became so sensitive that I knew what would happen before it happened—like a sharp intuition.</p>
+  <p class="script-text sr stag">But there was still a massive piece of the puzzle missing. I knew "about" the Holy Spirit. I knew "about" spiritual systems. <span class="c-purple">But I hadn't truly met the King.</span></p>
 
-  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;">
+  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;" class="sr">
 
   <!-- PART 5 -->
-  <h1 class="part-title">PART 5: THE VISION OF THE CRUCIFIED KING</h1>
+  <h1 class="part-title sr stag">PART 5: THE VISION OF THE CRUCIFIED KING</h1>
   
-  <p class="script-text">Months passed. Then, one night, without any warning... I had a vision.</p>
-  <p class="script-text highlight">In the vision of the night, I saw Jesus.</p>
+  <p class="script-text sr stag">Months passed. Then, one night, without any warning... I had a vision.</p>
+  <p class="script-text highlight sr stag">In the vision of the night, I saw Jesus.</p>
   
-  <img src="images/ch6_jesus_vision_hero.png" class="inline-hero" style="border-color:var(--gold);" />
+  <img src="images/ch6_jesus_vision_hero.png" class="inline-hero sr" style="border-color:var(--gold);" />
 
-  <p class="script-text">But He wasn't the Jesus I saw in the paintings. He wasn't wearing a golden crown or clean, white robes. He was wearing torn, ragged clothes. He was covered in blood.</p>
-  <p class="script-text">I stood far away from Him at first. I was cautious. I wanted to make sure this wasn't the devil pretending to be Him. I was looking for the trick.</p>
-  <p class="script-text">Then He spoke. He said, "They want to crucify me."</p>
-  <p class="script-text action">[PAUSE]</p>
-  <p class="script-text">That’s when I knew it was Him. It’s Jesus who gets crucified.</p>
-  <p class="script-text">In the vision, I took Him to my home. And then, He said something that reminded me of what God said to Solomon. He looked at me and asked:</p>
-  <p class="script-text highlight">"What would you like me to give you?"</p>
-  <p class="script-text">I was stunned. I didn't know much about high-level spiritual things back then, but I mentioned everything I could think of. I said: "Wisdom. Grace. Mantles. Authority. Gifts."</p>
-  <p class="script-text">I just threw it all out there.</p>
-  <p class="script-text">All He did was stretch out His hand toward me.</p>
-  <p class="script-text">And I blacked out.</p>
-  <p class="script-text action">[LONG PAUSE]</p>
+  <p class="script-text sr stag">But He wasn't the Jesus I saw in the paintings. He wasn't wearing a golden crown or clean, white robes. <span class="c-danger">He was wearing torn, ragged clothes. He was covered in blood.</span></p>
+  <p class="script-text sr stag">I stood far away from Him at first. I was cautious. I wanted to make sure this wasn't the devil pretending to be Him. I was looking for the trick.</p>
+  <p class="script-text sr stag">Then He spoke. He said, "They want to crucify me."</p>
+  <p class="script-text sr stag">That’s when I knew it was Him. It’s Jesus who gets crucified.</p>
+  <p class="script-text sr stag">In the vision, I took Him to my home. And then, He said something that reminded me of what God said to Solomon. He looked at me and asked:</p>
+  <p class="script-text highlight sr stag">"What would you like me to give you?"</p>
+  <p class="script-text sr stag">I was stunned. I didn't know much about high-level spiritual things back then, but I mentioned everything I could think of. I said: "Wisdom. Grace. Mantles. Authority. Gifts."</p>
+  <p class="script-text sr stag">I just threw it all out there.</p>
+  <p class="script-text sr stag">All He did was stretch out His hand toward me.</p>
+  <p class="script-text sr stag"><span class="c-purple">And I blacked out.</span></p>
   
   <!-- MAP: THE TRANSACTION -->
-  <div class="map-wrap">
+  <div class="map-wrap sr">
     <div class="fw-row">
       <div class="node root" style="border-color:var(--gold)">
-        <div class="n-title color-gold">THE DIVINE TRANSACTION</div>
+        <div class="n-title c-gold">THE DIVINE TRANSACTION</div>
         <div class="n-sub">Requesting the weight of the Kingdom.</div>
       </div>
     </div>
-    <div class="map-arrow color-muted">↓ THE SYSTEM OVERRIDE ↓</div>
+    <div class="map-arrow" style="color:#777">↓ THE SYSTEM OVERRIDE ↓</div>
     <div class="fw-row">
       <div class="node" style="border-color:#333; background:#000;">
         <div class="n-title" style="color:#777">⬛ THE BLACKOUT</div>
@@ -255,86 +253,80 @@
     </div>
   </div>
 
-  <p class="script-text">When I woke up—still in the vision—I was surrounded by four angels dressed as men. Jesus was sitting right there beside me, still in those torn clothes, still covered in blood. I was confused. I expected Him to be risen and clean.</p>
-  <p class="script-text">One of the angels looked at me and said that I had been blacked out for four days. And that the "transaction" had been finished.</p>
-  <p class="script-text">I remember blacking out at my home compound, but I woke up in a shop.</p>
-  <p class="script-text">Then, I woke up in reality.</p>
-  <p class="script-text">I sat up, expecting a massive miracle to happen immediately. I expected my life to change in five minutes because Jesus had just come to my house.</p>
-  <p class="script-text highlight">But nothing happened.</p>
-  <p class="script-text action">[PAUSE]</p>
-  <p class="script-text">I expected more encounters. I expected the superpower to dial up to 100. But for many months after that, there was nothing. Total silence.</p>
-  <p class="script-text">I had been told by the Spirit to honor that moment with fasting, praise, and thanksgiving. But I ignored it. I went about my life like a normal person. I didn't realize that the "transaction" wasn't a magic trick—it was a seed.</p>
-  <p class="script-text">It took me almost a year to realize what had actually happened to me. That prophetic sight—the "knowing"—became a constant companion. I started to take my study of God seriously.</p>
-  <p class="script-text">And that’s when I made the syllabus.</p>
+  <p class="script-text sr stag">When I woke up—still in the vision—I was surrounded by four angels dressed as men. Jesus was sitting right there beside me, still in those torn clothes, still covered in blood. I was confused. I expected Him to be risen and clean.</p>
+  <p class="script-text sr stag">One of the angels looked at me and said that I had been blacked out for four days. And that the "transaction" had been finished.</p>
+  <p class="script-text sr stag">I remember blacking out at my home compound, but I woke up in a shop.</p>
+  <p class="script-text sr stag">Then, I woke up in reality.</p>
+  <p class="script-text sr stag">I sat up, expecting a massive miracle to happen immediately. I expected my life to change in five minutes because Jesus had just come to my house.</p>
+  <p class="script-text highlight sr stag">But nothing happened.</p>
+  <p class="script-text sr stag">I expected more encounters. I expected the superpower to dial up to 100. But for many months after that, there was nothing. <span class="c-danger">Total silence.</span></p>
+  <p class="script-text sr stag">I had been told by the Spirit to honor that moment with fasting, praise, and thanksgiving. But I ignored it. I went about my life like a normal person. <span class="c-gold">I didn't realize that the "transaction" wasn't a magic trick—it was a seed.</span></p>
+  <p class="script-text sr stag">It took me almost a year to realize what had actually happened to me. That prophetic sight—the "knowing"—became a constant companion. I started to take my study of God seriously.</p>
+  <p class="script-text sr stag">And that’s when I made the syllabus.</p>
 
-  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;">
+  <hr style="border:0; border-top:1px dashed var(--border); margin: 80px 0;" class="sr">
 
   <!-- PART 6 -->
-  <h1 class="part-title">PART 6: THE SYLLABUS, THE FALL, AND THE BIRTH</h1>
+  <h1 class="part-title sr stag">PART 6: THE SYLLABUS, THE FALL, AND THE BIRTH</h1>
   
-  <p class="script-text">I wasn't satisfied with surface-level Christianity anymore. Believers would tell me, "The most important thing is salvation and walking in Godliness." And that’s true. But my hunger wouldn't let me stay there.</p>
-  <p class="script-text">I wanted to know how everything worked. I wanted to know how omnipresence made sense. I wanted to know the mechanics of the spirit.</p>
-  <p class="script-text">Because as it says in Proverbs 25:2:</p>
-  <p class="script-text highlight">"It is the glory of God to conceal a matter; to search out a matter is the glory of kings."</p>
-  <p class="script-text">I spent months in deep research. I would sit for hours, and the level of clarity I got was insane. Every time I finished a study, I was left in a state of absolute awe. I was marveling at the majesty of God.</p>
-  <p class="script-text">I started realizing His true nature. We weren't supposed to worship Him because we were afraid of hell. We were supposed to worship Him to fellowship with Him. To be in His presence.</p>
-  <p class="script-text">All the guilt I had carried for years—the guilt from the legalistic church—was gone. Completely healed. I knew what a believer was supposed to look like according to God, not according to the society I grew up in.</p>
-  <p class="script-text">But then... pride started to grow.</p>
+  <p class="script-text sr stag">I wasn't satisfied with surface-level Christianity anymore. Believers would tell me, "The most important thing is salvation and walking in Godliness." And that’s true. But my hunger wouldn't let me stay there.</p>
+  <p class="script-text sr stag">I wanted to know how everything worked. I wanted to know how omnipresence made sense. I wanted to know the mechanics of the spirit.</p>
+  <p class="script-text sr stag">Because as it says in Proverbs 25:2:</p>
+  <p class="script-text highlight sr stag">"It is the glory of God to conceal a matter; to search out a matter is the glory of kings."</p>
+  <p class="script-text sr stag">I spent months in deep research. I would sit for hours, and the level of clarity I got was insane. Every time I finished a study, I was left in a state of absolute awe. I was marveling at the majesty of God.</p>
+  <p class="script-text sr stag">I started realizing His true nature. We weren't supposed to worship Him because we were afraid of hell. We were supposed to worship Him to fellowship with Him. To be in His presence.</p>
+  <p class="script-text sr stag">All the guilt I had carried for years—the guilt from the legalistic church—was gone. Completely healed. I knew what a believer was supposed to look like according to God, not according to the society I grew up in.</p>
+  <p class="script-text sr stag"><span class="c-danger">But then... pride started to grow.</span></p>
   
-  <p class="script-text action">[POINTING TO FRAMEWORK - THE TRAP]</p>
-
   <!-- MAP: THE TRAP -->
-  <div class="map-wrap">
+  <div class="map-wrap sr">
     <div class="fw-row">
       <div class="node root" style="border-color:var(--danger)">
-        <div class="n-title color-danger">THE PRIDE TRAP</div>
+        <div class="n-title c-danger">THE PRIDE TRAP</div>
         <div class="n-sub">Knowledge without brokenness produces a Pharisee.</div>
       </div>
     </div>
   </div>
 
-  <p class="script-text">I knew too much. At least, I thought I did.</p>
-  <p class="script-text">I started seeing the "gaps" in everyone around me. I saw their wrong beliefs. I saw their limiting mindsets. I saw their fear-based religion. I was so angry at them for staying in those old ways—especially the people older than me.</p>
-  <p class="script-text">I corrected them constantly. I felt like the smartest person in the room. I felt like I had mastered the systems of the world. I knew how altars worked, how spiritual laws worked, I knew the extent of the devil's power. I thought I was in total control of reality.</p>
-  <p class="script-text">And that is exactly when life went wrong.</p>
+  <p class="script-text sr stag">I knew too much. At least, I thought I did.</p>
+  <p class="script-text sr stag">I started seeing the "gaps" in everyone around me. I saw their wrong beliefs. I saw their limiting mindsets. I saw their fear-based religion. I was so angry at them for staying in those old ways—especially the people older than me.</p>
+  <p class="script-text sr stag">I corrected them constantly. I felt like the smartest person in the room. I felt like I had mastered the systems of the world. I knew how altars worked, how spiritual laws worked, I knew the extent of the devil's power. <span class="c-gold">I thought I was in total control of reality.</span></p>
+  <p class="script-text sr stag">And that is exactly when life went wrong.</p>
   
-  <img src="images/ch7_pride_fall_hero.png" class="inline-hero" style="border-color:var(--danger);" />
+  <img src="images/ch7_pride_fall_hero.png" class="inline-hero sr" style="border-color:var(--danger);" />
 
-  <p class="script-text">I prayed every prayer I knew. I applied every spiritual law I had mastered. I did everything "right."</p>
-  <p class="script-text">And yet... I failed.</p>
-  <p class="script-text">And I didn't just fail in private. I failed in front of the very people I had looked down on. The people I had corrected. The people I thought I was "better" than.</p>
-  <p class="script-text">I did everything I could, and nothing changed.</p>
-  <p class="script-text highlight">That failure was the greatest mercy God ever gave me.</p>
-  <p class="script-text action">[PAUSE]</p>
+  <p class="script-text sr stag">I prayed every prayer I knew. I applied every spiritual law I had mastered. I did everything "right."</p>
+  <p class="script-text sr stag">And yet... I failed.</p>
+  <p class="script-text sr stag">And I didn't just fail in private. I failed in front of the very people I had looked down on. The people I had corrected. The people I thought I was "better" than.</p>
+  <p class="script-text sr stag">I did everything I could, and nothing changed.</p>
+  <p class="script-text highlight sr stag">That failure was the greatest mercy God ever gave me.</p>
   
   <!-- MAP: THE REBUILDING -->
-  <div class="map-wrap">
+  <div class="map-wrap sr">
     <div class="fw-row">
       <div class="node root" style="border-color:var(--cyan)">
-        <div class="n-title color-cyan">THE REBUILDING</div>
+        <div class="n-title c-cyan">THE REBUILDING</div>
         <div class="n-sub">Stripping away the ego. Dominion through Surrender.</div>
       </div>
     </div>
   </div>
 
-  <p class="script-text">It broke the pride. It stripped away the arrogance. I realized that dominion—true dominion—is not just about what you know. It’s not just about mastering a system.</p>
-  <p class="script-text">Dominion is a consequence of Grace and Mercy.</p>
-  <p class="script-text">I became humble because I had to. life orchestrated circumstances that my "knowledge" couldn't fix. I became patient with others. I became compassionate toward their limiting beliefs because I realized I was just as broken as they were.</p>
-  <p class="script-text">I reached a point where it was impossible not to believe God is real. But I was finally learning obedience. I was learning to discern the voice of the Lord without the filter of my own ego.</p>
-  <p class="script-text">God had to rebuild me. He had to take me through a season of training first, because if I had succeeded when I was proud, I would have fallen much harder later.</p>
-  <p class="script-text">In His mercy, He preserved me. In His mercy, He enlightened me.</p>
-  <p class="script-text">And that is why I am here.</p>
+  <p class="script-text sr stag">It broke the pride. It stripped away the arrogance. I realized that dominion—true dominion—is not just about what you know. It’s not just about mastering a system.</p>
+  <p class="script-text sr stag"><span class="c-cyan">Dominion is a consequence of Grace and Mercy.</span></p>
+  <p class="script-text sr stag">I became humble because I had to. Life orchestrated circumstances that my "knowledge" couldn't fix. I became patient with others. I became compassionate toward their limiting beliefs because I realized I was just as broken as they were.</p>
+  <p class="script-text sr stag">I reached a point where it was impossible not to believe God is real. But I was finally learning obedience. I was learning to discern the voice of the Lord without the filter of my own ego.</p>
+  <p class="script-text sr stag">God had to rebuild me. He had to take me through a season of training first, because if I had succeeded when I was proud, I would have fallen much harder later.</p>
+  <p class="script-text sr stag">In His mercy, He preserved me. In His mercy, He enlightened me.</p>
+  <p class="script-text sr stag">And that is why I am here.</p>
 
-  <img src="images/ch8_pathway_birth_hero.png" class="inline-hero" style="border-color:var(--success);" />
+  <img src="images/ch8_pathway_birth_hero.png" class="inline-hero sr" style="border-color:var(--success);" />
 
-  <p class="script-text">I am not here to give you a set of rules. I am not here to tell you how to avoid hell. I am here to help you gain Clarity, Mastery, and Empowerment.</p>
-  <p class="script-text">I am here to help you connect the dots that God helped me connect. I am here to show you that there is a pathway to the victorious life, but it doesn't run through your ego. It runs through your surrender.</p>
-  <p class="script-text highlight">This is why THE PATHWAY MASTERCLASS was born.</p>
-  <p class="script-text">I want to take you deep. I want to show you the frameworks that healed my soul and opened my eyes. All the interactive infographics I’ve used today—the ones that helped me see the architecture of reality—are available for you to explore.</p>
-  <p class="script-text">Because you were never meant to walk this path alone.</p>
-  <p class="script-text">I’ll see you in the next one.</p>
-  <p class="script-text action">[PAUSE]</p>
-  <p class="script-text action">[FADE TO BLACK]</p>
+  <p class="script-text sr stag">I am not here to give you a set of rules. I am not here to tell you how to avoid hell. <span class="c-success">I am here to help you gain Clarity, Mastery, and Empowerment.</span></p>
+  <p class="script-text sr stag">I am here to help you connect the dots that God helped me connect. I am here to show you that there is a pathway to the victorious life, but it doesn't run through your ego. It runs through your surrender.</p>
+  <p class="script-text highlight sr stag">This is why THE PATHWAY MASTERCLASS was born.</p>
+  <p class="script-text sr stag">I want to take you deep. I want to show you the frameworks that healed my soul and opened my eyes. All the interactive infographics I’ve used today—the ones that helped me see the architecture of reality—are available for you to explore.</p>
+  <p class="script-text sr stag">Because you were never meant to walk this path alone.</p>
+  <p class="script-text sr stag">I’ll see you in the next one.</p>
 </main>
 
 <script>
@@ -344,12 +336,46 @@ const ctx = cvs.getContext('2d'); let pts=[]; function rs(){cvs.width=innerWidth
 for(let i=0;i<60;i++) pts.push({x:Math.random()*cvs.width, y:Math.random()*cvs.height, vx:(Math.random()-.5)*.2, vy:(Math.random()-.5)*.2, s:Math.random()*1.5, a:Math.random()*.5});
 function anim(){ctx.clearRect(0,0,cvs.width,cvs.height); pts.forEach(p=>{p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>cvs.width)p.vx*=-1; if(p.y<0||p.y>cvs.height)p.vy*=-1; ctx.fillStyle=`rgba(176,143,255,${p.a*.3})`; ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,Math.PI*2); ctx.fill();}); requestAnimationFrame(anim);} anim();
 
-// Interactive node logic
-document.querySelectorAll('.node').forEach(node => {
-    node.addEventListener('click', () => {
-        node.style.transform = 'scale(1.05)';
-        setTimeout(() => node.style.transform = 'none', 200);
+// Scroll Observers for Flow
+const oSR = new IntersectionObserver(es => {
+    es.forEach(e => {
+        if(e.isIntersecting) {
+            e.target.classList.add('v');
+        } else {
+            // Optional: remove 'v' if you want them to fade out when scrolling past. Leaving it to only reveal for continuous flow.
+            e.target.classList.remove('v'); 
+        }
     });
+}, {threshold: 0.1, rootMargin: "0px 0px -50px 0px"});
+document.querySelectorAll('.sr').forEach(el => oSR.observe(el));
+
+// Text Staggering
+const oTX = new IntersectionObserver(es => {
+    es.forEach(e => {
+        const ws = e.target.querySelectorAll('.word');
+        if(e.isIntersecting) {
+            ws.forEach((w, i) => setTimeout(() => w.classList.add('v'), i * 35));
+        } else {
+            ws.forEach(w => w.classList.remove('v'));
+        }
+    });
+}, {threshold: 0.15, rootMargin: "0px 0px -50px 0px"});
+
+document.querySelectorAll('.stag').forEach(el => {
+    // Preserve existing HTML spans by splitting carefully or just wrapping text nodes
+    const htmlStr = el.innerHTML;
+    // Basic split that ignores tags (simplified version for this structure)
+    let finalHtml = '';
+    let inTag = false;
+    let currentWord = '';
+    
+    // Fallback: simpler approach for mixed content:
+    el.innerHTML = el.innerHTML.split(' ').map(t => {
+        if(t.includes('<') || t.includes('>')) return t; // Skip HTML tags entirely to avoid breaking the color spans
+        return `<span class="word">${t}</span>`;
+    }).join(' ');
+    
+    oTX.observe(el);
 });
 </script>
 </body>
