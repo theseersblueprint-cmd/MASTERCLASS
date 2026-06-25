@@ -690,6 +690,14 @@
         </div>
       </div>
 
+      <div style="text-align: center; margin-bottom: 24px;">
+        <button onclick="toggleCurriculum()" class="calc-toggle-btn" style="width: 100%; max-width: 600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--cyan); border-radius: var(--radius); color: var(--cyan); cursor: pointer; text-align: left; transition: all 0.3s ease;">
+          <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em;">VIEW FULL 29 CHAPTERS</span>
+          <span id="curriculumToggleIcon" style="transition: transform 0.4s ease;">▼</span>
+        </button>
+      </div>
+
+      <div id="curriculumCurtain" style="max-height: 0; overflow: hidden; transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease; opacity: 0; padding-top: 10px;">
       <div class="curriculum-grid">
         <div class="chapter-bar" onclick="openChapter(1, 'True Definition of Victory', 'The exact structure of what victory actually is. We will look at things like what sustains it, and the clear road between where you are right now and where God is taking you.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">01</span> True Definition of Victory</span>
@@ -807,6 +815,7 @@
           <span class="chapter-bar-title"><span class="chapter-bar-num">29</span> The Arrival</span>
           <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
+      </div>
       </div>
 
       <!-- Live Sample Link Banner -->
@@ -994,6 +1003,21 @@
       draw();
       window.addEventListener('resize', () => { resize(); initStars(); draw(); });
     })();
+
+    /* ===== CURRICULUM TOGGLE ===== */
+    function toggleCurriculum() {
+      const curtain = document.getElementById('curriculumCurtain');
+      const icon = document.getElementById('curriculumToggleIcon');
+      if (curtain.style.maxHeight === '0px' || curtain.style.maxHeight === '') {
+        curtain.style.maxHeight = '4000px';
+        curtain.style.opacity = '1';
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        curtain.style.maxHeight = '0px';
+        curtain.style.opacity = '0';
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
 
     /* ===== CALCULATOR LOGIC ===== */
     function toggleCalculator() {
