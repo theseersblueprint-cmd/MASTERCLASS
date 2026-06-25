@@ -867,20 +867,29 @@
       </div>
 
       <!-- Interactive Impact Calculator -->
-      <div class="calc-box">
-        <h4 class="calc-title">How Many People Could You Reach?</h4>
-        <p style="font-size: 0.8rem; color: var(--muted);">DRAG THE SLIDER TO SEE THE POTENTIAL IMPACT ON YOUR COMMUNITY</p>
+      <div class="calc-container" style="max-width: 600px; margin: 40px auto; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--glass); backdrop-filter: blur(10px);">
+        <button onclick="toggleCalculator()" class="calc-toggle-btn" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: transparent; border: none; color: var(--cyan); cursor: pointer; text-align: left; transition: background 0.3s ease;">
+          <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em;">ESTIMATE YOUR IMPACT</span>
+          <span id="calcToggleIcon" style="transition: transform 0.4s ease;">▼</span>
+        </button>
         
-        <input type="range" min="1" max="250" value="50" class="calc-slider" id="impactSlider" oninput="updateCalculator(this.value)" />
-        
-        <div class="calc-results">
-          <div>
-            <p class="calc-res-label">BELIEVERS REACHED</p>
-            <p class="calc-res-val" id="resLives">50 People</p>
-          </div>
-          <div>
-            <p class="calc-res-label">YOUR SUPPORT EARNINGS</p>
-            <p class="calc-res-val" style="color: var(--muted); font-size: 1rem;" id="resEarnings">$7,455</p>
+        <div id="calcCurtain" style="max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease; opacity: 0;">
+          <div class="calc-box" style="margin: 0; border: none; background: transparent; border-top: 1px solid var(--border); border-radius: 0; padding-top: 32px;">
+            <h4 class="calc-title">How Many People Could You Reach?</h4>
+            <p style="font-size: 0.8rem; color: var(--muted);">DRAG THE SLIDER TO SEE THE POTENTIAL IMPACT ON YOUR COMMUNITY</p>
+            
+            <input type="range" min="1" max="250" value="50" class="calc-slider" id="impactSlider" oninput="updateCalculator(this.value)" />
+            
+            <div class="calc-results">
+              <div>
+                <p class="calc-res-label">BELIEVERS REACHED</p>
+                <p class="calc-res-val" id="resLives">50 People</p>
+              </div>
+              <div>
+                <p class="calc-res-label">YOUR SUPPORT EARNINGS</p>
+                <p class="calc-res-val" style="color: var(--muted); font-size: 1rem;" id="resEarnings">$7,455</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -987,11 +996,25 @@
     })();
 
     /* ===== CALCULATOR LOGIC ===== */
+    function toggleCalculator() {
+      const curtain = document.getElementById('calcCurtain');
+      const icon = document.getElementById('calcToggleIcon');
+      if (curtain.style.maxHeight === '0px' || curtain.style.maxHeight === '') {
+        curtain.style.maxHeight = '500px';
+        curtain.style.opacity = '1';
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        curtain.style.maxHeight = '0px';
+        curtain.style.opacity = '0';
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
     function updateCalculator(val) {
       const lives = val;
       const earnings = val * 149.10;
       
-      document.getElementById('resLives').textContent = lives + ' Referrals';
+      document.getElementById('resLives').textContent = lives + ' People';
       document.getElementById('resEarnings').textContent = '$' + earnings.toLocaleString();
     }
 
