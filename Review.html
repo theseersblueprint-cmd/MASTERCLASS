@@ -88,7 +88,7 @@
       margin-bottom: 40px;
       text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
       opacity: 0;
-      animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: float 7s ease-in-out infinite, slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .hub-title span {
@@ -96,6 +96,8 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: none;
+      display: inline-block;
+      animation: pulseGlow 4s ease-in-out infinite;
     }
 
     /* ===== ANIMATIONS ===== */
@@ -108,6 +110,19 @@
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2)); }
+      50% { filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.4)); }
+    }
+
+    .word { display: inline-block; opacity: 0; transform: translateY(18px) scale(0.96); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .word.v { opacity: 1; transform: none; }
 
     /* ===== HUB BUTTONS ===== */
     .hub-btn {
@@ -658,28 +673,23 @@
 
       function initStars() {
         stars = [];
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 150; i++) {
           stars.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
             r: Math.random() * 1.2 + 0.1,
             opacity: Math.random() * 0.5 + 0.1
           });
         }
       }
 
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(star => {
-          star.y -= star.r * 0.2; // Move stars up slightly
-          if(star.y < 0) { star.y = canvas.height; star.x = Math.random() * canvas.width; }
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 215, 0, ${star.opacity})`;
-          ctx.fill();
-        });
-        requestAnimationFrame(draw);
+);
+        }
       }
+
+
 
       resize();
       initStars();
@@ -721,6 +731,23 @@
         }
       }
     }
+    /* ===== TEXT REVEAL LOGIC ===== */
+    const oTX = new IntersectionObserver(es => {
+      es.forEach(e => {
+        const ws = e.target.querySelectorAll('.word');
+        if (e.isIntersecting) {
+          ws.forEach((w, i) => setTimeout(() => w.classList.add('v'), i * 15));
+        } else {
+          ws.forEach(w => w.classList.remove('v'));
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.content-paragraph, .letter-quote, .modal-title, .capability-desc').forEach(el => {
+      // Split text but ignore html tags
+      el.innerHTML = el.innerHTML.split(' ').map(t => (t.includes('<') || t.includes('>')) ? t : `<span class="word">${t}</span>`).join(' ');
+      oTX.observe(el);
+    });
   </script>
 </body>
 </html>
