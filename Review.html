@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Victorious Believer — Exclusive Influencer & Creator Partnership</title>
-  <meta name="description" content="An exclusive invitation for faith-based leaders and creators to partner with The Victorious Believer. Share 29 chapters of structured spiritual depth with your audience." />
+  <meta name="description" content="An exclusive invitation for faith-based leaders and creators to partner with The Victorious Believer." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,13 +26,11 @@
       --radius-sm: 8px;
     }
 
-    /* ===== SCROLLBAR ===== */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--void); }
     ::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-    /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -42,9 +40,13 @@
       font-size: 16px;
       line-height: 1.7;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* ===== STAR FIELD BACKGROUND ===== */
     #star-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -54,7 +56,6 @@
       opacity: 0.4;
     }
 
-    /* ===== NOISE OVERLAY ===== */
     .noise {
       position: fixed;
       top: 0; left: 0;
@@ -65,16 +66,15 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    /* ===== WRAPPER ===== */
-    .container {
+    .hub-container {
       position: relative;
       z-index: 2;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 24px 120px;
+      max-width: 600px;
+      width: 100%;
+      padding: 40px 24px;
+      text-align: center;
     }
 
-    /* ===== TYPOGRAPHY ===== */
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Cinzel', serif;
       font-weight: 700;
@@ -83,73 +83,104 @@
       line-height: 1.2;
     }
 
-    .brand {
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.4em;
-      color: var(--cyan);
-      text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 24px;
-      opacity: 0.8;
-      text-shadow: 0 0 15px var(--cyan-glow);
+    .hub-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
     }
 
-    .hero-title {
-      font-size: clamp(2rem, 5.5vw, 3.8rem);
-      text-align: center;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-    }
-
-    .hero-title span {
+    .hub-title span {
       background: linear-gradient(135deg, var(--gold-glow), var(--gold), #FFF);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: none;
     }
 
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--muted);
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 48px;
-      line-height: 1.6;
-    }
-
-    .divider {
-      width: 80px;
-      height: 1px;
-      background: var(--gold);
-      margin: 40px auto;
-      opacity: 0.3;
-    }
-
-    /* ===== LETTER & STORY SECTION ===== */
-    .letter-section {
+    /* ===== HUB BUTTONS ===== */
+    .hub-btn {
+      display: block;
+      width: 100%;
       background: var(--glass);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 48px 40px;
+      color: #FFF;
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      padding: 20px;
+      margin-bottom: 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s ease;
       backdrop-filter: blur(10px);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      margin-bottom: 60px;
     }
 
-    .letter-paragraph {
+    .hub-btn:hover {
+      border-color: var(--gold-border);
+      background: rgba(255, 215, 0, 0.05);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px var(--gold-glow);
+    }
+
+    /* ===== MODALS ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(2, 4, 10, 0.95);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: var(--deep-space);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      font-size: 2rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.3s;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: var(--gold); }
+
+    .modal-title {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .content-paragraph {
       margin-bottom: 24px;
       color: var(--text);
       font-size: 1.05rem;
       line-height: 1.8;
     }
-
-    .letter-paragraph strong {
-      color: #FFF;
-      font-weight: 600;
-    }
-
+    
     .letter-quote {
       border-left: 2px solid var(--gold);
       padding-left: 24px;
@@ -159,106 +190,7 @@
       font-size: 1.15rem;
     }
 
-    /* ===== THE SEVEN MOUNTAINS GRID ===== */
-    .mountains-title {
-      text-align: center;
-      font-size: 1.5rem;
-      margin-bottom: 32px;
-      color: var(--gold);
-    }
-
-    .mountains-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .mountain-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-      transition: all 0.3s ease;
-      cursor: default;
-    }
-
-    .mountain-card:hover {
-      border-color: var(--gold-border);
-      background: rgba(255, 215, 0, 0.02);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px var(--gold-glow);
-    }
-
-    .mountain-num {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--cyan);
-      margin-bottom: 4px;
-    }
-
-    .mountain-name {
-      font-size: 0.95rem;
-      color: #FFF;
-      margin-bottom: 8px;
-    }
-
-    .mountain-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ===== EXCEPTION CAPABILITIES LIST ===== */
-    .capabilities-section {
-      margin-bottom: 60px;
-    }
-
-    .capabilities-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    @media (max-width: 650px) {
-      .capabilities-grid { grid-template-columns: 1fr; }
-    }
-
-    .capability-card {
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 2px solid var(--cyan);
-      padding: 16px 20px;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    }
-
-    .capability-title {
-      font-size: 0.9rem;
-      color: #FFF;
-      margin-bottom: 6px;
-    }
-
-    .capability-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ===== CURRICULUM ACCORDION ===== */
-    .curriculum-section {
-      margin-bottom: 60px;
-    }
-
-    .curriculum-header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .curriculum-header h2 {
-      font-size: 1.8rem;
-      color: #FFF;
-      margin-bottom: 12px;
-    }
-
+    /* ===== CURRICULUM GRID IN MODAL ===== */
     .curriculum-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -301,206 +233,56 @@
       font-weight: 600;
     }
 
-    .chapter-bar-arrow {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* ===== PARTNERSHIP SECTION ===== */
-    .partner-section {
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.06), rgba(0, 240, 255, 0.04));
-      border: 1px solid var(--gold-border);
-      border-radius: var(--radius);
-      padding: 48px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 60px;
-      backdrop-filter: blur(10px);
-    }
-
-    .partner-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .partner-title {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .partner-stats {
-      display: flex;
-      justify-content: space-around;
-      margin: 32px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 24px 0;
-    }
-
-    .stat-item h3 {
-      font-size: 2.2rem;
-      color: #FFF;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat-item p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* ===== CALCULATOR WIDGET ===== */
-    .calc-box {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 24px;
-      margin: 24px 0;
-    }
-
-    .calc-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      color: var(--cyan);
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-    }
-
-    .calc-slider {
-      width: 100%;
-      height: 4px;
-      background: var(--border);
-      border-radius: 2px;
-      outline: none;
-      -webkit-appearance: none;
-      margin: 16px 0;
-    }
-
-    .calc-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--gold);
-      cursor: pointer;
-      box-shadow: 0 0 10px var(--gold-glow);
-    }
-
-    .calc-results {
+    /* ===== CAPABILITIES GRID ===== */
+    .capabilities-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
+      gap: 20px;
     }
 
-    .calc-res-label {
-      font-size: 0.78rem;
-      color: var(--muted);
+    @media (max-width: 650px) {
+      .capabilities-grid { grid-template-columns: 1fr; }
     }
 
-    .calc-res-val {
-      font-size: 1.25rem;
-      color: var(--gold);
-      font-weight: 700;
+    .capability-card {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 2px solid var(--gold);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     }
 
-    .partner-offer-desc {
-      font-size: 1rem;
-      color: var(--text);
-      max-width: 650px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-
-    /* ===== CTA BUTTON ===== */
-    .cta-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--gold), #E8C97A);
-      color: var(--void);
-      font-family: 'Cinzel', serif;
+    .capability-title {
       font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      padding: 16px 40px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 25px rgba(255, 215, 0, 0.2);
+      color: #FFF;
+      margin-bottom: 6px;
     }
 
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
-    }
-
-    .cta-subtext {
-      font-size: 0.78rem;
+    .capability-desc {
+      font-size: 0.85rem;
       color: var(--muted);
-      margin-top: 12px;
+      line-height: 1.5;
     }
 
-    /* ===== OVERLAY MODAL FOR CHAPTER DETAILS ===== */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(2, 4, 10, 0.95);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+    /* INNER CHAPTER MODAL */
+    #innerChapterModal {
+      z-index: 2000;
     }
-
-    .modal-content {
-      background: var(--deep-space);
-      border: 1px solid var(--gold-border);
-      border-radius: var(--radius);
-      padding: 40px;
-      max-width: 550px;
-      width: 100%;
-      position: relative;
-      box-shadow: 0 20px 50px var(--gold-glow);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px; right: 20px;
-      font-size: 1.5rem;
-      color: var(--muted);
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .modal-close:hover { color: var(--gold); }
-
-    .modal-num {
+    
+    .inner-modal-num {
       font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       letter-spacing: 0.1em;
       color: var(--cyan);
       margin-bottom: 8px;
     }
-
-    .modal-title {
+    
+    .inner-modal-title {
       font-size: 1.5rem;
       color: #FFF;
       margin-bottom: 16px;
+      font-family: 'Cinzel', serif;
     }
-
-    .modal-desc {
-      font-size: 0.98rem;
-      color: var(--text);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-
+    
     .modal-btn {
       display: inline-block;
       background: transparent;
@@ -520,24 +302,6 @@
       background: rgba(0, 240, 255, 0.08);
       box-shadow: 0 0 15px var(--cyan-glow);
     }
-
-    /* ===== FOOTER ===== */
-    footer {
-      text-align: center;
-      margin-top: 80px;
-      border-top: 1px solid var(--border);
-      padding-top: 40px;
-    }
-
-    footer p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    footer span {
-      color: var(--gold);
-    }
   </style>
 </head>
 <body>
@@ -548,418 +312,308 @@
   <!-- Noise Overlay -->
   <div class="noise"></div>
 
-  <!-- Main Container -->
-  <main class="container">
+  <!-- Central Hub -->
+  <main class="hub-container">
+    <h1 class="hub-title"><span>The Victorious Believer</span></h1>
+    
+    <button class="hub-btn" onclick="openMainModal('modal-appreciation')">MY APPRECIATION</button>
+    <button class="hub-btn" onclick="openMainModal('modal-vision')">THE VISION</button>
+    <button class="hub-btn" onclick="openMainModal('modal-victorious')">THE VICTORIOUS BELIEVER</button>
+    <button class="hub-btn" onclick="openMainModal('modal-landscape')">THE 29-CHAPTER LANDSCAPE</button>
+    <button class="hub-btn" onclick="openMainModal('modal-invitation')">MY INVITATION</button>
+    <button class="hub-btn" onclick="openMainModal('modal-faq')">QUESTIONS YOU MAY HAVE</button>
 
-    <!-- ACT 1: Honour Them -->
-    <header style="margin-bottom: 60px;">
-      <p class="brand">A Sincere Note of Gratitude</p>
-      <h1 class="hero-title" style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 24px;">Before you read anything else,<br/><span style="font-size: 2rem;">I just wanted to say thank you.</span></h1>
-      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-        <p class="hero-subtitle" style="margin-bottom: 24px;">
-          I have been following the content you put out, and I truly appreciate the standard of excellence you carry. In a digital landscape filled with noise and fleeting trends, consistently producing material with such unshakeable conviction takes a heavy toll.
-        </p>
-        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 24px; font-size: 1.1rem;">
-          It is a massive responsibility to steward the faith of others. It requires a level of sacrifice, prayer, and unseen labor behind the scenes that most people scrolling past will never fully understand. Yet, you carry it with grace. Seeing the sheer impact of your work has personally encouraged me to step up and be more audacious in my own walk.
-        </p>
-        <p style="color: var(--gold); font-size: 1.15rem; font-style: italic; font-weight: 600;">
-          Thank you for being a steadfast pillar. It is exactly because of the dedication you pour into your community that I felt led to reach out today and share something heavy on my heart.
-        </p>
-      </div>
-    </header>
-    <!-- ACT 2: Share Your Vision -->
-    <section class="letter-section">
-      <h3 style="font-family: 'Cinzel', serif; font-size: 2rem; color: #FFF; margin-bottom: 32px; text-align: center;">My Vision</h3>
-      
-      <p class="letter-paragraph">
-        I would love to briefly share my vision with you.
+    <footer style="margin-top: 40px;">
+      <p style="font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em;">The Victorious Believer © 2026. All Rights Reserved.</p>
+    </footer>
+  </main>
+
+  <!-- MODAL: MY APPRECIATION -->
+  <div class="modal" id="modal-appreciation">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeMainModal('modal-appreciation')">&times;</span>
+      <h3 class="modal-title">My Appreciation</h3>
+      <p class="content-paragraph">
+        I have been following the content you put out, and I truly appreciate the standard of excellence you carry. In a digital landscape filled with noise and fleeting trends, consistently producing material with such unshakeable conviction takes a heavy toll.
       </p>
-      <p class="letter-paragraph">
+      <p class="content-paragraph">
+        It is a massive responsibility to steward the faith of others. It requires a level of sacrifice, prayer, and unseen labor behind the scenes that most people scrolling past will never fully understand. Yet, you carry it with grace. Seeing the sheer impact of your work has personally encouraged me to step up and be more audacious in my own walk.
+      </p>
+      <div class="letter-quote">
+        Thank you for being a steadfast pillar. It is exactly because of the dedication you pour into your community that I felt led to reach out today and share something heavy on my heart.
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: THE VISION -->
+  <div class="modal" id="modal-vision">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeMainModal('modal-vision')">&times;</span>
+      <h3 class="modal-title">The Vision</h3>
+      <p class="content-paragraph">
         For years, I struggled deeply with Christian content. Where I came from, there was a profound lack of depth, leaving me in a constant state of confusion. But through that wrestling, I realized a fundamental truth about how human life is constructed:
       </p>
       <div class="letter-quote">
         Your Environment, your Associations, and your Thoughts dictate your Decisions. Your Decisions become your Actions. Your Actions solidify into your Behavior. Your Behavior constructs your Character. And your Character ultimately shapes your Destiny.
       </div>
-      <p class="letter-paragraph">
+      <p class="content-paragraph">
         Right now, the collective destiny of many believers does not reflect the dominion Christ actually gave us.
       </p>
-      <p class="letter-paragraph">
+      <p class="content-paragraph">
         If you look honestly at the major sectors that govern human society, the reality is sobering. Look at the top tier of leadership across these areas. What percentage of them actually confess Jesus Christ as Lord? It is a fractional minority.
       </p>
-      
       <ul style="color: var(--muted); line-height: 1.8; font-size: 1.1rem; margin-bottom: 32px; padding-left: 20px;">
         <li style="margin-bottom: 12px;"><strong style="color: var(--cyan);">Media and Entertainment:</strong> The major studios and conglomerates that produce the movies, music, and art our children consume are largely run by boards that do not know God. They systematically program our culture to normalize anti Christ values.</li>
         <li style="margin-bottom: 12px;"><strong style="color: var(--cyan);">Government and Law:</strong> The legislators writing the policies that directly affect our families and freedoms often operate from a completely secular, humanistic worldview.</li>
         <li style="margin-bottom: 12px;"><strong style="color: var(--cyan);">Economy and Business:</strong> Look at the Fortune 500. The architects controlling global wealth and resources rarely build on Kingdom principles.</li>
         <li style="margin-bottom: 12px;"><strong style="color: var(--cyan);">Education:</strong> The curriculums shaping the minds of the next generation have actively removed objective, biblical truth.</li>
       </ul>
-
-      <p class="letter-paragraph">
+      <p class="content-paragraph">
         And what is the church's response? Too often, believers simply fold their arms. We retreat inside the four walls of the building and just pray, expecting God to magically fix it, instead of going out into the world and becoming valuable enough to society to command change.
       </p>
-      <p class="letter-paragraph">
+      <p class="content-paragraph">
         Because of the mockeries and compromises we have seen across churches, the world no longer takes us seriously. They look at us as people who gather because we need emotional hope, not because the God we serve is tangibly real and powerful.
       </p>
-      <p class="letter-paragraph" style="color: var(--gold);">
-        <strong>Preachers are doing a wonderful job, but preaching alone will not change society.</strong>
+      <p class="content-paragraph" style="color: var(--gold); font-weight: bold;">
+        Preachers are doing a wonderful job, but preaching alone will not change society.
       </p>
-      <p class="letter-paragraph">
-        A pastor preaches a powerful message, but when the congregation goes home, they are immediately discipled by culture. The government shapes their reality. Businessmen control their economies. The media crafts visuals that program their mindsets to accept things that are directly against God's will.
+      <p class="content-paragraph">
+        The solution is not more preaching. The solution is raising people. If we want to change nations, we must start by transforming the individual. And to transform the individual requires exactly two words: <strong>Mindset Shift.</strong>
       </p>
-      <p class="letter-paragraph">
-        <strong>The solution is not more preaching. The solution is raising people.</strong>
-      </p>
-      <p class="letter-paragraph">
-        Every individual is part of a family. Families form communities. Communities form governments, which dictate the national direction. If we want to change nations, we must start by transforming the individual. And to transform the individual requires exactly two words: <strong>Mindset Shift.</strong>
-      </p>
-      <p class="letter-paragraph">
-        When a true mindset shift happens, a believer naturally repels toxic environments and carnal thought patterns, and attracts a superior, Godly mindset of dominion. Scripture commands us: <em>'Be ye transformed by the renewing of your mind'</em> (Romans 12:2).
-      </p>
-      <p class="letter-paragraph">
-        But for the mind to actually be transformed, it requires exposure to structured, sequential, balanced transformational knowledge. This is what equips a person with actual wisdom and understanding, moving them from being a carnal, fragile believer into a transformed, responsible believer who can express Godly dominion on earth.
-      </p>
-      <p class="letter-paragraph" style="color: var(--gold);">
-        <strong>Humans do not just follow results. They mimic the people they are inspired by.</strong>
-      </p>
-      <p class="letter-paragraph">
-        If you become exceptionally successful in your domain, and you consistently express Godly discipline and character, people will subconsciously start acting like you. Therefore, the most powerful way for us to draw more souls into the Kingdom of God is to first become undeniably valuable to society. When you succeed at the highest levels and tell the world it was God, they will want to know that God so they can succeed too.
-      </p>
-      <p class="letter-paragraph">
-        That is why I am sharing this vision with you.
-      </p>
-      <p class="letter-paragraph">
-        Because you are a person of influence, if you share this structured system with the people who follow you, we can begin the actual mandate of shaping believers who will manifest Godly dominion on the earth.
-      </p>
-    </section>
+    </div>
+  </div>
 
-    <!-- ACT 3: The Blueprint -->
-    <section class="capabilities-section" style="background: rgba(255, 215, 0, 0.02); border: 1px solid var(--gold-border); border-radius: var(--radius); padding: 48px 40px; margin-bottom: 60px;">
-      <h3 style="font-size: 2rem; margin-bottom: 24px; text-align: center; color: var(--gold); font-family: 'Cinzel', serif;">The Victorious Believer</h3>
+  <!-- MODAL: THE VICTORIOUS BELIEVER -->
+  <div class="modal" id="modal-victorious">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeMainModal('modal-victorious')">&times;</span>
+      <h3 class="modal-title">The Victorious Believer</h3>
+      <p class="content-paragraph">This is exactly why I built <strong>The Victorious Believer.</strong></p>
+      <p class="content-paragraph">It is not a devotional. It is not a collection of motivational sermons. It is a highly structured, 29 chapter Masterclass designed to completely dismantle a fragile religious foundation and rebuild a mindset of absolute victory.</p>
+      <p class="content-paragraph">I spent months compressing decades of spiritual discovery into a clear, sequential architecture. The goal was simple: to give believers the exact spiritual laws, mechanisms, and systems they need to transition from confusion into total empowerment.</p>
       
-      <div style="max-width: 800px; margin: 0 auto; text-align: left; margin-bottom: 40px;">
-        <p class="letter-paragraph">This is exactly why I built <strong>The Victorious Believer.</strong></p>
-        <p class="letter-paragraph">It is not a devotional. It is not a collection of motivational sermons. It is a highly structured, 29 chapter Masterclass designed to completely dismantle a fragile religious foundation and rebuild a mindset of absolute victory.</p>
-        <p class="letter-paragraph">I spent months compressing decades of spiritual discovery into a clear, sequential architecture. The goal was simple: to give believers the exact spiritual laws, mechanisms, and systems they need to transition from confusion into total empowerment.</p>
-        
-        <h4 style="color: var(--cyan); margin-top: 32px; margin-bottom: 16px; font-size: 1.2rem;">How It Is Designed to Transform:</h4>
-        <p class="letter-paragraph">To ensure this knowledge actually rewires the mind instead of just entertaining it, every single chapter is anchored by a custom visual infographic. Humans are visual creatures. By mapping out complex theological concepts... like the dimensions of wisdom, the mechanics of prayer, and the architecture of character... into clear visual blueprints, the teachings actually stick. The student can literally see the structure, follow the logic, and permanently internalize the truth.</p>
-        
-        <h4 style="color: var(--gold); margin-top: 32px; margin-bottom: 16px; font-size: 1.2rem;">The Five Core Investments:</h4>
-        <p class="letter-paragraph" style="margin-bottom: 32px;">The curriculum doesn't just preach at them; it actively guides them to build capacity across the five strategic investments every believer must master to hold dominion:</p>
-      </div>
-
-      <div class="capabilities-grid">
-        <div class="capability-card" style="border-left-color: var(--gold);">
+      <h4 style="color: var(--cyan); margin-top: 32px; margin-bottom: 16px; font-size: 1.2rem;">How It Is Designed to Transform:</h4>
+      <p class="content-paragraph">To ensure this knowledge actually rewires the mind instead of just entertaining it, every single chapter is anchored by a custom visual infographic. By mapping out complex theological concepts into clear visual blueprints, the teachings actually stick.</p>
+      
+      <h4 style="color: var(--gold); margin-top: 32px; margin-bottom: 16px; font-size: 1.2rem;">The Five Core Investments:</h4>
+      <div class="capabilities-grid" style="margin-bottom: 32px;">
+        <div class="capability-card">
           <h4 class="capability-title">1. Spiritual Investment</h4>
           <p class="capability-desc">Building the unshakeable foundation with Jesus that commands true authority.</p>
         </div>
-        <div class="capability-card" style="border-left-color: var(--gold);">
+        <div class="capability-card">
           <h4 class="capability-title">2. Mental Investment</h4>
           <p class="capability-desc">Cultivating the exact operational knowledge and mindset required to thrive in their specific season.</p>
         </div>
-        <div class="capability-card" style="border-left-color: var(--gold);">
+        <div class="capability-card">
           <h4 class="capability-title">3. Health and Well being</h4>
           <p class="capability-desc">Protecting the physical vessel so they do not sacrifice their health to gain wealth.</p>
         </div>
-        <div class="capability-card" style="border-left-color: var(--gold);">
+        <div class="capability-card">
           <h4 class="capability-title">4. Strategic Relationships</h4>
           <p class="capability-desc">Recognizing and building the compound relational capital required to scale Kingdom influence.</p>
         </div>
-        <div class="capability-card" style="border-left-color: var(--gold);">
-          <h4 class="capability-title">5. The Power of the Holy Ghost</h4>
+        <div class="capability-card">
+          <h4 class="capability-title">5. Power of the Holy Ghost</h4>
           <p class="capability-desc">Yielding to the ultimate spiritual anchor that secures, protects, and empowers every other aspect of their life.</p>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div style="max-width: 800px; margin: 40px auto 0; text-align: left;">
-        <p class="letter-paragraph">From mapping out exactly how to decode God's silence, to mastering the laws of the Kingdom, to systematically dismantling the poverty mindset, this system leaves no stone unturned.</p>
-        <p class="letter-paragraph">It was built to answer the hard questions that traditional religious systems often avoid. It is a definitive roadmap to help a believer find God, discover their specific mountain of influence, heal their past trauma, and develop the absolute audacity of David approaching a giant with nothing but a stone.</p>
-      </div>
-    </section>
-
-    <!-- The Curriculum Section -->
-
-    <section class="curriculum-section">
-      <div class="curriculum-header">
-        <h2>The 29-Chapter Landscape</h2>
-        <div style="max-width: 700px; margin: 0 auto; text-align: left; background: rgba(0, 240, 255, 0.03); border-left: 2px solid var(--cyan); padding: 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 24px;">
-          <p style="font-size: 0.95rem; line-height: 1.6;">
-            <strong style="color: var(--cyan);">WHAT'S INSIDE</strong><br><br>
-            Every single chapter has its own visual infographic—a structured framework they can see, follow, and return to. Built to connect the dots visually so the knowledge lands for your audience in a way that sticks. Written in plain language, designed for depth, understanding, and application.
-          </p>
-        </div>
+  <!-- MODAL: THE 29-CHAPTER LANDSCAPE -->
+  <div class="modal" id="modal-landscape">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeMainModal('modal-landscape')">&times;</span>
+      <h3 class="modal-title">The 29-Chapter Landscape</h3>
+      
+      <div style="background: rgba(0, 240, 255, 0.03); border-left: 2px solid var(--cyan); padding: 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 24px;">
+        <p style="font-size: 0.95rem; line-height: 1.6;">
+          <strong style="color: var(--cyan);">WHAT'S INSIDE</strong><br><br>
+          Every single chapter has its own visual infographic—a structured framework they can see, follow, and return to. Built to connect the dots visually so the knowledge lands for your audience in a way that sticks.
+        </p>
       </div>
 
-      <div style="text-align: center; margin-bottom: 24px;">
-        <button onclick="toggleCurriculum()" class="calc-toggle-btn" style="width: 100%; max-width: 600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--cyan); border-radius: var(--radius); color: var(--cyan); cursor: pointer; text-align: left; transition: all 0.3s ease;">
-          <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em;">VIEW FULL 29 CHAPTERS</span>
-          <span id="curriculumToggleIcon" style="transition: transform 0.4s ease;">▼</span>
-        </button>
-      </div>
-
-      <div id="curriculumCurtain" style="max-height: 0; overflow: hidden; transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease; opacity: 0; padding-top: 10px;">
       <div class="curriculum-grid">
-        <div class="chapter-bar" onclick="openChapter(1, 'True Definition of Victory', 'The exact structure of what victory actually is. We will look at things like what sustains it, and the clear road between where you are right now and where God is taking you.')">
+        <div class="chapter-bar" onclick="openInnerChapter(1, 'True Definition of Victory', 'The exact structure of what victory actually is. We will look at things like what sustains it, and the clear road between where you are right now and where God is taking you.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">01</span> True Definition of Victory</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(2, 'Is God Real?', 'I will provide proofs that will leave you in awe. For instance, we will look at the anomaly of human consciousness—how it breaks the rules of science—to build an unshakeable system of belief.')">
+        <div class="chapter-bar" onclick="openInnerChapter(2, 'Is God Real?', 'I will provide proofs that will leave you in awe. For instance, we will look at the anomaly of human consciousness—how it breaks the rules of science—to build an unshakeable system of belief.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">02</span> Is God Real?</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(3, 'The Law of Knowledge', 'I will show you how knowledge is the actual operational mechanism of power. You will discover things like exactly how ignorance equals vulnerability, and how to build a system of dominance.')">
+        <div class="chapter-bar" onclick="openInnerChapter(3, 'The Law of Knowledge', 'I will show you how knowledge is the actual operational mechanism of power. You will discover things like exactly how ignorance equals vulnerability, and how to build a system of dominance.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">03</span> The Law of Knowledge</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(4, 'The Theology of Suffering', 'We will look at the legal and broken realities of suffering. For example, you will learn the mechanism of how to tell the difference between pointless pain and trials that actually build your spiritual structure.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">04</span> The Theology of Suffering</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(4, 'The Theology of Suffering', 'We will look at the legal and broken realities of suffering. For example, you will learn the mechanism of how to tell the difference between pointless pain and trials that actually build your spiritual structure.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">04</span> Theology of Suffering</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(5, 'The Will of God Is Not One Dimensional', 'The blueprint of how God\'s will operates. We will look at things like how to read the signs of a victorious believer and align your life\'s trajectory with the exact path God has structured for you.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">05</span> The Will of God Is Not One Dimensional</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(5, 'The Will of God', 'The blueprint of how God's will operates. We will look at things like how to read the signs of a victorious believer and align your life's trajectory with the exact path God has structured for you.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">05</span> The Will of God</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(6, 'From Unbeliever To Believer', 'The day I got baptized for the wrong reasons. For example, we will look at the exact starting point of salvation and the four non-negotiable steps to completely renew the structure of your mind.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">06</span> From Unbeliever To Believer</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(6, 'From Unbeliever To Believer', 'The day I got baptized for the wrong reasons. For example, we will look at the exact starting point of salvation and the four non-negotiable steps to completely renew the structure of your mind.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">06</span> Unbeliever To Believer</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(7, 'From Just A Believer To Transformed Believer', 'The real difference between a baby believer and a transformed mind. We will lay down things like the seven structural foundations every believer must be rooted in to shift their trajectory.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">07</span> From Just A Believer To Transformed Believer</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(7, 'To Transformed Believer', 'The real difference between a baby believer and a transformed mind. We will lay down things like the seven structural foundations every believer must be rooted in to shift their trajectory.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">07</span> To Transformed Believer</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(8, 'From Transformed Believer To Empowered Believer', 'What actually blocks God\'s power in your life? We will dismantle those ceilings and show you mechanisms like empowerment, altars, and effective prayer.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">08</span> From Transformed Believer To Empowered Believer</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(8, 'To Empowered Believer', 'What actually blocks God's power in your life? We will dismantle those ceilings and show you mechanisms like empowerment, altars, and effective prayer.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">08</span> To Empowered Believer</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(9, 'The Mystery of Prayer', 'Prayer is a structured mechanism of communication, not just wishing. For instance, we will look at the five kinds of prayer that actually produce physical results and the architecture of the secret place.')">
+        <div class="chapter-bar" onclick="openInnerChapter(9, 'The Mystery of Prayer', 'Prayer is a structured mechanism of communication, not just wishing. For instance, we will look at the five kinds of prayer that actually produce physical results and the architecture of the secret place.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">09</span> The Mystery of Prayer</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(10, 'Fellowship', 'The fire that changes everything. We will break down systems like the divine security of Psalm 91 and the three dimensions of intimacy that turn a transactional faith into a transformational system.')">
+        <div class="chapter-bar" onclick="openInnerChapter(10, 'Fellowship', 'The fire that changes everything. We will break down systems like the divine security of Psalm 91 and the three dimensions of intimacy that turn a transactional faith into a transformational system.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">10</span> Fellowship</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(11, 'The Four Pillars', 'The load-bearing architecture of your spiritual life. For example, we will lock in the four critical pillars you need to sustain the glory of God without collapsing under the pressure.')">
+        <div class="chapter-bar" onclick="openInnerChapter(11, 'The Four Pillars', 'The load-bearing architecture of your spiritual life. For example, we will lock in the four critical pillars you need to sustain the glory of God without collapsing under the pressure.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">11</span> The Four Pillars</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(12, 'Man As God\'s Highest Creation', 'Partnership is built into the story of redemption. We will look at things like the three mechanisms for effective partnership with God, and exactly what it means to carry His authority on earth.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">12</span> Man As God\'s Highest Creation</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(12, 'Man As God's Creation', 'Partnership is built into the story of redemption. We will look at things like the three mechanisms for effective partnership with God, and exactly what it means to carry His authority on earth.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">12</span> God's Highest Creation</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(13, 'The Holy Spirit', 'He is the one who makes the entire system work. For instance, we will look at His seven dimensions of ministry to believers, and exactly what behaviors shut down His operation in your life.')">
+        <div class="chapter-bar" onclick="openInnerChapter(13, 'The Holy Spirit', 'He is the one who makes the entire system work. For instance, we will look at His seven dimensions of ministry to believers, and exactly what behaviors shut down His operation in your life.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">13</span> The Holy Spirit</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(14, 'The Art of Spiritual Sensitivity', 'The calibration of your spiritual senses. We will give you things like four clear protocols to develop your sensitivity so you can accurately decode what God is saying in any season.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">14</span> The Art of Spiritual Sensitivity</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(14, 'Spiritual Sensitivity', 'The calibration of your spiritual senses. We will give you things like four clear protocols to develop your sensitivity so you can accurately decode what God is saying in any season.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">14</span> Spiritual Sensitivity</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(15, 'The Mystery of the Word of God', 'Why simply reading is not enough. The Word is a living system that programs your life. For example, we will look at the three wrong ways people use it, and how to operate it correctly.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">15</span> The Mystery of the Word of God</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(15, 'Mystery of the Word', 'Why simply reading is not enough. The Word is a living system that programs your life. For example, we will look at the three wrong ways people use it, and how to operate it correctly.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">15</span> Mystery of the Word</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(16, 'The Teaching Priest', 'The ministry the church cannot function without. We will look at structures like the blueprint of this office and why transferring exact, high-level knowledge is critical for your survival.')">
+        <div class="chapter-bar" onclick="openInnerChapter(16, 'The Teaching Priest', 'The ministry the church cannot function without. We will look at structures like the blueprint of this office and why transferring exact, high-level knowledge is critical for your survival.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">16</span> The Teaching Priest</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(17, 'Faith— The Operational Technology You Were Never Taught', 'Faith is not an emotion; it is an exact operational technology. For instance, we will break down the five layers of operating faith to move actual mountains in your life.')">
+        <div class="chapter-bar" onclick="openInnerChapter(17, 'Faith', 'Faith is not an emotion; it is an exact operational technology. For instance, we will break down the five layers of operating faith to move actual mountains in your life.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">17</span> Faith</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(18, 'Dimensions of Wisdom', 'Before you can receive wisdom, you have to diagnose the problem correctly. We will look at things like the protocols that open the channels of supernatural intelligence and bypass worldly systems.')">
+        <div class="chapter-bar" onclick="openInnerChapter(18, 'Dimensions of Wisdom', 'Before you can receive wisdom, you have to diagnose the problem correctly. We will look at things like the protocols that open the channels of supernatural intelligence and bypass worldly systems.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">18</span> Dimensions of Wisdom</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(19, 'The Laws That Run The Kingdom', 'God is not a slot machine; His kingdom runs on exact laws. For example, we will break down the ten kingdom laws and the six domains of your life they are designed to govern.')">
-          <span class="chapter-bar-title"><span class="chapter-bar-num">19</span> The Laws That Run The Kingdom</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
+        <div class="chapter-bar" onclick="openInnerChapter(19, 'Kingdom Laws', 'God is not a slot machine; His kingdom runs on exact laws. For example, we will break down the ten kingdom laws and the six domains of your life they are designed to govern.')">
+          <span class="chapter-bar-title"><span class="chapter-bar-num">19</span> Kingdom Laws</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(20, 'The Blood', 'The spirit realm is not a power contest; it is a legal system. We will look at things like three wrong ways people use the Blood of Jesus, and the precise mechanism to engage its protection correctly.')">
+        <div class="chapter-bar" onclick="openInnerChapter(20, 'The Blood', 'The spirit realm is not a power contest; it is a legal system. We will look at things like three wrong ways people use the Blood of Jesus, and the precise mechanism to engage its protection correctly.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">20</span> The Blood</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(21, 'Times and Seasons', 'The chronological mechanics of God\'s timing. For instance, we will decode the signs that your season is about to change, so you don\'t move too early or wait too late.')">
+        <div class="chapter-bar" onclick="openInnerChapter(21, 'Times and Seasons', 'The chronological mechanics of God's timing. For instance, we will decode the signs that your season is about to change, so you don't move too early or wait too late.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">21</span> Times and Seasons</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(22, 'Season 1', 'When God put me in a room with myself. The diagnostic phase where everything you thought you knew is challenged. We will look at things like exposing hidden strongholds and building a new foundation.')">
+        <div class="chapter-bar" onclick="openInnerChapter(22, 'Season 1', 'When God put me in a room with myself. The diagnostic phase where everything you thought you knew is challenged. We will look at things like exposing hidden strongholds and building a new foundation.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">22</span> Season 1</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(23, 'Season 2', 'When everything you try fails. For example, we will look at the specific sound of God\'s silence and how He uses this mechanism to ruthlessly prune away everything that drains your power.')">
+        <div class="chapter-bar" onclick="openInnerChapter(23, 'Season 2', 'When everything you try fails. For example, we will look at the specific sound of God's silence and how He uses this mechanism to ruthlessly prune away everything that drains your power.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">23</span> Season 2</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(24, 'Season 3', 'When theory becomes reality. The output phase where you step into validation. We will look at concepts like what it actually means to die to public opinion and launch your true assignment.')">
+        <div class="chapter-bar" onclick="openInnerChapter(24, 'Season 3', 'When theory becomes reality. The output phase where you step into validation. We will look at concepts like what it actually means to die to public opinion and launch your true assignment.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">24</span> Season 3</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(25, 'Memory, Identity, and the Architecture of Who You Are', 'How the enemy attacks your memory to corrupt your system. For instance, we will wipe away the structure of past trauma and rebuild the exact identity God wrote inside you.')">
+        <div class="chapter-bar" onclick="openInnerChapter(25, 'Memory and Identity', 'How the enemy attacks your memory to corrupt your system. For instance, we will wipe away the structure of past trauma and rebuild the exact identity God wrote inside you.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">25</span> Memory and Identity</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(26, 'Character', 'The structure that keeps what the anointing brings. We will look at things like why character formation is non-negotiable and how to build a container strong enough to hold your success.')">
+        <div class="chapter-bar" onclick="openInnerChapter(26, 'Character', 'The structure that keeps what the anointing brings. We will look at things like why character formation is non-negotiable and how to build a container strong enough to hold your success.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">26</span> Character</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(27, 'The Poverty Mindset', 'The systemic dismantling of the scarcity mindset. For example, we will identify the seven reasons people stay poor and overwrite them with God\'s exact systems for wealth and success.')">
+        <div class="chapter-bar" onclick="openInnerChapter(27, 'The Poverty Mindset', 'The systemic dismantling of the scarcity mindset. For example, we will identify the seven reasons people stay poor and overwrite them with God's exact systems for wealth and success.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">27</span> The Poverty Mindset</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(28, 'Endtime Agenda', 'The three pillars of God\'s prophetic program. We will look at major structures like the Seven Mountains of Influence and the blueprint you need to operate safely in this final hour.')">
+        <div class="chapter-bar" onclick="openInnerChapter(28, 'Endtime Agenda', 'The three pillars of God's prophetic program. We will look at major structures like the Seven Mountains of Influence and the blueprint you need to operate safely in this final hour.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">28</span> Endtime Agenda</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
-        <div class="chapter-bar" onclick="openChapter(29, 'The Arrival — Closing Chapter', 'What comes next is not a destination, it is a direction. For instance, we will look at the exact mechanism of maintaining your victory and staying sharp once you arrive.')">
+        <div class="chapter-bar" onclick="openInnerChapter(29, 'The Arrival', 'What comes next is not a destination, it is a direction. For instance, we will look at the exact mechanism of maintaining your victory and staying sharp once you arrive.')">
           <span class="chapter-bar-title"><span class="chapter-bar-num">29</span> The Arrival</span>
-          <span class="chapter-bar-arrow">EXPLORE ↗</span>
         </div>
       </div>
-      </div>
-
-      <!-- Live Sample Link Banner -->
+      
       <div style="margin-top: 32px; text-align: center;">
-        <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 12px;">WANT A LIVE SAMPLE OF THE LEARNING EXPERIENCE?</p>
         <a href="https://theseersblueprint-cmd.github.io/MASTERCLASS/Infographic%20-%20The%20Dimensions%20of%20Wisdom.html" target="_blank" class="modal-btn" style="border-color: var(--gold); color: var(--gold); padding: 12px 28px;">
           👁 LIVE INFOGRAPHIC SAMPLE (Ch. 18) ↗
         </a>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- ACT 4: The Call to Action -->
-    <section class="partner-section" id="access" style="margin-top: 60px;">
-      <p class="partner-label">AN INVITATION TO PARTNER IN THE KINGDOM</p>
-      <h2 class="partner-title" style="margin-bottom: 32px;">Let's build the Kingdom together.</h2>
-      
-      <p class="partner-offer-desc">
+  <!-- MODAL: MY INVITATION -->
+  <div class="modal" id="modal-invitation">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeMainModal('modal-invitation')">&times;</span>
+      <h3 class="modal-title">My Invitation</h3>
+      <p class="content-paragraph">
         I am sharing all of this with you because I know you care deeply about the spiritual maturity of the people who listen to you. You are already doing the heavy lifting of guiding them, encouraging them, and speaking truth into their lives. 
       </p>
-      <p class="partner-offer-desc">
+      <p class="content-paragraph">
         I want to arm you with a tool that can take your audience the rest of the way... compressing decades of spiritual discovery into a structured, 12 month transformation for them.
       </p>
 
-      <div style="background: rgba(0, 240, 255, 0.03); border-left: 2px solid var(--cyan); padding: 24px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 40px auto; max-width: 800px; text-align: left;">
-        <h4 style="color: var(--cyan); margin-bottom: 12px; font-size: 1.1rem;">Step 1: I want to give you this completely free.</h4>
+      <div style="background: rgba(0, 240, 255, 0.03); border-left: 2px solid var(--cyan); padding: 24px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 30px auto;">
+        <h4 style="color: var(--cyan); margin-bottom: 12px; font-size: 1.1rem;">Step 1: Free Access to the First Two Chapters.</h4>
         <p style="color: var(--muted); line-height: 1.7;">
-          Before anything else, I want you to have full, lifetime access to the 29 chapter masterclass. I want you to read it, test the spiritual mechanics, and see the depth of the architecture for yourself.
+          I want to give you access to the first two chapters of the masterclass. I want you to read it, test the spiritual mechanics, and see the depth of the architecture for yourself. If it aligns with your work, I'll give you full lifetime access to the rest of the 29 chapters.
         </p>
       </div>
 
-      <div style="background: rgba(255, 215, 0, 0.03); border-left: 2px solid var(--gold); padding: 24px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 40px auto; max-width: 800px; text-align: left;">
+      <div style="background: rgba(255, 215, 0, 0.03); border-left: 2px solid var(--gold); padding: 24px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 30px auto;">
         <h4 style="color: var(--gold); margin-bottom: 12px; font-size: 1.1rem;">Step 2: Let's build the Kingdom together.</h4>
         <p style="color: var(--muted); line-height: 1.7; margin-bottom: 16px;">
           If you read this and feel the same fire I do. If you believe this is exactly what your community needs to stop struggling and start dominating their spheres of influence. I would be honored to partner with you.
         </p>
         <p style="color: var(--muted); line-height: 1.7;">
-          I have set up a private partnership structure where you will earn a 30% commission ($149.10) for every believer you guide into the Masterclass. This is not just an affiliate link; it is my way of actively supporting the incredible ministry and work you are already doing.
+          I have set up a private partnership structure where you will earn a 30% commission for every believer you guide into the Masterclass. This is not just an affiliate link; it is my way of actively supporting the incredible ministry and work you are already doing.
         </p>
       </div>
 
-      <p class="partner-offer-desc" style="font-weight: bold; color: #FFF;">
-        If you are ready to review the Masterclass, simply reach out. Let's raise a generation of victorious believers together.
-      </p>
-
-      <div class="partner-stats">
-        <div class="stat-item">
-          <h3>$497</h3>
-          <p>Masterclass Price</p>
-        </div>
-        <div class="stat-item">
-          <h3>30%</h3>
-          <p>Your Commission</p>
-        </div>
-        <div class="stat-item">
-          <h3>$149.10</h3>
-          <p>Payout Per Sale</p>
-        </div>
-      </div>
-
-      <!-- Interactive Impact Calculator -->
-      <div class="calc-container" style="max-width: 600px; margin: 40px auto; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--glass); backdrop-filter: blur(10px);">
-        <button onclick="toggleCalculator()" class="calc-toggle-btn" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: transparent; border: none; color: var(--cyan); cursor: pointer; text-align: left; transition: background 0.3s ease;">
-          <span style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em;">ESTIMATE YOUR IMPACT</span>
-          <span id="calcToggleIcon" style="transition: transform 0.4s ease;">▼</span>
-        </button>
-        
-        <div id="calcCurtain" style="max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease; opacity: 0;">
-          <div class="calc-box" style="margin: 0; border: none; background: transparent; border-top: 1px solid var(--border); border-radius: 0; padding-top: 32px;">
-            <h4 class="calc-title">How Many People Could You Reach?</h4>
-            <p style="font-size: 0.8rem; color: var(--muted);">DRAG THE SLIDER TO SEE THE POTENTIAL IMPACT ON YOUR COMMUNITY</p>
-            
-            <input type="range" min="1" max="250" value="50" class="calc-slider" id="impactSlider" oninput="updateCalculator(this.value)" />
-            
-            <div class="calc-results">
-              <div>
-                <p class="calc-res-label">BELIEVERS REACHED</p>
-                <p class="calc-res-val" id="resLives">50 People</p>
-              </div>
-              <div>
-                <p class="calc-res-label">YOUR SUPPORT EARNINGS</p>
-                <p class="calc-res-val" style="color: var(--muted); font-size: 1rem;" id="resEarnings">$7,455</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: 40px;">
-        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.1em;">Step 1 — Sample the preview. No payment required.</p>
-        <a href="https://whop.com/pathway-masterclass/victorious-believer/" target="_blank" class="cta-btn" style="margin-bottom: 24px; display: inline-block;">
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="https://whop.com/pathway-masterclass/victorious-believer/" target="_blank" style="display: inline-block; background: linear-gradient(135deg, var(--gold), #E8C97A); color: var(--void); font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.15em; padding: 16px 40px; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 5px 25px rgba(255, 215, 0, 0.2);">
           ACCESS YOUR FREE PREVIEW ↗
         </a>
-        <p style="font-family:'Cinzel'; font-size: 1rem; color: var(--gold); letter-spacing: 0.05em; font-weight: 600; margin-top: 24px;">
-          Step 2 — Enjoyed what you read? Email me at <a href="mailto:kingslay@theseersblueprint.com" style="color: var(--cyan); text-decoration: none;">kingslay@theseersblueprint.com</a> and I'll send you full lifetime access + your personal affiliate link. Looking forward to hearing from you!
+        <p style="font-family:'Cinzel'; font-size: 0.9rem; color: var(--gold); letter-spacing: 0.05em; font-weight: 600; margin-top: 24px;">
+          Enjoyed what you read? Email me at <a href="mailto:kingslay@theseersblueprint.com" style="color: var(--cyan); text-decoration: none;">kingslay@theseersblueprint.com</a> and I'll send you full lifetime access + your personal affiliate link.
         </p>
       </div>
+    </div>
+  </div>
 
-      <!-- FAQ Section -->
-      <div style="margin-top: 60px; text-align: left; border-top: 1px solid var(--border); padding-top: 40px;">
-        <h3 style="font-family:'Cinzel'; font-size: 1.5rem; color: var(--gold); margin-bottom: 32px; text-align: center;">Partnership FAQ</h3>
-        
-        <div style="margin-bottom: 24px;">
-          <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">How and when do I get paid?</h4>
-          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">All affiliate tracking and payouts are handled securely through Whop. You can withdraw your earnings directly to your bank account or crypto wallet via your Whop dashboard.</p>
-        </div>
-
-        <div style="margin-bottom: 24px;">
-          <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">What happens if a student requests a refund?</h4>
-          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">If a referred student requests a refund and the refund is processed, the commission for that specific sale is returned. This ensures fairness and protects the integrity of the partnership.</p>
-        </div>
-
-        <div style="margin-bottom: 24px;">
-          <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">What is the cookie window?</h4>
-          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">I use a generous 60 day cookie window. This means if someone clicks your link but takes a few weeks to decide, you will still receive full credit for the sale as long as they purchase within 60 days of the original click.</p>
-        </div>
-
-        <div style="margin-bottom: 24px;">
-          <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">Are there any content restrictions for how I promote this?</h4>
-          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">You have complete creative freedom to share this with your audience in the way that feels most authentic to you. My only request is that you present the masterclass honestly and respectfully, in alignment with kingdom values.</p>
-        </div>
-
-        <div style="margin-bottom: 24px;">
-          <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">How do I get my unique affiliate link?</h4>
-          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">Once you have reviewed the preview and decided this is the right fit for your audience, simply email me. I will generate your custom tracking link and send it to you directly.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p style="margin-top: 8px;">The Victorious Believer © 2026. All Rights Reserved.</p>
-    </footer>
-
-  </main>
-
-  <!-- Chapter Detail Modal -->
-  <div class="modal" id="chapterModal">
+  <!-- MODAL: QUESTIONS YOU MAY HAVE -->
+  <div class="modal" id="modal-faq">
     <div class="modal-content">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <p class="modal-num" id="modalNum">CHAPTER 01</p>
-      <h3 class="modal-title" id="modalTitle">Chapter Name</h3>
-      <p class="modal-desc" id="modalDesc">Detailed chapter description goes here.</p>
+      <span class="modal-close" onclick="closeMainModal('modal-faq')">&times;</span>
+      <h3 class="modal-title">Questions You May Have</h3>
+      
+      <div style="margin-bottom: 24px;">
+        <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">How and when do I get paid?</h4>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">All affiliate tracking and payouts are handled securely through Whop. You can withdraw your earnings directly to your bank account or crypto wallet via your Whop dashboard.</p>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">What happens if a student requests a refund?</h4>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">If a referred student requests a refund and the refund is processed, the commission for that specific sale is returned. This ensures fairness and protects the integrity of the partnership.</p>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">What is the cookie window?</h4>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">I use a generous 60 day cookie window. This means if someone clicks your link but takes a few weeks to decide, you will still receive full credit for the sale as long as they purchase within 60 days of the original click.</p>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">Are there any content restrictions for how I promote this?</h4>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">You have complete creative freedom to share this with your audience in the way that feels most authentic to you. My only request is that you present the masterclass honestly and respectfully, in alignment with kingdom values.</p>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h4 style="color: #FFF; font-size: 1.05rem; margin-bottom: 8px;">How do I get my unique affiliate link?</h4>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">Once you have reviewed the preview and decided this is the right fit for your audience, simply email me. I will generate your custom tracking link and send it to you directly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INNER CHAPTER MODAL -->
+  <div class="modal" id="innerChapterModal">
+    <div class="modal-content" style="max-width: 550px;">
+      <span class="modal-close" onclick="closeInnerChapter()">&times;</span>
+      <p class="inner-modal-num" id="innerModalNum">CHAPTER 01</p>
+      <h3 class="inner-modal-title" id="innerModalTitle">Chapter Name</h3>
+      <p class="content-paragraph" id="innerModalDesc">Detailed chapter description goes here.</p>
       <div style="text-align: right;">
-        <button class="modal-btn" onclick="closeModal()">CLOSE PREVIEW</button>
+        <button class="modal-btn" onclick="closeInnerChapter()">CLOSE PREVIEW</button>
       </div>
     </div>
   </div>
@@ -1004,67 +658,40 @@
       window.addEventListener('resize', () => { resize(); initStars(); draw(); });
     })();
 
-    /* ===== CURRICULUM TOGGLE ===== */
-    function toggleCurriculum() {
-      const curtain = document.getElementById('curriculumCurtain');
-      const icon = document.getElementById('curriculumToggleIcon');
-      if (curtain.style.maxHeight === '0px' || curtain.style.maxHeight === '') {
-        curtain.style.maxHeight = '4000px';
-        curtain.style.opacity = '1';
-        icon.style.transform = 'rotate(180deg)';
-      } else {
-        curtain.style.maxHeight = '0px';
-        curtain.style.opacity = '0';
-        icon.style.transform = 'rotate(0deg)';
-      }
+    /* ===== MAIN MODAL CONTROLS ===== */
+    function openMainModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden'; // prevent background scrolling
     }
 
-    /* ===== CALCULATOR LOGIC ===== */
-    function toggleCalculator() {
-      const curtain = document.getElementById('calcCurtain');
-      const icon = document.getElementById('calcToggleIcon');
-      if (curtain.style.maxHeight === '0px' || curtain.style.maxHeight === '') {
-        curtain.style.maxHeight = '500px';
-        curtain.style.opacity = '1';
-        icon.style.transform = 'rotate(180deg)';
-      } else {
-        curtain.style.maxHeight = '0px';
-        curtain.style.opacity = '0';
-        icon.style.transform = 'rotate(0deg)';
-      }
+    function closeMainModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = 'auto';
     }
 
-    function updateCalculator(val) {
-      const lives = val;
-      const earnings = val * 149.10;
-      
-      document.getElementById('resLives').textContent = lives + ' People';
-      document.getElementById('resEarnings').textContent = '$' + earnings.toLocaleString();
-    }
-
-    /* ===== MODAL CONTROLS ===== */
-    function openChapter(num, title, desc) {
+    /* ===== INNER CHAPTER MODAL CONTROLS ===== */
+    function openInnerChapter(num, title, desc) {
       const paddedNum = String(num).padStart(2, '0');
-      document.getElementById('modalNum').textContent = 'CHAPTER ' + paddedNum + ' OF 29';
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('innerModalNum').textContent = 'CHAPTER ' + paddedNum + ' OF 29';
+      document.getElementById('innerModalTitle').textContent = title;
+      document.getElementById('innerModalDesc').textContent = desc;
       
-      const modal = document.getElementById('chapterModal');
-      modal.style.display = 'flex';
+      document.getElementById('innerChapterModal').classList.add('active');
     }
 
-    function closeModal() {
-      document.getElementById('chapterModal').style.display = 'none';
+    function closeInnerChapter() {
+      document.getElementById('innerChapterModal').classList.remove('active');
     }
 
-    // Close on click outside modal
+    // Close modals when clicking outside
     window.onclick = function(event) {
-      const modal = document.getElementById('chapterModal');
-      if (event.target == modal) {
-        modal.style.display = 'none';
+      if (event.target.classList.contains('modal')) {
+        event.target.classList.remove('active');
+        if(event.target.id !== 'innerChapterModal') {
+           document.body.style.overflow = 'auto';
+        }
       }
     }
   </script>
-
 </body>
 </html>
