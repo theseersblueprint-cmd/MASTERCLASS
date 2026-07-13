@@ -1,506 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Mechanics of Trust | The Pathway Masterclass</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="A 7-layer interactive infographic mapping the architecture of trust — tracing how the subconscious mind sabotages belief, and the protocol God designed to restore it."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
   <style>
-    /* ===== DESIGN SYSTEM ===== */
-    :root {
-      --void: #02040A;
-      --deep-space: #070B15;
-      --gold: #FFD700;
-      --gold-glow: rgba(255, 215, 0, 0.15);
-      --gold-border: rgba(255, 215, 0, 0.3);
-      --cyan: #00F0FF;
-      --cyan-glow: rgba(0, 240, 255, 0.12);
-      --cyan-border: rgba(0, 240, 255, 0.3);
-      --surface: #0B1121;
-      --surface-elevated: #111A30;
-      --text-main: #E2E8F0;
-      --muted: #94A3B8;
-      --border: rgba(255, 255, 255, 0.08);
-      --hs-color: var(--cyan);
-      --me-color: var(--gold);
-    }
+    :root{--void:#02040A;--deep:#050810;--gold:#FFD700;--gold-d:rgba(255,215,0,.15);--gold-g:rgba(255,215,0,.06);--cyan:#00F0FF;--cyan-d:rgba(0,240,255,.15);--glass:rgba(255,255,255,.03);--border:rgba(255,255,255,.06);--hover:rgba(255,255,255,.06);--text:#F0F4F8;--muted:#8B949E;--danger:#FF3366;--success:#00D97E;--purple:#B08FFF;--r:24px;--rp:100px}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:3px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--void);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+    .noise{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    #cvs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.25}
+    .word{display:inline-block;opacity:0;transform:translateY(18px) scale(.96);transition:opacity .55s ease,transform .55s ease}.word.v{opacity:1;transform:none}
+    .sr{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.16,1,.3,1)}.sr.v{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.1)}50%{box-shadow:0 0 50px rgba(255,215,0,.25)}}
+    @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    @keyframes scanLine{0%{top:0}100%{top:100%}}
+    @keyframes typeIn{from{width:0}to{width:100%}}
+    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 160px}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .hero-img{width:100%;max-width:920px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,215,0,.1);box-shadow:0 0 100px rgba(255,215,0,.08),0 30px 80px rgba(0,0,0,.8);animation:pulse 6s ease-in-out infinite;margin-bottom:44px}
+    .hero-img img{width:100%;height:420px;object-fit:cover;object-position:center top;display:block;transition:transform .8s ease}
+    .hero-img:hover img{transform:scale(1.02)}
+    .ch-tag{font-family:'Inter';font-size:.7rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;opacity:.8}
+    .hero-title{font-family:'Cinzel',serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:900;color:#fff;line-height:1;margin-bottom:16px}
+    .hero-sub{font-family:'Inter';font-size:.78rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+    .hero-def{font-size:1.35rem;font-style:italic;color:var(--muted);max-width:680px;margin:28px auto 0;line-height:1.65}
 
-    body {
-      background-color: var(--void);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+    /* ── SECTION HEADERS ── */
+    .sec-head{display:flex;align-items:center;gap:14px;margin:90px 0 28px}
+    .layer-badge{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--gold);background:var(--gold-g);border:1px solid var(--gold-d);padding:5px 14px;border-radius:var(--rp);white-space:nowrap}
+    .sec-label{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);font-weight:600}
 
-    h1, h2, h3, h4 {
-      font-family: 'Cinzel', serif;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
+    /* ── TYPOGRAPHY ── */
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);padding:48px;backdrop-filter:blur(12px)}
+    .card.gold-b{border-color:var(--gold-d);border-left:3px solid var(--gold)}
+    .card.cyan-b{border-color:var(--cyan-d);border-left:3px solid var(--cyan)}
+    .card.danger-b{border-color:rgba(255,51,102,.2);background:rgba(255,51,102,.02)}
+    .body-text{font-size:1.2rem;line-height:1.85;font-weight:300;color:var(--text);margin-bottom:18px}
+    .body-text.lg{font-size:1.45rem}
+    .pipe{padding-left:20px;border-left:2px solid var(--gold);font-style:italic;font-size:1.3rem;margin:24px 0;color:var(--text)}
+    .statement{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;text-align:center;line-height:1.5;color:#fff}
+    .scripture{padding:16px 22px;border-left:2px solid rgba(255,215,0,.25);font-style:italic;color:var(--muted);font-size:1.1rem;line-height:1.7;margin:22px 0}
+    .scripture cite{display:block;font-style:normal;font-family:'Inter';font-size:.68rem;color:var(--gold);margin-top:8px;letter-spacing:.1em}
+    .em-text{color:var(--gold);font-style:italic}.cyan-text{color:var(--cyan);font-style:italic}
 
-    /* ===== HERO SECTION ===== */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(to bottom, rgba(2, 4, 10, 0.1), var(--void)), 
-                  url('file:///C:/Users/KINGSLAY%20MIRIERI/.gemini/antigravity/brain/cd514b58-7c2e-4591-b777-7bdf596f965b/mechanics_of_trust_1783948341500.png') no-repeat center center/cover;
-    }
-    
-    .hero-content {
-      z-index: 2;
-      max-width: 800px;
-      padding: 0 20px;
-    }
+    /* ── ACCORDIONS ── */
+    .ac{background:var(--glass);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;margin-bottom:16px;transition:border-color .3s}
+    .ac:hover{border-color:var(--gold-d)}
+    .ac-hdr{padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .ac-title{font-family:'Cinzel',serif;font-size:1rem;color:#fff;letter-spacing:.06em}
+    .ac-num{font-family:'Inter';font-size:.62rem;letter-spacing:.2em;color:var(--gold);margin-bottom:4px}
+    .ac-icon{font-size:1.4rem;color:var(--gold);font-weight:200;transition:transform .5s cubic-bezier(.4,0,.2,1);flex-shrink:0}
+    .ac-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .55s,padding .55s}
+    .ac.open .ac-body{max-height:2400px;opacity:1;padding:0 36px 40px;border-top:1px solid var(--border);margin-top:8px;padding-top:32px}
+    .ac.open .ac-icon{transform:rotate(135deg);color:var(--cyan)}
 
-    .hero-label {
-      color: var(--cyan);
-      font-size: 0.85rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
+    /* ── MIND MAP ── */
+    .map-wrap{width:100%;overflow-x:auto;padding:20px 0}
+    .map-canvas{min-width:700px;position:relative;padding:30px}
+    .fw-row{display:flex;justify-content:center;gap:18px;position:relative;z-index:1;margin-bottom:8px;flex-wrap:wrap}
+    .map-arrow{display:flex;justify-content:center;align-items:center;height:36px;color:var(--gold);font-size:1.4rem;opacity:.45;position:relative;z-index:1}
+    .map-label{font-family:'Inter';font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:6px;position:relative;z-index:1}
+    .node{border-radius:20px;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;transition:all .35s;text-align:center}
+    .node:hover{transform:translateY(-3px);border-color:var(--gold-d);box-shadow:0 8px 30px rgba(255,215,0,.08)}
+    .node.root{width:280px;padding:28px 20px;border-color:var(--gold-d);background:rgba(255,215,0,.04)}
+    .node.root .n-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:6px}
+    .node.root .n-sub{font-family:'Inter';font-size:.7rem;color:var(--muted)}
+    .node.sm{width:175px;padding:18px 14px}
+    .node.sm .n-title{font-family:'Cinzel',serif;font-size:.8rem;color:#fff;margin-bottom:4px}
+    .node.sm .n-sub{font-family:'Inter';font-size:.6rem;color:var(--muted)}
+    .node.sm.human{border-color:rgba(255,215,0,.3);background:rgba(255,215,0,.04)}.node.sm.human .n-title{color:var(--gold)}
+    .node.sm.god{border-color:rgba(0,240,255,.3);background:rgba(0,240,255,.04)}.node.sm.god .n-title{color:var(--cyan)}
+    .node.sm.channel{border-color:rgba(176,143,255,.3);background:rgba(176,143,255,.04)}.node.sm.channel .n-title{color:var(--purple)}
+    .node.sm.danger{border-color:rgba(255,51,102,.25);background:rgba(255,51,102,.03)}.node.sm.danger .n-title{color:rgba(255,130,130,.9)}
+    .node.sm.success{border-color:rgba(0,217,126,.25);background:rgba(0,217,126,.04)}.node.sm.success .n-title{color:var(--success)}
 
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #FFF, var(--muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 24px;
-      text-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
-    }
+    /* ── MODAL PANEL ── */
+    #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;backdrop-filter:blur(3px)}#overlay.show{display:block}
+    .node-panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;width:min(580px,90vw);background:#0A0E18;border:1px solid var(--border);border-radius:28px;padding:44px;animation:popIn .4s ease;box-shadow:0 40px 100px rgba(0,0,0,.95)}
+    .node-panel.show{display:block}
+    .np-close{position:absolute;top:16px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:50%;width:34px;height:34px;font-size:1.2rem;cursor:pointer;transition:.3s}.np-close:hover{background:var(--hover);color:#fff}
+    .np-tag{font-family:'Inter';font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+    .np-title{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);margin-bottom:18px}
+    .np-body{font-size:1.12rem;line-height:1.85;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:300}
 
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 40px auto;
-    }
+    /* ── LAB / SIMULATOR ── */
+    .lab{border:1px solid var(--gold-d);border-radius:20px;background:var(--deep);overflow:hidden;margin:36px 0}
+    .lab-stage{padding:48px;display:flex;flex-direction:column;align-items:center;min-height:300px;justify-content:center}
+    .lab-footer{padding:16px 36px;background:rgba(0,0,0,.7);font-family:'Inter';font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--border)}
+    .btn{background:transparent;border:1px solid var(--border);color:#fff;font-family:'Inter';font-size:.72rem;letter-spacing:.1em;padding:12px 22px;border-radius:var(--rp);cursor:pointer;transition:.3s;margin:6px}
+    .btn:hover{background:var(--hover)}.btn.g{border-color:var(--gold);color:var(--gold)}.btn.g:hover,.btn.g.on{background:rgba(255,215,0,.1)}.btn.c{border-color:var(--cyan);color:var(--cyan)}.btn.c:hover,.btn.c.on{background:rgba(0,240,255,.1)}.btn.d{border-color:var(--danger);color:var(--danger)}.btn.d:hover{background:rgba(255,51,102,.1)}
 
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--gold);
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      animation: pulse 2s infinite;
-    }
+    /* ── DIALOGUE TIMELINE (SURPRISE #2) ── */
+    .timeline-wrap{position:relative;width:100%;overflow:hidden}
+    .timeline-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);gap:0}
+    .timeline-slide{min-width:100%;padding:20px;display:flex;flex-direction:column;align-items:center}
+    .tl-bubble{max-width:600px;width:100%;padding:28px 32px;border-radius:20px;font-size:1.15rem;line-height:1.75;margin-bottom:16px;opacity:0;transform:translateY(20px);transition:all .5s ease}
+    .tl-bubble.show{opacity:1;transform:none}
+    .tl-bubble.hs{background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.2);border-bottom-left-radius:4px}
+    .tl-bubble.me{background:rgba(255,215,0,.04);border:1px solid rgba(255,215,0,.2);border-bottom-right-radius:4px;align-self:flex-end}
+    .tl-speaker{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.15em;margin-bottom:10px;font-weight:700}
+    .tl-speaker.hs-s{color:var(--cyan)}.tl-speaker.me-s{color:var(--gold);text-align:right}
+    .tl-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:28px}
+    .tl-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--gold-d);background:var(--glass);color:var(--gold);font-size:1.2rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
+    .tl-btn:hover{background:rgba(255,215,0,.1)}
+    .tl-btn:disabled{opacity:.3;cursor:default}
+    .tl-counter{font-family:'Inter';font-size:.7rem;letter-spacing:.15em;color:var(--muted)}
+    .tl-progress{width:100%;max-width:400px;height:3px;background:#111;border-radius:3px;margin-top:16px;overflow:hidden}
+    .tl-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--gold));border-radius:3px;transition:width .6s ease;width:0%}
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; transform: translate(-50%, 10px); }
-    }
+    /* ── BELIEF SCANNER (SURPRISE #1) ── */
+    .scanner-wrap{width:100%;max-width:620px}
+    .scanner-input{width:100%;background:#080810;border:1px solid var(--border);border-radius:14px;padding:18px 22px;color:var(--text);font-family:'Cormorant Garamond',serif;font-size:1.15rem;resize:none;outline:none;transition:.3s;min-height:50px}
+    .scanner-input:focus{border-color:var(--cyan-d);box-shadow:0 0 30px rgba(0,240,255,.06)}
+    .scanner-input::placeholder{color:#444;font-style:italic}
+    .scan-results{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+    .scan-item{background:#080810;border:1px solid var(--border);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:16px;animation:popIn .4s ease;position:relative;overflow:hidden}
+    .scan-item::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%}
+    .scan-item.info::before{background:var(--danger)}.scan-item.assoc::before{background:var(--purple)}.scan-item.env::before{background:var(--cyan)}.scan-item.exp::before{background:var(--gold)}
+    .scan-icon{font-size:1.4rem;flex-shrink:0}
+    .scan-text{flex:1}
+    .scan-text h5{font-family:'Cinzel';font-size:.78rem;margin-bottom:4px}
+    .scan-item.info .scan-text h5{color:var(--danger)}.scan-item.assoc .scan-text h5{color:var(--purple)}.scan-item.env .scan-text h5{color:var(--cyan)}.scan-item.exp .scan-text h5{color:var(--gold)}
+    .scan-text p{font-size:.95rem;color:var(--muted);font-family:'Inter';font-size:.85rem}
+    .scan-animation{position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);animation:scanLine .8s linear}
+    @keyframes scanLine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
-    /* ===== CONTAINER & TYPOGRAPHY ===== */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 20px;
-    }
+    /* ── PROTOCOL CHECKER ── */
+    .proto-wrap{display:flex;flex-direction:column;gap:14px;width:100%;max-width:620px}
+    .proto-item{background:#080808;border:1px solid var(--border);border-radius:14px;padding:22px 26px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:.35s}
+    .proto-item:hover{border-color:var(--gold-d)}.proto-item.done{border-color:var(--success);background:rgba(0,217,126,.04)}
+    .proto-check{width:32px;height:32px;border-radius:50%;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:.35s}
+    .proto-item.done .proto-check{background:var(--success);border-color:var(--success);color:#000}
+    .proto-body h5{font-family:'Cinzel';font-size:.82rem;color:#fff;margin-bottom:4px}
+    .proto-body p{font-size:.95rem;color:var(--muted)}.proto-item.done .proto-body h5{color:var(--success)}
 
-    .section-title {
-      font-size: 2.2rem;
-      color: var(--cyan);
-      margin-bottom: 40px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 20px;
-    }
+    /* ── REFLECTION ── */
+    .rq{display:none;animation:popIn .6s ease}.rq.show{display:block}
+    .q-nav{display:flex;gap:8px;justify-content:center;margin-top:24px}
+    .q-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);cursor:pointer;transition:.3s}.q-dot.active{background:var(--gold)}
 
-    .content-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 40px;
-      margin-bottom: 60px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
+    /* ── DECLARATION ── */
+    .decl{border:1px dashed rgba(255,215,0,.18);border-radius:var(--r);padding:80px 40px;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(255,215,0,.04) 0%,transparent 70%)}
 
-    .prose p {
-      margin-bottom: 24px;
-      font-size: 1.1rem;
-      color: #cbd5e1;
-    }
-
-    .quote {
-      border-left: 3px solid var(--gold);
-      padding-left: 20px;
-      margin: 40px 0;
-      font-size: 1.3rem;
-      font-family: 'Cinzel', serif;
-      color: var(--gold);
-      font-style: italic;
-    }
-
-    /* ===== DIALOGUE UI ===== */
-    .dialogue-box {
-      margin: 40px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .dialogue-row {
-      display: flex;
-      width: 100%;
-    }
-
-    .dialogue-row.hs {
-      justify-content: flex-start;
-    }
-
-    .dialogue-row.me {
-      justify-content: flex-end;
-    }
-
-    .dialogue-bubble {
-      max-width: 75%;
-      padding: 16px 24px;
-      border-radius: 12px;
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    .dialogue-row.hs .dialogue-bubble {
-      background: rgba(0, 240, 255, 0.05);
-      border: 1px solid var(--cyan-border);
-      border-bottom-left-radius: 0;
-    }
-
-    .dialogue-row.hs .speaker {
-      color: var(--cyan);
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-    }
-
-    .dialogue-row.me .dialogue-bubble {
-      background: rgba(255, 215, 0, 0.05);
-      border: 1px solid var(--gold-border);
-      border-bottom-right-radius: 0;
-    }
-
-    .dialogue-row.me .speaker {
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-      text-align: right;
-    }
-
-    /* ===== INTERACTIVE GRID ===== */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin: 40px 0;
-    }
-
-    .card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      padding: 30px;
-      border-radius: 12px;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .card:hover {
-      border-color: var(--cyan);
-      box-shadow: 0 0 20px var(--cyan-glow);
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      color: var(--cyan);
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* ===== PROTOCOL CHECKLIST ===== */
-    .protocol-box {
-      background: rgba(0, 240, 255, 0.03);
-      border: 1px solid var(--cyan-border);
-      padding: 40px;
-      border-radius: 12px;
-      margin-top: 60px;
-    }
-
-    .protocol-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .protocol-num {
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-right: 20px;
-      line-height: 1;
-    }
-
-    .protocol-text h4 {
-      font-size: 1.1rem;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-
-    .protocol-text p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+    /* ── GRID ── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    @media(max-width:860px){.g2{grid-template-columns:1fr}.timeline-slide{padding:10px}}
   </style>
 </head>
 <body>
+<div class="noise"></div><canvas id="cvs"></canvas>
+<div id="overlay" onclick="closePanel()"></div>
+<div class="node-panel" id="np">
+  <button class="np-close" onclick="closePanel()">✕</button>
+  <p class="np-tag" id="np-tag"></p>
+  <h2 class="np-title" id="np-title"></h2>
+  <p class="np-body" id="np-body"></p>
+</div>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-label">The Pathway Masterclass</div>
-      <h1>The Mechanics of Trust</h1>
-      <p>Transforming belief from an emotional vulnerability into a calculated, structured operational framework.</p>
+<main>
+
+  <!-- ── LAYER 1: HERO ── -->
+  <section class="hero sr">
+    <div class="hero-img">
+      <img src="trust_hero.png" alt="The Mechanics of Trust — the architecture of belief" onerror="this.parentElement.style.display='none'">
     </div>
-    <div class="scroll-indicator">INITIATE DEEP DIVE ↓</div>
+    <p class="ch-tag">The Pathway Masterclass</p>
+    <h1 class="hero-title stag">THE MECHANICS<br>OF TRUST</h1>
+    <p class="hero-sub">Why Doubt Feels More Natural Than Faith</p>
+    <p class="hero-def stag">You can read fifty books on faith and still not trust God. Because information was never the thing that transforms a mind. Clarity is. This is not another book about trust. This is the system behind it.</p>
   </section>
 
-  <!-- MAIN CONTENT -->
-  <main class="container">
-
-    <!-- LAYER 1: The Core Anomaly -->
-    <div class="content-block prose">
-      <h2 class="section-title">01. The Problem With Information</h2>
-      <p>Believers don't need more information. It's everywhere. Sermons, books, podcasts, a thousand voices telling you what to believe. You've probably heard most of it already.</p>
-      <p>But information was never the thing that transforms a mind. <strong>Clarity is.</strong></p>
-      <p>You can read fifty books on faith and still not trust God. You can know every verse on trust and still doubt Him the moment life gets hard. Because knowing something and understanding it are not the same thing. And understanding without clarity just sits in your head, untouched, unused.</p>
-      <p>This material is not here to give you more to know. It's here to give you clarity, the kind that doesn't just inform your mind but transforms it. The kind that gets into your bones and changes how you actually live.</p>
-
-      <div class="grid-2" style="margin-top:40px;">
-        <div class="card">
-          <h3>Knowledge</h3>
-          <p>The gathering of facts, data, and information. It is the raw material. It tells you fire is hot.</p>
+  <!-- ── LAYER 2: THE THESIS ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 1 OF 7</span><h2 class="sec-label">🔑 The Core Distinction</h2></div>
+    <div class="card gold-b">
+      <p class="statement stag">"Knowing something and <span style="color:var(--gold)">understanding</span> it are not the same thing. And understanding without <em>clarity</em> just sits in your head, untouched, unused."</p>
+      <div class="scripture stag">Trust in the Lord with all your heart and do not lean on your own understanding. In all your ways acknowledge Him, and He will make your paths straight.<cite>— Proverbs 3:5-6</cite></div>
+      <div class="g2" style="margin-top:28px">
+        <div>
+          <p class="body-text stag">Most believers are not short on knowledge. We have read the scriptures. We have sat in services. We have heard the sermons. What we lack is <em class="em-text">understanding</em> — the kind that transforms behaviour, not just vocabulary.</p>
+          <p class="body-text stag">This material is not here to give you more to know. It's here to give you <em class="em-text">clarity</em>, the kind that gets into your bones and changes how you actually live.</p>
+          <p class="pipe stag">Today I trust Him. Tomorrow I'm back to doubting. He makes me a promise, I nod, but deep down I don't believe it anyway. And I got tired of living like that.</p>
         </div>
-        <div class="card">
-          <h3>Understanding</h3>
-          <p>The mastery and comprehension of the knowledge you have gathered. It tells you <em>why</em> the fire is hot.</p>
-        </div>
-        <div class="card" style="grid-column: 1 / -1;">
-          <h3 style="color:var(--gold);">Wisdom</h3>
-          <p>The correct application of what you know and understand, in a way that produces real results. Wisdom is what stops you from putting your hand in the fire.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- LAYER 2: The Diagnosis -->
-    <div class="content-block prose">
-      <h2 class="section-title">02. The Diagnosis</h2>
-      <p>I was done playing games with God. Today I trust Him. Tomorrow I'm back to doubting. He makes me a promise, I nod, but deep down I don't believe it anyway. And I got tired of living like that.</p>
-      <p>Before we can fix the problem, we have to understand it. We have to look honestly at our human nature, why we struggle to trust, why doubt feels more natural than faith, and why we should even trust a God we have never seen. We have to understand how He works, how He fulfils what He promises, and what it actually looks like when He moves in a life.</p>
-      
-      <div class="quote">
-        "Trust in the Lord with all your heart and do not lean on your own understanding. In all your ways acknowledge Him, and He will make your paths straight."<br/>— Proverbs 3:5-6
-      </div>
-
-      <p>I went on a retreat. I prayed and asked the Holy Spirit to guide me through this. What followed changed my life forever.</p>
-      <p>We will do something unique here. I will abbreviate the Holy Spirit as H.S, because what follows is a real conversation, one He led me through, question by question, until I could no longer hide behind my excuses.</p>
-    </div>
-
-    <!-- LAYER 3: Dialogue Interface -->
-    <div class="content-block">
-      <h2 class="section-title">03. The Interrogation of Trust</h2>
-      
-      <div class="dialogue-box">
-        <div class="dialogue-row hs">
-          <div class="dialogue-bubble">
-            <div class="speaker">H.S</div>
-            Do you trust in God?
-          </div>
-        </div>
-
-        <div class="dialogue-row me">
-          <div class="dialogue-bubble">
-            <div class="speaker">Me</div>
-            What is trust?
-          </div>
-        </div>
-
-        <div class="dialogue-row hs">
-          <div class="dialogue-bubble">
-            <div class="speaker">H.S</div>
-            Trust is the measure of your belief in a person, entity, or object, based on your understanding of its nature.
-          </div>
-        </div>
-      </div>
-
-      <div class="prose" style="margin: 40px 0;">
-        <p>Read that slowly. Trust is not just a feeling. It is built on two things: the <strong>strength of your belief</strong>, and your <strong>perception of whoever or whatever you are believing in</strong>. Which means the real question was never "do you trust God?" The real question is: what is your perception of God?</p>
-        <p>To trust Him, we first have to understand His nature. Then we have to examine our own perception of that nature. And then, most importantly, we have to trace where that perception came from.</p>
-      </div>
-
-      <div class="dialogue-box">
-        <div class="dialogue-row hs">
-          <div class="dialogue-bubble">
-            <div class="speaker">H.S</div>
-            Do you trust in God?
-          </div>
-        </div>
-
-        <div class="dialogue-row me">
-          <div class="dialogue-bubble">
-            <div class="speaker">Me</div>
-            Partially. Because I expect that He might disappoint me.
-          </div>
-        </div>
-
-        <div class="dialogue-row hs">
-          <div class="dialogue-bubble">
-            <div class="speaker">H.S</div>
-            So let me be clear about what you're really saying. You don't fully trust God for two reasons: you fear He will disappoint you, and you don't want to surrender control to Him. Is that correct?
-          </div>
-        </div>
-
-        <div class="dialogue-row me">
-          <div class="dialogue-bubble">
-            <div class="speaker">Me</div>
-            Both, yes. The problem is my understanding. And my human nature.
+        <div>
+          <p style="font-family:'Cinzel';font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-align:center;margin-bottom:18px">THE THREE OPERATIONAL LEVELS</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="background:rgba(255,51,102,.04);border:1px solid rgba(255,51,102,.15);border-radius:14px;padding:18px 22px;border-left:3px solid var(--danger)"><p style="font-family:'Cinzel';font-size:.75rem;color:var(--danger)">LEVEL 1: KNOWLEDGE</p><p style="font-size:1rem;color:var(--muted);margin-top:6px">Gathering facts and data. Tells you fire is hot.</p></div>
+            <div style="background:rgba(0,240,255,.03);border:1px solid var(--cyan-d);border-radius:14px;padding:18px 22px;border-left:3px solid var(--cyan)"><p style="font-family:'Cinzel';font-size:.75rem;color:var(--cyan)">LEVEL 2: UNDERSTANDING</p><p style="font-size:1rem;color:var(--muted);margin-top:6px">Mastery of knowledge. Tells you <em>why</em> fire is hot.</p></div>
+            <div style="background:rgba(255,215,0,.05);border:1px solid var(--gold-d);border-radius:14px;padding:18px 22px;border-left:3px solid var(--gold)"><p style="font-family:'Cinzel';font-size:.75rem;color:var(--gold)">LEVEL 3: WISDOM</p><p style="font-size:1rem;color:var(--muted);margin-top:6px">Correct application. Stops you from putting your hand in it.</p></div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- LAYER 4: Mindset Builders -->
-    <div class="content-block">
-      <h2 class="section-title">04. The 4 Subconscious Builders</h2>
-      <div class="prose">
-        <p>Your mind operates on two levels. The conscious mind makes active decisions. The subconscious mind runs on autopilot, running approximately 95% of your daily activities.</p>
-        <p>The belief systems quietly undermining your trust in God are running in the background. Where did they come from? The Holy Spirit revealed four specific mindset builders that structure your reality.</p>
+  <!-- ── LAYER 3: THE TRUST ARCHITECTURE MAP ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 2 OF 7</span><h2 class="sec-label">🗺 The Trust Architecture Map</h2></div>
+    <p class="body-text" style="text-align:center;color:var(--muted);margin-bottom:30px">Click or tap any node to reveal the deep insight behind it.</p>
+    <div class="map-wrap"><div class="map-canvas">
+
+      <p class="map-label" style="color:var(--danger)">THE REAL QUESTION</p>
+      <div class="fw-row">
+        <div class="node root" onclick="sp('trust','THE DEFINITION','Trust Is Not a Feeling','Trust is the measure of your belief in a person, entity, or object, based on your understanding of its nature. It is built on two things: the strength of your belief, and your perception of whoever or whatever you are believing in. Which means the real question was never do you trust God. The real question is: what is your perception of God?')"><div class="n-title">🔍 WHAT IS TRUST?</div><div class="n-sub">Belief × Perception of Nature</div></div>
+      </div>
+      <div class="map-arrow">↓</div>
+
+      <p class="map-label" style="color:var(--cyan)">THE TWO ROOT CAUSES OF DISTRUST</p>
+      <div class="fw-row">
+        <div class="node sm danger" onclick="sp('fear','ROOT 1','Fear of Disappointment','Your brain was designed with a protective function. It is built to shield you from things that might cause you emotional pain, including disappointment. So your brain has been preventing you from trusting God — not out of rebellion, but out of self-protection. It learned that trust leads to disappointment. So it stopped trusting.')"><div class="n-title">😰 Fear of Disappointment</div><div class="n-sub">Brain's protective function</div></div>
+        <div class="node sm danger" onclick="sp('control','ROOT 2','Refusal to Surrender Control','You worry He might slow down your plans. That He might redirect you. That He might ask you to do things you don\'t feel like doing. Most of us are not struggling with God\'s ability. We are struggling with our unwillingness to release control.')"><div class="n-title">🔒 Refusal to Surrender</div><div class="n-sub">Control vs. trust</div></div>
+      </div>
+      <div class="map-arrow">↓</div>
+
+      <p class="map-label" style="color:var(--purple)">THE 4 SUBCONSCIOUS MINDSET BUILDERS</p>
+      <div class="fw-row">
+        <div class="node sm channel" onclick="sp('info','BUILDER 1','Information','What you have been told and what you have chosen to consume. The raw data uploaded into your mainframe. School taught that God is a concept human beings invented. That seeds a conclusion your subconscious runs on for years without you knowing it.')"><div class="n-title">📚 Information</div><div class="n-sub">What you consume</div></div>
+        <div class="node sm channel" onclick="sp('assoc','BUILDER 2','Associations','Who you walk with, and the beliefs they carry into your life. If you surround yourself with individuals who have lost hope, your subconscious begins to register hopelessness as the normal state. You don\'t decide to lose hope. You don\'t sit down and choose it.')"><div class="n-title">👥 Associations</div><div class="n-sub">Who shapes you</div></div>
+        <div class="node sm channel" onclick="sp('env','BUILDER 3','Environment & Culture','Where you grew up, and the unspoken rules. Church culture that produced carnal believers — people barely transformed, unable to walk in consistent victory. A quiet agreement spreading through the congregation: it\'s normal for God not to answer.')"><div class="n-title">🌍 Environment</div><div class="n-sub">The invisible rules</div></div>
+        <div class="node sm channel" onclick="sp('fail','BUILDER 4','Past Experiences & Failure','What you\'ve been through, and the traumatic algorithms those experiences taught your brain to expect. Failure is what finally broke my trust in God, completely. I prayed. Repeatedly. Sincerely. And the answers didn\'t come when I expected them.')"><div class="n-title">💔 Past Failure</div><div class="n-sub">Trauma algorithms</div></div>
+      </div>
+      <div class="map-arrow" style="color:var(--gold)">↓</div>
+
+      <p class="map-label" style="color:var(--gold)">GOD'S RESPONSE — THE SOVEREIGN CHESSBOARD</p>
+      <div class="fw-row">
+        <div class="node sm human" onclick="sp('chess','THE REVELATION','The Pre-Written Script','Before God began anything, He had already finished it. He built the chessboard, wrote every rule that governs the game, played it from the first move to the last, and finished it — all before He built the earth. That is why the devil cannot match Him. The game is already over. God knew your life from beginning to end before you drew your first breath.')"><div class="n-title">♟ The Game Is Finished</div><div class="n-sub">Script written before creation</div></div>
+        <div class="node sm human" onclick="sp('car','THE ANALOGY','The Car at Age Five','If your father gave you a car at five years old and told you to drive, would you trust him? You would crash it, get hurt, carry permanent scars. A loving Father does not give a gift that will destroy the child He loves. When God withholds something, it is because He does not want you to get hurt.')"><div class="n-title">🚗 The Car at Five</div><div class="n-sub">Why God withholds</div></div>
+      </div>
+      <div class="map-arrow" style="color:var(--success)">↓</div>
+
+      <p class="map-label" style="color:var(--gold)">THE 4 CONDITIONS FOR ANSWERED PRAYER</p>
+      <div class="fw-row">
+        <div class="node sm success" onclick="sp('will','CONDITION 1','His Will','God\'s power is designed to operate fully in your life when you are in His will. And when you are outside His will, it operates to draw you back into it. Are you operating within His jurisdiction?')"><div class="n-title">🎯 His Will</div><div class="n-sub">Operating jurisdiction</div></div>
+        <div class="node sm success" onclick="sp('time','CONDITION 2','His Timing','If the timing is not right, the answer will not manifest yet. God is not late. He is precise. His timing accounts for variables you cannot see and dimensions you have no access to.')"><div class="n-title">⏳ His Timing</div><div class="n-sub">Temporal alignment</div></div>
+        <div class="node sm success" onclick="sp('cap','CONDITION 3','Your Capacity','If your capacity — your wisdom, your spiritual and emotional maturity — is not sufficient to carry the blessing, it will be withheld until you grow into it. Your level of revelation determines the measure of grace that can operate in your life.')"><div class="n-title">📈 Your Capacity</div><div class="n-sub">Can you carry it?</div></div>
+        <div class="node sm success" onclick="sp('word','CONDITION 4','His Word','God\'s power moves upon His word. The formula: God gives a word. You obey the word. God\'s power fulfils the word. Stop measuring your prayer life by time spent praying — measure it by whether God has spoken to you, and whether you did what He said.')"><div class="n-title">📜 His Word</div><div class="n-sub">Power moves on word</div></div>
+      </div>
+      <div class="map-arrow" style="color:var(--success)">↓</div>
+
+      <div class="fw-row">
+        <div class="node root" style="width:320px;border-color:rgba(0,217,126,.3);background:rgba(0,217,126,.04)" onclick="sp('output','THE OUTPUT','Trust Restored','I now trust in the Lord. My assignment is clear — discern His will consistently. Train my discipline to obey what He tells me. Because answers are not determined by how much I pray. They are determined by whether I do what He says.')"><div class="n-title" style="color:var(--success)">✦ TRUST RESTORED</div><div class="n-sub" style="color:var(--success);opacity:.7">Not the absence of doubt — the decision to bring doubt to His feet</div></div>
       </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>1. Information</h3>
-          <p>What you have been told and what you have chosen to consume. The data you upload into your mainframe.</p>
+    </div></div>
+  </section>
+
+  <!-- ── LAYER 4: DIALOGUE TIMELINE (SURPRISE #2) ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 3 OF 7</span><h2 class="sec-label">💬 The Holy Spirit Diagnostic — Live Dialogue</h2></div>
+    <p class="body-text stag" style="margin-bottom:8px">This is a real conversation. One He led me through, question by question, until I could no longer hide behind my excuses. Navigate through the dialogue as it unfolded.</p>
+    <div class="lab">
+      <div class="lab-stage">
+        <div class="timeline-wrap">
+          <div class="timeline-track" id="tlTrack">
+            <!-- Slide 1 -->
+            <div class="timeline-slide">
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>Do you trust in God?</div>
+              <div class="tl-bubble me show"><div class="tl-speaker me-s">Me</div>What is trust?</div>
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>Trust is the measure of your belief in a person, entity, or object, based on your understanding of its nature.</div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="timeline-slide">
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>Do you trust in God?</div>
+              <div class="tl-bubble me show"><div class="tl-speaker me-s">Me</div>Partially. Because I expect that He might disappoint me. I have lived a life of disappointment. Most of what I prayed for did not come when I expected it.</div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="timeline-slide">
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>If your father had unlimited resources, would you trust him completely?</div>
+              <div class="tl-bubble me show"><div class="tl-speaker me-s">Me</div>One hundred percent. He would always want to do what makes me happy and comfortable. Because I know his heart, and I know what he is capable of when nothing is holding him back.</div>
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>So if you trust your earthly father that deeply, why not extend that same trust to God, your Heavenly Father?</div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="timeline-slide">
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>So let me be clear about what you're really saying. You don't fully trust God for two reasons: you fear He will disappoint you, and you don't want to surrender control to Him. Is that correct?</div>
+              <div class="tl-bubble me show"><div class="tl-speaker me-s">Me</div>Both, yes. The problem is my understanding. And my human nature.</div>
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>That level of self-awareness is a gift. If you can understand yourself clearly, you have found the fastest path to growth and transformation.</div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="timeline-slide">
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>I designed your mind to operate on predictability. So ask yourself honestly, what does your mind associate trusting in God with?</div>
+              <div class="tl-bubble me show"><div class="tl-speaker me-s">Me</div>Disappointment.</div>
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>Before God began anything, He had already finished it. He built the chessboard, wrote every rule that governs the game, played it from the first move to the last, and finished it — all before He built the earth.</div>
+            </div>
+            <!-- Slide 6 -->
+            <div class="timeline-slide">
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>If your father gave you a car at five years old and told you to drive, would you trust him?</div>
+              <div class="tl-bubble me show"><div class="tl-speaker me-s">Me</div>Honestly? I would play with the controls, crash it, get hurt, and probably carry permanent scars. A father who gives a gift that causes harm either has something wrong with his mind, or he doesn't love me.</div>
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>Therefore, when God withholds something from you, it is because He does not want you to get hurt.</div>
+            </div>
+            <!-- Slide 7 -->
+            <div class="timeline-slide">
+              <div class="tl-bubble hs show"><div class="tl-speaker hs-s">H.S</div>God's power moves upon His word. Stop measuring your prayer life by how much time you have spent praying — measure it by whether God has spoken to you, and whether you have done what He said.</div>
+              <div class="tl-bubble me show"><div class="tl-speaker me-s">Me</div>I now trust in the Lord. My assignment is clear — discern His will consistently. Train my discipline to obey what He tells me. Because answers are not determined by how much I pray. They are determined by whether I do what He says.</div>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h3>2. Associations</h3>
-          <p>Who you walk with, and the belief systems they silently transfer into your life via proximity.</p>
+        <div class="tl-progress"><div class="tl-fill" id="tlFill"></div></div>
+        <div class="tl-nav">
+          <button class="tl-btn" id="tlPrev" onclick="tlGo(-1)" disabled>←</button>
+          <span class="tl-counter" id="tlCounter">1 / 7</span>
+          <button class="tl-btn" id="tlNext" onclick="tlGo(1)">→</button>
         </div>
-        <div class="card">
-          <h3>3. Environment & Culture</h3>
-          <p>Where you grew up, and the unspoken rules of the world that shaped your default operating system.</p>
-        </div>
-        <div class="card">
-          <h3>4. Past Experiences & Failure</h3>
-          <p>What you have been through, and the traumatic algorithms those experiences taught your brain to expect.</p>
-        </div>
+      </div>
+      <div class="lab-footer" id="tl-footer">DIALOGUE NAVIGATION: Use arrows to walk through the conversation as it unfolded.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 5: DEEP DIVES ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 4 OF 7</span><h2 class="sec-label">🧩 Deep Architecture — The Subconscious Mind</h2></div>
+    <div class="card gold-b" style="margin-bottom:28px">
+      <p class="body-text stag">Your mind operates on two levels. The <em class="em-text">conscious mind</em> makes active decisions — the part reading these words right now. And then there is your <em class="cyan-text">subconscious mind</em> — the part that runs on autopilot, running approximately <strong>95% of your daily activities</strong>.</p>
+      <p class="body-text stag">The belief systems quietly undermining your trust in God are most likely not the ones you are consciously aware of. They are running in the background. They surface as feelings you can't fully explain, as resistance you can't name, as doubt that shows up before your conscious mind even has time to respond.</p>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><div><p class="ac-num">BUILDER 1</p><h3 class="ac-title">Information — What Was Uploaded Into Your Mind</h3></div><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">School taught that God is a concept human beings invented to explain the origin of the universe and the mystery of life. A psychological coping mechanism. A story told by people who didn't have science yet. That seed, planted in a young mind, grows into a tree you don't notice because you grew up in its shadow.</p>
+        <p class="pipe stag">But consciousness — the fact that matter, physical, measurable, observable matter, is aware of itself — that breaks the rules. Matter is not supposed to have consciousness. And yet here we are.</p>
       </div>
     </div>
-
-    <!-- LAYER 5: The Pre-written Script -->
-    <div class="content-block prose">
-      <h2 class="section-title">05. The Sovereign Chessboard</h2>
-      
-      <div class="dialogue-box">
-        <div class="dialogue-row hs">
-          <div class="dialogue-bubble">
-            <div class="speaker">H.S</div>
-            I designed your mind to operate on predictability. So ask yourself honestly, what does your mind associate trusting in God with?
-          </div>
-        </div>
-        <div class="dialogue-row me">
-          <div class="dialogue-bubble">
-            <div class="speaker">Me</div>
-            Disappointment.
-          </div>
-        </div>
-        <div class="dialogue-row hs">
-          <div class="dialogue-bubble">
-            <div class="speaker">H.S</div>
-            Before God began anything, He had already finished it. He built the chessboard, wrote every rule that governs the game, played it from the first move to the last, and finished it, all before He built the earth. That is why the devil cannot match Him. The game is already over.
-          </div>
-        </div>
-      </div>
-      
-      <p style="margin-top: 30px;">Your brain has a protective function designed to shield you from disappointment. It stopped trusting God to protect you. But His power is purposefully designed. If you are outside His will, His power operates to draw you back into it.</p>
-    </div>
-
-    <!-- LAYER 6: The Protocol of Power -->
-    <div class="content-block">
-      <h2 class="section-title">06. The Protocol of Answered Prayer</h2>
-      
-      <div class="prose">
-        <p>If God is all-powerful, why doesn't He answer every prayer? Because His power is not random; it is governed by a precise operational protocol. God blesses you for three reasons: to make you comfortable, to make you effective in fulfilling His will, and to be a blessing to the world. Here are the parameters that must be met:</p>
-      </div>
-
-      <div class="protocol-box">
-        <div class="protocol-item">
-          <div class="protocol-num">1</div>
-          <div class="protocol-text">
-            <h4>His Will</h4>
-            <p>Are you operating within His jurisdiction? If not, His power will only work to draw you back.</p>
-          </div>
-        </div>
-        <div class="protocol-item">
-          <div class="protocol-num">2</div>
-          <div class="protocol-text">
-            <h4>His Timing</h4>
-            <p>If the temporal alignment is not correct, the manifestation will be delayed to optimize impact.</p>
-          </div>
-        </div>
-        <div class="protocol-item">
-          <div class="protocol-num">3</div>
-          <div class="protocol-text">
-            <h4>Your Capacity</h4>
-            <p>Your wisdom, spiritual, and emotional maturity must be sufficient to carry the blessing, otherwise it will crush you.</p>
-          </div>
-        </div>
-        <div class="protocol-item">
-          <div class="protocol-num">4</div>
-          <div class="protocol-text">
-            <h4>His Word</h4>
-            <p>God's power moves upon His given word. The formula: God gives a word. You obey the word. God's power fulfils the word.</p>
-          </div>
-        </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><div><p class="ac-num">BUILDER 2</p><h3 class="ac-title">Associations — The Beliefs Others Carry Into Your Life</h3></div><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">If you surround yourself with individuals who have lost hope, your subconscious begins to register hopelessness as the normal state. You don't decide to lose hope. You don't sit down and choose it. But your actions quietly begin to follow a belief system that has already given up, without you ever noticing the shift.</p>
       </div>
     </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><div><p class="ac-num">BUILDER 3</p><h3 class="ac-title">Environment & Culture — The Invisible Rules</h3></div><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">Every week we gathered for the Sabbath. Same time, same seats, same routine. Most people were not there because they genuinely wanted to be. They were there out of fear of hell. Out of guilt. Out of social pressure. The culture produced carnal believers — people barely transformed, unable to walk in consistent victory.</p>
+        <p class="body-text stag">Slowly, quietly, people stopped trusting God. Nobody announced it. But the subconscious conclusion spread through the congregation like a quiet agreement: <em class="em-text">it's normal for God not to answer. It's normal not to fully trust Him.</em></p>
+      </div>
+    </div>
+    <div class="ac" onclick="this.classList.toggle('open')">
+      <div class="ac-hdr"><div><p class="ac-num">BUILDER 4</p><h3 class="ac-title">Past Experiences & Failure — The Final Break</h3></div><span class="ac-icon">+</span></div>
+      <div class="ac-body" onclick="event.stopPropagation()">
+        <p class="body-text stag">I prayed. Repeatedly. Sincerely. And the answers didn't come when I expected them. I failed again and again. And my mind drew the only conclusion it knew how to draw from that data: <em style="color:var(--danger)">God cannot be trusted.</em> It became a settled belief, not a passing thought.</p>
+        <p class="pipe stag">Church leaders placed restriction after restriction on my life. Because these people represented God to me, I concluded that God must be like that. Restrictive. Demanding. Joyless. My mind began steering me away from anything Godly — quietly, automatically.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- LAYER 7: The Final Action -->
-    <div class="content-block prose" style="border-color: var(--gold); background: rgba(255, 215, 0, 0.02);">
-      <h2 class="section-title" style="color: var(--gold); border-bottom-color: var(--gold-border);">07. The Final Protocol</h2>
-      <p>Reading this was not the transformation. It was the map. The transformation happens when you put the map down and start walking.</p>
-      <p>Go and practise what you have learned here. When doubt rises, and it will, don't run from it. Sit with it. Ask it where it came from. Trace it back to its root the way the Holy Spirit walked me through mine. Then bring it before God and let Him speak to what you find.</p>
-      <p>When you feel like God is withholding from you, remember that a loving Father does not give a gift that will destroy the child He loves.</p>
-      <p style="text-align: center; margin-top: 40px; font-size: 1.3rem; font-family: 'Cinzel', serif; color: var(--gold);">
-        "Go and trust Him. He has already gone ahead of you."
+  <!-- ── LAYER 6: BELIEF SCANNER (SURPRISE #1) ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 5 OF 7</span><h2 class="sec-label">🔬 Subconscious Belief Scanner — Your Personal Audit</h2></div>
+    <p class="body-text stag" style="margin-bottom:8px">Type in a belief that is causing you to avoid trusting God. The scanner will analyze which of the 4 mindset builders most likely planted it in your subconscious.</p>
+    <div class="lab">
+      <div class="lab-stage">
+        <div class="scanner-wrap">
+          <textarea class="scanner-input" id="beliefInput" placeholder="e.g. 'God will slow me down' or 'What if He doesn't answer?'" rows="2"></textarea>
+          <button class="btn g" style="margin-top:16px;width:100%" onclick="scanBelief()">✦ SCAN THIS BELIEF</button>
+          <div class="scan-results" id="scanResults"></div>
+        </div>
+      </div>
+      <div class="lab-footer" id="scan-footer">STATUS: Enter a limiting belief above and press scan to diagnose its origin.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 7: PRAYER PROTOCOL CHECKER ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 6 OF 7</span><h2 class="sec-label">🔓 The Four Conditions — Personal Audit</h2></div>
+    <p class="body-text stag" style="margin-bottom:4px">God blesses you for three reasons: to make you comfortable, to make you effective in fulfilling His will, and to be a blessing to the world. These four conditions determine whether a prayer manifests. Audit yourself honestly.</p>
+    <div class="lab" style="margin-top:28px">
+      <div class="lab-stage">
+        <div class="proto-wrap" id="protoWrap">
+          <div class="proto-item" id="pr1" onclick="markProto('pr1')">
+            <div class="proto-check" id="pc1">○</div>
+            <div class="proto-body"><h5>CONDITION 1: His Will</h5><p>Am I operating within God's jurisdiction? If not, His power will only work to draw me back.</p></div>
+          </div>
+          <div class="proto-item" id="pr2" onclick="markProto('pr2')">
+            <div class="proto-check" id="pc2">○</div>
+            <div class="proto-body"><h5>CONDITION 2: His Timing</h5><p>Am I accepting that if the timing is not right, the answer will not manifest yet — and that is not rejection?</p></div>
+          </div>
+          <div class="proto-item" id="pr3" onclick="markProto('pr3')">
+            <div class="proto-check" id="pc3">○</div>
+            <div class="proto-body"><h5>CONDITION 3: My Capacity</h5><p>Do I have the spiritual and emotional maturity to carry what I'm asking for? Or would it crush me at this stage?</p></div>
+          </div>
+          <div class="proto-item" id="pr4" onclick="markProto('pr4')">
+            <div class="proto-check" id="pc4">○</div>
+            <div class="proto-body"><h5>CONDITION 4: His Word</h5><p>Has God given me a specific instruction? And did I obey it? Because His power moves upon His word — not my wishes.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="lab-footer" id="proto-footer">STATUS: Mark each condition you are honestly operating in.</div>
+    </div>
+  </section>
+
+  <!-- ── LAYER 8: REFLECTION + DECLARATION ── -->
+  <section class="sr">
+    <div class="sec-head"><span class="layer-badge">LAYER 7 OF 7</span><h2 class="sec-label">🪞 The Three Honest Questions</h2></div>
+    <div class="card" style="text-align:center">
+      <div id="rq1" class="rq show"><p class="body-text lg stag" style="font-style:italic">What does your mind <span style="color:var(--gold)">associate trusting in God with</span>? Disappointment? Control? Restriction? Trace that association back to its root. Name it. Write it down. Look at it plainly. Because you cannot address what you refuse to acknowledge.</p></div>
+      <div id="rq2" class="rq"><p class="body-text lg stag" style="font-style:italic">Of the four mindset builders — information, associations, environment, past experience — <span style="color:var(--gold)">which one shaped your distrust the most?</span> Your answer is the specific origin point where your trust was corrupted. That is where healing begins.</p></div>
+      <div id="rq3" class="rq"><p class="body-text lg stag" style="font-style:italic">When your prayers feel unanswered, do you ask: <span style="color:var(--gold)">am I in His will? Have I built the capacity for what I'm asking for? Did God give me an instruction, and did I follow it?</span> Or do you default to the old conclusion — that God cannot be trusted? That answer reveals where you are.</p></div>
+      <button class="btn g" style="margin-top:28px" id="rq-btn" onclick="nextQ()">✦ REVEAL NEXT QUESTION</button>
+      <div class="q-nav"><div class="q-dot active" id="qd1" onclick="goQ(1)"></div><div class="q-dot" id="qd2" onclick="goQ(2)"></div><div class="q-dot" id="qd3" onclick="goQ(3)"></div></div>
+    </div>
+  </section>
+
+  <section class="sr">
+    <div class="decl">
+      <p style="font-family:'Cinzel';font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:18px">TRUST RESTORED</p>
+      <p class="statement stag">"Reading this was not the transformation. It was the map. The transformation happens when I put the map down and start walking. I choose to bring my doubt back to His feet and let Him answer it. <span style="color:var(--gold)">He has already gone ahead of me.</span>"</p>
+      <div class="scripture stag" style="max-width:640px;margin:32px auto;text-align:left">And we know that in all things God works for the good of those who love Him, who have been called according to His purpose.<cite>— Romans 8:28</cite></div>
+      <button class="btn g" style="margin-top:30px" id="decl-btn" onclick="declAccepted()">✦ ACCEPT THIS DECLARATION</button>
+      <p id="decl-confirm" style="display:none;font-family:'Cinzel';color:var(--success);margin-top:20px;letter-spacing:.15em;font-size:.85rem">DECLARATION ESTABLISHED · GO AND TRUST HIM.</p>
+      <p style="font-family:'Inter';font-size:0.95rem;margin-top:36px;color:var(--muted);letter-spacing:0.05em;line-height:1.6">
+        This is one of 29 chapters. The <a href="https://whop.com/joined/pathway-masterclass/the-pathway-masterclass-kBhTXfWxXsdUlr/app/" target="_blank" style="color:var(--gold);text-decoration:underline;font-weight:600">full journey starts here</a>.
       </p>
     </div>
+  </section>
 
-  </main>
+</main>
+
+<script>
+// ── CANVAS ──
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');let pts=[];
+function rs(){cvs.width=innerWidth;cvs.height=innerHeight;}addEventListener('resize',rs);rs();
+for(let i=0;i<90;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.5,a:Math.random()*.5});
+function anim(){ctx.clearRect(0,0,cvs.width,cvs.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cvs.width)p.vx*=-1;if(p.y<0||p.y>cvs.height)p.vy*=-1;ctx.fillStyle=`rgba(255,215,0,${p.a*.2})`;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill();});requestAnimationFrame(anim);}anim();
+
+// ── SCROLL REVEAL ──
+const oSR=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>oSR.observe(el));
+const oTX=new IntersectionObserver(es=>{es.forEach(e=>{const ws=e.target.querySelectorAll('.word');if(e.isIntersecting)ws.forEach((w,i)=>setTimeout(()=>w.classList.add('v'),i*28));});},{threshold:.15});
+document.querySelectorAll('.stag').forEach(el=>{el.innerHTML=el.innerHTML.split(' ').map(t=>(t.includes('<')||t.includes('>'))?t:`<span class="word">${t}</span>`).join(' ');oTX.observe(el);});
+
+// ── MODAL PANEL ──
+const panelData={
+  trust:{tag:'THE DEFINITION',title:'Trust Is Not a Feeling',body:'Trust is the measure of your belief in a person, entity, or object, based on your understanding of its nature. It is built on two things: the strength of your belief, and your perception of whoever or whatever you are believing in. Which means the real question was never "do you trust God?" The real question is: what is your perception of God? To trust Him, we first have to understand His nature. Then we have to examine our own perception of that nature. And then, most importantly, we have to trace where that perception came from.'},
+  fear:{tag:'ROOT 1',title:'Fear of Disappointment',body:'Your brain was designed with a protective function. It is built to shield you from things that might cause you emotional pain, including disappointment. So your brain has been preventing you from trusting God — not out of rebellion, but out of self-protection. It learned that trust leads to disappointment. So it stopped trusting. This is not a character flaw. This is the subconscious doing exactly what it was built to do — protect you from pain. But the protection has become the prison.'},
+  control:{tag:'ROOT 2',title:'Refusal to Surrender Control',body:'You worry He might slow down your plans. That He might redirect you. That He might ask you to do things you don\'t feel like doing. Most of us are not struggling with God\'s ability. We are struggling with our perception of His character, and our unwillingness to release control. The doubt is rarely about whether God can — it\'s about whether He will, and whether what He decides will align with what we want.'},
+  info:{tag:'BUILDER 1',title:'Information',body:'What you have been told and what you have chosen to consume. School taught that God is a concept human beings invented — a psychological coping mechanism. A story told by people who didn\'t have science yet. But consciousness — the fact that matter is aware of itself — that breaks the rules. Matter is not supposed to have consciousness. And yet here we are. The data you were given was incomplete.'},
+  assoc:{tag:'BUILDER 2',title:'Associations',body:'Who you walk with, and the beliefs they carry into your life via proximity. If you surround yourself with individuals who have lost hope, your subconscious begins to register hopelessness as the normal state. You don\'t decide to lose hope. You don\'t sit down and choose it. But your actions quietly begin to follow a belief system that has already given up, without you ever noticing the shift.'},
+  env:{tag:'BUILDER 3',title:'Environment & Culture',body:'The unspoken rules of the world that shaped your default operating system. Church culture that produced carnal believers — people barely transformed. Unanswered prayers piled up. Disappointment became normal. A quiet agreement spread: it\'s normal for God not to answer. It\'s normal not to fully trust Him. That was the first environment. And it shaped you more than you realised.'},
+  fail:{tag:'BUILDER 4',title:'Past Experiences & Failure',body:'Failure is what finally broke trust in God, completely. Praying repeatedly, sincerely. The answers didn\'t come when expected. The mind drew the only conclusion it knew how to draw from that data: God cannot be trusted. It became a settled belief, not a passing thought. Church leaders placed restriction after restriction — and because they represented God, the conclusion was: God must be like that. Restrictive. Demanding. Joyless.'},
+  chess:{tag:'THE REVELATION',title:'The Pre-Written Script',body:'Before God began anything, He had already finished it. He built the chessboard, wrote every rule that governs the game, played it from the first move to the last, and finished it — all before He built the earth. That is why the devil cannot match Him. The game is already over. God knew your life from beginning to end before you drew your first breath. God designed a system that draws you back into His will no matter how far you drift from it.'},
+  car:{tag:'THE ANALOGY',title:'The Car at Age Five',body:'If your father gave you a car at five years old and told you to drive, would you trust him? You would play with the controls, crash it, get hurt, and carry permanent scars. A father who gives a gift that causes harm either has something wrong with his mind, or he doesn\'t love you. Society has correctly taught you that a loving parent does not give their child a gift that will harm them. Therefore, when God withholds something from you, it is because He does not want you to get hurt.'},
+  will:{tag:'CONDITION 1',title:'His Will',body:'God\'s power is designed to operate fully in your life when you are in His will. And when you are outside His will, it operates to draw you back into it. So the reason most prayers didn\'t come to pass was because the person was outside God\'s will. The question is no longer whether you should trust God. The question is whether you are in His will.'},
+  time:{tag:'CONDITION 2',title:'His Timing',body:'If the timing is not right, the answer will not manifest yet. God is not scrambling. He is not surprised. He is not late. His timing accounts for variables you cannot see and dimensions you have no access to. The answer is already written — it is waiting for the moment when it will produce maximum impact and minimum damage.'},
+  cap:{tag:'CONDITION 3',title:'Your Capacity',body:'If your capacity — your wisdom, your spiritual and emotional maturity — is not sufficient to carry the blessing, it will be withheld until you grow into it. Your level of revelation determines the measure of grace that can operate in your life. If pride is in you, He may allow pain to humble you. If your capacity is insufficient, He will take you through seasons that build it.'},
+  word:{tag:'CONDITION 4',title:'His Word',body:'God\'s power operates within the jurisdiction of His word. You have been praying, finishing, and walking away — never pausing long enough for God to speak back to you. God protects His integrity. He does not speak and then fail to deliver. The formula is this: God gives a word. You obey the word. God\'s power fulfils the word.'},
+  output:{tag:'THE OUTPUT',title:'Trust Restored',body:'I now trust in the Lord. My assignment is clear — discern His will consistently. Train my discipline to obey what He tells me. Because answers are not determined by how much I pray. They are determined by whether I do what He says. That is the art of trusting God — not the absence of doubt, but the decision, made again and again, to bring your doubt back to His feet and let Him answer it.'}
+};
+function sp(id){const d=panelData[id];if(!d)return;document.getElementById('np-tag').textContent=d.tag;document.getElementById('np-title').textContent=d.title;document.getElementById('np-body').textContent=d.body;document.getElementById('np').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function closePanel(){document.getElementById('np').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
+
+// ── TIMELINE (SURPRISE #2) ──
+let tlIdx=0;const tlTotal=7;
+function tlGo(dir){tlIdx=Math.max(0,Math.min(tlTotal-1,tlIdx+dir));document.getElementById('tlTrack').style.transform=`translateX(-${tlIdx*100}%)`;document.getElementById('tlCounter').textContent=`${tlIdx+1} / ${tlTotal}`;document.getElementById('tlPrev').disabled=tlIdx===0;document.getElementById('tlNext').disabled=tlIdx===tlTotal-1;document.getElementById('tlFill').style.width=`${((tlIdx+1)/tlTotal)*100}%`;document.getElementById('tl-footer').textContent=`DIALOGUE: Exchange ${tlIdx+1} of ${tlTotal} — ${tlIdx===tlTotal-1?'End of diagnostic. Trust has been restored.':'Continue navigating to follow the conversation.'}`;}
+tlGo(0);
+
+// ── BELIEF SCANNER (SURPRISE #1) ──
+const scanCategories=[
+  {cls:'info',icon:'📚',title:'INFORMATION',reasons:['This belief was likely planted by what you were told — by sermons, school, media, or religious instruction that shaped a distorted picture of God.']},
+  {cls:'assoc',icon:'👥',title:'ASSOCIATIONS',reasons:['This belief was likely transferred to you by people around you — friends, leaders, or a congregation whose collective hopelessness became your default.']},
+  {cls:'env',icon:'🌍',title:'ENVIRONMENT & CULTURE',reasons:['This belief was likely shaped by the invisible rules of your environment — a culture where mediocrity in faith was normalized and victory was the exception.']},
+  {cls:'exp',icon:'💔',title:'PAST EXPERIENCE & FAILURE',reasons:['This belief was likely forged in the fire of personal disappointment — unanswered prayers, broken promises, or seasons of defeat that taught your brain to expect the worst.']}
+];
+let scanCount=0;
+function scanBelief(){const input=document.getElementById('beliefInput');const text=input.value.trim();if(!text)return;
+const keywords={info:['told','taught','learned','heard','read','bible','church','sermon','school','science','said'],assoc:['friends','people','family','leader','pastor','others','everyone','they','nobody','someone'],env:['culture','grew up','normal','always','tradition','society','community','world','system'],exp:['failed','prayed','disappointed','tried','hurt','lost','broken','never','didn\'t','pain','trauma','unanswered']};
+let scores={info:0,assoc:0,env:0,exp:0};const lower=text.toLowerCase();
+Object.keys(keywords).forEach(k=>{keywords[k].forEach(w=>{if(lower.includes(w))scores[k]+=2;});});
+// Add randomness for variety if no strong match
+const maxScore=Math.max(...Object.values(scores));
+if(maxScore===0){const cats=['info','assoc','env','exp'];const rand=cats[Math.floor(Math.random()*cats.length)];scores[rand]=1;}
+const winner=Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
+const catIdx={info:0,assoc:1,env:2,exp:3}[winner];
+const cat=scanCategories[catIdx];scanCount++;
+const results=document.getElementById('scanResults');
+const item=document.createElement('div');item.className=`scan-item ${cat.cls}`;item.style.position='relative';
+item.innerHTML=`<div class="scan-animation"></div><div class="scan-icon">${cat.icon}</div><div class="scan-text"><h5>ORIGIN: ${cat.title}</h5><p>"${text}" — ${cat.reasons[0]}</p></div>`;
+results.prepend(item);input.value='';
+document.getElementById('scan-footer').textContent=`STATUS: ${scanCount} belief(s) scanned. Each one you name is one you can now address.`;
+setTimeout(()=>{const anim=item.querySelector('.scan-animation');if(anim)anim.remove();},800);}
+
+// ── PROTOCOLS ──
+const protoChecked=new Set();
+function markProto(id){if(protoChecked.has(id))return;protoChecked.add(id);document.getElementById(id).classList.add('done');const num=id.replace('pr','');document.getElementById('pc'+num).textContent='✓';const n=protoChecked.size;document.getElementById('proto-footer').textContent=`STATUS: ${n} of 4 conditions acknowledged. ${n===4?'All conditions positioned. Go and trust Him.':'Continue the audit — honesty matters more than completion.'}`;}
+
+// ── REFLECTION ──
+let curQ=1;
+function goQ(n){[1,2,3].forEach(i=>{document.getElementById('rq'+i).classList.remove('show');document.getElementById('qd'+i).classList.remove('active');});document.getElementById('rq'+n).classList.add('show');document.getElementById('qd'+n).classList.add('active');curQ=n;document.getElementById('rq-btn').style.display=curQ>=3?'none':'inline-block';}
+function nextQ(){if(curQ<3)goQ(curQ+1);}
+
+// ── DECLARATION ──
+function declAccepted(){document.getElementById('decl-btn').style.display='none';document.getElementById('decl-confirm').style.display='block';}
+</script>
 </body>
 </html>
